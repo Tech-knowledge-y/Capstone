@@ -1,0 +1,29 @@
+body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    /*background-color: indianred;*/
+}
+
+p {
+    font-family: 'Raleway', sans-serif;
+
+}
+
+
+/*side nav*/
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background-color: papayawhip;
+    color: black;
+    transition: all 0.3s;
+}
