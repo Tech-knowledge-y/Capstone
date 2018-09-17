@@ -1,12 +1,10 @@
 package com.capstone.tech.models;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Calendar;
 
 @Entity
 @Table(name = "user")
-public class User implements Serializable {
+public class User {
 
     @Id
     @GeneratedValue
@@ -25,23 +23,37 @@ public class User implements Serializable {
     private String gender;
 
     @Column(nullable = false)
-    private Calendar birthdate;
+    private String birthdate;
 
     // Relationships
 
+    @OneToOne(mappedBy = "user")
+    private Availability availability;
 
 
     // Constructors / Getters / Setters
 
     public User() { }
 
-    public User(String username, String email, String password, String gender, Calendar birthdate) {
+    public User(String username, String email, String password, String gender, String birthdate, Availability availability) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.gender = gender;
         this.birthdate = birthdate;
+        this.availability = availability;
     }
+
+    public User(long id, String username, String email, String password, String gender, String birthdate, Availability availability) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+        this.birthdate = birthdate;
+        this.availability = availability;
+    }
+
 
     public long getId() {
         return id;
@@ -83,11 +95,19 @@ public class User implements Serializable {
         this.gender = gender;
     }
 
-    public Calendar getBirthdate() {
+    public String getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Calendar birthdate) {
+    public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
+    }
+
+    public Availability getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(Availability availability) {
+        this.availability = availability;
     }
 }
