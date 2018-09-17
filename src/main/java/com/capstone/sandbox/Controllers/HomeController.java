@@ -13,7 +13,17 @@ public class HomeController {
 
     @GetMapping("/home")
         public String home() {
-            return "developers";
+            return "home";
+    }
+
+    @GetMapping("/default")
+    public String defaultTemp() {
+        return "default";
+    }
+
+    @GetMapping("/developers")
+    public String developers() {
+        return "developers";
     }
 
 }
