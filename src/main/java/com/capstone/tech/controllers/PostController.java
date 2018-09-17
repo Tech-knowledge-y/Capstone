@@ -17,10 +17,10 @@ public class PostController {
         this.userDao = userDao;
     }
 
-    @GetMapping("/posts")
+    @GetMapping("/posts/all-posts")
     private String showAllPosts(Model model) {
         model.addAttribute("posts", postDao.findAll());
-        return "posts";
+        return "posts/all-posts";
     }
 
 
