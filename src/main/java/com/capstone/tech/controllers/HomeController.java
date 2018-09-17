@@ -26,4 +26,9 @@ public class HomeController {
         return "developers";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
 }
