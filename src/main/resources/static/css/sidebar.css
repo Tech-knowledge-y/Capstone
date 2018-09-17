@@ -1,18 +1,8 @@
-/*
-    DEMO STYLE
-*/
-
-/*@import "https://fonts.googleapis.com/css?family=Poppins:";*/
-
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700');
-
-
 .sidenavbar-para {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
-    color: #999;
 }
 
 a,
@@ -54,11 +44,12 @@ a:focus {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: calc(100% - 60px);
     z-index: 999;
-    background: #7386D5;
-    color: #fff;
+    background-color: #0f1114;
+    color: ghostwhite;
     transition: all 0.3s;
+    /*margin-bottom: 60px;*/
 }
 
 #sidebar.active {

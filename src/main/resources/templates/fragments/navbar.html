@@ -3,11 +3,12 @@
 
 <nav th:fragment="sideNavbar" id="sidebar">
     <div class="sidebar-header">
-        <h3>LOGO here?</h3>
+        <h3 class="text-center">LOGO here?</h3>
+        <p class="sidenavbar-para text-center">Tech{knowledge}y</p>
     </div>
 
     <ul class="list-unstyled components">
-        <p class="sidenavbar-para">Tech{knowledge}y</p>
+
 
         <li class="active">
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profile</a>
@@ -39,8 +40,8 @@
 
 </nav>
 
-<nav th:fragment="navbarcollapse" class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-end">
-    <button type="button" id="sidebarCollapse" class="btn btn-info">
+<nav th:fragment="navbarcollapse" class="navbar navbar-expand-lg d-flex justify-content-end" style="background-color: #272526;">
+    <button type="button" id="sidebarCollapse" class="btn btn-outline-secondary">
         <i class="fas fa-align-left"></i>
         <span>Close Sidebar</span>
     </button>
