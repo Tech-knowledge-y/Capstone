@@ -2,7 +2,9 @@
     DEMO STYLE
 */
 
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+/*@import "https://fonts.googleapis.com/css?family=Poppins:";*/
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700');
 
 
 .sidenavbar-para {
@@ -36,12 +38,7 @@ a:focus {
     border: none;
 }
 
-.line {
-    width: 100%;
-    height: 1px;
-    border-bottom: 1px dashed #black;
-    margin: 40px 0;
-}
+
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
