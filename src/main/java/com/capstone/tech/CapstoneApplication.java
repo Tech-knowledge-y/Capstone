@@ -1,12 +1,12 @@
-package com.capstone.sandbox;
+package com.capstone.tech;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SandboxApplication {
+ public class CapstoneApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SandboxApplication.class, args);
+        SpringApplication.run(CapstoneApplication.class, args);
     }
 }
