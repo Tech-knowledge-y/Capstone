@@ -1,6 +1,7 @@
 package com.capstone.tech.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -30,18 +31,23 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Availability availability;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Post> posts;
+
+
 
     // Constructors / Getters / Setters
 
     public User() { }
 
-    public User(String username, String email, String password, String gender, String birthdate, Availability availability) {
+    public User(String username, String email, String password, String gender, String birthdate, Availability availability, List<Post> posts) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.gender = gender;
         this.birthdate = birthdate;
         this.availability = availability;
+        this.posts = posts;
     }
 
     public User(long id, String username, String email, String password, String gender, String birthdate, Availability availability) {
@@ -109,5 +115,13 @@ public class User {
 
     public void setAvailability(Availability availability) {
         this.availability = availability;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 }
