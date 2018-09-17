@@ -15,7 +15,7 @@ public class AvailabilityController {
     }
 
     @GetMapping("/availability")
-    private String availabilityIndex(Model viewModel) {
+    public String availabilityIndex(Model viewModel) {
         viewModel.addAttribute("availability", availabilityDao.findAll());
         return "availability";
     }
