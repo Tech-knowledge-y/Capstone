@@ -16,7 +16,7 @@ public class HomeController {
             return "home";
     }
 
-    @GetMapping("/default")
+    @GetMapping("/c")
     public String defaultTemp() {
         return "default";
     }
