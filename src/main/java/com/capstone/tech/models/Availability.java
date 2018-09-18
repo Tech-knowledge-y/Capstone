@@ -29,14 +29,15 @@ public class Availability {
 
     // relationships
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn (name = "user_id")
     private User user;
 
     // constructors/getters/setters
 
     public Availability() { }
 
-    public Availability(String day_of_week, String week, String year, String time_start, String time_end, User user) {
+    public Availability(String day_of_week, String week, String year, String time_start, String time_end, User user ) {
         this.day_of_week = day_of_week;
         this.week = week;
         this.year = year;
@@ -92,6 +93,7 @@ public class Availability {
     public void setTime_end(String time_end) {
         this.time_end = time_end;
     }
+
 
     public User getUser() {
         return user;
