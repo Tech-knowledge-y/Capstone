@@ -23,5 +23,4 @@ public class PostController {
         return "posts/all-posts";
     }
 
-
 }
