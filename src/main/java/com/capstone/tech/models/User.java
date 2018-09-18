@@ -52,16 +52,6 @@ public class User {
         this.posts = posts;
     }
 
-    public User(int id, String username, String email, String password, String gender, String birthdate, List<Availability> availability, List<Post> posts) {
-        this.id = id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.gender = gender;
-        this.birthdate = birthdate;
-        this.availability = availability;
-        this.posts = posts;
-    }
 
     public long getId() {
         return id;
