@@ -59,10 +59,6 @@ public class Post {
 }
 
 
-//Why is this little guy here all alone?
-    public Post(String title) {
-        this.title = title;
-    }
 
     public long getId() {
         return id;

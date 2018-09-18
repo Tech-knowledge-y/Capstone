@@ -14,7 +14,7 @@ public class PostController {
     PostRepo postDao;
     UserRepo userDao;
 
-    public PostController(PostRepo postDao, UserRepo userDao) {
+    private PostController(PostRepo postDao, UserRepo userDao) {
         this.postDao = postDao;
         this.userDao = userDao;
     }
@@ -27,23 +27,26 @@ public class PostController {
 
 
     @GetMapping("/posts/{id}")
-    public String show(@PathVariable long id, Model viewModel) {
-        viewModel.addAttribute("posts", postDao.findOne(id));
+    private String show(@PathVariable long id, Model model) {
+        model.addAttribute("posts", postDao.findOne(id));
         return "posts/show";
     }
 
-    @GetMapping("/posts/create")
-    private String postCreateForm(Model model) {
-        model.addAttribute("post", new Post());
-        return "posts/create";
+
+    @GetMapping("users/{id}/posts/create")
+    private String createPost(@PathVariable long id, Model model) {
+        model.addAttribute("post", postDao.findOne(id));
+        return "users/posts/create";
     }
 
-    @PostMapping("/posts/create")
-    private String insertPost(@ModelAttribute Post post) {
-        post.setUser(userDao.findOne(2L));
+    @PostMapping("/users/{id}/posts/create")
+    private String insertPost(@PathVariable long id, @ModelAttribute Post post) {
+        post.setUser(userDao.findOne(id));
         postDao.save(post);
-        return "redirect:/posts";
+        return "redirect:/users/" + id;
     }
+
+
 
     @GetMapping("/posts/{id}/edit")
     private String postEditForm(@PathVariable long id, Model model) {
