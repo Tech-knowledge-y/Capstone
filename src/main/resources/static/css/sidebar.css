@@ -44,7 +44,8 @@ a:focus {
     position: fixed;
     top: 0;
     left: 0;
-    height: calc(100% - 60px);
+    /*height: calc(100% - 60px); !*USE THIS HEIGHT WHEN FOOTER IS USED*!*/
+    height: 100vh;
     z-index: 999;
     background-color: #0f1114;
     color: ghostwhite;
