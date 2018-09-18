@@ -23,6 +23,11 @@ public class Post {
     @Column(nullable = false)
     private String longitude;
 
+    @Column(nullable = false)
+    private String body;
+
+
+
 //    relationships
 
     @ManyToOne
@@ -33,11 +38,12 @@ public class Post {
 
     }
 
-    public Post(String title, String date, String latitude, String longitude, User user) {
+    public Post(String title, String date, String latitude, String longitude, String body, User user) {
         this.title = title;
         this.date = date;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.body = body;
         this.user = user;
     }
 
@@ -87,5 +93,13 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 }
