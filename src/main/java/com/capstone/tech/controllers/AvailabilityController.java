@@ -14,9 +14,18 @@ public class AvailabilityController {
         this.availabilityDao = availabilityDao;
     }
 
+
+
     @GetMapping("/availability")
-    public String availabilityIndex(Model viewModel) {
+    public String allAvailability(Model viewModel) {
         viewModel.addAttribute("availability", availabilityDao.findAll());
         return "availability";
     }
+
+    @GetMapping("/availability/{id}")
+    private String individualAvailability(Model viewModel) {
+        view
+        return "availability/show-post";
+    }
+
 }
