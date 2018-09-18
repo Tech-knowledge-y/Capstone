@@ -34,6 +34,8 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
 
+    @OneToOne(mappedBy = "user")
+    private UserDetails userDetails;
 
 
     // Constructors / Getters / Setters
