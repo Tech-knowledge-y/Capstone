@@ -27,7 +27,6 @@ public class Post {
     private String body;
 
 
-
 //    relationships
 
     @ManyToOne
@@ -38,6 +37,7 @@ public class Post {
 
     }
 
+// this is the constructor to create
     public Post(String title, String date, String latitude, String longitude, String body, User user) {
         this.title = title;
         this.date = date;
@@ -45,6 +45,23 @@ public class Post {
         this.longitude = longitude;
         this.body = body;
         this.user = user;
+    }
+
+// this is the constructor to display
+    public Post(long id, String title, String date, String latitude, String longitude, String body, User user) {
+        this.id = id;
+        this.title = title;
+        this.date = date;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.body = body;
+        this.user = user;
+}
+
+
+//Why is this little guy here all alone?
+    public Post(String title) {
+        this.title = title;
     }
 
     public long getId() {
