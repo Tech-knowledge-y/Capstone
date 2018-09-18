@@ -27,7 +27,7 @@ public class UserDetailsController {
 
     @PostMapping("/editProfile")
     public String updateProfile(@ModelAttribute UserDetails userDetails) {
-//        userDetailsdao.save(userDetails);
+        userDetailsdao.save(userDetails);
         return "users/all-users";
     }
 
