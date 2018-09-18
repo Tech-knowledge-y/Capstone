@@ -26,3 +26,6 @@
 
 
 application.properties
+
+userDetails_seeder.sql
+user_seeder.sql
