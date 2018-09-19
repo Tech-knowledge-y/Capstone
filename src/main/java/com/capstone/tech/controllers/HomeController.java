@@ -25,19 +25,4 @@ public class HomeController {
     public String developers() {
         return "developers";
     }
-
-    @GetMapping("/resources")
-    public String resources() {return "resources";}
-
-    /***** Move to AuthenticationController, UserController *****/
-    @GetMapping("/login")
-    public String showLoginPage() {
-        return "users/login";
-    }
-
-//    @GetMapping("/register")
-//    public String showRegisterPage() {
-//        return "users/register";
-//    }
-//    /*********************/
 }
