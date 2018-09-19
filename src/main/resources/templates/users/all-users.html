@@ -5,30 +5,34 @@
 </head>
 
 <body>
-<!--<main>-->
-    <div class="wrapper">
-        <!-- Sidebar  -->
+<main>
+    <div id="wrapper">
+        <!-- Sidebar -->
         <nav th:replace="fragments/navbar :: sideNavbar"></nav>
-      
-        <!-- Page Content  -->
-        <div id="content">
-            <nav th:replace="fragments/navbar :: navbarcollapse"></nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <!--Make sure to keep all page content within the #page-content-wrapper.-->
+        <div id="page-content-wrapper">
+            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 d-flex justify-content-center" th:each="user : ${users}">
-                        <ul>
-                            <li><p>Username</p><h2 th:text="${user.username}"></h2></li>
-                            <li><p>Email</p><h2 th:text="${user.email}"></h2></li>
-                            <li><p>Gender</p><h2 th:text="${user.gender}"></h2></li>
-                            <li><p>Birthday</p><h2 th:text="${user.birthdate}"></h2></li>
-                        </ul>
-                        <a th:href="'/users/' + ${user.id}" class="btn-makeshift">View</a>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 " th:each="user : ${users}">
+
+                            <p>Username</p><h2 th:text="${user.username}"></h2>
+                            <p>Email</p><h2 th:text="${user.email}"></h2>
+                            <p>Gender</p><h2 th:text="${user.gender}"></h2>
+                            <p>Birthday</p><h2 th:text="${user.birthdate}"></h2>
+
+                            <a th:href="'/users/' + ${user.id}" class="btn-makeshift">View</a>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
+        <!-- /#page-content-wrapper -->
     </div>
-<!--</main>-->
+<!-- /#wrapper -->
+</main>
 <!--<script th:replace="fragments/footer :: footer"></script>-->
 <script th:replace="fragments/scripts :: scripts"></script>
 </body>
