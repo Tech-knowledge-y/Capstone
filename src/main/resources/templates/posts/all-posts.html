@@ -8,18 +8,21 @@
 <main>
     <div class="wrapper">
         <!-- Sidebar  -->
-        <nav th:replace="fragments/navbar :: sideNavbar"></nav>
+            <nav th:replace="fragments/navbar :: navbarcollapse"></nav>
 
         <!-- Page Content  -->
         <div id="content">
-            <nav th:replace="fragments/navbar :: navbarcollapse"></nav>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12 col-md-6 d-flex justify-content-center" th:each="post : ${posts}">
                         <h1 th:text="${post.title}"></h1>
+                        <p th:text="${post.body}"></p>
                     </div>
                     <div class="col-sm-12 col-md-6 d-flex justify-content-center">
-                        <h1>Hello,World!</h1>
+
+
+
+
                     </div>
                 </div>
             </div>

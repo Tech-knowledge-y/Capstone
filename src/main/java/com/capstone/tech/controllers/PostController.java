@@ -19,7 +19,7 @@ public class PostController {
         this.userDao = userDao;
     }
 
-    @GetMapping("/posts/all-posts")
+    @GetMapping("/posts")
     private String showAllPosts(Model model) {
         model.addAttribute("posts", postDao.findAll());
         return "posts/all-posts";
@@ -29,22 +29,22 @@ public class PostController {
 
     @GetMapping("/posts/{id}")
     private String show(@PathVariable long id, Model model) {
-        model.addAttribute("posts", postDao.findOne(id));
+        model.addAttribute("post", postDao.findOne(id));
         return "posts/show";
     }
 
 
     @GetMapping("users/{id}/posts/create")
     private String createPost(@PathVariable long id, Model model) {
-        model.addAttribute("post", postDao.findOne(id));
-        return "users/posts/create";
+        model.addAttribute("post", new Post());
+        return "posts/create";
     }
 
     @PostMapping("/users/{id}/posts/create")
     private String insertPost(@PathVariable long id, @ModelAttribute Post post) {
         post.setUser(userDao.findOne(id));
         postDao.save(post);
-        return "redirect:/users/" + id;
+        return "redirect:/posts/" + id;
     }
 
 

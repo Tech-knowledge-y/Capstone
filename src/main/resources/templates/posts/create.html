@@ -8,16 +8,15 @@
 <main class="container">
     <div class="wrapper">
         <!-- Sidebar  -->
-        <nav th:replace="fragments/navbar :: sideNavbar"></nav>
+    <nav th:replace="fragments/navbar :: navbarcollapse"></nav>
 
         <!--PAGE CONTENT-->
 <div id="content">
-    <nav th:replace="fragments/navbar :: navbarcollapse"></nav>
     <div class="container-fluid">
         <div class="row">
     <h1>Create Post</h1>
 
-    <form th:action="'/posts/create'" th:method="POST" th:object="${post}">
+    <form th:action="@{/users/2/posts/create}" th:method="POST" th:object="${post}">
 
 <!-- body title-->
         <div class="form-group">
@@ -41,7 +40,7 @@
 <!--body latitude        -->
         <div class="form-group">
             <label for="latitude">Latitude</label>
-            <input class="form-control" id="latitude" type="number" th:field="*{latitude}" placeholder="Enter latitude" /><
+            <input class="form-control" id="latitude" type="number" th:field="*{latitude}" placeholder="Enter latitude" />
         </div>
 
 <!--body longitude-->
@@ -49,6 +48,7 @@
             <label for="longitude">Longitude</label>
             <input class="form-control" id="longitude" type="number" th:field="*{longitude}" placeholder="Enter longitude" />
         </div>
+
 
 
         <button class="btn btn-success">Submit</button>
