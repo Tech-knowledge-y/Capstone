@@ -47,15 +47,29 @@ body {
 }
 
 
-
+li{
+    color: white;
+}
 
 p {
     color: white;
 }
 
+.developers {
+    color: black;
+    font-size: 2em;
+
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', sans-serif;
     color: white;
+}
+
+h2 {
+    text-align: center;
+    font-size: 4em;
+
 }
 
 .line {
@@ -90,12 +104,6 @@ h1, h2, h3, h4, h5, h6 {
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-
-
-
-
-
-
 @media(min-width:768px) {
     #wrapper {
         padding-left: 0;
@@ -122,4 +130,33 @@ h1, h2, h3, h4, h5, h6 {
         position: relative;
         margin-right: 0;
     }
+
+.LinkedIn {
+    width: 15%;
+}
+
+.Github {
+    width: 15%;
+}
+.email {
+    width: 15%;
+}
+#xavier {
+    width: 25%;
+    border-radius: 50%;
+}
+#graham {
+    width: 25%;
+    border-radius: 50%;
+}
+#jillian {
+    width: 25%;
+    border-radius: 50%;
+}
+
+#amos {
+    width: 25%;
+    border-radius: 50%;
+}
+
 }
