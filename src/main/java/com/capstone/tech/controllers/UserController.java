@@ -1,6 +1,5 @@
 package com.capstone.tech.controllers;
 
-import com.capstone.tech.models.Availability;
 import com.capstone.tech.models.User;
 import com.capstone.tech.models.UserDetail;
 import com.capstone.tech.repositories.AvailabilityRepo;
