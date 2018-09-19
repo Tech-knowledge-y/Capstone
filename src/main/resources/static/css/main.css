@@ -90,12 +90,6 @@ h1, h2, h3, h4, h5, h6 {
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-
-
-
-
-
-
 @media(min-width:768px) {
     #wrapper {
         padding-left: 0;
@@ -122,4 +116,8 @@ h1, h2, h3, h4, h5, h6 {
         position: relative;
         margin-right: 0;
     }
+
+.LinkedIn {
+    width: 2%!important;
+}
 }

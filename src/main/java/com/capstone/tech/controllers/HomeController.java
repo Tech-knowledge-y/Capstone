@@ -26,6 +26,9 @@ public class HomeController {
         return "developers";
     }
 
+    @GetMapping("/resources")
+    public String resources() {return "resources";}
+
     /***** Move to AuthenticationController, UserController *****/
     @GetMapping("/login")
     public String showLoginPage() {

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <div th:replace="fragments/head :: head('Default')"></div>
+</head>
+
+<body>
+<main>
+    <div id="wrapper">
+
+        <nav th:replace="fragments/navbar :: sideNavbar"></nav>
+
+
+        <div id="page-content-wrapper">
+            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+            <div class="container-fluid">
+                <h1>Resources</h1>
+                <p>Fill out Codeup's mentorship form here:    https://codeup.com/employer-partner/</p>
+                <p>Geekdom:  https://geekdom.com/</p>
+                <p>W3SCHOOLS:   https://www.w3schools.com/</p>
+                <p>Stack overflow: https://stackoverflow.com/</p>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+</main>
+<!--<script th:replace="fragments/footer :: footer"></script>-->
+<script th:replace="fragments/scripts :: scripts"></script>
+</body>
+</html>
