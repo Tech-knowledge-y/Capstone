@@ -25,15 +25,15 @@
                         <form th:action="@{/login}" method="POST">
                             <div class="form-group">
                                 <!--<label for="inputUsername">Username</label>-->
-                                <input type="username" class="form-control" id="inputUsername" aria-describedby="usernameHelp" placeholder="Enter username" />
+                                <input type="username" name="username" class="form-control" id="inputUsername" aria-describedby="usernameHelp" placeholder="Enter username" />
                             </div>
                             <div class="form-group">
                                 <!--<label for="inputPassword">Password</label>-->
-                                <input type="password" class="form-control" id="inputPassword" placeholder="Password" />
+                                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" />
                             </div>
                             <button type="submit" class="btn btn-outline-dark">Submit</button>
 
-                            <small id="loginHelp" class="form-text text-muted text-center"><a href="/register.html">Not Registered Yet? Click here to get Registered</a></small>
+                            <small id="loginHelp" class="form-text text-muted text-center"><a href="/register">Not Registered Yet? Click here to get Registered</a></small>
                         </form>
                     </div>
                 </div>
