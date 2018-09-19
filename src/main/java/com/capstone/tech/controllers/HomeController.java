@@ -25,4 +25,7 @@ public class HomeController {
     public String developers() {
         return "developers";
     }
+
+    @GetMapping("/resources")
+    public String resources() {return "resources"; }
 }

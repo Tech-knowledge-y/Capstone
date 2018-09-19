@@ -47,15 +47,29 @@ body {
 }
 
 
-
+li{
+    color: white;
+}
 
 p {
     color: white;
 }
 
+.developers {
+    color: black;
+    font-size: 2em;
+
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', sans-serif;
     color: white;
+}
+
+h2 {
+    text-align: center;
+    font-size: 4em;
+
 }
 
 .line {
@@ -118,6 +132,31 @@ h1, h2, h3, h4, h5, h6 {
     }
 
 .LinkedIn {
-    width: 2%!important;
+    width: 15%;
 }
+
+.Github {
+    width: 15%;
+}
+.email {
+    width: 15%;
+}
+#xavier {
+    width: 25%;
+    border-radius: 50%;
+}
+#graham {
+    width: 25%;
+    border-radius: 50%;
+}
+#jillian {
+    width: 25%;
+    border-radius: 50%;
+}
+
+#amos {
+    width: 25%;
+    border-radius: 50%;
+}
+
 }
