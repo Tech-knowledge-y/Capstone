@@ -5,7 +5,7 @@
 </head>
 
 <body>
-<main>
+<!--<main>-->
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav th:replace="fragments/navbar :: sideNavbar"></nav>
@@ -22,12 +22,13 @@
                             <li><p>Gender</p><h2 th:text="${user.gender}"></h2></li>
                             <li><p>Birthday</p><h2 th:text="${user.birthdate}"></h2></li>
                         </ul>
+                        <a th:href="'/users/' + ${user.id}" class="btn-makeshift">View</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</main>
+<!--</main>-->
 <!--<script th:replace="fragments/footer :: footer"></script>-->
 <script th:replace="fragments/scripts :: scripts"></script>
 </body>
