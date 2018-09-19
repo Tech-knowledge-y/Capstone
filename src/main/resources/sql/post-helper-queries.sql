@@ -1,4 +1,4 @@
-# DROP DATABASE IF EXISTS capstone_db;
+DROP DATABASE IF EXISTS capstone_db;
 
 USE capstone_db;
 
