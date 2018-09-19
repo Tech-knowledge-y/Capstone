@@ -25,7 +25,7 @@ public class PostController {
         return "posts/all-posts";
     }
 
-<<<<<<< HEAD
+
 
     @GetMapping("/posts/{id}")
     private String show(@PathVariable long id, Model model) {
@@ -79,8 +79,7 @@ public class PostController {
 //
 //    }
 
-=======
->>>>>>> origin/master
+
 }
 
 
