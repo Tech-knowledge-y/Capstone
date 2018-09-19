@@ -3,32 +3,50 @@
 <head>
     <div th:replace="fragments/head :: head('Login')"></div>
 </head>
-<body>
-    <!--<div th:if="${param.error}">-->
-        <!--Invalid Username and Password.-->
-    <!--</div>-->
-    <!--<div th:if="${param.logout}">-->
-        <!--You have been logged out.-->
-    <!--</div>-->
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <h1 class="text-center">Login</h1>
-                <form th:action="@{/login}" method="post">
-                    <div class="form-group">
-                        <label for="username" class="text-white">Username</label>
-                        <input id="username" name="username" type="text" class="form-control" />
+<body>
+<main>
+    <div id="wrapper">
+        <!-- Page Content -->
+        <!--Make sure to keep all page content within the #page-content-wrapper.-->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-sm-12 col-md-6">
+                        <h1 class="text-center">Login</h1>
+                        <div th:if="${param.error}">
+                            Invalid Username and Password.
+                        </div>
+                        <div th:if="${param.logout}">
+                            You have been logged out.
+                        </div>
+
+
+                        <form th:action="@{/login}" method="POST">
+                            <div class="form-group">
+                                <!--<label for="inputUsername">Username</label>-->
+                                <input type="username" class="form-control" id="inputUsername" aria-describedby="usernameHelp" placeholder="Enter username" />
+                            </div>
+                            <div class="form-group">
+                                <!--<label for="inputPassword">Password</label>-->
+                                <input type="password" class="form-control" id="inputPassword" placeholder="Password" />
+                            </div>
+                            <button type="submit" class="btn btn-outline-dark">Submit</button>
+
+                            <small id="loginHelp" class="form-text text-muted text-center"><a href="/register.html">Not Registered Yet? Click here to get Registered</a></small>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="password" class="text-white">Password</label>
-                        <input id="password" name="password" type="password" class="form-control" />
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                </div>
             </div>
         </div>
+        <!-- /#page-content-wrapper -->
     </div>
+    <!-- /#wrapper -->
 
+</main>
+<!--<script th:replace="fragments/footer :: footer"></script>-->
+<script th:replace="fragments/scripts :: scripts"></script>
 </body>
 </html>
+
+
