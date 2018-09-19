@@ -4,6 +4,7 @@ import com.capstone.tech.models.UserDetails;
 import com.capstone.tech.repositories.UserDetailsRepo;
 import com.capstone.tech.repositories.UserRepo;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,18 +24,22 @@ public class UserDetailsController {
 /////users and userDetails
 
 
-
-
-
-    @GetMapping("/editProfile")
-    public String showEditProfileForm() {
-        return "users/editProfileForm";
+    @GetMapping("/edit")
+    private String showAllUserDetails(Model model) {
+        model.addAttribute("userDetails", userDetailsdao.findAll());
+        return "posts/all-posts";
     }
 
-    @PostMapping("/editProfile")
+
+    @GetMapping("/editUserDetails")
+    public String showEditProfileForm() {
+        return "users/create-userDetails";
+    }
+
+    @PostMapping("/editUserDetails")
     public String updateProfile(@ModelAttribute UserDetails userDetails) {
         userDetailsdao.save(userDetails);
-        return "users/profile";
+        return "users/show-userDetails";
     }
 
 //    @PostMapping("/posts/delete")

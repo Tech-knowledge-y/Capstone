@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <div th:replace="fragments/head :: head('Individual Profile Page')"></div>
+</head>
+
+<body>
+<main>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <nav th:replace="fragments/navbar :: navbarcollapse"></nav>
+
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <!--Make sure to keep all page content within the #page-content-wrapper.-->
+        <div id="page-content-wrapper">
+            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+            <div class="container-fluid">
+                <h1 class="text-center">The Individual's Post lives here</h1>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+
+                        <!--Need to make necessary changes below to reflect single profile info-&#45;&#45;&#45;&#45;-->
+
+                            <h2 th:text="${userDetail.fName}"></h2>
+                            <h2 th:text="${userDetail.lName}"></h2>
+
+
+                            <h2 th:text="${userDetail.city}"></h2>
+                            <p th:text="${userDetail.state}"></p>
+                            <h2 th:text="${userDetail.zipCode}"></h2>
+
+                            <h2 th:text="${userDetail.bio}"></h2>
+                            <!--<button class="btn btn-secondary">Add a post</button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+</main>
+<!--<script th:replace="fragments/footer :: footer"></script>-->
+<script th:replace="fragments/scripts :: scripts"></script>
+</body>
+</html>

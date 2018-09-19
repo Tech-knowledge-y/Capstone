@@ -2,49 +2,37 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <nav th:fragment="sideNavbar" id="sidebar">
-    <div class="sidebar-header">
-        <h3 class="text-center">LOGO here?</h3>
-        <p class="sidenavbar-para text-center">Tech{knowledge}y</p>
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand"><a href="#">Start Bootstrap</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Profiles
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">all profiles</a>
+                    <a class="dropdown-item" href="#">mentor profiles</a>
+                    <a class="dropdown-item" href="#">student profiles</a>
+                    <a class="dropdown-item" href="#">my profile</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Posts
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/posts">view posts</a>
+                    <a class="dropdown-item" href="#">add new post</a>
+                </div>
+            </li>
+
+            <li class="nav-item"><a class="nav-link" href="#">Resources</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact/About</a></li>
+        </ul>
     </div>
-
-    <ul class="list-unstyled components">
-
-
-        <li class="active">
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profiles</a>
-            <ul class="collapse list-unstyled" id="homeSubmenu">
-                <li><a href="#" class="sidenavbar-a">All Profiles</a></li>
-                <li><a href="#" class="sidenavbar-a">Mentor Profiles</a></li>
-                <li><a href="#">Student Profiles</a></li>
-                <li><a href="#">My Profile</a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Posts</a>
-            <ul class="collapse list-unstyled" id="pageSubmenu">
-                <li><a href="/posts#">View Posts</a></li>
-                <li><a href="#">Add New Post</a></li>
-            </ul>
-        </li>
-
-        <li><a href="#">Resources</a></li>
-        <li><a href="#">Events</a></li>
-        <li><a href="/developers#">Contact</a></li>
-
-    </ul>
-
-    <ul class="list-unstyled CTAs">
-        <li>Logout</li>
-    </ul>
-
-</nav>
-
-<nav th:fragment="navbarcollapse" class="navbar navbar-expand-lg d-flex justify-content-end" style="background-color: #272526;">
-    <button type="button" id="sidebarCollapse" class="btn btn-outline-secondary">
-        <i class="fas fa-align-left"></i>
-        <span>Close Sidebar</span>
-    </button>
 </nav>
 
 </html>

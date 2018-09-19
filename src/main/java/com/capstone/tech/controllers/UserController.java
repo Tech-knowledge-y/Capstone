@@ -2,6 +2,9 @@ package com.capstone.tech.controllers;
 
 import com.capstone.tech.repositories.UserRepo;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 @Controller
@@ -12,6 +15,20 @@ public class UserController {
 
     public UserController(UserRepo userDao) {
         this.userDao = userDao;
+    }
+
+    // Show all users
+    @GetMapping("/users")
+    private String index(Model viewModel) {
+        viewModel.addAttribute("users", userDao.findAll());
+        return "users/all-users";
+    }
+
+    // Show individual user profile
+    @GetMapping("/users/{id}")
+    private String show(@PathVariable long id, Model viewModel) {
+        viewModel.addAttribute("user", userDao.findOne(id));
+        return "users/show-user";
     }
 
 }

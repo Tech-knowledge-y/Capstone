@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="fragments/head :: head('Profile')"></div>
+    <div th:replace="fragments/head :: head('All Users Details')"></div>
 </head>
     <body>
 
-        <h1>This is the current user's profile page</h1>
+        <h1>These are All users' Details page</h1>
+
+
+          <!--Make changes to show All users' information on this page.-->
 
         <div th:each="userDetail : ${userDetails}">
             <h2 th:text="${userDetail.fName}"></h2>
@@ -20,6 +23,7 @@
             <!--<button class="btn btn-secondary">Add a post</button>-->
         </div>
 
+        <script th:replace="fragments/scripts :: scripts"></script>
 
     </body>
 </html>
