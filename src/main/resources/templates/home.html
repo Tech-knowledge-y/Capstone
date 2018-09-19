@@ -1,20 +1,61 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!--<div th:replace="fragments/head :: head('Default')"></div>-->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Home</title>
+    <th:block th:replace="fragments/styles :: homeStyle"></th:block>
 </head>
 <!--<nav th:replace="fragments/navbar :: unauthNavbar"></nav>-->
-<main>
-    <div class="jumbotron">
-        <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">The Spring Framework is an application framework and inversion of control container for the Java platform.</p>
-        <hr class="my-4" />
-        <p>The framework's core features can be used by any Java application, but there are extensions for building web applications on top of the Java EE (Enterprise Edition) platform.</p>
-        <p class="lead">
-            <a class="btn btn-lg jumbotron-btn" href="https://spring.io/" target="_blank" role="button">Learn more</a>
-        </p>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav-bar">
+        <a class="navbar-brand" href="/">Tech{knowledge}y</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="profiles" role="button" data-toggle="dropdown">
+                        Profiles
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">My Profiles</a>
+                        <a class="dropdown-item" href="#">All Profiles</a>
+                        <a class="dropdown-item" href="#">Mentor Profiles</a>
+                        <a class="dropdown-item" href="#">Mentee Profiles</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="posts" role="button" data-toggle="dropdown">
+                        Posts
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">View Posts</a>
+                        <a class="dropdown-item" href="#">Create New Post</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Resources</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                <!--<li>-->
+                    <!--<form th:action="@{/logout}" th:method="post">-->
+                        <!--<button class="btn-link btn" style="margin-top: 8px">Logout</button>-->
+                    <!--</form>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </nav>
+
+    <div class="jumbotron jumbotron-fluid p-0 m-0">
+        <div class="container" id="hero"></div>
     </div>
-</main>
+
+</body>
 <!--<footer th:replace="fragments/footer :: footer"></footer>-->
-<!--<script th:replace="fragments/scripts :: scripts"></script>-->
+<script th:replace="fragments/scripts :: scripts"></script>
 </html>
