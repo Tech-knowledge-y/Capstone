@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "user_details")
-public class UserDetails implements Serializable {
+public class UserDetail {
 
     @Id
     @GeneratedValue
@@ -29,16 +29,21 @@ public class UserDetails implements Serializable {
     @Column
     private String bio;
 
+
+    // Relationships
+
     @OneToOne
     private User user;
 
 
 
-    public UserDetails() {
+    // Constructors, Getters, and Setters
+
+    public UserDetail() {
 
     }
 
-    public UserDetails(String fName, String lName, String city, String state, String zipCode, String bio, User user) {
+    public UserDetail(String fName, String lName, String city, String state, String zipCode, String bio, User user) {
         this.fName = fName;
         this.lName = lName;
         this.city = city;

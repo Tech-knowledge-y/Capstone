@@ -10,4 +10,5 @@ DESCRIBE user;
 DESCRIBE availability;
 
 SELECT * FROM user;
+SELECT * FROM user_details;
 SELECT * FROM availability;
