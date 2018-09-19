@@ -28,31 +28,21 @@ public class User {
 
     // Relationships
 
-    @OneToOne(mappedBy = "user")
-    private Availability availability;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Availability> availability;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
 
-    @OneToOne(mappedBy = "user")
-    private UserDetails userDetails;
+
 
 
     // Constructors / Getters / Setters
 
     public User() { }
 
-    public User(String username, String email, String password, String gender, String birthdate, Availability availability, List<Post> posts) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.gender = gender;
-        this.birthdate = birthdate;
-        this.availability = availability;
-        this.posts = posts;
-    }
 
-    public User(long id, String username, String email, String password, String gender, String birthdate, Availability availability) {
+    public User(long id, String username, String email, String password, String gender, String birthdate, List<Availability> availability) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -60,8 +50,29 @@ public class User {
         this.gender = gender;
         this.birthdate = birthdate;
         this.availability = availability;
+
     }
 
+    public User(String username, String email, String password, String gender, String birthdate, List<Availability> availability) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+        this.birthdate = birthdate;
+        this.availability = availability;
+
+    }
+
+
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+        gender = copy.gender;
+        birthdate = copy.birthdate;
+        availability = copy.availability;
+    }
 
     public long getId() {
         return id;
@@ -111,19 +122,15 @@ public class User {
         this.birthdate = birthdate;
     }
 
-    public Availability getAvailability() {
+    public List<Availability> getAvailability() {
         return availability;
     }
 
-    public void setAvailability(Availability availability) {
+    public void setAvailability(List<Availability> availability) {
         this.availability = availability;
     }
 
-    public List<Post> getPosts() {
-        return posts;
-    }
 
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
-    }
+
+
 }

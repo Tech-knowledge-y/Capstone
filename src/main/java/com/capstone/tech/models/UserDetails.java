@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "userDetails")
+@Table(name = "user_details")
 public class UserDetails implements Serializable {
 
     @Id
@@ -29,8 +29,8 @@ public class UserDetails implements Serializable {
     @Column
     private String bio;
 
-//    @OneToOne
-//    private
+    @OneToOne
+    private User user;
 
 
 
@@ -38,13 +38,14 @@ public class UserDetails implements Serializable {
 
     }
 
-    public UserDetails(String fName, String lName, String city, String state, String zipCode, String bio) {
+    public UserDetails(String fName, String lName, String city, String state, String zipCode, String bio, User user) {
         this.fName = fName;
         this.lName = lName;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
         this.bio = bio;
+        this.user = user;
     }
 
     public long getId() {
@@ -101,5 +102,13 @@ public class UserDetails implements Serializable {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

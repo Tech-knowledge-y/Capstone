@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <div th:replace="fragments/head :: head('Default')"></div>
+    <div th:replace="fragments/head :: head('Individual User Page')"></div>
 </head>
 
 <body>
@@ -16,8 +16,15 @@
         <div id="page-content-wrapper">
             <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
             <div class="container-fluid">
-                <h1>Simple Page Layout</h1>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <h1 class="text-center">The Users' Individual Page lives here</h1>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <h1>User Information for: <span th:text="${user.username}"></span></h1>
+                        <p th:text="${'email: ' + user.email}"></p>
+                        <p th:text="${'birthday: ' + user.birthdate}"></p>
+                        <p th:text="${'gender: ' + user.gender}"></p>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
@@ -29,5 +36,3 @@
 <script th:replace="fragments/scripts :: scripts"></script>
 </body>
 </html>
-
-

@@ -1,20 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Edit User Profile</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Edit User Profile</title>
+    </head>
+        <body>
 
-<h2>This is the edit profile form/ After user has logged in.</h2>
-
-
+            <h2>This is the edit profile form/ After user has logged in.</h2>
 
 
-<form th:action="@{/editProfile}" th:method="POST">
+            <form th:action="@{/editProfile}" method="post">
+                    <div class="form-group">
+                        <label for="fName" class="text-white">First Name</label>
+                        <input id="fName" name="fName" type="text" class="form-control" />
+                    </div>
 
-    <button class="btn btn-success">Submit</button>
-</form>
+                    <div class="form-group">
+                        <label for="lName" class="text-white">Last Name</label>
+                        <input id="lName" name="lName" type="text" class="form-control" />
+                    </div>
 
-</body>
+                    <div class="form-group">
+                        <label for="city" class="text-white">City</label>
+                        <input id="city" name="city" type="text" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="state" class="text-white">State</label>
+                        <input id="state" name="state" type="text" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="zipCode" class="text-white">Zip Code</label>
+                        <input id="zipCode" name="zipCode" type="text" class="form-control" />
+                    </div>
+                        <br />
+                    <div class="form-group">
+                        <label for="textAreaBio" class="text-white">Brief "Mentor" bio / or / "Mentee" help-needed bio</label>
+                        <br />
+                        <textarea id="textAreaBio" name="textAreaBio" rows="8" cols="60" class="form-control"></textarea>
+                    </div>
+
+
+                <button class="btn btn-success">Update/Save</button>
+            </form>
+
+    </body>
 </html>

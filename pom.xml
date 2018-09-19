@@ -74,8 +74,6 @@
             <artifactId>thymeleaf-extras-springsecurity4</artifactId>
             <version>2.1.2.RELEASE</version>
         </dependency>
-
-
     </dependencies>
 
     <build>

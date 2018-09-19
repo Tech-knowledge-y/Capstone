@@ -32,9 +32,9 @@ public class HomeController {
         return "users/login";
     }
 
-    @GetMapping("/register")
-    public String showRegisterPage() {
-        return "users/register";
-    }
-    /*********************/
+//    @GetMapping("/register")
+//    public String showRegisterPage() {
+//        return "users/register";
+//    }
+//    /*********************/
 }
