@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <div th:replace="fragments/head :: head('Default')"></div>
+</head>
+
+<body>
+<main>
+    <div id="wrapper">
+
+        <nav th:replace="fragments/navbar :: sideNavbar"></nav>
+
+
+        <div id="page-content-wrapper">
+            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+            <div class="container-fluid">
+                <h1>Resources</h1>
+                <ul>
+                <li>Fill out Codeup's mentorship form here:    https://codeup.com/employer-partner/</li>
+                <li>Geekdom:  https://geekdom.com/</li>
+                <li>Launch SA: https://launchsa.org/</li>
+                <li>Breakfast and Launch: http://www.breakfastlaunch.com/</li>
+                <li>1 million cups (meets Wednesdays @ 9 at main library) : https://www.1millioncups.com/</li>
+
+                <li>Venture X: https://www.venturex.com/</li>
+                <li>RealCo: https://realco.com/</li>
+                </ul>
+
+                <h3>Coming soon</h3>
+                <p>wework: https://www.wework.com/locations</p>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+</main>
+<!--<script th:replace="fragments/footer :: footer"></script>-->
+<script th:replace="fragments/scripts :: scripts"></script>
+</body>
+</html>
