@@ -26,6 +26,4 @@ public class HomeController {
         return "developers";
     }
 
-    @GetMapping("/resources")
-    public String resources() {return "resources"; }
 }
