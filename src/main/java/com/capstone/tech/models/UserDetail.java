@@ -53,6 +53,17 @@ public class UserDetail {
         this.user = user;
     }
 
+    public UserDetail(long id, String fName, String lName, String city, String state, String zipCode, String bio, User user) {
+        this.id = id;
+        this.fName = fName;
+        this.lName = lName;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+        this.bio = bio;
+        this.user = user;
+    }
+
     public long getId() {
         return id;
     }

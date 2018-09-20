@@ -26,9 +26,18 @@
                         <p>body: <span th:text="${post.body}"></span></p>
                         <p>user: <span th:text="${post.user.username}"></span></p>
 
-                        <a th:href="@{/posts/edit/{id}(id=${post.id})}" th:if="${isOwner}"> <button>EDIT</button></a>
+                        <a class="btn btn-warning" th:href="'/posts/' + ${post.id} + '/edit'" th:if="${isOwner}">Edit Post Details</a>
 
-                        <a th:href="@{/posts/delete/{id}(id=${post.id})}" th:if="${isOwner}"> <button>DELETE</button></a>
+                        <form th:action="'/posts/delete'" th:method="POST" th:if="${isOwner}">
+                            <button class="btn btn-danger">Delete Details</button>
+                        </form>
+
+
+
+
+                        <!--<a th:href="@{/posts/edit/{id}(id=${post.id})}" th:if="${isOwner}"> <button>EDIT</button></a>-->
+
+                        <!--<a th:href="@{/posts/delete/{id}(id=${post.id})}" th:if="${isOwner}"> <button>DELETE</button></a>-->
 
                     </div>
                 </div>

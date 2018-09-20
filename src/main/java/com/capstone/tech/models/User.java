@@ -56,6 +56,18 @@ public class User {
         this.userDetail = userDetail;
     }
 
+    public User(long id, String username, String email, String password, String gender, String birthdate, List<Availability> availability, List<Post> posts, UserDetail userDetail) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+        this.birthdate = birthdate;
+        this.availability = availability;
+        this.posts = posts;
+        this.userDetail = userDetail;
+    }
+
     public User(User copy) {
         id = copy.id; // This line is SUPER important! Many things won't work if it's absent
         username = copy.username;

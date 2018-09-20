@@ -34,10 +34,17 @@
                             <h2 th:text="${user.userDetail.state}"></h2>
                             <h2 th:text="${user.userDetail.zipCode}"></h2>
                             <h2 th:text="${user.userDetail.bio}"></h2>
+
+
                             <a class="btn btn-warning" th:href="'/users/' + ${user.id} + '/details/edit'">Edit user details</a>
+
+
                             <form th:action="'/users/' + ${id} + '/details/delete'" th:method="POST">
                                 <button class="btn btn-danger">Delete Details</button>
                             </form>
+
+
+
                         </th:block>
                         <th:block th:if="${user.userDetail == null}">
                             <h3>No User Details</h3>

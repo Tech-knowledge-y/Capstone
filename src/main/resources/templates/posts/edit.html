@@ -16,7 +16,9 @@
                 <div class="row">
                     <h1>Create Post</h1>
 
-                    <form th:action="@{/posts/edit}" th:method="POST" th:object="${post}">
+                    <form th:action="@{/posts/{id}/edit(id = ${post.id})}" th:method="POST" th:object="${post}">
+
+                    <!--<form th:action="@{/posts/edit}" th:method="POST" th:object="${post}">-->
 
                         <input type="hidden" th:field="*{id}" />
                         <input type="hidden" th:field="*{user}" />
@@ -39,7 +41,7 @@
                         </div>
 
 
-                        <!--body latitude        -->
+                        <!--body latitude-->
                         <div class="form-group">
                             <label for="latitude">Latitude</label>
                             <input class="form-control" id="latitude" type="number" th:field="*{latitude}" placeholder="Enter latitude" />
