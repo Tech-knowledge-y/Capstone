@@ -10,10 +10,9 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Profiles
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">all profiles</a>
-                    <a class="dropdown-item" href="#">mentor profiles</a>
-                    <a class="dropdown-item" href="#">student profiles</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" th:object="${user}">
+                    <a class="dropdown-item" href="/users">all profiles</a>
+                    <a class="dropdown-item" href="/register">sign up</a>
                     <a class="dropdown-item" href="#">my profile</a>
                 </div>
             </li>
