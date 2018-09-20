@@ -1,12 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-
-
+    <div th:replace="fragments/head :: head('Create Post')"></div>
 </head>
-<body>
 
+<body>
+<main class="container">
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav th:replace="fragments/navbar :: navbarcollapse"></nav>
+
+        <!--PAGE CONTENT-->
+        <div id="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <h1>Create Post</h1>
+
+                    <form th:action="@{/posts/edit}" th:method="POST" th:object="${post}">
+
+                        <input type="hidden" th:field="*{id}" />
+                        <input type="hidden" th:field="*{user}" />
+                        <!-- body title-->
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input class="form-control" id="title" type="text" placeholder="Enter title" th:field="*{title}" />
+                        </div>
+
+                        <!--body text        -->
+                        <div class="form-group">
+                            <label for="body">Body</label>
+                            <textarea class="form-control" id="body" type="text" th:field="*{body}" placeholder="Enter body"></textarea>
+                        </div>
+
+                        <!--body date-->
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input class="form-control" id="date" type="date" th:field="*{date}" placeholder="Enter date" />
+                        </div>
+
+
+                        <!--body latitude        -->
+                        <div class="form-group">
+                            <label for="latitude">Latitude</label>
+                            <input class="form-control" id="latitude" type="number" th:field="*{latitude}" placeholder="Enter latitude" />
+                        </div>
+
+                        <!--body longitude-->
+                        <div class="form-group">
+                            <label for="longitude">Longitude</label>
+                            <input class="form-control" id="longitude" type="number" th:field="*{longitude}" placeholder="Enter longitude" />
+                        </div>
+
+
+
+                        <button class="btn btn-success">Submit</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 </body>
+
 </html>
+
