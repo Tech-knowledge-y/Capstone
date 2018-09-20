@@ -1,7 +1,6 @@
 package com.capstone.tech.controllers;
 
 import com.capstone.tech.models.Post;
-import com.capstone.tech.models.User;
 import com.capstone.tech.repositories.PostRepo;
 import com.capstone.tech.repositories.UserRepo;
 import com.capstone.tech.services.UserService;
@@ -25,6 +24,7 @@ public class PostController {
 
 
 
+    // Show all posts
     @GetMapping("/posts")
     private String showAllPosts(Model model) {
         model.addAttribute("posts", postDao.findAll());
@@ -32,15 +32,13 @@ public class PostController {
     }
 
 
-
+    // Show an individual post
     @GetMapping("/posts/{id}")
     private String show(@PathVariable long id, Model model) {
         model.addAttribute("post", postDao.findOne(id));
-
         if(postDao.findOne(id).getUser()==userSvc.currentUser()){
             model.addAttribute("isOwner", true);
         }
-
         return "posts/show";
     }
 
@@ -60,42 +58,22 @@ public class PostController {
 
 
 
-    @GetMapping("/posts/edit/{id}")
+    @GetMapping("/posts/{id}/edit")
     private String postEditForm(@PathVariable long id, Model model) {
         model.addAttribute("post", postDao.findOne(id));
         return "posts/edit";
     }
 
-    @PostMapping("/posts/edit")
+    @PostMapping("/posts/{id}/edit")
     private String updatePost(@ModelAttribute Post post) {
         postDao.save(post);
-
         return "redirect:/posts/" + post.getId();
     }
 
-    @GetMapping("/posts/delete/{id}")
-    private String deletePost(@PathVariable long id){
+    @GetMapping("/posts/{id}/delete")
+//    private String deletePost(@PathVariable long id){
+    private String deletePost (@RequestParam(name = "id") long id) {
         postDao.delete(id);
         return "redirect:/posts";
     }
-
-//    @GetMapping("/find-user/{query}")
-//    @ResponseBody
-//    private String findUser(@PathVariable String query){
-//
-//        User user = userDao.findByUsername(query);
-//
-//        System.out.println("user.getEmail() = " + user.getEmail());
-//
-//        return "testing find by username";
-//
-//    }
-
-
 }
-
-
-
-
-
-
