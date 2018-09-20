@@ -1,0 +1,119 @@
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #272526;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 900;
+}
+
+input, textarea {
+    background-color: rgba(0,0,0,0);
+    font-weight: 100!important;
+}
+
+input:focus + span, input:not(:placeholder-shown) + span {
+    opacity: 1;
+    transform: scale(0.75) translateY(-100%) translateX(-10px);
+}
+
+textarea:focus + span, textarea:not(:placeholder-shown) + span {
+    opacity: 1;
+    transform: scale(0.75) translateY(-200%) translateX(-15px);
+}
+
+.placeholder-label {
+    margin: 20px 0;
+    position: relative;
+    width: 100%;
+    color: #fff;
+    display: inline-block;
+    background-color: rgba(0,0,0,0);
+}
+
+.placeholder-text {
+    color: #fff;
+    padding: 10px;
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    top: 35px;
+    transition: 0.2s;
+    transition-timing-function: ease;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.placeholder-text-area {
+    top: 85px;
+}
+
+.form-group {
+    color: #fff!important;
+    border: 0 none;
+    width: 100%;
+}
+
+.form-control {
+    background-color: rgba(0,0,0,0);
+    color: #fff!important;
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+    margin: 0 auto;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #fff;
+    border-radius: 0;
+}
+
+.form-control::placeholder {
+    color: #fff!important;
+}
+
+.form-control:focus {
+    background-color: rgba(0,0,0,0);
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 1px solid #fff;
+    outline: none!important;
+    box-shadow: none!important;
+}
+
+.info_content {
+    color: #000;
+}
+
+#map {
+    width: 100%;
+    height: 300px;
+    margin: 15px 0;
+    /*left: 5px;*/
+}
+
+/*// Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+}
+
+/*// Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+    #map, .form-group, #submit-btn {
+        width: 80%;
+    }
+
+}
+
+/*// Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+}
+
+/*// Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) { }
+
