@@ -45,12 +45,7 @@ public class User {
     public User() { }
 
 
-<<<<<<< HEAD
-    public User(long id, String username, String email, String password, String gender, String birthdate, List<Availability> availability, List<Post> posts) {
-        this.id = id;
-=======
     public User(String username, String email, String password, String gender, String birthdate, List<Availability> availability, List<Post> posts, UserDetail userDetail) {
->>>>>>> ad-Profile4
         this.username = username;
         this.email = email;
         this.password = password;
@@ -58,23 +53,9 @@ public class User {
         this.birthdate = birthdate;
         this.availability = availability;
         this.posts = posts;
-<<<<<<< HEAD
-    }
-
-
-    public User(String username, String email, String password, String gender, String birthdate) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.gender = gender;
-        this.birthdate = birthdate;
-    }
-
-=======
         this.userDetail = userDetail;
     }
 
->>>>>>> ad-Profile4
     public User(User copy) {
         id = copy.id; // This line is SUPER important! Many things won't work if it's absent
         username = copy.username;
@@ -147,8 +128,6 @@ public class User {
     public void setPosts(List<Post> posts) {
         this.posts = posts;
     }
-<<<<<<< HEAD
-=======
 
     public UserDetail getUserDetail() {
         return userDetail;
@@ -157,5 +136,4 @@ public class User {
     public void setUserDetail(UserDetail userDetail) {
         this.userDetail = userDetail;
     }
->>>>>>> ad-Profile4
 }

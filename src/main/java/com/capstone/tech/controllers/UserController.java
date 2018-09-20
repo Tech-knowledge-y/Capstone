@@ -1,14 +1,9 @@
 package com.capstone.tech.controllers;
 
-<<<<<<< HEAD
-import com.capstone.tech.models.User;
-=======
-import com.capstone.tech.models.Availability;
 import com.capstone.tech.models.User;
 import com.capstone.tech.models.UserDetail;
 import com.capstone.tech.repositories.AvailabilityRepo;
 import com.capstone.tech.repositories.UserDetailRepo;
->>>>>>> ad-Profile4
 import com.capstone.tech.repositories.UserRepo;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -23,14 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UserController {
 
     UserRepo userDao;
-<<<<<<< HEAD
-    private PasswordEncoder passwordEncoder;
-
-
-
-    public UserController(UserRepo userDao, PasswordEncoder passwordEncoder) {
-        this.userDao = userDao;
-=======
     UserDetailRepo userDetailDao;
     AvailabilityRepo availabilityDao;
     private PasswordEncoder passwordEncoder;
@@ -40,7 +27,6 @@ public class UserController {
         this.userDao = userDao;
         this.userDetailDao = userDetailDao;
         this.availabilityDao = availabilityDao;
->>>>>>> ad-Profile4
         this.passwordEncoder = passwordEncoder;
     }
 
