@@ -25,6 +25,11 @@
 
                         <p>body: <span th:text="${post.body}"></span></p>
                         <p>user: <span th:text="${post.user.username}"></span></p>
+
+                        <a th:href="@{/posts/edit/{id}(id=${post.id})}" th:if="${isOwner}"> <button>EDIT</button></a>
+
+                        <a th:href="@{/posts/delete/{id}(id=${post.id})}" th:if="${isOwner}"> <button>DELETE</button></a>
+
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@ import com.capstone.tech.models.Post;
 import com.capstone.tech.models.User;
 import com.capstone.tech.repositories.PostRepo;
 import com.capstone.tech.repositories.UserRepo;
+import com.capstone.tech.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,11 +14,16 @@ public class PostController {
 
     PostRepo postDao;
     UserRepo userDao;
+    UserService userSvc;
 
-    private PostController(PostRepo postDao, UserRepo userDao) {
+
+    private PostController(PostRepo postDao, UserRepo userDao, UserService userSvc) {
         this.postDao = postDao;
         this.userDao = userDao;
+        this.userSvc = userSvc;
     }
+
+
 
     @GetMapping("/posts")
     private String showAllPosts(Model model) {
@@ -30,39 +36,45 @@ public class PostController {
     @GetMapping("/posts/{id}")
     private String show(@PathVariable long id, Model model) {
         model.addAttribute("post", postDao.findOne(id));
+
+        if(postDao.findOne(id).getUser()==userSvc.currentUser()){
+            model.addAttribute("isOwner", true);
+        }
+
         return "posts/show";
     }
 
 
-    @GetMapping("users/{id}/posts/create")
-    private String createPost(@PathVariable long id, Model model) {
+    @GetMapping("/posts/create")
+    private String createPost(Model model) {
         model.addAttribute("post", new Post());
         return "posts/create";
     }
 
-    @PostMapping("/users/{id}/posts/create")
-    private String insertPost(@PathVariable long id, @ModelAttribute Post post) {
-        post.setUser(userDao.findOne(id));
+    @PostMapping("/posts/create")
+    private String insertPost(@ModelAttribute Post post) {
+        post.setUser(userSvc.currentUser());
         postDao.save(post);
-        return "redirect:/posts/" + id;
+        return "redirect:/posts/" + post.getId();
     }
 
 
 
-    @GetMapping("/posts/{id}/edit")
+    @GetMapping("/posts/edit/{id}")
     private String postEditForm(@PathVariable long id, Model model) {
         model.addAttribute("post", postDao.findOne(id));
         return "posts/edit";
     }
 
-    @PostMapping("/posts/{id}/edit")
+    @PostMapping("/posts/edit")
     private String updatePost(@ModelAttribute Post post) {
         postDao.save(post);
-        return "redirect:/posts";
+
+        return "redirect:/posts/" + post.getId();
     }
 
-    @PostMapping("/posts/delete")
-    private String deletePost(@RequestParam(name = "id") long id){
+    @GetMapping("/posts/delete/{id}")
+    private String deletePost(@PathVariable long id){
         postDao.delete(id);
         return "redirect:/posts";
     }
