@@ -6,8 +6,8 @@
         <body>
 
             <h2>This is the edit user details form / After user has logged in.</h2>
-            <form th:action="'/users/' + ${id} + '/details/create'" th:method="POST" th:object="${userDetail}">
-                    <div class="form-group">
+            <form th:action="'/users/details/create'" th:method="POST" th:object="${userDetail}">
+                <div class="form-group">
                         <label for="fName" class="text-white">First Name</label>
                         <input id="fName" name="fName" type="text" class="form-control" th:field="*{fName}"/>
                     </div>
@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <label for="bio" class="text-white">Brief "Mentor" bio / or / "Mentee" help-needed bio</label>
                         <br />
-                        <textarea id="bio" name="bio" rows="5" cols="40" class="form-control"></textarea>
+                        <textarea id="bio" name="bio" rows="5" cols="40" class="form-control" th:field="*{bio}"></textarea>
                     </div>
 
                 <button class="btn btn-success">Update/Save</button>
