@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+      <!--xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">-->
+<head>
+    <div th:replace="fragments/head :: head('Default')"></div>
+</head>
+
+<body>
+<main>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <nav th:replace="fragments/navbar :: sideNavbar"></nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <!--Make sure to keep all page content within the #page-content-wrapper.-->
+        <div id="page-content-wrapper">
+            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+            <div class="container-fluid">
+                <div class="row">
+                    <h2>This is the edit user details form / After user has logged in.</h2>
+                    <form th:action="'/users/' + ${user.id} + '/details/edit'" th:method="POST" th:object="${userDetail}">
+                        <div class="form-group">
+                            <label for="fName" class="text-white">First Name</label>
+                            <input id="fName" name="fName" type="text" class="form-control" th:field="*{fName}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="lName" class="text-white">Last Name</label>
+                            <input id="lName" name="lName" type="text" class="form-control" th:field="*{lName}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="city" class="text-white">City</label>
+                            <input id="city" name="city" type="text" class="form-control" th:field="*{city}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="state" class="text-white">State</label>
+                            <input id="state" name="state" type="text" class="form-control" th:field="*{state}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="zipCode" class="text-white">Zip Code</label>
+                            <input id="zipCode" name="zipCode" type="text" class="form-control" th:field="*{zipCode}"/>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <label for="textAreaBio" class="text-white">Brief "Mentor" bio / or / "Mentee" help-needed bio</label>
+                            <br />
+                            <textarea id="textAreaBio" name="textAreaBio" rows="5" cols="40" class="form-control"></textarea>
+                        </div>
+
+                        <button class="btn btn-success">Update/Save</button>
+                        </form>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+</main>
+<!--<script th:replace="fragments/footer :: footer"></script>-->
+<script th:replace="fragments/scripts :: scripts"></script>
+</body>
+</html>
+
+

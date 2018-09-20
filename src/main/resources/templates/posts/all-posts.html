@@ -6,30 +6,32 @@
 
 <body>
 <main>
-    <div class="wrapper">
-        <!-- Sidebar  -->
-            <nav th:replace="fragments/navbar :: navbarcollapse"></nav>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <nav th:replace="fragments/navbar :: sideNavbar"></nav>
+        <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content  -->
-        <div id="content">
+        <!-- Page Content -->
+        <!--Make sure to keep all page content within the #page-content-wrapper.-->
+        <div id="page-content-wrapper">
+            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-12 col-md-6 d-flex justify-content-center" th:each="post : ${posts}">
+                    <div class="col-sm-12 col-md-6 justify-content-center" th:each="post : ${posts}">
                         <h1 th:text="${post.title}"></h1>
                         <p th:text="${post.body}"></p>
-                    </div>
-                    <div class="col-sm-12 col-md-6 d-flex justify-content-center">
-
-
-
-
                     </div>
                 </div>
             </div>
         </div>
+        <!-- /#page-content-wrapper -->
     </div>
+    <!-- /#wrapper -->
+
 </main>
 <!--<script th:replace="fragments/footer :: footer"></script>-->
 <script th:replace="fragments/scripts :: scripts"></script>
 </body>
 </html>
+
+

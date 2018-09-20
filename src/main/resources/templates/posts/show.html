@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <div th:replace="fragments/head :: head('Individual Post Page')"></div>
+    <div th:replace="fragments/head :: head('Default')"></div>
 </head>
 
 <body>
 <main>
     <div id="wrapper">
         <!-- Sidebar -->
-        <nav th:replace="fragments/navbar :: navbarcollapse"></nav>
-
+        <nav th:replace="fragments/navbar :: sideNavbar"></nav>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
@@ -25,6 +25,14 @@
 
                         <p>body: <span th:text="${post.body}"></span></p>
                         <p>user: <span th:text="${post.user.username}"></span></p>
+
+                        <a class="btn btn-warning" th:href="'/posts/' + ${post.id} + '/edit'" th:if="${isOwner}">Edit Post Details</a>
+
+                        <form th:action="@{/posts/delete}" th:method="POST" th:if="${isOwner}">
+                            <input type="hidden" th:value="${post.id}" name="id" />®
+                            <button class="btn btn-danger">Delete Post</button>
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -32,9 +40,10 @@
         <!-- /#page-content-wrapper -->
     </div>
     <!-- /#wrapper -->
-
 </main>
 <!--<script th:replace="fragments/footer :: footer"></script>-->
 <script th:replace="fragments/scripts :: scripts"></script>
 </body>
 </html>
+
+

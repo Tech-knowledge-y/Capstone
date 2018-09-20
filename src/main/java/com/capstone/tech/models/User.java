@@ -34,6 +34,9 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
 
+    @OneToOne(mappedBy = "user")
+    private UserDetail userDetail;
+
 
 
 
@@ -42,7 +45,18 @@ public class User {
     public User() { }
 
 
-    public User(long id, String username, String email, String password, String gender, String birthdate, List<Availability> availability, List<Post> posts) {
+    public User(String username, String email, String password, String gender, String birthdate, List<Availability> availability, List<Post> posts, UserDetail userDetail) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+        this.birthdate = birthdate;
+        this.availability = availability;
+        this.posts = posts;
+        this.userDetail = userDetail;
+    }
+
+    public User(long id, String username, String email, String password, String gender, String birthdate, List<Availability> availability, List<Post> posts, UserDetail userDetail) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -51,15 +65,7 @@ public class User {
         this.birthdate = birthdate;
         this.availability = availability;
         this.posts = posts;
-    }
-
-
-    public User(String username, String email, String password, String gender, String birthdate) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.gender = gender;
-        this.birthdate = birthdate;
+        this.userDetail = userDetail;
     }
 
     public User(User copy) {
@@ -133,5 +139,13 @@ public class User {
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    public UserDetail getUserDetail() {
+        return userDetail;
+    }
+
+    public void setUserDetail(UserDetail userDetail) {
+        this.userDetail = userDetail;
     }
 }
