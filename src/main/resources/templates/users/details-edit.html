@@ -19,7 +19,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <h2>This is the edit user details form / After user has logged in.</h2>
-                    <form th:action="'/users/' + ${user.id} + '/details/edit'" th:method="POST" th:object="${userDetail}">
+                    <form th:action="'/users/' + ${id} + '/details/edit'" th:method="POST" th:object="${userDetail}">
                         <div class="form-group">
                             <label for="fName" class="text-white">First Name</label>
                             <input id="fName" name="fName" type="text" class="form-control" th:field="*{fName}" />

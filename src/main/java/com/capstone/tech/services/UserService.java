@@ -1,36 +1,108 @@
 package com.capstone.tech.services;
 
 import com.capstone.tech.models.User;
+import com.capstone.tech.models.UserWithRoles;
 import com.capstone.tech.repositories.UserRepo;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 
 
 @Service
 public class UserService {
 
-    private UserRepo userRepo;
+    UserRepo userRepo;
 
-    public UserService (UserRepo userRepo){
+    public UserService(UserRepo userRepo) {
         this.userRepo = userRepo;
     }
 
+    public boolean isLoggedIn() {
+        boolean isAnonymousUser =
+                SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken;
+        return ! isAnonymousUser;
+    }
 
-//this checks to see if there is a logged in authenticated user
-    public boolean isLoggedIn (){
-        if(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken) {
-            return false;
+    // Returns a user obj directly from the DB
+    public User loggedInUser() {
+
+        if (! isLoggedIn()) {
+            return null;
         }
-        return true;
+
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        return userRepo.findOne(sessionUser.getId());
     }
 
-    public User currentUser(){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return userRepo.findOne(user.getId());
+    // Checks if the user is the owner of the post
+    public boolean isOwner(User postUser){
+        if(isLoggedIn()){
+            return (postUser.getUsername().equals(loggedInUser().getUsername()));
+        }
+
+        return false;
+
     }
 
 
+    // Edit controls are being showed up if the user is logged in and it's the same user viewing the file
+    public boolean canEditProfile(User profileUser){
+        return isLoggedIn() && (profileUser.getId() == loggedInUser().getId());
+    }
+
+    public void authenticate(User user) {
+        // Notice how we're using an empty list for the roles
+        UserDetails userDetails = new UserWithRoles(user, Collections.emptyList());
+        Authentication auth = new UsernamePasswordAuthenticationToken(
+                userDetails,
+                userDetails.getPassword(),
+                userDetails.getAuthorities()
+        );
+        SecurityContext context = SecurityContextHolder.getContext();
+        context.setAuthentication(auth);
+    }
 
 }
+
+
+
+
+
+
+//public class UserService {
+//
+//    private UserRepo userRepo;
+//
+//    public UserService (UserRepo userRepo){
+//        this.userRepo = userRepo;
+//    }
+//
+//
+////this checks to see if there is a logged in authenticated user
+//    public boolean isLoggedIn (){
+//        if(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken) {
+//            return false;
+//        }
+//        return true;
+//    }
+//
+//    public User currentUser(){
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        return userRepo.findOne(user.getId());
+//    }
+//
+//    // Edit controls are being showed up if the user is logged in and it's the same user viewing the file
+//    public boolean canEditProfile(User profileUser){
+//        return isLoggedIn() && (profileUser.getId() == isLoggedIn().getId());
+//    }
+//
+//
+//
+//}

@@ -2,9 +2,10 @@ package com.capstone.tech.controllers;
 
 import com.capstone.tech.models.User;
 import com.capstone.tech.models.UserDetail;
-import com.capstone.tech.repositories.AvailabilityRepo;
 import com.capstone.tech.repositories.UserDetailRepo;
 import com.capstone.tech.repositories.UserRepo;
+import com.capstone.tech.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,18 +18,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
 
+    @Autowired
     UserRepo userDao;
+
+    @Autowired
     UserDetailRepo userDetailDao;
-    AvailabilityRepo availabilityDao;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
+//    @Autowired
+//    UserRoles userRoles;
 
-    public UserController(UserRepo userDao, UserDetailRepo userDetailDao, AvailabilityRepo availabilityDao, PasswordEncoder passwordEncoder) {
-        this.userDao = userDao;
-        this.userDetailDao = userDetailDao;
-        this.availabilityDao = availabilityDao;
-        this.passwordEncoder = passwordEncoder;
-    }
+    @Autowired
+    UserService userSvc;
 
     // User Registration
     @GetMapping("/register")
@@ -60,36 +63,51 @@ public class UserController {
     }
 
 
+
+
+
+
+
     //Users and User Details
 
-    @GetMapping("/users/{id}/details/create")
-    private String createUserDetails(@PathVariable long id, Model viewModel) {
-        viewModel.addAttribute("id", id);
+    @GetMapping("/users/details/create")
+    private String createUserDetails(Model viewModel) {
         viewModel.addAttribute("userDetail", new UserDetail());
         return "users/details-create";
     }
 
-    @PostMapping("users/{id}/details/create")
-    private String inssertUserDetails(@PathVariable long id, @ModelAttribute UserDetail userDetail) {
-        userDetail.setUser(userDao.findOne(id));
+    @PostMapping("/users/details/create")
+    private String insertUserDetails(@ModelAttribute UserDetail userDetail) {
+        userDetail.setUser(userSvc.loggedInUser());
+//        System.out.println(userDetail.getUser());
+//        System.out.println(userDetail.getCity());
+//        System.out.println(userDetail.getId());
         userDetailDao.save(userDetail);
-        return "redirect:/users/" + id;
+//        System.out.println(userDetail.getId());
+        return "redirect:/users/" + userSvc.loggedInUser().getId();
     }
 
 
+
+
+    //========================== Not working ==========================//
     @GetMapping("/users/{id}/details/edit")
     private String editUserDetails(@PathVariable long id, Model viewModel) {
         viewModel.addAttribute("userDetail", userDetailDao.findOne(id));
+//        viewModel.addAttribute("showEditControls", userSvc.canEditProfile(userSvc.loggedInUser()));
         return "users/details-create";
     }
 
-
     @PostMapping("/users/{id}/details/edit")
-    private String updateUserDetails(@PathVariable long id, @ModelAttribute UserDetail userDetail) {
-        userDetail.setUser(userDao.findOne(id));
+    private String updateUserDetails(@ModelAttribute UserDetail userDetail) {
+        userDetail.setUser(userSvc.loggedInUser());
         userDetailDao.save(userDetail);
-        return "redirect:/users/" + id;
+        return "redirect:/users";
     }
+
+
+
+
 
     @PostMapping("/users/{id}/details/delete")
     private String deleteUserDetails(@PathVariable long id) {
