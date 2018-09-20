@@ -28,17 +28,10 @@
 
                         <a class="btn btn-warning" th:href="'/posts/' + ${post.id} + '/edit'" th:if="${isOwner}">Edit Post Details</a>
 
-                        <form th:action="'/posts/delete'" th:method="POST" th:if="${isOwner}">
-                            <button class="btn btn-danger">Delete Details</button>
+                        <form th:action="@{/posts/delete}" th:method="POST">
+                            <input type="hidden" th:value="${post.id}" name="id" />
+                            <button class="btn btn-danger">Delete Post</button>
                         </form>
-
-
-
-
-                        <!--<a th:href="@{/posts/edit/{id}(id=${post.id})}" th:if="${isOwner}"> <button>EDIT</button></a>-->
-
-                        <!--<a th:href="@{/posts/delete/{id}(id=${post.id})}" th:if="${isOwner}"> <button>DELETE</button></a>-->
-
                     </div>
                 </div>
             </div>
