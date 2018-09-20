@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <div th:replace="fragments/head :: head('Create Post')"></div>
+    <div th:replace="fragments/head :: head('Default')"></div>
 </head>
 
 <body>
-<main class="container">
-    <div class="wrapper">
-        <!-- Sidebar  -->
-        <nav th:replace="fragments/navbar :: navbarcollapse"></nav>
+<main>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <nav th:replace="fragments/navbar :: sideNavbar"></nav>
+        <!-- /#sidebar-wrapper -->
 
-        <!--PAGE CONTENT-->
-        <div id="content">
+        <!-- Page Content -->
+        <!--Make sure to keep all page content within the #page-content-wrapper.-->
+        <div id="page-content-wrapper">
+            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
             <div class="container-fluid">
                 <div class="row">
                     <h1>Create Post</h1>
 
                     <form th:action="@{/posts/{id}/edit(id = ${post.id})}" th:method="POST" th:object="${post}">
-
-                    <!--<form th:action="@{/posts/edit}" th:method="POST" th:object="${post}">-->
 
                         <input type="hidden" th:field="*{id}" />
                         <input type="hidden" th:field="*{user}" />
@@ -28,7 +29,7 @@
                             <input class="form-control" id="title" type="text" placeholder="Enter title" th:field="*{title}" />
                         </div>
 
-                        <!--body text        -->
+                        <!--body text-->
                         <div class="form-group">
                             <label for="body">Body</label>
                             <textarea class="form-control" id="body" type="text" th:field="*{body}" placeholder="Enter body"></textarea>
@@ -39,7 +40,6 @@
                             <label for="date">Date</label>
                             <input class="form-control" id="date" type="date" th:field="*{date}" placeholder="Enter date" />
                         </div>
-
 
                         <!--body latitude-->
                         <div class="form-group">
@@ -53,17 +53,22 @@
                             <input class="form-control" id="longitude" type="number" th:field="*{longitude}" placeholder="Enter longitude" />
                         </div>
 
-
-
                         <button class="btn btn-success">Submit</button>
                     </form>
 
                 </div>
             </div>
         </div>
+        <!-- /#page-content-wrapper -->
     </div>
-</main>
-</body>
+    <!-- /#wrapper -->
 
+</main>
+<!--<script th:replace="fragments/footer :: footer"></script>-->
+<script th:replace="fragments/scripts :: scripts"></script>
+</body>
 </html>
+
+
+
 
