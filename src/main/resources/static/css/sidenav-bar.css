@@ -186,6 +186,13 @@ a.article:hover {
     width: 100%;
 }
 
+#not-authorized {
+    color: #fff;
+    position: relative;
+    top: 35px;
+    left: 15px;
+}
+
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */

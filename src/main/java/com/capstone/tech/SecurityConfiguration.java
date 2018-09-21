@@ -58,8 +58,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                             ***HomeController***
                         "/ads/create", // only authenticated users can create ads
                         "/ads/{id}/edit", // only authenticated users can edit ads
-                        "/developers", // only authenticated users can navigate to developers
-                        "developers", // only authenticated users can view developers page
                         "/resources", // only authenticated users can navigate to resources
                         "resources", // only authenticated users can view resources page
                         "/availability", // only authenticated users can navigate to availability page
