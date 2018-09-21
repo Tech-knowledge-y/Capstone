@@ -5,6 +5,8 @@ import com.capstone.tech.models.UserDetail;
 import com.capstone.tech.repositories.AvailabilityRepo;
 import com.capstone.tech.repositories.UserDetailRepo;
 import com.capstone.tech.repositories.UserRepo;
+import com.capstone.tech.repositories.UserRoles;
+import com.capstone.tech.services.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,23 +16,31 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
+
 @Controller
 public class UserController {
 
     UserRepo userDao;
     UserDetailRepo userDetailDao;
     AvailabilityRepo availabilityDao;
+    UserRoles userRoles;
+    UserService userSvc;
     private PasswordEncoder passwordEncoder;
 
 
-    public UserController(UserRepo userDao, UserDetailRepo userDetailDao, AvailabilityRepo availabilityDao, PasswordEncoder passwordEncoder) {
+    public UserController(UserRepo userDao, UserDetailRepo userDetailDao, AvailabilityRepo availabilityDao, UserRoles userRoles, UserService userSvc, PasswordEncoder passwordEncoder) {
         this.userDao = userDao;
         this.userDetailDao = userDetailDao;
         this.availabilityDao = availabilityDao;
+        this.userRoles = userRoles;
+        this.userSvc = userSvc;
         this.passwordEncoder = passwordEncoder;
     }
 
-    // User Registration
+
+
+    /**======= User Registration =======**/
+
     @GetMapping("/register")
     private String showRegisterForm(Model viewModel){
         viewModel.addAttribute("user", new User());
@@ -60,35 +70,34 @@ public class UserController {
     }
 
 
-    //Users and User Details
 
-    @GetMapping("/users/{id}/details/create")
-    private String createUserDetails(@PathVariable long id, Model viewModel) {
-        viewModel.addAttribute("id", id);
+    /**======= Users and User Details =======**/
+
+    @GetMapping("/users/details/create")
+    private String createUserDetails(Model viewModel) {
         viewModel.addAttribute("userDetail", new UserDetail());
         return "users/details-create";
     }
 
-    @PostMapping("users/{id}/details/create")
-    private String inssertUserDetails(@PathVariable long id, @ModelAttribute UserDetail userDetail) {
-        userDetail.setUser(userDao.findOne(id));
+    @PostMapping("/users/details/create")
+    private String insertUserDetails(@ModelAttribute UserDetail userDetail) {
+        userDetail.setUser(userSvc.loggedInUser());
         userDetailDao.save(userDetail);
-        return "redirect:/users/" + id;
+        return "redirect:/users/" + userSvc.loggedInUser().getId();
     }
-
 
     @GetMapping("/users/{id}/details/edit")
     private String editUserDetails(@PathVariable long id, Model viewModel) {
         viewModel.addAttribute("userDetail", userDetailDao.findOne(id));
-        return "users/details-create";
+//        viewModel.addAttribute("showEditControls", userSvc.canEditProfile(userSvc.loggedInUser()));
+        return "users/details-edit";
     }
 
-
     @PostMapping("/users/{id}/details/edit")
-    private String updateUserDetails(@PathVariable long id, @ModelAttribute UserDetail userDetail) {
-        userDetail.setUser(userDao.findOne(id));
+    private String updateUserDetails(@ModelAttribute UserDetail userDetail) {
+        userDetail.setUser(userSvc.loggedInUser());
         userDetailDao.save(userDetail);
-        return "redirect:/users/" + id;
+        return "redirect:/users/" + userSvc.loggedInUser().getId();
     }
 
     @PostMapping("/users/{id}/details/delete")

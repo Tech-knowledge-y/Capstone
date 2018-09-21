@@ -62,10 +62,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "developers", // only authenticated users can view developers page
                         "/resources", // only authenticated users can navigate to resources
                         "resources", // only authenticated users can view resources page
+                        "/availability", // only authenticated users can navigate to availability page
+                        "users/availability", // only authenticated users can view availability page
 
 //                           ***PostController***
                         "/posts", // only authenticated users can view all posts
-                        "posts/all-users", // only authenticated users can view all users
+                        "posts/all-posts", // only authenticated users can view all posts
                         "/posts/{id}", // only authenticated users can navigate to users by id
                         "posts/show", // only authenticated users can view individual posts
                         "/posts/create", // only authenticated users can navigate to create posts
@@ -82,12 +84,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "users/show-user", // only authenticated users can navigate to individual users page
 
 //                                        --UserDetails--
-                        "/users/{id}/details/create",
+                        "/users/details/create", // only authenticated users can navigate to details page
                         "users/details-create", // only authenticated users can create details
-                        "users/{id}/details/create",
-                        "/users/{id}/details/edit",
-                        "users/details-create",
-                        "/users/{id}/details/delete"
+                        "/users/{id}/details/edit", // only authenticated users can navigate to edit details page
+                        "users/details-edit", // only authenticated users can edit details
+                        "/users/{id}/details/delete" // only authenticated users can delete their own details
                 )
                 .authenticated()
         ;

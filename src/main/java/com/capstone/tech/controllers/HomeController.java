@@ -28,4 +28,9 @@ public class HomeController {
 
     @GetMapping("/resources")
     public String resources() {return "resources"; }
+
+    @GetMapping("/availability")
+    public String availability() {
+        return "users/availability";
+    }
 }

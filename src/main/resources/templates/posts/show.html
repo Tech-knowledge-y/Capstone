@@ -29,7 +29,7 @@
                         <a class="btn btn-warning" th:href="'/posts/' + ${post.id} + '/edit'" th:if="${isOwner}">Edit Post Details</a>
 
                         <form th:action="@{/posts/delete}" th:method="POST" th:if="${isOwner}">
-                            <input type="hidden" th:value="${post.id}" name="id" />®
+                            <input type="hidden" th:value="${post.id}" name="id" />
                             <button class="btn btn-danger">Delete Post</button>
                         </form>
 

@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <div th:replace="fragments/head :: head('Default')"></div>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Resources</title>
+    <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
 </head>
 
 <body>
-<main>
     <div id="wrapper">
+        <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
 
-        <nav th:replace="fragments/navbar :: sideNavbar"></nav>
+        <!-- Page Content -->
+        <div id="content">
+            <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
 
-
-        <div id="page-content-wrapper">
-            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
             <div class="container-fluid">
                 <h1>Resources</h1>
                 <ul>
@@ -28,13 +30,14 @@
                 <h3>Coming soon</h3>
                 <p><a target="_blank" href="https://www.wework.com/locations">WeWork</a></p>
             </div>
-        </div>
-        <!-- /#page-content-wrapper -->
-    </div>
-    <!-- /#wrapper -->
 
-</main>
-<!--<script th:replace="fragments/footer :: footer"></script>-->
-<script th:replace="fragments/scripts :: scripts"></script>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!--<script th:replace="fragments/footer :: footer"></script>-->
+    <script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
 </body>
 </html>

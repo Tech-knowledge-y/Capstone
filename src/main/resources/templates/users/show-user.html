@@ -1,82 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <div th:replace="fragments/head :: head('Individual User Page')"></div>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Resources</title>
+    <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
 </head>
 
 <body>
-<main>
+
     <div id="wrapper">
-        <!-- Sidebar -->
-        <nav th:replace="fragments/navbar :: sideNavbar"></nav>
-        <!-- /#sidebar-wrapper -->
+        <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
 
         <!-- Page Content -->
-        <!--Make sure to keep all page content within the #page-content-wrapper.-->
-        <div id="page-content-wrapper">
-            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+        <div id="content">
+            <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
+
             <div class="container-fluid">
-                <h1 class="text-center">The Users' Individual Page lives here</h1>
                 <div class="row">
                     <div class="col-sm-12 col-md-6">
 
                         <!-- =================== USER INFO =================== -->
                         <h1>User Information for: <span th:text="${user.username}"></span></h1>
-                        <p th:text="${'email: ' + user.email}"></p>
-                        <p th:text="${'birthday: ' + user.birthdate}"></p>
-                        <p th:text="${'gender: ' + user.gender}"></p>
+                        <h4 th:text="${'email: ' + user.email}"></h4>
+                        <h4 th:text="${'birthday: ' + user.birthdate}"></h4>
+                        <h4 th:text="${'gender: ' + user.gender}"></h4>
 
                         <!-- =================== USER DETAIL INFO =================== -->
                         <th:block th:if="${user.userDetail != null}">
-                            <h2 th:text="${user.userDetail.fName}"></h2>
-                            <h2 th:text="${user.userDetail.lName}"></h2>
-                            <h2 th:text="${user.userDetail.city}"></h2>
-                            <h2 th:text="${user.userDetail.state}"></h2>
-                            <h2 th:text="${user.userDetail.zipCode}"></h2>
-                            <h2 th:text="${user.userDetail.bio}"></h2>
-
-
-                            <a class="btn btn-warning" th:href="'/users/' + ${user.id} + '/details/edit'">Edit user details</a>
-
-
-                            <form th:action="'/users/' + ${id} + '/details/delete'" th:method="POST">
+                            <h4 th:text="${user.userDetail.fName}"></h4>
+                            <h4 th:text="${user.userDetail.lName}"></h4>
+                            <h4 th:text="${user.userDetail.city}"></h4>
+                            <h4 th:text="${user.userDetail.state}"></h4>
+                            <h4 th:text="${user.userDetail.zipCode}"></h4>
+                            <h4 th:text="${user.userDetail.bio}"></h4>
+                            <a class="btn btn-warning" th:href="'/users/' + ${user.userDetail.id} + '/details/edit'" th:if="${isOwner}">Edit user details</a>
+                            <form th:action="'/users/' + ${user.id} + '/details/delete'" th:method="POST" th:if="${isOwner}">
                                 <button class="btn btn-danger">Delete Details</button>
                             </form>
-
-
-
                         </th:block>
+
                         <th:block th:if="${user.userDetail == null}">
-                            <h3>No User Details</h3>
-                            <a th:href="'/users/' + ${user.id} + '/details/create'">Add user details</a>
+                            <h3>No User Details</h3> <!-- Remove this -->
+                            <a th:href="'/users/details/create'">Add user details</a>
                         </th:block>
                     </div>
-                    <!--</div>-->
                 </div>
             </div>
-        </div>
-        <!-- /#page-content-wrapper -->
-    </div>
-    <!-- /#wrapper -->
 
-</main>
-<!--<script th:replace="fragments/footer :: footer"></script>-->
-<script th:replace="fragments/scripts :: scripts"></script>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
 </body>
 </html>
-
-<!--<th:block th:if="${pet.petDetail != null}">-->
-    <!--<h3>Pet Details</h3>-->
-    <!--<p th:text="${'Behavior: ' + pet.petDetail.personalityDescription}"></p>-->
-    <!--<p th:text="${'Is sterile: ' + pet.petDetail.sterile}"></p>-->
-    <!--<p th:text="${'Weight in ounces: ' + pet.petDetail.weightInOunces}"></p>-->
-    <!--<a class="btn btn-warning" th:href="'/pets/' + ${pet.id} + '/details/edit'">Edit pet details</a>-->
-    <!--<form th:action="'/pets/' + ${id} + '/details/delete'" th:method="POST">-->
-        <!--<button class="btn btn-danger">Delete Details</button>-->
-    <!--</form>-->
-<!--</th:block>-->
-
-<!--<th:block th:if="${pet.petDetail == null}">-->
-    <!--<h3>No Pet Details</h3>-->
-    <!--<a th:href="'/pets/' + ${pet.id} + '/details/create'">Add pet details</a>-->
-<!--</th:block>-->
