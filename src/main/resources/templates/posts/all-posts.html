@@ -20,6 +20,8 @@
                     <div class="col-sm-12 col-md-6 justify-content-center" th:each="post : ${posts}">
                         <h1 th:text="${post.title}"></h1>
                         <p th:text="${post.body}"></p>
+
+                        <a th:href="'/posts/' + ${post.id}" class="btn-makeshift">View</a>
                     </div>
                 </div>
             </div>
