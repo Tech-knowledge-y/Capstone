@@ -10,6 +10,10 @@ body {
     color: #fff;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 900;
+}
+
 a,
 a:hover,
 a:focus {
@@ -168,6 +172,14 @@ a.article,
 a.article:hover {
     background: #6d7fcc !important;
     color: #fff !important;
+}
+
+.logout,
+.logout:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+    width: 100%;
+    border: none;
 }
 
 #sidebarCollapse {
