@@ -31,12 +31,10 @@
                                 <label for="dowMonday">Monday</label>
                                 <input type="checkbox" class="" id="dowMonday" onclick="showHideTimeFunction()" />
                                 <div class="input-group" id="startMonday" style="display: none">
-                                    <div class="input-group-addon">Start Time</div>
-                                    <input type="time" />
+                                    <div class="input-group-addon">Start Time</div><input type="time" />
                                 </div>
                                 <div class="input-group" id="endMonday" style="display: none">
-                                    <div class="input-group-addon">End Time</div>
-                                    <input type="time" />
+                                    <div class="input-group-addon">End Time</div><input type="time" />
                                 </div>
                                 <br />
 
@@ -137,87 +135,8 @@
 </main>
 <!--<script th:replace="fragments/footer :: footer"></script>-->
 <script th:replace="fragments/scripts :: scripts"></script>
-<script>
-    function showHideTimeFunction() {
-        var checkBoxMon = document.getElementById("dowMonday");
-        var checkBoxTue = document.getElementById("dowTuesday");
-        var checkBoxWed = document.getElementById("dowWednesday");
-        var checkBoxThu = document.getElementById("dowThursday");
-        var checkBoxFri = document.getElementById("dowFriday");
-        var checkBoxSat = document.getElementById("dowSaturday");
-        var checkBoxSun = document.getElementById("dowSunday");
-        var startMonday = document.getElementById("startMonday");
-        var endMonday = document.getElementById("endMonday");
-        var startTuesday = document.getElementById("startTuesday");
-        var endTuesday = document.getElementById("endTuesday");
-        var startWednesday = document.getElementById("startWednesday");
-        var endWednesday = document.getElementById("endWednesday");
-        var startThursday = document.getElementById("startThursday");
-        var endThursday = document.getElementById("endThursday");
-        var startFriday = document.getElementById("startFriday");
-        var endFriday = document.getElementById("endFriday");
-        var startSaturday = document.getElementById("startSaturday");
-        var endSaturday = document.getElementById("endSaturday");
-        var startSunday = document.getElementById("startSunday");
-        var endSunday = document.getElementById("endSunday");
+<script th:replace="fragments/scripts :: availScript"></script>
 
-        if(checkBoxMon.checked){
-            startMonday.style.display = "block";
-            endMonday.style.display = "block";
-        } else {
-            startMonday.style.display = "none";
-            endMonday.style.display = "none";
-        }
-
-        if(checkBoxTue.checked){
-            startTuesday.style.display = "block";
-            endTuesday.style.display = "block";
-        } else {
-            startTuesday.style.display = "none";
-            endTuesday.style.display = "none";
-        }
-
-        if(checkBoxWed.checked){
-            startWednesday.style.display = "block";
-            endWednesday.style.display = "block";
-        } else {
-            startWednesday.style.display = "none";
-            endWednesday.style.display = "none";
-        }
-
-        if(checkBoxThu.checked){
-            startThursday.style.display = "block";
-            endThursday.style.display = "block";
-        } else {
-            startThursday.style.display = "none";
-            endThursday.style.display = "none";
-        }
-
-        if(checkBoxFri.checked){
-            startFriday.style.display = "block";
-            endFriday.style.display = "block";
-        } else {
-            startFriday.style.display = "none";
-            endFriday.style.display = "none";
-        }
-
-        if(checkBoxSat.checked){
-            startSaturday.style.display = "block";
-            endSaturday.style.display = "block";
-        } else {
-            startSaturday.style.display = "none";
-            endSaturday.style.display = "none";
-        }
-
-        if(checkBoxSun.checked){
-            startSunday.style.display = "block";
-            endSunday.style.display = "block";
-        } else {
-            startSunday.style.display = "none";
-            endSunday.style.display = "none";
-        }
-    }
-</script>
 </body>
 </html>
 
