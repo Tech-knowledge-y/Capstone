@@ -91,6 +91,12 @@ textarea:focus + span, textarea:not(:placeholder-shown) + span {
     color: #000;
 }
 
+#span-date {
+    font-size: 1rem;
+    top: 0;
+    transform: none;
+}
+
 #map {
     width: 100%;
     height: 300px;
