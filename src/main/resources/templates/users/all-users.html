@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <div th:replace="fragments/head :: head('All Users')"></div>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>All Users</title>
+    <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
 </head>
 
 <body>
-<main>
+
     <div id="wrapper">
-        <!-- Sidebar -->
-        <nav th:replace="fragments/navbar :: sideNavbar"></nav>
-        <!-- /#sidebar-wrapper -->
+        <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
 
         <!-- Page Content -->
-        <!--Make sure to keep all page content within the #page-content-wrapper.-->
-        <div id="page-content-wrapper">
-            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+        <div id="content">
+            <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
+
             <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6 " th:each="user : ${users}">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 " th:each="user : ${users}">
 
-                            <p>Username</p><h2 th:text="${user.username}"></h2>
-                            <p>Email</p><h2 th:text="${user.email}"></h2>
-                            <p>Gender</p><h2 th:text="${user.gender}"></h2>
-                            <p>Birthday</p><h2 th:text="${user.birthdate}"></h2>
+                        <p>Username</p><h2 th:text="${user.username}"></h2>
+                        <p>Email</p><h2 th:text="${user.email}"></h2>
+                        <p>Gender</p><h2 th:text="${user.gender}"></h2>
+                        <p>Birthday</p><h2 th:text="${user.birthdate}"></h2>
 
-                            <a th:href="'/users/' + ${user.id}" class="btn-makeshift">View</a>
-                        </div>
+                        <a th:href="'/users/' + ${user.id}" class="btn btn-outline-primary">View</a>
                     </div>
                 </div>
+            </div>
+
         </div>
-        <!-- /#page-content-wrapper -->
     </div>
-<!-- /#wrapper -->
-</main>
-<!--<script th:replace="fragments/footer :: footer"></script>-->
-<script th:replace="fragments/scripts :: scripts"></script>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
 </body>
 </html>
