@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!--xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">-->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Edit</title>
+    <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
+</head>
+
+<body>
+
+<div id="wrapper">
+    <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
+
+    <!-- Page Content -->
+    <div id="content">
+        <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                <h2>This is the edit user availability form / After user has logged in.</h2>
+                <form th:action="'/users/' + ${id} + '/availability/edit'" th:method="POST" th:object="${availability}">
+                    <input type="hidden" th:field="*{id}" />
+
+                    <div class="form-group">
+                        <label for="dayOfWeek" class="text-white">Day of the Week</label>
+                        <input id="dayOfWeek" name="dayOfWeek" type="text" class="form-control" th:field="*{dayOfWeek}"/>
+                    </div>
+
+                    <br />
+
+
+
+                    <button class="btn btn-success">Update/Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Overlay -->
+<div class="overlay"></div>
+
+<script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
+
+</body>
+</html>
+
+

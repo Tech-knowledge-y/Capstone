@@ -34,7 +34,9 @@
                             <h4 th:text="${user.userDetail.state}"></h4>
                             <h4 th:text="${user.userDetail.zipCode}"></h4>
                             <h4 th:text="${user.userDetail.bio}"></h4>
+
                             <a class="btn btn-warning" th:href="'/users/' + ${user.userDetail.id} + '/details/edit'" th:if="${showEditControls}">Edit user details</a>
+
                             <form th:action="'/users/' + ${user.id} + '/details/delete'" th:method="POST" th:if="${showEditControls}">
                                 <button class="btn btn-danger">Delete Details</button>
                             </form>
@@ -44,6 +46,25 @@
                             <h3>No User Details</h3> <!-- Remove this -->
                             <a th:href="'/users/details/create'" th:if="${showEditControls}">Add user details</a>
                         </th:block>
+
+                        <!-- =================== USER AVAILABILITY INFO =================== -->
+                        <th:block th:if="${user.availability != null}">
+                            <h4 th:text="${user.availability.dayOfWeek}"></h4>
+                            <h4 th:text="${user.availability.timeStart}"></h4>
+                            <h4 th:text="${user.availability.timeEnd}"></h4>
+
+                            <a class="btn btn-warning" th:href="'/users/' + ${user.availability.id} + '/availability/edit'" th:if="${showEditControls}">Edit user availability</a>
+                            <form th:action="'/users/' + ${user.id} + '/availability/delete'" th:method="POST" th:if="${showEditControls}">
+                                <button class="btn btn-danger">Delete Availability</button>
+                            </form>
+                        </th:block>
+
+                        <th:block th:if="${user.availability == null}">
+                            <h3>No User Availability</h3> <!-- Remove this -->
+                            <a th:href="'/users/availability/create'" th:if="${showEditControls}">Add user Availability</a>
+                        </th:block>
+
+
                     </div>
                 </div>
             </div>
