@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
       <!--xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">-->
-<head>
-    <div th:replace="fragments/head :: head('Default')"></div>
-</head>
+      <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+          <title>Edit</title>
+          <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
+      </head>
 
 <body>
-<main>
+
     <div id="wrapper">
-        <!-- Sidebar -->
-        <nav th:replace="fragments/navbar :: sideNavbar"></nav>
-        <!-- /#sidebar-wrapper -->
+        <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
 
         <!-- Page Content -->
-        <!--Make sure to keep all page content within the #page-content-wrapper.-->
-        <div id="page-content-wrapper">
-            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+        <div id="content">
+            <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
+
             <div class="container-fluid">
                 <div class="row">
                     <h2>This is the edit user details form / After user has logged in.</h2>
@@ -49,17 +50,17 @@
                         </div>
 
                         <button class="btn btn-success">Update/Save</button>
-                        </form>
+                    </form>
                 </div>
             </div>
         </div>
-        <!-- /#page-content-wrapper -->
     </div>
-    <!-- /#wrapper -->
 
-</main>
-<!--<script th:replace="fragments/footer :: footer"></script>-->
-<script th:replace="fragments/scripts :: scripts"></script>
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
+
 </body>
 </html>
 

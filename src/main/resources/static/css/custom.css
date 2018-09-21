@@ -26,7 +26,7 @@ input:focus + span, input:not(:placeholder-shown) + span {
 
 textarea:focus + span, textarea:not(:placeholder-shown) + span {
     opacity: 1;
-    transform: scale(0.75) translateY(-200%) translateX(-15px);
+    transform: scale(0.75) translateY(-200%) translateX(-10px);
 }
 
 .placeholder-label {
@@ -51,7 +51,7 @@ textarea:focus + span, textarea:not(:placeholder-shown) + span {
 }
 
 .placeholder-text-area {
-    top: 85px;
+    top: 65px;
 }
 
 .form-group {

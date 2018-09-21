@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <div th:replace="fragments/head :: head('Individual User Page')"></div>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Resources</title>
+    <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
 </head>
 
 <body>
-<main>
+
     <div id="wrapper">
-        <!-- Sidebar -->
-        <nav th:replace="fragments/navbar :: sideNavbar"></nav>
-        <!-- /#sidebar-wrapper -->
+        <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
 
         <!-- Page Content -->
-        <!--Make sure to keep all page content within the #page-content-wrapper.-->
-        <div id="page-content-wrapper">
-            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+        <div id="content">
+            <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
+
             <div class="container-fluid">
-                <h1 class="text-center">The Users' Individual Page lives here</h1>
                 <div class="row">
                     <div class="col-sm-12 col-md-6">
 
@@ -41,20 +41,19 @@
                         </th:block>
 
                         <th:block th:if="${user.userDetail == null}">
-                            <h3>No User Details</h3>
+                            <h3>No User Details</h3> <!-- Remove this -->
                             <a th:href="'/users/details/create'">Add user details</a>
                         </th:block>
                     </div>
-                    <!--</div>-->
                 </div>
             </div>
-        </div>
-        <!-- /#page-content-wrapper -->
-    </div>
-    <!-- /#wrapper -->
 
-</main>
-<!--<script th:replace="fragments/footer :: footer"></script>-->
-<script th:replace="fragments/scripts :: scripts"></script>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
 </body>
 </html>
