@@ -34,8 +34,8 @@
                             <h4 th:text="${user.userDetail.state}"></h4>
                             <h4 th:text="${user.userDetail.zipCode}"></h4>
                             <h4 th:text="${user.userDetail.bio}"></h4>
-                            <a class="btn btn-warning" th:href="'/users/' + ${user.userDetail.id} + '/details/edit'">Edit user details</a>
-                            <form th:action="'/users/' + ${user.id} + '/details/delete'" th:method="POST">
+                            <a class="btn btn-warning" th:href="'/users/' + ${user.userDetail.id} + '/details/edit'" th:if="${isOwner}">Edit user details</a>
+                            <form th:action="'/users/' + ${user.id} + '/details/delete'" th:method="POST" th:if="${isOwner}">
                                 <button class="btn btn-danger">Delete Details</button>
                             </form>
                         </th:block>
