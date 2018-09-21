@@ -131,11 +131,32 @@ h2 {
         margin-right: 0;
     }
 
-img > .dev-social-icons {
-    width: 20%;
-    height: auto;
-    border-color: 3px solid black;
+.LinkedIn {
+    width: 15%;
 }
 
+.Github {
+    width: 15%;
+}
+.email {
+    width: 15%;
+}
+#xavier {
+    width: 25%;
+    border-radius: 50%;
+}
+#graham {
+    width: 25%;
+    border-radius: 50%;
+}
+#jillian {
+    width: 25%;
+    border-radius: 50%;
+}
+
+#amos {
+    width: 25%;
+    border-radius: 50%;
+}
 
 }
