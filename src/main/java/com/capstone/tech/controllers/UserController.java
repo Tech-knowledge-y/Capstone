@@ -1,5 +1,6 @@
 package com.capstone.tech.controllers;
 
+import com.capstone.tech.models.Availability;
 import com.capstone.tech.models.User;
 import com.capstone.tech.models.UserDetail;
 import com.capstone.tech.repositories.AvailabilityRepo;
@@ -65,7 +66,10 @@ public class UserController {
     // Show individual user profile
     @GetMapping("/users/{id}")
     private String show(@PathVariable long id, Model viewModel) {
-        viewModel.addAttribute("user", userDao.findOne(id));
+//        viewModel.addAttribute("user", userDao.findOne(id));
+        User user = userDao.findOne(id);
+        viewModel.addAttribute("user", user);
+        viewModel.addAttribute("showEditControls", userSvc.canEditProfile(user));
         return "users/show-user";
     }
 
@@ -89,7 +93,7 @@ public class UserController {
     @GetMapping("/users/{id}/details/edit")
     private String editUserDetails(@PathVariable long id, Model viewModel) {
         viewModel.addAttribute("userDetail", userDetailDao.findOne(id));
-//        viewModel.addAttribute("showEditControls", userSvc.canEditProfile(userSvc.loggedInUser()));
+//        viewModel.addAttribute("isOwner", userSvc.isOwner());
         return "users/details-edit";
     }
 
@@ -108,44 +112,39 @@ public class UserController {
 
 
 
+    /**======= Users and User Availability =======**/
 
+    @GetMapping("/users/availability/create")
+    private String createUserAvailability(Model viewModel) {
+        viewModel.addAttribute("availability", new Availability());
+        return "users/availability-create";
+    }
 
+    @PostMapping("/users/availability/create")
+    private String insertUserAvailability(@ModelAttribute Availability availability) {
+        availability.setUser(userSvc.loggedInUser());
+        availabilityDao.save(availability);
+        return "redirect:/users/" + userSvc.loggedInUser().getId();
+    }
 
+    @GetMapping("/users/{id}/availability/edit")
+    private String editUserAvailability(@PathVariable long id, Model viewModel) {
+        viewModel.addAttribute("availability", availabilityDao.findOne(id));
+//        viewModel.addAttribute("showEditControls", userSvc.canEditProfile(userSvc.loggedInUser()));
+        return "users/availability-edit";
+    }
 
+    @PostMapping("/users/{id}/availability/edit")
+    private String updateUserAvailability(@ModelAttribute Availability availability) {
+        availability.setUser(userSvc.loggedInUser());
+        availabilityDao.save(availability);
+        return "redirect:/users/" + userSvc.loggedInUser().getId();
+    }
 
-//    // Create Availability
-//    @GetMapping("/users/{id}/availability/create")
-//    private String createUserAvailability(@PathVariable long id, Model viewModel) {
-//        viewModel.addAttribute("id", id);
-//        viewModel.addAttribute("availability", new Availability());
-//        return "users/availability-create";
-//    }
-//
-//    @PostMapping("/users/{id}/availability/create")
-//    private String insertUserAvailability(@PathVariable long id, @ModelAttribute Availability availability) {
-//        availability.setUser(userDao.findOne(id));
-//        availabilityDao.save(availability);
-//        return "redirect:/users/" + id;
-//    }
-//
-//    // Edit Availability
-//    @GetMapping("users/{id}/details/edit")
-//    private String editUserAvailability(@PathVariable long id, Model viewModel) {
-//        viewModel.addAttribute("availability", availabilityDao.findOne(id));
-//        return "users/availability-edit";
-//    }
-//
-//    @PostMapping("/users/{id}/availability/edit")
-//    private String updateUserAvailability(@PathVariable long id, @ModelAttribute Availability availability) {
-//        availability.setUser(userDao.findOne(id));
-//        availabilityDao.save(availability);
-//        return "redirect:/users/" + id;
-//    }
-//
-//    @PostMapping("/users/{id}/availability/delete")
-//    private String deleteUserAvailability(@PathVariable long id) {
-//        availabilityDao.delete(userDao.findOne(id).getAvailability());
-//        return "redirect:/users/" + id;
-//    }
+    @PostMapping("/users/{id}/availability/delete")
+    private String deleteUserAvailability(@PathVariable long id) {
+        availabilityDao.delete(userDao.findOne(id).getAvailability());
+        return "redirect:/users/" + id;
+    }
 
 }

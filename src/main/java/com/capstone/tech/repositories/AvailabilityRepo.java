@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface AvailabilityRepo extends CrudRepository<Availability, Long> {
-    List<Availability> findAll();
+//    List<Availability> findAll();
 }
