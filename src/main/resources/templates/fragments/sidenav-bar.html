@@ -66,7 +66,9 @@
 
         <ul class="list-unstyled CTAs">
             <li>
-                <a href="#" class="article">Logout</a>
+                <form th:action="@{/logout}" th:method="post">
+                    <button class="btn btn-primary logout">Logout</button>
+                </form>
             </li>
         </ul>
     </nav>
