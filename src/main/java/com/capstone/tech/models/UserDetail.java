@@ -36,7 +36,6 @@ public class UserDetail {
     private User user;
 
 
-
     // Constructors, Getters, and Setters
 
     public UserDetail() {

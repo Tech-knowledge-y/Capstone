@@ -26,10 +26,11 @@ public class User {
     @Column(nullable = false)
     private String birthdate;
 
+
     // Relationships
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Availability> availability;
+    @OneToOne(mappedBy = "user")
+    private Availability availability;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
@@ -38,14 +39,11 @@ public class User {
     private UserDetail userDetail;
 
 
-
-
     // Constructors / Getters / Setters
 
     public User() { }
 
-
-    public User(String username, String email, String password, String gender, String birthdate, List<Availability> availability, List<Post> posts, UserDetail userDetail) {
+    public User(String username, String email, String password, String gender, String birthdate, Availability availability, List<Post> posts, UserDetail userDetail) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -56,7 +54,7 @@ public class User {
         this.userDetail = userDetail;
     }
 
-    public User(long id, String username, String email, String password, String gender, String birthdate, List<Availability> availability, List<Post> posts, UserDetail userDetail) {
+    public User(long id, String username, String email, String password, String gender, String birthdate, Availability availability, List<Post> posts, UserDetail userDetail) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -125,11 +123,11 @@ public class User {
         this.birthdate = birthdate;
     }
 
-    public List<Availability> getAvailability() {
+    public Availability getAvailability() {
         return availability;
     }
 
-    public void setAvailability(List<Availability> availability) {
+    public void setAvailability(Availability availability) {
         this.availability = availability;
     }
 

@@ -12,49 +12,39 @@ public class Availability {
     @GeneratedValue
     private long id;
 
-    @Column(nullable = false)
+    @Column()
     private String day_of_week;
 
-    @Column(nullable = false)
-    private String week;
-
-    @Column(length = 4, nullable = false)
-    private String year;
-
-    @Column(nullable = false)
+    @Column()
     private String time_start;
 
-    @Column(nullable = false)
+    @Column()
     private String time_end;
 
     // relationships
 
-    @ManyToOne
-    @JoinColumn (name = "user_id")
+    @OneToOne
     private User user;
 
     // constructors/getters/setters
 
     public Availability() { }
 
-    public Availability(String day_of_week, String week, String year, String time_start, String time_end, User user ) {
+    public Availability(String day_of_week, String time_start, String time_end, User user) {
         this.day_of_week = day_of_week;
-        this.week = week;
-        this.year = year;
         this.time_start = time_start;
         this.time_end = time_end;
         this.user = user;
     }
 
-    public Availability(long id, String day_of_week, String week, String year, String time_start, String time_end, User user ) {
+    public Availability(long id, String day_of_week, String time_start, String time_end, User user) {
         this.id = id;
         this.day_of_week = day_of_week;
-        this.week = week;
-        this.year = year;
         this.time_start = time_start;
         this.time_end = time_end;
         this.user = user;
     }
+
 
     public long getId() {
         return id;
@@ -72,22 +62,6 @@ public class Availability {
         this.day_of_week = day_of_week;
     }
 
-    public String getWeek() {
-        return week;
-    }
-
-    public void setWeek(String week) {
-        this.week = week;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
     public String getTime_start() {
         return time_start;
     }
@@ -103,7 +77,6 @@ public class Availability {
     public void setTime_end(String time_end) {
         this.time_end = time_end;
     }
-
 
     public User getUser() {
         return user;
