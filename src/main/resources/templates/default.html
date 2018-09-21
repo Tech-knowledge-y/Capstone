@@ -9,13 +9,18 @@
 <main>
     <div id="wrapper">
         <!-- Sidebar -->
-        <nav th:replace="fragments/navbar :: sideNavbar"></nav>
+        <div sec:authorize="isAuthenticated()">
+            <nav th:replace="fragments/navbar :: sideNavbar"></nav>
+        </div>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
         <!--Make sure to keep all page content within the #page-content-wrapper.-->
         <div id="page-content-wrapper">
-            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+        <!--*****This is the logic to hide the nav bar when user is not logged in*****-->
+            <div sec:authorize="isAuthenticated()">
+                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+            </div>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12 col-md-6">
@@ -25,7 +30,7 @@
                 </div>
             </div>
             <div sec:authorize="isAuthenticated()">
-                This content is only shown to authenticated users.
+                <!--This content is only shown to authenticated users.-->
 
                 User ID: <span th:text="${#authentication.principal.id}"/>
                 Username: <span th:text="${#authentication.principal.username}"/>

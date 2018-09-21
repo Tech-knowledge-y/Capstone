@@ -1,69 +1,202 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <div th:replace="fragments/head :: head('Default')"></div>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Create Post</title>
+    <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
+    <link rel="stylesheet" href="/css/custom.css" />
 </head>
 
 <body>
-<main>
-    <div id="wrapper">
-        <!-- Sidebar -->
-        <nav th:replace="fragments/navbar :: sideNavbar"></nav>
-        <!-- /#sidebar-wrapper -->
+
+    <div class="wrapper">
+        <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
 
         <!-- Page Content -->
-        <!--Make sure to keep all page content within the #page-content-wrapper.-->
-        <div id="page-content-wrapper">
-            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+        <div id="content">
+            <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
+
             <div class="container-fluid">
                 <div class="row">
-                    <h1>Create Post</h1>
+                    <div class="col">
+                        <h1>Create Post</h1>
 
-                    <form th:action="@{/posts/create}" th:method="POST" th:object="${post}">
+                        <form th:action="@{/posts/create}" th:method="POST" th:object="${post}">
 
-                        <!-- body title-->
-                        <div class="form-group">
-                            <label for="title">Title</label>
-                            <input class="form-control" id="title" type="text" placeholder="Enter title" th:field="*{title}" />
-                        </div>
+                            <!-- Title -->
+                            <div class="form-group">
+                                <label for="title" class="placeholder-label">
+                                    <input id="title" name="title" class="form-control" type="text" placeholder=" " th:field="*{title}" />
+                                    <span class="placeholder-text">Title</span>
+                                </label>
+                            </div>
 
-                        <!--body text-->
-                        <div class="form-group">
-                            <label for="body">Body</label>
-                            <textarea class="form-control" id="body" type="text" th:field="*{body}" placeholder="Enter body"></textarea>
-                        </div>
+                            <!-- Body -->
+                            <div class="form-group">
+                                <label for="body" class="placeholder-label">
+                                    <textarea id="body" name="body" class="form-control" type="text" placeholder=" " th:field="*{body}"></textarea>
+                                    <span class="placeholder-text placeholder-text-area">Body</span>
+                                </label>
+                            </div>
 
-                        <!--body date-->
-                        <div class="form-group">
-                            <label for="date">Date</label>
-                            <input class="form-control" id="date" type="date" th:field="*{date}" placeholder="Enter date" />
-                        </div>
+                            <!-- Date -->
+                            <div class="form-group">
+                                <label for="date" class="placeholder-label">
+                                    <input id="date" name="date" class="form-control" type="date" placeholder=" " th:field="*{date}" />
+                                    <span class="placeholder-text">Date</span>
+                                </label>
+                            </div>
 
-                        <!--body latitude-->
-                        <div class="form-group">
-                            <label for="latitude">Latitude</label>
-                            <input class="form-control" id="latitude" type="number" th:field="*{latitude}" placeholder="Enter latitude" />
-                        </div>
+                            <!-- Google Map -->
+                            <div class="form-group">
+                                <label>Location</label>
+                                <input id="latitude" type="hidden" th:field="*{latitude}" value=""/>
+                                <input id="longitude" type="hidden" th:field="*{longitude}" value=""/>
+                            </div>
+                            <div id="map"></div>
 
-                        <!--body longitude-->
-                        <div class="form-group">
-                            <label for="longitude">Longitude</label>
-                            <input class="form-control" id="longitude" type="number" th:field="*{longitude}" placeholder="Enter longitude" />
-                        </div>
+                            <input type="submit" class="btn btn-outline-primary btn-block" value="Submit" id="submit-btn" />
+                        </form>
 
-                        <button class="btn btn-success">Submit</button>
-                    </form>
+                        <!--<form th:action="@{/posts/create}" th:method="POST" th:object="${post}">-->
 
+                            <!--&lt;!&ndash; body title&ndash;&gt;-->
+                            <!--<div class="inputs">-->
+                                <!--<label for="title" class="placeholder-label">-->
+                                    <!--<input id="title" type="text" placeholder=" " th:field="*{title}" />-->
+                                    <!--<span class="placeholder-text">Title</span>-->
+                                <!--</label>-->
+                            <!--</div>-->
+
+                            <!--&lt;!&ndash;body text&ndash;&gt;-->
+                            <!--<div class="inputs">-->
+                                <!--<label for="body" class="placeholder-label"></label>-->
+                                <!--<textarea id="body" type="text" th:field="*{body}" placeholder=" "></textarea>-->
+                                <!--<span class="placeholder-text placeholder-text-numbers">Body</span>-->
+                            <!--</div>-->
+
+                            <!--&lt;!&ndash;body date&ndash;&gt;-->
+                            <!--<div class="inputs">-->
+                                <!--<label for="date" class="placeholder-label"></label>-->
+                                <!--<input id="date" type="date" th:field="*{date}" placeholder=" " />-->
+                                <!--<span class="placeholder-text placeholder-date">Date</span>-->
+                            <!--</div>-->
+
+                            <!--&lt;!&ndash; Google Map &ndash;&gt;-->
+                            <!--<div id="map"></div>-->
+
+                            <!--&lt;!&ndash;body latitude&ndash;&gt;-->
+                            <!--<div class="inputs">-->
+                                <!--<label for="latitude" class="placeholder-label"></label>-->
+                                <!--<input id="latitude" type="number" th:field="*{latitude}" placeholder=" " />-->
+                                <!--<span class="placeholder-text placeholder-text-numbers">Latitude</span>-->
+                            <!--</div>-->
+
+                            <!--&lt;!&ndash;body longitude&ndash;&gt;-->
+                            <!--<div class="inputs">-->
+                                <!--<label for="longitude" class="placeholder-label"></label>-->
+                                <!--<input id="longitude" type="number" th:field="*{longitude}" placeholder=" " />-->
+                                <!--<span class="placeholder-text placeholder-text-numbers">Longitude</span>-->
+                            <!--</div>-->
+
+                            <!--<button class="btn btn-success">Submit</button>-->
+                        <!--</form>-->
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- /#page-content-wrapper -->
     </div>
-    <!-- /#wrapper -->
 
-</main>
-<!--<script th:replace="fragments/footer :: footer"></script>-->
-<script th:replace="fragments/scripts :: scripts"></script>
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!--<script th:replace="fragments/footer :: footer"></script>-->
+    <script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
+    <script type="text/javascript">
+        // <![CDATA[
+        // Initialize and add the map
+        var latInput = document.getElementById("latitude");
+        var longInput = document.getElementById("longitude");
+
+        function initMap() {
+            var map;
+            var bounds = new google.maps.LatLngBounds();
+            var mapOptions = {
+                zoom: 8,
+                disableDefaultUI: true
+            };
+
+            // Display a map on the page
+            map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+            // Multiple Markers
+            var markers = [
+                ['Codeup', 29.4267857, -98.4895764],
+                ['Geekdom', 29.426275, -98.493509],
+                ['Central Public Library', 29.4323442, -98.4927401],
+                ['San Pedro Library', 29.446473, -98.49988]
+            ];
+
+            // Info Window Content
+            var infowindowContent = [
+                ['<div class="info_content">' +
+                "<h1>Codeup</h1>\n" +
+                "<p>Codeup is a fullstack software development career accelerator located in San Antonio.</p>" +
+                "<p><strong>Address:</strong> 600 Navarro St #350, San Antonio, TX 78205</p>" + '</div>'],
+
+                ['<div class="info_content">' +
+                "<h1>Geekdom</h1>\n" +
+                "<p>Geekdom is a collaborative coworking space in San Antonio, Texas, and the heartbeat of the startup ecosystem.</p>" +
+                "<p><strong>Address:</strong> 110 East Houston Street, 7th Floor, San Antonio, TX 78205</p>" + '</div>'],
+
+                ['<div class="info_content">' +
+                "<h1>Central Public Library</h1>\n" +
+                "<p>A branch of the San Antonio Public Library</p>" +
+                "<p><strong>Address:</strong> 600 Soledad St, San Antonio, TX 78205</p>" + '</div>'],
+
+                ['<div class="info_content">' +
+                "<h1>San Pedro Library</h1>\n" +
+                "<p>San Pedro has a small collection serving neighborhood adults, young people, and children with materials about San Antonio and local area history.</p>" +
+                "<p><strong>Address:</strong> 1315 San Pedro Ave, San Antonio, TX 78212</p>" + '</div>']
+            ];
+
+            // Display multiple markers on a map
+            var infoWindow = new google.maps.InfoWindow(), marker, i;
+
+            // Loop through our array of markers & place each one on the map
+            for (i = 0; i < markers.length; i++) {
+                var position = new google.maps.LatLng(markers[i][1], markers[i][2], markers [i][3], markers [i][4]);
+                bounds.extend(position);
+                marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    title: markers[i][0],
+                    animation: google.maps.Animation.DROP
+                });
+
+                // Allow each marker to have an info window
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function() {
+                        infoWindow.setContent(infowindowContent[i][0]);
+                        infoWindow.open(map, marker);
+                    }
+                })(marker, i));
+
+                // Add listener for location
+                google.maps.event.addListener(marker, "click", function (event) {
+
+                });
+
+                //Auto center map to fit all markers on screen
+                map.fitBounds(bounds);
+            }
+        }
+
+        // ]]>
+    </script>
+    <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbF5MJZ8-olDNTPyN-vD679LUpDuf9ARk&amp;callback=initMap">
+    </script>
 </body>
 </html>
 

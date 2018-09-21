@@ -36,7 +36,7 @@ public class PostController {
     @GetMapping("/posts/{id}")
     private String show(@PathVariable long id, Model model) {
         model.addAttribute("post", postDao.findOne(id));
-        if(postDao.findOne(id).getUser()==userSvc.currentUser()){
+        if(postDao.findOne(id).getUser()==userSvc.loggedInUser()){
             model.addAttribute("isOwner", true);
         }
         return "posts/show";
@@ -51,7 +51,7 @@ public class PostController {
 
     @PostMapping("/posts/create")
     private String insertPost(@ModelAttribute Post post) {
-        post.setUser(userSvc.currentUser());
+        post.setUser(userSvc.loggedInUser());
         postDao.save(post);
         return "redirect:/posts/" + post.getId();
     }
