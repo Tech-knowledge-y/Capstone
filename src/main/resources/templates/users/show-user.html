@@ -34,15 +34,15 @@
                             <h4 th:text="${user.userDetail.state}"></h4>
                             <h4 th:text="${user.userDetail.zipCode}"></h4>
                             <h4 th:text="${user.userDetail.bio}"></h4>
-                            <a class="btn btn-warning" th:href="'/users/' + ${user.userDetail.id} + '/details/edit'" th:if="${isOwner}">Edit user details</a>
-                            <form th:action="'/users/' + ${user.id} + '/details/delete'" th:method="POST" th:if="${isOwner}">
+                            <a class="btn btn-warning" th:href="'/users/' + ${user.userDetail.id} + '/details/edit'" th:if="${showEditControls}">Edit user details</a>
+                            <form th:action="'/users/' + ${user.id} + '/details/delete'" th:method="POST" th:if="${showEditControls}">
                                 <button class="btn btn-danger">Delete Details</button>
                             </form>
                         </th:block>
 
                         <th:block th:if="${user.userDetail == null}">
                             <h3>No User Details</h3> <!-- Remove this -->
-                            <a th:href="'/users/details/create'">Add user details</a>
+                            <a th:href="'/users/details/create'" th:if="${showEditControls}">Add user details</a>
                         </th:block>
                     </div>
                 </div>

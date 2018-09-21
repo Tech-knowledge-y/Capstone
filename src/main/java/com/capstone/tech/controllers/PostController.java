@@ -15,13 +15,11 @@ public class PostController {
     UserRepo userDao;
     UserService userSvc;
 
-
     private PostController(PostRepo postDao, UserRepo userDao, UserService userSvc) {
         this.postDao = postDao;
         this.userDao = userDao;
         this.userSvc = userSvc;
     }
-
 
 
     // Show all posts
@@ -42,7 +40,6 @@ public class PostController {
         return "posts/show";
     }
 
-
     @GetMapping("/posts/create")
     private String createPost(Model model) {
         model.addAttribute("post", new Post());
@@ -55,8 +52,6 @@ public class PostController {
         postDao.save(post);
         return "redirect:/posts/" + post.getId();
     }
-
-
 
     @GetMapping("/posts/{id}/edit")
     private String postEditForm(@PathVariable long id, Model model) {
