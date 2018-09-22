@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>All Post</title>
     <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
+
+    <style>
+        .card-title, .card-text {
+            color: #000;
+        }
+
+        #content {
+            width: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -15,14 +25,19 @@
         <div id="content">
             <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
 
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6 justify-content-center" th:each="post : ${posts}">
-                            <h1 th:text="${post.title}"></h1>
-                            <p th:text="${post.body}"></p>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 justify-content-center" th:each="post : ${posts}">
+                        <div class="card" style="width: 100%;">
+                            <div class="card-body">
+                                <h1 class="card-title" th:text="${post.title}"></h1>
+                                <p class="card-text" th:text="${post.body}"></p>
+                                <a th:href="'/posts/' + ${post.id}" class="btn btn-outline-primary">More Info</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 
