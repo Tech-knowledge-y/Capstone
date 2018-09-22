@@ -5,6 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>All Users</title>
     <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
+
+    <style>
+        .card-title, .card-text {
+            color: #000;
+        }
+
+        #button-group {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #all-filter, #mentor-filter {
+            color: #fff;
+            border-right: none;
+        }
+
+        #mentee-filter, #mentor-filter {
+            color: #fff;
+            border-left: none;
+        }
+
+        /*// Medium devices (tablets, 768px and up)*/
+        @media (min-width: 768px) {
+            #content {
+                width: auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -17,15 +45,30 @@
             <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
 
             <div class="container-fluid">
+                <input type="text" class="form-control my-3" id="search" name="search" placeholder="search" />
+                <div class="btn-group mt-0 mb-2" role="group" id="button-group">
+                    <button type="button" class="btn btn-outline-primary" id="all-filter">All</button>
+                    <button type="button" class="btn btn-outline-primary" id="mentor-filter">Mentor</button>
+                    <button type="button" class="btn btn-outline-primary" id="mentee-filter">Mentee</button>
+                </div>
                 <div class="row">
-                    <div class="col-sm-12 col-md-6 " th:each="user : ${users}">
+                    <div class="col-sm-12 col-md-6 my-2" th:each="user : ${users}">
+                        <div th:class="'card ' + ${user.status}" style="width: 100%;">
+                            <div class="card-body">
+                                <h3 class="card-title" th:text="${user.username}"></h3>
+                                <p class="card-text" th:text="${user.status}"></p>
+                                <p class="card-text" th:text="${user.email}"></p>
+                                <a th:href="'/users/' + ${user.id}" class="btn btn-outline-primary">View</a>
+                            </div>
+                        </div>
 
-                        <p>Username</p><h2 th:text="${user.username}"></h2>
-                        <p>Email</p><h2 th:text="${user.email}"></h2>
-                        <p>Gender</p><h2 th:text="${user.gender}"></h2>
-                        <p>Birthday</p><h2 th:text="${user.birthdate}"></h2>
+                        <!--<h2 th:text="${user.status}"></h2>-->
+                        <!--<p>Username</p><h2 th:text="${user.username}"></h2>-->
+                        <!--<p>Email</p><h2 th:text="${user.email}"></h2>-->
+                        <!--<p>Gender</p><h2 th:text="${user.gender}"></h2>-->
+                        <!--<p>Birthday</p><h2 th:text="${user.birthdate}"></h2>-->
 
-                        <a th:href="'/users/' + ${user.id}" class="btn btn-outline-primary">View</a>
+                        <!--<a th:href="'/users/' + ${user.id}" class="btn btn-outline-primary">View</a>-->
                     </div>
                 </div>
             </div>
@@ -37,5 +80,40 @@
     <div class="overlay"></div>
 
     <script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
+    <script>
+        // <![CDATA[
+        $( document ).ready(function() {
+
+            // Search bar
+            $('#search').keyup(function () {
+                var filter = $(this).val();
+
+                $('.card').each(function () {
+                    if ($(this).find('.card-title').text().search(new RegExp(filter, 'i')) < 0 ) {
+                        $(this).parent().hide();
+                    } else {
+                        $(this).parent().show();
+                    }
+                })
+            });
+
+            // Filter boxes
+            $('#all-filter').click(e => {
+                $('.mentee').parent().show();
+                $('.mentor').parent().show();
+            });
+
+            $('#mentor-filter').click(e => {
+                $('.mentee').parent().hide();
+                $('.mentor').parent().show();
+            });
+
+            $('#mentee-filter').click(e => {
+                $('.mentee').parent().show();
+                $('.mentor').parent().hide();
+            })
+        });
+        // ]]>
+    </script>
 </body>
 </html>
