@@ -20,6 +20,7 @@
             <div class="row">
                 <div class="col">
                     <h1 class="text-center">Create an Account</h1>
+
                     <form th:action="@{/register}" th:method="POST" th:object="${user}">
                         <div class="form-group">
                             <label for="username" class="text-white">Username</label>
@@ -52,6 +53,7 @@
                         <div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
+                        <small id="loginHelp" class="form-text text-muted text-center"><a href="/login">Already have an account? Log in.</a></small>
                     </form>
                     <!--Added code for pswd validation-->
                     <div id="message">
