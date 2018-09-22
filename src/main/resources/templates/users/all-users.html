@@ -12,9 +12,18 @@
         }
 
         #button-group {
-
             left: 50%;
             transform: translateX(-50%);
+        }
+
+        #all-filter, #mentor-filter {
+            color: #fff;
+            border-right: none;
+        }
+
+        #mentee-filter, #mentor-filter {
+            color: #fff;
+            border-left: none;
         }
 
         /*// Medium devices (tablets, 768px and up)*/
@@ -38,9 +47,9 @@
             <div class="container-fluid">
                 <input type="text" class="form-control my-3" id="search" name="search" placeholder="search" />
                 <div class="btn-group mt-0 mb-2" role="group" id="button-group">
-                    <button type="button" class="btn btn-secondary" id="all-filter">All</button>
-                    <button type="button" class="btn btn-secondary" id="mentor-filter">Mentor</button>
-                    <button type="button" class="btn btn-secondary" id="mentee-filter">Mentee</button>
+                    <button type="button" class="btn btn-outline-primary" id="all-filter">All</button>
+                    <button type="button" class="btn btn-outline-primary" id="mentor-filter">Mentor</button>
+                    <button type="button" class="btn btn-outline-primary" id="mentee-filter">Mentee</button>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-6 my-2" th:each="user : ${users}">
@@ -90,18 +99,18 @@
 
             // Filter boxes
             $('#all-filter').click(e => {
-                $('.mentee').show();
-                $('.mentor').show();
+                $('.mentee').parent().show();
+                $('.mentor').parent().show();
             });
 
             $('#mentor-filter').click(e => {
-                $('.mentee').hide();
-                $('.mentor').show();
+                $('.mentee').parent().hide();
+                $('.mentor').parent().show();
             });
 
             $('#mentee-filter').click(e => {
-                $('.mentee').show();
-                $('.mentor').hide();
+                $('.mentee').parent().show();
+                $('.mentor').parent().hide();
             })
         });
         // ]]>
