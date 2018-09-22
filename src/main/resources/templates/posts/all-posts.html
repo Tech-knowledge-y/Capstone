@@ -26,9 +26,10 @@
             <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
 
             <div class="container-fluid">
+                <input type="text" class="form-control my-3" id="search" name="search" placeholder="search" />
                 <div class="row">
-                    <div class="col-sm-12 col-md-6 justify-content-center" th:each="post : ${posts}">
-                        <div class="card" style="width: 100%;">
+                    <div class="col-12 my-2" th:each="post : ${posts}">
+                        <div class="card mx-auto" style="width: 75%;">
                             <div class="card-body">
                                 <h1 class="card-title" th:text="${post.title}"></h1>
                                 <p class="card-text" th:text="${post.body}"></p>
@@ -46,6 +47,23 @@
 
     <!--<script th:replace="fragments/footer :: footer"></script>-->
     <script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
+    <script>
+        // <![CDATA[
+        $( document ).ready(function() {
+            $('#search').keyup(function () {
+                var filter = $(this).val();
+
+                $('.card').each(function () {
+                    if ($(this).find('.card-title').text().search(new RegExp(filter, 'i')) < 0 ) {
+                        $(this).parent().hide();
+                    } else {
+                        $(this).parent().show();
+                    }
+                })
+            });
+        });
+        // ]]>
+    </script>
 </body>
 </html>
 
