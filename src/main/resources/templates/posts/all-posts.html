@@ -11,8 +11,23 @@
             color: #000;
         }
 
-        #content {
-            width: auto;
+        .badge {
+            font-weight: 300;
+        }
+
+        .badge-primary {
+            background-color: #2F4858;
+        }
+
+        .badge-secondary {
+            background-color: #33658A;
+        }
+
+        /*// Medium devices (tablets, 768px and up)*/
+        @media (min-width: 768px) {
+            #content {
+                width: auto;
+            }
         }
     </style>
 </head>
@@ -26,9 +41,16 @@
             <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
 
             <div class="container-fluid">
+                <input type="text" class="form-control my-3" id="search" name="search" placeholder="search" />
                 <div class="row">
-                    <div class="col-sm-12 col-md-6 justify-content-center" th:each="post : ${posts}">
-                        <div class="card" style="width: 100%;">
+                    <div class="col-12 my-2" th:each="post : ${posts}">
+                        <div class="card mx-auto" style="width: 75%;">
+                            <div class="card-header">
+                                <th:block th:switch="${post.user.status}">
+                                    <span th:case="'mentor'" class="badge badge-pill badge-primary float-right">mentor</span>
+                                    <span th:case="'mentee'" class="badge badge-pill badge-secondary float-right">mentee</span>
+                                </th:block>
+                            </div>
                             <div class="card-body">
                                 <h1 class="card-title" th:text="${post.title}"></h1>
                                 <p class="card-text" th:text="${post.body}"></p>
@@ -46,6 +68,23 @@
 
     <!--<script th:replace="fragments/footer :: footer"></script>-->
     <script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
+    <script>
+        // <![CDATA[
+        $( document ).ready(function() {
+            $('#search').keyup(function () {
+                var filter = $(this).val();
+
+                $('.card').each(function () {
+                    if ($(this).find('.card-title').text().search(new RegExp(filter, 'i')) < 0 ) {
+                        $(this).parent().hide();
+                    } else {
+                        $(this).parent().show();
+                    }
+                })
+            });
+        });
+        // ]]>
+    </script>
 </body>
 </html>
 

@@ -50,6 +50,14 @@
                                 <option value="other">Other</option>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="statusSelect" class="text-white">Status</label>
+                            <select class="form-control" id="statusSelect" th:field="*{status}">
+                                <option value="disabled">Please Select</option>
+                                <option value="mentor">Mentor</option>
+                                <option value="mentee">Mentee</option>
+                            </select>
+                        </div>
                         <div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
