@@ -11,8 +11,23 @@
             color: #000;
         }
 
-        #content {
-            width: auto;
+        .badge {
+            font-weight: 300;
+        }
+
+        .badge-primary {
+            background-color: #2F4858;
+        }
+
+        .badge-secondary {
+            background-color: #33658A;
+        }
+
+        /*// Medium devices (tablets, 768px and up)*/
+        @media (min-width: 768px) {
+            #content {
+                width: auto;
+            }
         }
     </style>
 </head>
@@ -30,6 +45,12 @@
                 <div class="row">
                     <div class="col-12 my-2" th:each="post : ${posts}">
                         <div class="card mx-auto" style="width: 75%;">
+                            <div class="card-header">
+                                <th:block th:switch="${post.user.status}">
+                                    <span th:case="'mentor'" class="badge badge-pill badge-primary float-right">mentor</span>
+                                    <span th:case="'mentee'" class="badge badge-pill badge-secondary float-right">mentee</span>
+                                </th:block>
+                            </div>
                             <div class="card-body">
                                 <h1 class="card-title" th:text="${post.title}"></h1>
                                 <p class="card-text" th:text="${post.body}"></p>

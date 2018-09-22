@@ -26,6 +26,8 @@ public class User {
     @Column(nullable = false)
     private String birthdate;
 
+    @Column(nullable = false)
+    private String status;
 
     // Relationships
 
@@ -43,24 +45,26 @@ public class User {
 
     public User() { }
 
-    public User(String username, String email, String password, String gender, String birthdate, Availability availability, List<Post> posts, UserDetail userDetail) {
+    public User(String username, String email, String password, String gender, String birthdate, String status, Availability availability, List<Post> posts, UserDetail userDetail) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.gender = gender;
         this.birthdate = birthdate;
+        this.status = status;
         this.availability = availability;
         this.posts = posts;
         this.userDetail = userDetail;
     }
 
-    public User(long id, String username, String email, String password, String gender, String birthdate, Availability availability, List<Post> posts, UserDetail userDetail) {
+    public User(long id, String username, String email, String password, String gender, String birthdate, String status, Availability availability, List<Post> posts, UserDetail userDetail) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.gender = gender;
         this.birthdate = birthdate;
+        this.status = status;
         this.availability = availability;
         this.posts = posts;
         this.userDetail = userDetail;
@@ -72,6 +76,7 @@ public class User {
         email = copy.email;
         password = copy.password;
         birthdate = copy.birthdate;
+        status = copy.status;
         gender = copy.gender;
     }
 
@@ -121,6 +126,14 @@ public class User {
 
     public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Availability getAvailability() {
