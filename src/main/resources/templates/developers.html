@@ -1,29 +1,25 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!-- Head -->
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>Developers</title>
+    <title>Resources</title>
     <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
 </head>
+<!-- Body -->
+<div id="wrapper">
+    <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
+    <!-- Content -->
+    <div id="content">
+        <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
+        <!-- Actual Content -->
 
-<body>
 
-    <div class="wrapper">
-        <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
 
-        <!-- Page Content -->
-        <div id="content">
-            <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
 
-        </div>
+
+
     </div>
-
-    <!-- Overlay -->
-    <div class="overlay"></div>
-
-    <!--<script th:replace="fragments/footer :: footer"></script>-->
-    <script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
-
-</body>
-</html>
+</div>
+<!-- Overlay -->
+<div class="overlay"></div>
+<script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
