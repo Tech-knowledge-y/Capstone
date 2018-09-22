@@ -1,106 +1,133 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <div th:replace="fragments/head :: head('Default')"></div>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Contact Us</title>
+    <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
 </head>
+
 <body>
-<main>
-    <div id="wrapper">
-        <!-- Sidebar -->
-        <nav th:replace="fragments/navbar :: sideNavbar"></nav>
-        <!-- /#sidebar-wrapper -->
-        <!-- Page Content -->
-        <!--Make sure to keep all page content within the #page-content-wrapper.-->
-        <div id="page-content-wrapper">
-            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12 col-md-4">
-                        <h2>Xavier Salazar</h2>
-                        <div class="card justify-content-center" style="width: 100%">
-                            <img class="card-img-top" src="img/XavierSalazar.jpg" alt="Xavier Salazar"/>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p class="card-text text-dark text-center mb-3">
-                                            A truly full-stack software developer, Xavier led our team, overseeing everything from  backend database development to frontend style and design. He is natural-born mentor and his generosity of time and willingness to help others was the original inspiration for this project.
-                                        </p>
-                                    </div>
-                                    <div class="col-4 text-center">
-                                        <a href="https://www.linkedin.com/in/xavier-salazar/" target="_blank">
-                                            <i class="fab fa-github-square fa-5x" style="color:black"></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-4 text-center">
-                                        <a href="https://github.com/xaviersalazar" target="_blank">
-                                            <i class="fab fa-linkedin fa-5x" style="color:black"></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-4 text-center"><a href="mailto:salazar.xavier26@gmail.com" target="_blank">
-                                        <i class="fa fa-envelope fa-5x" style="color:black"></i>
-                                    </a>
-                                    </div>
-                                </div>
+
+<!--<div id="wrapper">-->
+    <!--<nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>-->
+
+    <!--&lt;!&ndash; Page Content &ndash;&gt;-->
+    <!--<div id="content">-->
+        <!--<nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>-->
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <h2>Xavier Salazar</h2>
+                    <div class="card justify-content-center" style="width: 100%">
+                        <img class="card-img-top" src="img/XavierSalazar.jpg" alt="Xavier Salazar"/>
+                        <div class="card-body">
+
+                            <div class="col-4 text-center">
+                                <a href="https://www.linkedin.com/in/xavier-salazar/" target="_blank">
+                                    <i class="fab fa-github-square fa-5x" style="color:black"></i>
+                                </a>
+                            </div>
+                            <div class="col-4 text-center">
+                                <a href="https://github.com/xaviersalazar" target="_blank">
+                                    <i class="fab fa-linkedin fa-5x" style="color:black"></i>
+                                </a>
+                            </div>
+                            <div class="col-4 text-center"><a href="mailto:salazar.xavier26@gmail.com" target="_blank">
+                                <i class="fa fa-envelope fa-5x" style="color:black"></i>
+                            </a>
                             </div>
                         </div>
-                        <div class="line"></div>
                     </div>
                 </div>
             </div>
-            <!-- /#page-content-wrapper -->
         </div>
-        <!-- /#wrapper -->
+
+
+<!--GRAHAM-->
+
+
+<div class="col-sm-12 col-md-6 col-lg-3">
+    <h2>Graham Davis</h2>
+    <div class="card justify-content-center" style="width: 100%">
+        <img class="card-img-top" src="img/GrahamDavis.jpg" alt="Graham Davis"/>
+        <div class="card-body">
+
+                <div class="col-4 text-center">
+                    <a href="https://www.linkedin.com/in/grahamdavis210/" target="_blank">
+                        <i class="fab fa-github-square fa-5x" style="color:black"></i>
+                    </a>
+                </div>
+                <div class="col-4 text-center">
+                    <a href="https://github.com/Graham-Davis-SATX" target="_blank">
+                        <i class="fab fa-linkedin fa-5x" style="color:black"></i>
+                    </a>
+                </div>
+                <div class="col-4 text-center"><a href="mailto:Davis.graham.satx@gmail.com" target="_blank">
+                    <i class="fa fa-envelope fa-5x" style="color:black"></i>
+                </a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="line"></div>
-    <!--JILLIAN-->
+
+<!--JILLIAN-->
+
+<div class="col-sm-12 col-md-6 col-lg-3">
     <h2>Jillian Wysoki</h2>
-    <img class="mx-auto d-block mt-5" src="img/JillianWysoki.jpg" alt="Jillian Wysoki" id="jillian"/>
-    <div class="card mx-3 d-block shadows my-3">
+    <div class="card justify-content-center" style="width: 100%">
+        <img class="card-img-top" src="img/JillianWysoki.jpg" alt="Jillian Wysoki"/>
         <div class="card-body">
-            <div class="row">
-                <p class="developers">Jillian’s contributions to our team include original idea concept, logo, design, organizing/planning, user experience, and front-end coding.</p>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <a target="_blank" href="https://www.linkedin.com/in/jillianwysoki/">
-                        <img class="LinkedIn mx-auto d-block click-btn" src="../img/linkedin.png" alt="Linkedin"/></a>
+
+                <div class="col-4 text-center">
+                    <a href="https://www.linkedin.com/in/jillianwysoki/" target="_blank">
+                        <i class="fab fa-github-square fa-5x" style="color:black"></i>
+                    </a>
                 </div>
-                <div class="col">
-                    <a target="_blank" href="https://github.com/JWYSOKI">
-                        <img class=" Github mx-auto d-block click-btn" src="../img/github.png" alt="github"/></a>
+                <div class="col-4 text-center">
+                    <a href="https://github.com/JWYSOKI" target="_blank">
+                        <i class="fab fa-linkedin fa-5x" style="color:black"></i>
+                    </a>
                 </div>
-                <div class="col">
-                    <a target="_blank" href="mailto:jillianwysoki@gmail.com">
-                        <img class="email mx-auto d-block click-btn" src="../img/email.png" alt="email"/></a></div>
+                <div class="col-4 text-center"><a href="mailto:jillianwysoki@gmail.com" target="_blank">
+                    <i class="fa fa-envelope fa-5x" style="color:black"></i>
+                </a>
+                </div>
             </div>
         </div>
     </div>
-    <div class="line"></div>
-    <!--AMOS-->
+
+<!--AMOS-->
+
+<div class="col-sm-12 col-md-6 col-lg-3">
     <h2>Amos Davis</h2>
-    <img class="mx-auto d-block mt-5" src="img/AmosDavis.jpg" alt="Amos Davis" id="amos"/>
-    <div class="card mx-3 d-block shadows my-3">
+    <div class="card justify-content-center" style="width: 100%">
+        <img class="card-img-top" src="img/AmosDavis.jpg" alt="Amos Davis"/>
         <div class="card-body">
-            <div class="row">
-                <p class="developers">Amos' contributions include back end database relationships/connections, front end view connections and structure, as well as some of our form structures. </p>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <a target="_blank" href="https://www.linkedin.com/in/amos-davis/">
-                        <img class="LinkedIn mx-auto d-block click-btn" src="../img/linkedin.png" alt="Linkedin"/></a>
+                <div class="col-4 text-center">
+                    <a href="https://www.linkedin.com/in/amos-davis/" target="_blank">
+                        <i class="fab fa-github-square fa-5x" style="color:black"></i>
+                    </a>
                 </div>
-                <div class="col">
-                    <a target="_blank" href="https://github.com/amos-davis">
-                        <img class=" Github mx-auto d-block click-btn" src="../img/github.png" alt="github"/></a>
+                <div class="col-4 text-center">
+                    <a href="https://github.com/amos-davis" target="_blank">
+                        <i class="fab fa-linkedin fa-5x" style="color:black"></i>
+                    </a>
                 </div>
-                <div class="col">
-                    <a target="_blank" href="mailto:amos.davis367@gmail.com">
-                        <img class="email mx-auto d-block click-btn" src="../img/email.png" alt="email"/></a></div>
+                <div class="col-4 text-center"><a href="mailto:amos.davis367@gmail.com" target="_blank">
+                    <i class="fa fa-envelope fa-5x" style="color:black"></i>
+                </a>
+                </div>
             </div>
         </div>
     </div>
-</main>
-<!--<script th:replace="fragments/footer :: footer"></script>-->
-<script th:replace="fragments/scripts :: scripts"></script>
+
+
+
+<!-- Overlay -->
+<div class="overlay"></div>
+
+<script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
 </body>
 </html>

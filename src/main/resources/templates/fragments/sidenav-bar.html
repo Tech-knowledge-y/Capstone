@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <th:block th:fragment="sidenav-bar-styles">
     <!-- Bootstrap CSS CDN -->
@@ -16,8 +16,9 @@
 </th:block>
 
 <nav th:fragment="sidenav-bar">
+
     <!-- Sidebar  -->
-    <nav id="sidebar">
+    <nav id="sidebar" sec:authorize="isAuthenticated()">
         <div id="dismiss">
             <i class="fas fa-arrow-left"></i>
         </div>
@@ -28,20 +29,14 @@
 
         <ul class="list-unstyled components">
             <p>Tech{knowledge}y</p>
-            <li class="active">
+            <li>
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Profiles</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                        <a href="/users/{id}">My Profile</a>
+                    <li> <!-- Only shown if logged in -->
+                        <a th:href="'/users/' + ${#authentication.principal.id}">My Profile</a>
                     </li>
                     <li>
                         <a href="/users">All Profiles</a>
-                    </li>
-                    <li>
-                        <a href="#">Mentor Profiles</a>
-                    </li>
-                    <li>
-                        <a href="#">Mentee Profiles</a>
                     </li>
                 </ul>
             </li>
@@ -72,11 +67,12 @@
             </li>
         </ul>
     </nav>
+
 </nav>
 
 <nav th:fragment="sidenav-bar-toggler">
     <!-- Toggler -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="sidenav-bar-toggler">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="sidenav-bar-toggler" sec:authorize="isAuthenticated()">
         <div class="container-fluid">
             <button type="button" id="sidebarCollapse" class="btn btn-info">
                 <i class="fas fa-align-left"></i>

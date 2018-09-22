@@ -36,7 +36,7 @@
                             <div class="form-group">
                                 <label for="body" class="placeholder-label">
                                     <textarea id="body" name="body" class="form-control" type="text" placeholder=" " th:field="*{body}"></textarea>
-                                    <span class="placeholder-text placeholder-text-area">Body</span>
+                                    <span class="placeholder-text placeholder-text-area">Description</span>
                                 </label>
                             </div>
 
@@ -44,13 +44,13 @@
                             <div class="form-group">
                                 <label for="date" class="placeholder-label">
                                     <input id="date" name="date" class="form-control" type="date" placeholder=" " th:field="*{date}" />
-                                    <span class="placeholder-text">Date</span>
+                                    <span class="placeholder-text" id="span-date">Date</span>
                                 </label>
                             </div>
 
                             <!-- Google Map -->
                             <div class="form-group">
-                                <label>Meetup Location</label>
+                                <label>Meetup Location: </label><span id="location"></span>
                                 <input id="latitude" type="hidden" th:field="*{latitude}" value=""/>
                                 <input id="longitude" type="hidden" th:field="*{longitude}" value=""/>
                             </div>
@@ -58,50 +58,6 @@
 
                             <input type="submit" class="btn btn-outline-primary btn-block" value="Submit" id="submit-btn" />
                         </form>
-
-                        <!--<form th:action="@{/posts/create}" th:method="POST" th:object="${post}">-->
-
-                            <!--&lt;!&ndash; body title&ndash;&gt;-->
-                            <!--<div class="inputs">-->
-                                <!--<label for="title" class="placeholder-label">-->
-                                    <!--<input id="title" type="text" placeholder=" " th:field="*{title}" />-->
-                                    <!--<span class="placeholder-text">Title</span>-->
-                                <!--</label>-->
-                            <!--</div>-->
-
-                            <!--&lt;!&ndash;body text&ndash;&gt;-->
-                            <!--<div class="inputs">-->
-                                <!--<label for="body" class="placeholder-label"></label>-->
-                                <!--<textarea id="body" type="text" th:field="*{body}" placeholder=" "></textarea>-->
-                                <!--<span class="placeholder-text placeholder-text-numbers">Body</span>-->
-                            <!--</div>-->
-
-                            <!--&lt;!&ndash;body date&ndash;&gt;-->
-                            <!--<div class="inputs">-->
-                                <!--<label for="date" class="placeholder-label"></label>-->
-                                <!--<input id="date" type="date" th:field="*{date}" placeholder=" " />-->
-                                <!--<span class="placeholder-text placeholder-date">Date</span>-->
-                            <!--</div>-->
-
-                            <!--&lt;!&ndash; Google Map &ndash;&gt;-->
-                            <!--<div id="map"></div>-->
-
-                            <!--&lt;!&ndash;body latitude&ndash;&gt;-->
-                            <!--<div class="inputs">-->
-                                <!--<label for="latitude" class="placeholder-label"></label>-->
-                                <!--<input id="latitude" type="number" th:field="*{latitude}" placeholder=" " />-->
-                                <!--<span class="placeholder-text placeholder-text-numbers">Latitude</span>-->
-                            <!--</div>-->
-
-                            <!--&lt;!&ndash;body longitude&ndash;&gt;-->
-                            <!--<div class="inputs">-->
-                                <!--<label for="longitude" class="placeholder-label"></label>-->
-                                <!--<input id="longitude" type="number" th:field="*{longitude}" placeholder=" " />-->
-                                <!--<span class="placeholder-text placeholder-text-numbers">Longitude</span>-->
-                            <!--</div>-->
-
-                            <!--<button class="btn btn-success">Submit</button>-->
-                        <!--</form>-->
                     </div>
                 </div>
             </div>
@@ -116,6 +72,7 @@
     <script type="text/javascript">
         // <![CDATA[
         // Initialize and add the map
+        document.querySelector("#date").valueAsDate = new Date();
         var latInput = document.getElementById("latitude").value;
         var longInput = document.getElementById("longitude").value;
 
@@ -141,22 +98,22 @@
             // Info Window Content
             var infowindowContent = [
                 ['<div class="info_content">' +
-                "<h6>Codeup</h6>\n" +
+                "<h6 class='marker-title'>Codeup</h6>\n" +
                 "<p>Codeup is a fullstack software development<br>career accelerator located in San Antonio.</p>" +
                 "<p><strong>Address:</strong> 600 Navarro St #350, San Antonio, TX 78205</p>" + '</div>'],
 
                 ['<div class="info_content">' +
-                "<h6>Geekdom</h6>\n" +
+                "<h6 class='marker-title'>Geekdom</h6>\n" +
                 "<p>Geekdom is a collaborative coworking space in San Antonio, Texas,<br>and the heartbeat of the startup ecosystem.</p>" +
                 "<p><strong>Address:</strong> 110 East Houston Street, 7th Floor, San Antonio, TX 78205</p>" + '</div>'],
 
                 ['<div class="info_content">' +
-                "<h6>Central Public Library</h6>\n" +
+                "<h6 class='marker-title'>Central Public Library</h6>\n" +
                 "<p>A branch of the San Antonio Public Library</p>" +
                 "<p><strong>Address:</strong> 600 Soledad St, San Antonio, TX 78205</p>" + '</div>'],
 
                 ['<div class="info_content">' +
-                "<h6>San Pedro Library</h6>\n" +
+                "<h6 class='marker-title'>San Pedro Library</h6>\n" +
                 "<p>San Pedro has a small collection serving neighborhood adults,<br>young people, and children with materials about San Antonio and local area history.</p>" +
                 "<p><strong>Address:</strong> 1315 San Pedro Ave, San Antonio, TX 78212</p>" + '</div>']
             ];
@@ -187,6 +144,7 @@
                 google.maps.event.addListener(marker, "click", function (event) {
                     document.getElementById("longitude").value = this.position.lng().toFixed(7);
                     document.getElementById("latitude").value = this.position.lat().toFixed(7);
+                    document.getElementById("location").innerText = " " + this.title;
                 });
 
                 //Auto center map to fit all markers on screen
