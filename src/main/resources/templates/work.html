@@ -5,16 +5,21 @@
     <title>At Work</title>
     <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
     <style>
-
         .work-img{
-            width: 30%;
+            width: 50%;
             margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
-
+        #capstone-github {
+            margin-bottom: 5%;
+        }
     </style>
-</head>
 
+</head>
 
 <!-- Body -->
 <div id="wrapper">
@@ -27,25 +32,36 @@
         <!-- Actual Content -->
 
         <div class="container-fluid">
-        <h1>Tech{knowledge}y @ Work</h1>
+        <h1 class="text-center">Tech{knowledge}y @ Work</h1>
 
-            <!--try break tags between images here-->
+            <div class="text-center" id="capstone-github">
+                <a href="https://github.com/Tech-knowledge-y/Capstone" target="_blank" class="btn btn-danger">View our code on github!</a>
+            </div>
 
-        <!--<div class="work-img">-->
+
+
+        <div class="text-center">
+
+
+
             <img class="work-img" src="img/db_design_1.jpg" alt="database"/>
-        <!--</div>-->
+            <p>text about image here</p>
+        </div>
 
-        <!--<div class="jumbotron work-img">-->
+        <div class="text-center">
             <img class="work-img" src="img/mentor.png" alt="mentor"/>
-        <!--</div>-->
+            <p>text about image here</p>
+        </div>
 
-            <!--<div class="jumbotron work-img">-->
+            <div class="text-center">
             <img class="work-img" src="img/palette_test.png" alt="palette"/>
-            <!--</div>-->
+                <p>text about image here</p>
+            </div>
 
-            <!--<div class="jumbotron work-img">-->
+            <div class="text-center">
             <img class="work-img" src="img/trello-board.png" alt="trello"/>
-            <!--</div>-->
+                <p>text about image here</p>
+            </div>
 
 
 
