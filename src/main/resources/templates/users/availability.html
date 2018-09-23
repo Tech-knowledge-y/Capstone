@@ -141,3 +141,29 @@
 </html>
 
 
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/head :: head('Edit Availability Page')"></div>
+</head>
+<body>
+
+<h2>This is the edit user availability form / After user has logged in.</h2>
+<form th:action="'/users/availability/create'" th:method="POST" th:object="${availability}">
+    <div class="form-group">
+        <label for="dayOfWeek" class="text-white">Day of the Week</label>
+        <input id="dayOfWeek" name="dayOfWeek" type="text" class="form-control" th:field="*{dayOfWeek}"/>
+    </div>
+    <br />
+
+    <button class="btn btn-success">Update/Save</button>
+
+</form>
+<script th:replace="fragments/scripts :: scripts"></script>
+</body>
+</html>
+
+
+
+

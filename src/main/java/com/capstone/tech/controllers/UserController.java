@@ -51,13 +51,6 @@ public class UserController {
 
     @PostMapping("/register")
     private String saveUser(@ModelAttribute User user, Model model){
-
-//        Checks too see if typed in username already exists in DB, if so, they are redirected to login page
-        if(userDao.findByUsername(user.getUsername()) != null ||
-                userSvc.getUserEmail(user)){
-            return"users/registration-error";
-        }
-
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
