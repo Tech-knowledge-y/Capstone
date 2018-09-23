@@ -130,5 +130,10 @@ h2 {
         position: relative;
         margin-right: 0;
     }
+}
+
+.work-img{
+    width: 300px;
+}
 
 }

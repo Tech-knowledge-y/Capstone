@@ -40,12 +40,15 @@ public class User {
     @OneToOne(mappedBy = "user")
     private UserDetail userDetail;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Comments> comments;
+
 
     // Constructors / Getters / Setters
 
     public User() { }
 
-    public User(String username, String email, String password, String gender, String birthdate, String status, Availability availability, List<Post> posts, UserDetail userDetail) {
+    public User(String username, String email, String password, String gender, String birthdate, String status, Availability availability, List<Post> posts, UserDetail userDetail, List<Comments> comments) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -55,9 +58,10 @@ public class User {
         this.availability = availability;
         this.posts = posts;
         this.userDetail = userDetail;
+        this.comments = comments;
     }
 
-    public User(long id, String username, String email, String password, String gender, String birthdate, String status, Availability availability, List<Post> posts, UserDetail userDetail) {
+    public User(long id, String username, String email, String password, String gender, String birthdate, String status, Availability availability, List<Post> posts, UserDetail userDetail, List<Comments> comments) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -68,6 +72,7 @@ public class User {
         this.availability = availability;
         this.posts = posts;
         this.userDetail = userDetail;
+        this.comments = comments;
     }
 
     public User(User copy) {
@@ -158,5 +163,13 @@ public class User {
 
     public void setUserDetail(UserDetail userDetail) {
         this.userDetail = userDetail;
+    }
+
+    public List<Comments> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comments> comments) {
+        this.comments = comments;
     }
 }
