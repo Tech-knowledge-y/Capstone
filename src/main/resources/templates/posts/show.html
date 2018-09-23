@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Post</title>
     <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
+
+    <style>
+        .card {
+            color: #000;
+        }
+
+        /*// Medium devices (tablets, 768px and up)*/
+        @media (min-width: 768px) {
+            #content {
+                width: auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -19,21 +32,50 @@
 
             <!-- Actual Content -->
             <div class="container-fluid">
-                <h1 class="text-center">The Individual's Post lives here</h1>
                 <div class="row">
-                    <div class="col-sm-12 col-md-6">
-                        <h1>Title: <span th:text="${post.title}"></span></h1>
-                        <p>date: <span th:text="${post.date}"></span></p>
+                    <div class="col mx-auto">
+                        <div class="card text-center">
+                            <div class="card-header">
+                                <a class="btn btn-warning float-left" th:href="'/posts/' + ${post.id} + '/edit'" th:if="${isOwner}">Edit Post Details</a>
+                                <!-- Button trigger modal -->
+                                <button  th:if="${isOwner}" class="btn btn-danger float-right" data-toggle="modal" data-target="#exampleModal">
+                                    Delete
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title" th:text="${post.title}"></h2>
+                                <h5 class="card-subtitle" th:text="${post.date}"></h5>
+                                <p class="card-text" th:text="${post.body}"></p>
+                                <p class="card-text" th:text="${post.user.username}"></p>
+                            </div>
+                            <div class="card-footer" sec:authorize="isAuthenticated()">
+                                <ul class="list-group list-group-flush" th:each="comments : ${allComments}">
+                                    <th:block th:if="${post.id eq comments.post.id}">
+                                        <li class="list-group-item"
+                                            th:text="${comments.user.username + ' : ' + comments.message}">
+                                        </li>
+                                    </th:block>
+                                </ul>
+                                <form th:action="'/posts/' + ${post.id} + '/' + ${comment.id}" th:method="post" th:object="${comment}">
+                                    <div class="form-row align-items-center">
+                                        <div class="col-8">
+                                            <textarea class="form-control mb-2" id="comment" th:field="*{message}" placeholder="Add comment"></textarea>
+                                        </div>
+                                        <div class="col-4">
+                                            <button type="submit" class="btn btn-outline-primary mb-2">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--<h1>Title: <span th:text="${post.title}"></span></h1>-->
+                        <!--<p>date: <span th:text="${post.date}"></span></p>-->
 
-                        <p>body: <span th:text="${post.body}"></span></p>
-                        <p>user: <span th:text="${post.user.username}"></span></p>
+                        <!--<p>body: <span th:text="${post.body}"></span></p>-->
+                        <!--<p>user: <span th:text="${post.user.username}"></span></p>-->
 
-                        <a class="btn btn-warning" th:href="'/posts/' + ${post.id} + '/edit'" th:if="${isOwner}">Edit Post Details</a>
+                        <!--<a class="btn btn-warning" th:href="'/posts/' + ${post.id} + '/edit'" th:if="${isOwner}">Edit Post Details</a>-->
 
-                        <!-- Button trigger modal -->
-                        <button  th:if="${isOwner}" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-                            Delete
-                        </button>
 
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"                                   aria-hidden="true">
@@ -60,7 +102,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
