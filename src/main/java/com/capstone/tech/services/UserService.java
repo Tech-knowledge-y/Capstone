@@ -18,9 +18,11 @@ import java.util.Collections;
 public class UserService {
 
     UserRepo userRepo;
+    UserDetailsLoader userDetails;
 
-    public UserService(UserRepo userRepo) {
+    public UserService(UserRepo userRepo, UserDetailsLoader userDetails) {
         this.userRepo = userRepo;
+        this.userDetails = userDetails;
     }
 
     public boolean isLoggedIn() {
@@ -51,6 +53,10 @@ public class UserService {
 
     }
 
+    public boolean getUserEmail(User user){
+        return user.getEmail() != null;
+    }
+
 
     // Edit controls are being showed up if the user is logged in and it's the same user viewing the file
     public boolean canEditProfile(User profileUser){
@@ -68,6 +74,8 @@ public class UserService {
         SecurityContext context = SecurityContextHolder.getContext();
         context.setAuthentication(auth);
     }
+
+
 
 }
 

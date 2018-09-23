@@ -33,4 +33,9 @@ public class HomeController {
     public String availability() {
         return "users/availability";
     }
+
+    @GetMapping("/work")
+    public String work() {
+        return "work";
+    }
 }

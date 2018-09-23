@@ -1,0 +1,66 @@
+<!-- Head -->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>At Work</title>
+    <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
+    <style>
+
+        .work-img{
+            width: 30%;
+            margin: 0 auto;
+        }
+
+
+    </style>
+</head>
+
+
+<!-- Body -->
+<div id="wrapper">
+    <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
+
+    <!-- Content -->
+    <div id="content">
+        <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
+
+        <!-- Actual Content -->
+
+        <div class="container-fluid">
+        <h1>Tech{knowledge}y @ Work</h1>
+
+            <!--try break tags between images here-->
+
+        <!--<div class="work-img">-->
+            <img class="work-img" src="img/db_design_1.jpg" alt="database"/>
+        <!--</div>-->
+
+        <!--<div class="jumbotron work-img">-->
+            <img class="work-img" src="img/mentor.png" alt="mentor"/>
+        <!--</div>-->
+
+            <!--<div class="jumbotron work-img">-->
+            <img class="work-img" src="img/palette_test.png" alt="palette"/>
+            <!--</div>-->
+
+            <!--<div class="jumbotron work-img">-->
+            <img class="work-img" src="img/trello-board.png" alt="trello"/>
+            <!--</div>-->
+
+
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+</div>
+
+<!-- Overlay -->
+<div class="overlay"></div>
+
+<script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
