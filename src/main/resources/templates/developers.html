@@ -1,133 +1,34 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>Contact Us</title>
+    <title>All Users</title>
     <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
+
 </head>
 
 <body>
 
-<!--<div id="wrapper">-->
-    <!--<nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>-->
+<div id="wrapper">
+    <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
 
-    <!--&lt;!&ndash; Page Content &ndash;&gt;-->
-    <!--<div id="content">-->
-        <!--<nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>-->
-
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-3">
-                    <h2>Xavier Salazar</h2>
-                    <div class="card justify-content-center" style="width: 100%">
-                        <img class="card-img-top" src="img/XavierSalazar.jpg" alt="Xavier Salazar"/>
-                        <div class="card-body">
-
-                            <div class="col-4 text-center">
-                                <a href="https://www.linkedin.com/in/xavier-salazar/" target="_blank">
-                                    <i class="fab fa-github-square fa-5x" style="color:black"></i>
-                                </a>
-                            </div>
-                            <div class="col-4 text-center">
-                                <a href="https://github.com/xaviersalazar" target="_blank">
-                                    <i class="fab fa-linkedin fa-5x" style="color:black"></i>
-                                </a>
-                            </div>
-                            <div class="col-4 text-center"><a href="mailto:salazar.xavier26@gmail.com" target="_blank">
-                                <i class="fa fa-envelope fa-5x" style="color:black"></i>
-                            </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-<!--GRAHAM-->
-
-
-<div class="col-sm-12 col-md-6 col-lg-3">
-    <h2>Graham Davis</h2>
-    <div class="card justify-content-center" style="width: 100%">
-        <img class="card-img-top" src="img/GrahamDavis.jpg" alt="Graham Davis"/>
-        <div class="card-body">
-
-                <div class="col-4 text-center">
-                    <a href="https://www.linkedin.com/in/grahamdavis210/" target="_blank">
-                        <i class="fab fa-github-square fa-5x" style="color:black"></i>
-                    </a>
-                </div>
-                <div class="col-4 text-center">
-                    <a href="https://github.com/Graham-Davis-SATX" target="_blank">
-                        <i class="fab fa-linkedin fa-5x" style="color:black"></i>
-                    </a>
-                </div>
-                <div class="col-4 text-center"><a href="mailto:Davis.graham.satx@gmail.com" target="_blank">
-                    <i class="fa fa-envelope fa-5x" style="color:black"></i>
-                </a>
-                </div>
-            </div>
-        </div>
+    <!-- Data below will display to users who are logged in -->
+    <!-- Page Content -->
+    <div id="content" sec:authorize="isAuthenticated()">
+        <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
+        <th:block th:replace="fragments/developers :: developerPage"></th:block>
     </div>
 
-<!--JILLIAN-->
-
-<div class="col-sm-12 col-md-6 col-lg-3">
-    <h2>Jillian Wysoki</h2>
-    <div class="card justify-content-center" style="width: 100%">
-        <img class="card-img-top" src="img/JillianWysoki.jpg" alt="Jillian Wysoki"/>
-        <div class="card-body">
-
-                <div class="col-4 text-center">
-                    <a href="https://www.linkedin.com/in/jillianwysoki/" target="_blank">
-                        <i class="fab fa-github-square fa-5x" style="color:black"></i>
-                    </a>
-                </div>
-                <div class="col-4 text-center">
-                    <a href="https://github.com/JWYSOKI" target="_blank">
-                        <i class="fab fa-linkedin fa-5x" style="color:black"></i>
-                    </a>
-                </div>
-                <div class="col-4 text-center"><a href="mailto:jillianwysoki@gmail.com" target="_blank">
-                    <i class="fa fa-envelope fa-5x" style="color:black"></i>
-                </a>
-                </div>
-            </div>
-        </div>
+    <!-- Data below will display to users who are **NOT** logged in -->
+    <div class="container-fluid" sec:authorize="isAnonymous()">
+        <th:block th:replace="fragments/developers :: developerPage"></th:block>
     </div>
-
-<!--AMOS-->
-
-<div class="col-sm-12 col-md-6 col-lg-3">
-    <h2>Amos Davis</h2>
-    <div class="card justify-content-center" style="width: 100%">
-        <img class="card-img-top" src="img/AmosDavis.jpg" alt="Amos Davis"/>
-        <div class="card-body">
-                <div class="col-4 text-center">
-                    <a href="https://www.linkedin.com/in/amos-davis/" target="_blank">
-                        <i class="fab fa-github-square fa-5x" style="color:black"></i>
-                    </a>
-                </div>
-                <div class="col-4 text-center">
-                    <a href="https://github.com/amos-davis" target="_blank">
-                        <i class="fab fa-linkedin fa-5x" style="color:black"></i>
-                    </a>
-                </div>
-                <div class="col-4 text-center"><a href="mailto:amos.davis367@gmail.com" target="_blank">
-                    <i class="fa fa-envelope fa-5x" style="color:black"></i>
-                </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-<!-- Overlay -->
-<div class="overlay"></div>
+</div>
+<!-- /#wrapper -->
 
 <script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
+
 </body>
 </html>

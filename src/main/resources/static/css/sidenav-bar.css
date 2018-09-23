@@ -207,8 +207,15 @@ a.article:hover {
     right: 0;
 }
 
-/*// Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) { }
+div.box1 {
+    background-color: whitesmoke;
+    margin: 0;
+    position: relative;
+    padding: 105px 0 0 0;
+    top: -88px;
+    z-index: -1;
+    border-radius: 50px;
+}
 
 /*// Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
@@ -222,12 +229,8 @@ a.article:hover {
 
     #content {
         left: 250px;
+        width: auto;
+
     }
 }
 
-/*// Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) {
-}
-
-/*// Extra large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) { }

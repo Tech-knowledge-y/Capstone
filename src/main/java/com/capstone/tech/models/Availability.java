@@ -1,7 +1,10 @@
 package com.capstone.tech.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.sql.Time;
+import java.util.*;
 
 @Entity
 @Table(name = "availability")
@@ -14,17 +17,28 @@ public class Availability {
     @Column
     private String dayOfWeek;
 
-    @Column
-    private String timeStart;
+//    @Column
+//    @Temporal(TemporalType.TIME)
+//    private java.util.Date timeStart;
+//
+//    @Column
+//    @Temporal(TemporalType.TIME)
+//    private java.util.Date timeEnd;
 
     @Column
-    private String timeEnd;
+    @DateTimeFormat(pattern = "HH.mm")
+    private Time timeStart;
+
+    @Column
+    @DateTimeFormat(pattern = "HH.mm")
+    private Time timeEnd;
 
     @Column
     private String week;
 
     @Column
     private String year;
+
 
     // relationships
 
@@ -38,7 +52,7 @@ public class Availability {
     }
 
 
-    public Availability(String dayOfWeek, String timeStart, String timeEnd, String week, String year, User user) {
+    public Availability(String dayOfWeek, Time timeStart, Time timeEnd, String week, String year, User user) {
         this.dayOfWeek = dayOfWeek;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
@@ -47,7 +61,7 @@ public class Availability {
         this.user = user;
     }
 
-    public Availability(long id, String dayOfWeek, String timeStart, String timeEnd, String week, String year, User user) {
+    public Availability(long id, String dayOfWeek, Time timeStart, Time timeEnd, String week, String year, User user) {
         this.id = id;
         this.dayOfWeek = dayOfWeek;
         this.timeStart = timeStart;
@@ -73,19 +87,19 @@ public class Availability {
         this.dayOfWeek = dayOfWeek;
     }
 
-    public String getTimeStart() {
+    public Time getTimeStart() {
         return timeStart;
     }
 
-    public void setTimeStart(String timeStart) {
+    public void setTimeStart(Time timeStart) {
         this.timeStart = timeStart;
     }
 
-    public String getTimeEnd() {
+    public Time getTimeEnd() {
         return timeEnd;
     }
 
-    public void setTimeEnd(String timeEnd) {
+    public void setTimeEnd(Time timeEnd) {
         this.timeEnd = timeEnd;
     }
 
