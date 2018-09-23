@@ -2,6 +2,7 @@ package com.capstone.tech.models;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
@@ -32,22 +33,26 @@ public class Post {
     @JoinColumn (name = "user_id")
     private User user;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    private List<Comments> comments;
+
     public Post(){
 
     }
 
 // this is the constructor to create
-    public Post(String title, String date, String latitude, String longitude, String body, User user) {
+    public Post(String title, String date, String latitude, String longitude, String body, User user, List<Comments> comments) {
         this.title = title;
         this.date = date;
         this.latitude = latitude;
         this.longitude = longitude;
         this.body = body;
         this.user = user;
+        this.comments = comments;
     }
 
 // this is the constructor to display
-    public Post(long id, String title, String date, String latitude, String longitude, String body, User user) {
+    public Post(long id, String title, String date, String latitude, String longitude, String body, User user, List<Comments> comments) {
         this.id = id;
         this.title = title;
         this.date = date;
@@ -55,6 +60,7 @@ public class Post {
         this.longitude = longitude;
         this.body = body;
         this.user = user;
+        this.comments = comments;
 }
 
 
@@ -113,5 +119,13 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public List<Comments> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comments> comments) {
+        this.comments = comments;
     }
 }
