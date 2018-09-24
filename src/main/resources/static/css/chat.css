@@ -250,6 +250,9 @@ button.accent {
     width: 100%;
 }
 
+.chatUsername {
+    background-color: darkgray;
+}
 
 @media screen and (max-width: 730px) {
 
