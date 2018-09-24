@@ -1,4 +1,4 @@
-# DROP DATABASE IF EXISTS capstone_db;
+DROP DATABASE IF EXISTS capstone_db;
 # DROP TABLE IF EXISTS user_details;
 # DROP TABLE IF EXISTS availability;
 

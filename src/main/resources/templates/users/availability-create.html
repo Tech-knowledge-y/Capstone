@@ -1,21 +1,148 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <div th:replace="fragments/head :: head('Edit Availability Page')"></div>
+    <div th:replace="fragments/head :: head('Default')"></div>
 </head>
+
 <body>
+<main>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div sec:authorize="isAuthenticated()">
+            <nav th:replace="fragments/navbar :: sideNavbar"></nav>
+        </div>
+        <!-- /#sidebar-wrapper -->
 
-<h2>This is the edit user availability form / After user has logged in.</h2>
-<form th:action="'/users/availability/create'" th:method="POST" th:object="${availability}">
-    <div class="form-group">
-        <label for="day_of_week" class="text-white">Day of the Week</label>
-        <input id="day_of_week" name="day_of_week" type="text" class="form-control" th:field="*{day_of_week}"/>
+        <!-- Page Content -->
+        <!--Make sure to keep all page content within the #page-content-wrapper.-->
+        <div id="page-content-wrapper">
+            <!--*****This is the logic to hide the nav bar when user is not logged in*****-->
+            <div sec:authorize="isAuthenticated()">
+                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <h3>Please select the days of the week you are available for tutoring and then set the times that you are available for each day.</h3>
+                    <div class="col-sm-12 col-md-6 text-white">
+                        <form th:action="'/users/availability/create'" th:method="POST" th:object="${availability}">
+                            <div class="form-group">
+
+                                <label for="dowMonday">Monday</label>
+                                <input type="checkbox" class="" id="dowMonday" name="dayOfWeek" value="1" th:field="*{dayOfWeek}" onclick="showHideTimeFunction()" />
+
+                                <div class="input-group" id="startMonday" style="display: none">
+                                    <div class="input-group-addon">Start Time</div><input type="time" name="time_start"/>
+                                </div>
+
+                                <div class="input-group" id="endMonday" style="display: none">
+                                    <div class="input-group-addon">End Time</div><input type="time" name="time_end"/>
+                                </div>
+
+                                <br />
+
+
+                                <!--<label for="dowTuesday">Tuesday</label>-->
+                                <!--<input type="checkbox" class="" id="dowTuesday" name="dayOfWeek" value="2" th:field="*{dayOfWeek}" onclick="showHideTimeFunction()" />-->
+
+                                <!--<div class="input-group" id="startTuesday" style="display: none">-->
+                                    <!--<div class="input-group-addon">Start Time</div>-->
+                                    <!--<input type="time" name="timeStart"/>-->
+                                <!--</div>-->
+                                <!--<div class="input-group" id="endTuesday" style="display: none">-->
+                                    <!--<div class="input-group-addon">End Time</div>-->
+                                    <!--<input type="time" name="timeEnd"/>-->
+                                <!--</div>-->
+                                <!--<br />-->
+
+
+                                <!--<label for="dowWednesday">Wednesday</label>-->
+                                <!--<input type="checkbox" class="" id="dowWednesday" name="dayOfWeek" value="3" th:field="*{dayOfWeek}" onclick="showHideTimeFunction()" />-->
+
+                                <!--<div class="input-group" id="startWednesday" style="display: none">-->
+                                    <!--<div class="input-group-addon">Start Time</div>-->
+                                    <!--<input type="time" name="timeStart"/>-->
+                                <!--</div>-->
+                                <!--<div class="input-group" id="endWednesday" style="display: none">-->
+                                    <!--<div class="input-group-addon">End Time</div>-->
+                                    <!--<input type="time" name="timeEnd"/>-->
+                                <!--</div>-->
+                                <!--<br />-->
+
+
+                                <!--<label for="dowThursday">Thursday</label>-->
+                                <!--<input type="checkbox" class="" id="dowThursday" name="dayOfWeek" value="4" th:field="*{dayOfWeek}" onclick="showHideTimeFunction()" />-->
+
+                                <!--<div class="input-group" id="startThursday" style="display: none">-->
+                                    <!--<div class="input-group-addon">Start Time</div>-->
+                                    <!--<input type="time" name="timeStart"/>-->
+                                <!--</div>-->
+                                <!--<div class="input-group" id="endThursday" style="display: none">-->
+                                    <!--<div class="input-group-addon">End Time</div>-->
+                                    <!--<input type="time" name="timeEnd"/>-->
+                                <!--</div>-->
+                                <!--<br />-->
+
+
+                                <!--<label for="dowFriday">Friday</label>-->
+                                <!--<input type="checkbox" class="" id="dowFriday" name="dayOfWeek" value="5" th:field="*{dayOfWeek}" onclick="showHideTimeFunction()" />-->
+
+                                <!--<div class="input-group" id="startFriday" style="display: none">-->
+                                    <!--<div class="input-group-addon">Start Time</div>-->
+                                    <!--<input type="time" name="timeStart"/>-->
+                                <!--</div>-->
+                                <!--<div class="input-group" id="endFriday" style="display: none">-->
+                                    <!--<div class="input-group-addon">End Time</div>-->
+                                    <!--<input type="time" name="timeEnd"/>-->
+                                <!--</div>-->
+                                <!--<br />-->
+
+
+                                <!--<label for="dowSaturday">Saturday</label>-->
+                                <!--<input type="checkbox" class="" id="dowSaturday" name="dayOfWeek" value="6" th:field="*{dayOfWeek}" onclick="showHideTimeFunction()" />-->
+
+                                <!--<div class="input-group" id="startSaturday" style="display: none">-->
+                                    <!--<div class="input-group-addon">Start Time</div>-->
+                                    <!--<input type="time" name="timeStart"/>-->
+                                <!--</div>-->
+                                <!--<div class="input-group" id="endSaturday" style="display: none">-->
+                                    <!--<div class="input-group-addon">End Time</div>-->
+                                    <!--<input type="time" name="timeEnd"/>-->
+                                <!--</div>-->
+                                <!--<br />-->
+
+
+                                <!--<label for="dowSunday">Sunday</label>-->
+                                <!--<input type="checkbox" class="" id="dowSunday" name="dayOfWeek" value="7" th:field="*{dayOfWeek}" onclick="showHideTimeFunction()" />-->
+
+                                <!--<div class="input-group" id="startSunday" style="display: none">-->
+                                    <!--<div class="input-group-addon">Start Time</div>-->
+                                    <!--<input type="time" name="timeStart"/>-->
+                                <!--</div>-->
+                                <!--<div class="input-group" id="endSunday" style="display: none">-->
+                                    <!--<div class="input-group-addon">End Time</div>-->
+                                    <!--<input type="time" name="timeEnd"/>-->
+                                <!--</div>-->
+                                <!--<br />-->
+
+                            <button class="btn btn-success">Update/Save</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
     </div>
-    <br />
+    <!-- /#wrapper -->
 
-    <button class="btn btn-success">Update/Save</button>
-
-</form>
+</main>
+<!--<script th:replace="fragments/footer :: footer"></script>-->
 <script th:replace="fragments/scripts :: scripts"></script>
+<script th:replace="fragments/scripts :: availScript"></script>
+
 </body>
 </html>
+
+
