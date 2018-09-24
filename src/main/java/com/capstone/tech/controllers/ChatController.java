@@ -8,13 +8,16 @@ import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
 @Controller
 public class ChatController {
+
 
     @GetMapping("/chat")
     public String chat() {
         return "chat";
     }
+
 
     @MessageMapping("/chat.sendMessage")
     @SendTo("/topic/public")
@@ -30,5 +33,4 @@ public class ChatController {
         headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
         return chatMessage;
     }
-
 }

@@ -20,8 +20,8 @@
         <div class="row">
             <div class="col">
                 <h1 class="text-center">Create an Account</h1>
-                <p>Username or email already exists! </p>
-                <a style="color: blue" href="/login">Log in?</a>
+                <h3 class="text-center"><a class="text-danger" href="/login">Username or email already exists! Log in?</a> </h3>
+
 
                 <form th:action="@{/register}" th:method="POST" th:object="${user}">
                     <div class="form-group">
