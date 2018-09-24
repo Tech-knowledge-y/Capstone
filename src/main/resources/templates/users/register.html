@@ -6,11 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Register</title>
     <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
-    <!--Another password strength checker stylesheet-->
-    <!--<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>-->
-    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>&lt;!&ndash; jQuery Library&ndash;&gt;-->
-    <!--<link rel="stylesheet" href="resources/css/pswdCheck.css" />-->
-    <link rel="stylesheet" href="css/passwordValidator.css" />
+
 </head>
 
 <body>
@@ -32,10 +28,14 @@
                         </div>
                         <div class="form-group">
                             <label for="password" class="text-white">Password</label>
-                            <!--Additional code for pswd validation feature-->
-                            <input id="password" name="password" type="password" class="form-control" placeholder="Enter your password" pattern="([!@#]).{8, 15}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" th:field="*{password}" />
+                            <input id="password" name="password" type="password" class="form-control" onkeyup='check();' placeholder="Enter your password" th:field="*{password}" />
+
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword" class="text-white">Confirm Password</label>
+                            <input id="confirmPassword" name="confirmPassword" type="password" class="form-control" onkeyup='check();' placeholder="Confirm Password"  />
                             <!--This line needed for strength pswd checker-->
-                            <!--<span id="result"></span>-->
+                            <span id="message"></span>
                         </div>
                         <div class="form-group">
                             <label for="birthdate" class="text-white">Birthdate</label>
@@ -59,30 +59,31 @@
                             </select>
                         </div>
                         <div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button id="#btnSubmit" type="submit" onkeyup='check();' class="btn btn-primary">Submit</button>
                         </div>
                         <small id="loginHelp" class="form-text text-muted text-center"><a href="/login">Already have an account? Log in.</a></small>
                     </form>
-                    <!--Added code for pswd validation-->
-                    <div id="message">
-                        <h3>Password must contain the following:</h3>
-                        <p id="letter" class="invalid">At least 1 <b>lowercase</b> letter</p>
-                        <p id="capital" class="invalid">At least 1 <b>capital (uppercase)</b> letter</p>
-                        <p id="number" class="invalid">At least 1 <b>number (0-9)</b></p>
-                        <p id="special" class="invalid">At least 1 <b>special character (!, @, #)</b></p>
-                        <p id="length" class="invalid">Password length <b>8-10 characters</b></p>
-                    </div>
+
                 </div>
             </div>
         </div>
     </div>
-
     <script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
 
-       <!--script for Password Validation-->
-    <script th:replace="fragments/pswdValidator :: pswdValidator"></script>
-        <!--Another pswd strength checker-->
-    <!--<script src="js/pswdCheck.js"></script>-->
+    <script type="text/javascript">
+        var check = function() {
+            if (document.getElementById('password').value ==
+                document.getElementById('confirmPassword').value) {
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerHTML = 'Passwords must match';
+                document.getElementById("#btnSubmit").disabled = false;
+            } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'Password does not match';
+                document.getElementById("#btnSubmit").disabled = true;
+            }
+        }
+    </script>
 
 </body>
 </html>
