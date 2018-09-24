@@ -20,6 +20,12 @@ public class UserLanguages {
 
     public UserLanguages() {}
 
+    public UserLanguages(long id, User user, Languages languages) {
+        this.id = id;
+        this.user = user;
+        this.languages = languages;
+    }
+
     public long getId() {
         return id;
     }

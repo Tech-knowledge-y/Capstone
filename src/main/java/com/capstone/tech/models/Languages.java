@@ -20,6 +20,12 @@ public class Languages {
 
     public Languages() {}
 
+    public Languages(long id, String language, List<UserLanguages> userLanguages) {
+        this.id = id;
+        this.language = language;
+        this.userLanguages = userLanguages;
+    }
+
     public long getId() {
         return id;
     }

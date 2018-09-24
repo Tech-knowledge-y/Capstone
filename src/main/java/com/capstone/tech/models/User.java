@@ -24,9 +24,6 @@ public class User {
     private String gender;
 
     @Column(nullable = false)
-    private String birthdate;
-
-    @Column(nullable = false)
     private String status;
 
     // Relationships
@@ -56,7 +53,6 @@ public class User {
         this.email = email;
         this.password = password;
         this.gender = gender;
-        this.birthdate = birthdate;
         this.status = status;
         this.availability = availability;
         this.posts = posts;
@@ -65,13 +61,12 @@ public class User {
         this.userLanguages = userLanguages;
     }
 
-    public User(long id, String username, String email, String password, String gender, String birthdate, String status, Availability availability, List<Post> posts, UserDetail userDetail, List<Comments> comments, List<UserLanguages> userLanguages) {
+    public User(long id, String username, String email, String password, String gender, String status, Availability availability, List<Post> posts, UserDetail userDetail, List<Comments> comments, List<UserLanguages> userLanguages) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.gender = gender;
-        this.birthdate = birthdate;
         this.status = status;
         this.availability = availability;
         this.posts = posts;
@@ -85,7 +80,6 @@ public class User {
         username = copy.username;
         email = copy.email;
         password = copy.password;
-        birthdate = copy.birthdate;
         status = copy.status;
         gender = copy.gender;
     }
@@ -128,14 +122,6 @@ public class User {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public String getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
     }
 
     public String getStatus() {
