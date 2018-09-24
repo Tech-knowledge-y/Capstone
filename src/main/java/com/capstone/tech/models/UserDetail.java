@@ -17,6 +17,9 @@ public class UserDetail {
     @Column(nullable = false, length = 50)
     private String lName;
 
+    @Column
+    private String birthdate;
+
     @Column(length = 100)
     private String city;
 
@@ -42,9 +45,10 @@ public class UserDetail {
 
     }
 
-    public UserDetail(String fName, String lName, String city, String state, String zipCode, String bio, User user) {
+    public UserDetail(String fName, String lName, String birthdate, String city, String state, String zipCode, String bio, User user) {
         this.fName = fName;
         this.lName = lName;
+        this.birthdate = birthdate;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
@@ -52,10 +56,11 @@ public class UserDetail {
         this.user = user;
     }
 
-    public UserDetail(long id, String fName, String lName, String city, String state, String zipCode, String bio, User user) {
+    public UserDetail(long id, String fName, String lName, String birthdate, String city, String state, String zipCode, String bio, User user) {
         this.id = id;
         this.fName = fName;
         this.lName = lName;
+        this.birthdate = birthdate;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
@@ -85,6 +90,14 @@ public class UserDetail {
 
     public void setlName(String lName) {
         this.lName = lName;
+    }
+
+    public String getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getCity() {

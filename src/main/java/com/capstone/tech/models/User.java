@@ -24,9 +24,6 @@ public class User {
     private String gender;
 
     @Column(nullable = false)
-    private String birthdate;
-
-    @Column(nullable = false)
     private String status;
 
     // Relationships
@@ -43,36 +40,39 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Comments> comments;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<UserLanguages> userLanguages;
+
 
     // Constructors / Getters / Setters
 
     public User() { }
 
-    public User(String username, String email, String password, String gender, String birthdate, String status, Availability availability, List<Post> posts, UserDetail userDetail, List<Comments> comments) {
+    public User(String username, String email, String password, String gender, String birthdate, String status, Availability availability, List<Post> posts, UserDetail userDetail, List<Comments> comments, List<UserLanguages> userLanguages) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.gender = gender;
-        this.birthdate = birthdate;
         this.status = status;
         this.availability = availability;
         this.posts = posts;
         this.userDetail = userDetail;
         this.comments = comments;
+        this.userLanguages = userLanguages;
     }
 
-    public User(long id, String username, String email, String password, String gender, String birthdate, String status, Availability availability, List<Post> posts, UserDetail userDetail, List<Comments> comments) {
+    public User(long id, String username, String email, String password, String gender, String status, Availability availability, List<Post> posts, UserDetail userDetail, List<Comments> comments, List<UserLanguages> userLanguages) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.gender = gender;
-        this.birthdate = birthdate;
         this.status = status;
         this.availability = availability;
         this.posts = posts;
         this.userDetail = userDetail;
         this.comments = comments;
+        this.userLanguages = userLanguages;
     }
 
     public User(User copy) {
@@ -80,7 +80,6 @@ public class User {
         username = copy.username;
         email = copy.email;
         password = copy.password;
-        birthdate = copy.birthdate;
         status = copy.status;
         gender = copy.gender;
     }
@@ -125,14 +124,6 @@ public class User {
         this.gender = gender;
     }
 
-    public String getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -171,5 +162,13 @@ public class User {
 
     public void setComments(List<Comments> comments) {
         this.comments = comments;
+    }
+
+    public List<UserLanguages> getUserLanguages() {
+        return userLanguages;
+    }
+
+    public void setUserLanguages(List<UserLanguages> userLanguages) {
+        this.userLanguages = userLanguages;
     }
 }

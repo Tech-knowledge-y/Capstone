@@ -1,12 +1,7 @@
 package com.capstone.tech.controllers;
 
-import com.capstone.tech.models.Availability;
-import com.capstone.tech.models.User;
-import com.capstone.tech.models.UserDetail;
-import com.capstone.tech.repositories.AvailabilityRepo;
-import com.capstone.tech.repositories.UserDetailRepo;
-import com.capstone.tech.repositories.UserRepo;
-import com.capstone.tech.repositories.UserRoles;
+import com.capstone.tech.models.*;
+import com.capstone.tech.repositories.*;
 import com.capstone.tech.services.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -26,15 +21,19 @@ public class UserController {
     UserRoles userRoles;
     UserService userSvc;
     private PasswordEncoder passwordEncoder;
+    UserLanguagesRepo userLanguagesRepo;
+    LanguagesRepo languagesRepo;
 
 
-    public UserController(UserRepo userDao, UserDetailRepo userDetailDao, AvailabilityRepo availabilityDao, UserRoles userRoles, UserService userSvc, PasswordEncoder passwordEncoder) {
+    public UserController(UserRepo userDao, UserDetailRepo userDetailDao, AvailabilityRepo availabilityDao, UserRoles userRoles, UserService userSvc, PasswordEncoder passwordEncoder, UserLanguagesRepo userLanguagesRepo, LanguagesRepo languagesRepo) {
         this.userDao = userDao;
         this.userDetailDao = userDetailDao;
         this.availabilityDao = availabilityDao;
         this.userRoles = userRoles;
         this.userSvc = userSvc;
         this.passwordEncoder = passwordEncoder;
+        this.userLanguagesRepo = userLanguagesRepo;
+        this.languagesRepo = languagesRepo;
     }
 
 
@@ -69,7 +68,18 @@ public class UserController {
         User user = userDao.findOne(id);
         viewModel.addAttribute("user", user);
         viewModel.addAttribute("showEditControls", userSvc.canEditProfile(user));
+        viewModel.addAttribute("languages", new Languages());
         return "users/show-user";
+    }
+
+    // Adding language
+    @PostMapping("/users/show-user/add-language")
+    private String addLanguage( @ModelAttribute UserLanguages userLanguages, @ModelAttribute Languages languages) {
+        languagesRepo.save(languages);
+        userLanguages.setUser(userSvc.loggedInUser());
+        userLanguages.setLanguages(languagesRepo.findOne(languages.getId()));
+        userLanguagesRepo.save(userLanguages);
+        return "redirect:/users/" + userSvc.loggedInUser().getId();
     }
 
 
