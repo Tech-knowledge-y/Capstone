@@ -43,12 +43,15 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Comments> comments;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<UserLanguages> userLanguages;
+
 
     // Constructors / Getters / Setters
 
     public User() { }
 
-    public User(String username, String email, String password, String gender, String birthdate, String status, Availability availability, List<Post> posts, UserDetail userDetail, List<Comments> comments) {
+    public User(String username, String email, String password, String gender, String birthdate, String status, Availability availability, List<Post> posts, UserDetail userDetail, List<Comments> comments, List<UserLanguages> userLanguages) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -59,9 +62,10 @@ public class User {
         this.posts = posts;
         this.userDetail = userDetail;
         this.comments = comments;
+        this.userLanguages = userLanguages;
     }
 
-    public User(long id, String username, String email, String password, String gender, String birthdate, String status, Availability availability, List<Post> posts, UserDetail userDetail, List<Comments> comments) {
+    public User(long id, String username, String email, String password, String gender, String birthdate, String status, Availability availability, List<Post> posts, UserDetail userDetail, List<Comments> comments, List<UserLanguages> userLanguages) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -73,6 +77,7 @@ public class User {
         this.posts = posts;
         this.userDetail = userDetail;
         this.comments = comments;
+        this.userLanguages = userLanguages;
     }
 
     public User(User copy) {
@@ -171,5 +176,13 @@ public class User {
 
     public void setComments(List<Comments> comments) {
         this.comments = comments;
+    }
+
+    public List<UserLanguages> getUserLanguages() {
+        return userLanguages;
+    }
+
+    public void setUserLanguages(List<UserLanguages> userLanguages) {
+        this.userLanguages = userLanguages;
     }
 }

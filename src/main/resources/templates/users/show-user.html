@@ -48,6 +48,15 @@
                             <a th:href="'/users/details/create'" th:if="${showEditControls}">Add user details</a>
                         </th:block>
 
+                        <!-- Adding languages -->
+
+                        <form class="form-inline" th:action="'/users/show-user/add-language'" th:method="post">
+                            <div class="form-group mx-sm-3 mb-2">
+                                <input type="text" class="form-control" id="language" th:field="${languages.language}" placeholder="Add a language" />
+                            </div>
+                            <button type="submit" class="btn btn-outline-primary">Add</button>
+                        </form>
+
                         <!-- =================== USER AVAILABILITY INFO =================== -->
                         <th:block th:if="${user.availability != null}">
                             <h4 th:text="${user.availability.dayOfWeek}"></h4>
@@ -64,7 +73,6 @@
                             <h3>No User Availability</h3> <!-- Remove this -->
                             <a th:href="'/users/availability/create'" th:if="${showEditControls}">Add user Availability</a>
                         </th:block>
-
 
                     </div>
                 </div>
