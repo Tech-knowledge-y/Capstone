@@ -12,6 +12,11 @@
             color: #000;
         }
 
+        .post{
+            background-color: #0E34F5;
+            border: 25px solid goldenrod;
+        }
+
         /*// Medium devices (tablets, 768px and up)*/
         @media (min-width: 768px) {
             #content {
@@ -42,7 +47,7 @@
                                     Delete
                                 </button>
                             </div>
-                            <div class="card-body">
+                            <div class="post card-body">
                                 <h2 class="card-title" th:text="${post.title}"></h2>
                                 <h5 class="card-subtitle" th:text="${post.date}"></h5>
                                 <p class="card-text" th:text="${post.body}"></p>
