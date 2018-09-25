@@ -8,14 +8,100 @@
     <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
 
     <style>
-        .card {
-            color: #000;
+        :root {
+            --white: #FEFEFE;
+            --dark: #484855;
+            --greyLight: #D1CFD2;
+            --greyDark: #9B999E;
+            --grey: #B9B5BE;
+            --red: #ef5350;
         }
 
-        .post{
-            background-color: #0E34F5;
-            border: 25px solid goldenrod;
+        .post {
+            display: flex;
+            width: 85%;
         }
+
+        .post-left {
+            width: 40%;
+            background-color: var(--dark);
+            color: white;
+            padding: 3em;
+            position: relative;
+        }
+
+        .post-left_title {
+            font-size: 2em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .post-left_title_sub {
+            font-size: 2em;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-top: 0.25em;
+        }
+
+        .post-left_border {
+            border: 2px solid var(--red);
+            width: 15%;
+            margin-top: 1em;
+        }
+
+        .post-left_author {
+            position: absolute;
+            bottom: 2em;
+            display: flex;
+            align-items: center;
+        }
+        .post-left_author img {
+            width: 2.5em;
+            margin-right: 1em;
+            border: 1px solid var(--white);
+            border-radius: 50%;
+        }
+
+        .post-right {
+            width: 60%;
+            background-color: var(--white);
+            color: var(--dark);
+        }
+
+        .post-right_body {
+            line-height: 2;
+            padding: 2em;
+        }
+        .post-right_body p {
+            margin-top: 1em;
+        }
+        .post-right_body p span {
+            font-size: 2em;
+        }
+
+        .post-right_footer {
+            display: flex;
+            justify-content: space-between;
+            box-shadow: 0px -4px 3px -2px rgba(0, 0, 0, 0.1);
+            padding: 2em;
+        }
+
+        .post-right_footer_date {
+            text-transform: uppercase;
+        }
+        .post-right_footer_date span {
+            font-weight: 700;
+        }
+
+        .post-right_footer_pictos {
+            font-size: 1.5em;
+            margin-right: 1em;
+        }
+        .post-right_footer_pictos .fa-heart {
+            color:var(--red);
+            margin-right: 1em;
+        }
+
 
         /*// Medium devices (tablets, 768px and up)*/
         @media (min-width: 768px) {
@@ -28,100 +114,54 @@
 
 <body>
 
-    <div id="wrapper">
-        <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
 
-        <!-- Content -->
-        <div id="content">
-            <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
+<div id="wrapper">
+    <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
 
-            <!-- Actual Content -->
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col mx-auto">
-                        <div class="card text-center">
-                            <div class="card-header">
-                                <a class="btn btn-warning float-left" th:href="'/posts/' + ${post.id} + '/edit'" th:if="${isOwner}">Edit Post Details</a>
-                                <!-- Button trigger modal -->
-                                <button  th:if="${isOwner}" class="btn btn-danger float-right" data-toggle="modal" data-target="#exampleModal">
-                                    Delete
-                                </button>
-                            </div>
-                            <div class="post card-body">
-                                <h2 class="card-title" th:text="${post.title}"></h2>
-                                <h5 class="card-subtitle" th:text="${post.date}"></h5>
-                                <p class="card-text" th:text="${post.body}"></p>
-                                <p class="card-text" th:text="${post.user.username}"></p>
-                            </div>
-                            <div class="card-footer" sec:authorize="isAuthenticated()">
-                                <ul class="list-group list-group-flush" th:each="comments : ${allComments}">
-                                    <th:block th:if="${post.id eq comments.post.id}">
-                                        <li class="list-group-item"
-                                            th:text="${comments.user.username + ' : ' + comments.message}">
-                                        </li>
-                                    </th:block>
-                                </ul>
-                                <form th:action="'/posts/' + ${post.id} + '/' + ${comment.id}" th:method="post" th:object="${comment}">
-                                    <div class="form-row align-items-center">
-                                        <div class="col-8">
-                                            <textarea class="form-control mb-2" id="comment" th:field="*{message}" placeholder="Add comment"></textarea>
-                                        </div>
-                                        <div class="col-4">
-                                            <button type="submit" class="btn btn-outline-primary mb-2">Submit</button>
-                                        </div>
-                                    </div>
-                                </form>
+    <!-- Content -->
+    <div id="content">
+        <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
+
+        <!-- Actual Content -->
+        <div class="container-fluid">
+            <div class="row mx-auto">
+                <div class="col">
+                    <div class="post">
+                        <div class="post-left">
+                            <div class="post-left_title">Lorem ipsum:</div>
+                            <div class="post-left_title_sub">Dolor sit amet</div>
+                            <div class="post-left_border"></div>
+                            <div class="post-left_author">
+                                <p>Jillian Wysoki</p>
                             </div>
                         </div>
-                        <!--<h1>Title: <span th:text="${post.title}"></span></h1>-->
-                        <!--<p>date: <span th:text="${post.date}"></span></p>-->
+                        <div class="post-right">post right</div>
 
-                        <!--<p>body: <span th:text="${post.body}"></span></p>-->
-                        <!--<p>user: <span th:text="${post.user.username}"></span></p>-->
-
-                        <!--<a class="btn btn-warning" th:href="'/posts/' + ${post.id} + '/edit'" th:if="${isOwner}">Edit Post Details</a>-->
-
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"                                   aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 style="color: black;" class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p style="color: black;">Are you sure you want to delete this post?</p>
-                                        <h3 style="color:black"><span th:text="${post.title}"></span></h3>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-
-                                        <form th:action="@{/posts/delete}" th:method="POST" th:if="${isOwner}">
-                                            <input type="hidden" th:value="${post.id}" name="id" />
-                                            <button class="btn btn-danger">Confirm Delete</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+
+
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 
 
     <!-- Overlay -->
     <div class="overlay"></div>
 
     <script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
-    <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
+
     <script>
         $('#myModal').on('shown.bs.modal', function () {
             $('#myInput').trigger('focus')
@@ -131,3 +171,87 @@
 </html>
 
 
+<!--<div id="wrapper">-->
+    <!--<nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>-->
+
+    <!--&lt;!&ndash; Content &ndash;&gt;-->
+    <!--<div id="content">-->
+        <!--<nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>-->
+
+        <!--&lt;!&ndash; Actual Content &ndash;&gt;-->
+        <!--<div class="container-fluid">-->
+            <!--<div class="row">-->
+                <!--<div class="col mx-auto">-->
+                    <!--<div class="card text-center">-->
+                        <!--<div class="card-header">-->
+                            <!--<a class="btn btn-warning float-left" th:href="'/posts/' + ${post.id} + '/edit'" th:if="${isOwner}">Edit Post Details</a>-->
+                            <!--&lt;!&ndash; Button trigger modal &ndash;&gt;-->
+                            <!--<button  th:if="${isOwner}" class="btn btn-danger float-right" data-toggle="modal" data-target="#exampleModal">-->
+                                <!--Delete-->
+                            <!--</button>-->
+                        <!--</div>-->
+                        <!--<div class="post card-body">-->
+                            <!--<h2 class="card-title" th:text="${post.title}"></h2>-->
+                            <!--<h5 class="card-subtitle" th:text="${post.date}"></h5>-->
+                            <!--<p class="card-text" th:text="${post.body}"></p>-->
+                            <!--<p class="card-text" th:text="${post.user.username}"></p>-->
+                        <!--</div>-->
+                        <!--<div class="card-footer" sec:authorize="isAuthenticated()">-->
+                            <!--<ul class="list-group list-group-flush" th:each="comments : ${allComments}">-->
+                                <!--<th:block th:if="${post.id eq comments.post.id}">-->
+                                    <!--<li class="list-group-item"-->
+                                        <!--th:text="${comments.user.username + ' : ' + comments.message}">-->
+                                    <!--</li>-->
+                                <!--</th:block>-->
+                            <!--</ul>-->
+                            <!--<form th:action="'/posts/' + ${post.id} + '/' + ${comment.id}" th:method="post" th:object="${comment}">-->
+                                <!--<div class="form-row align-items-center">-->
+                                    <!--<div class="col-8">-->
+                                        <!--<textarea class="form-control mb-2" id="comment" th:field="*{message}" placeholder="Add comment"></textarea>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-4">-->
+                                        <!--<button type="submit" class="btn btn-outline-primary mb-2">Submit</button>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</form>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash;<h1>Title: <span th:text="${post.title}"></span></h1>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<p>date: <span th:text="${post.date}"></span></p>&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<p>body: <span th:text="${post.body}"></span></p>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<p>user: <span th:text="${post.user.username}"></span></p>&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<a class="btn btn-warning" th:href="'/posts/' + ${post.id} + '/edit'" th:if="${isOwner}">Edit Post Details</a>&ndash;&gt;-->
+
+
+                    <!--&lt;!&ndash; Modal &ndash;&gt;-->
+                    <!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"                                   aria-hidden="true">-->
+                        <!--<div class="modal-dialog" role="document">-->
+                            <!--<div class="modal-content">-->
+                                <!--<div class="modal-header">-->
+                                    <!--<h5 style="color: black;" class="modal-title" id="exampleModalLabel">Confirm Delete</h5>-->
+                                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                                        <!--<span aria-hidden="true">&times;</span>-->
+                                    <!--</button>-->
+                                <!--</div>-->
+                                <!--<div class="modal-body">-->
+                                    <!--<p style="color: black;">Are you sure you want to delete this post?</p>-->
+                                    <!--<h3 style="color:black"><span th:text="${post.title}"></span></h3>-->
+                                <!--</div>-->
+                                <!--<div class="modal-footer">-->
+                                    <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>-->
+
+                                    <!--<form th:action="@{/posts/delete}" th:method="POST" th:if="${isOwner}">-->
+                                        <!--<input type="hidden" th:value="${post.id}" name="id" />-->
+                                        <!--<button class="btn btn-danger">Confirm Delete</button>-->
+                                    <!--</form>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
