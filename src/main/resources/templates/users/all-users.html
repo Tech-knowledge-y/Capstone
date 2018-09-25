@@ -96,10 +96,6 @@
             border-left: none;
         }
 
-        #content {
-            padding: 0;
-        }
-
         /*// Medium devices (tablets, 768px and up)*/
         @media (min-width: 768px) {
             #content {
@@ -126,41 +122,29 @@
                     <button type="button" class="btn btn-outline-primary" id="mentee-filter">Mentee</button>
                 </div>
                 <div class="row">
-                    <div class="col-md-12 col-lg-6 my-2" th:each="user : ${users}">
-                        <div th:class="'mx-auto profile ' + ${user.status}">
-                            <div class="profile-left">
-                                <div class="profile-left-content">
-                                    <img class="profile-img" src="img/male.png" alt="male" />
-                                    <h3 class="profile-title" th:text="${user.username}"></h3>
-                                    <p class="profile-subtitle" th:text="${user.status}"></p>
-                                    <button class="btn btn-outline-primary profile-view">View</button>
-                                </div>
-                            </div>
-                            <div class="profile-right">
-                                <div class="box box-top">
-                                    <p class="text-center">total posts</p>
-                                </div>
-                                <div class="box box-bottom">
-                                    <p class="text-center">total comments</p>
-                                </div>
+                    <div class="col-sm-12 col-md-6 my-2" th:each="user : ${users}">
+                        <div th:class="'card ' + ${user.status}" style="width: 100%;">
+                            <div class="card-body">
+                                <h3 class="card-title" th:text="${user.username}"></h3>
+                                <p class="card-text" th:text="${user.status}"></p>
+                                <p class="card-text" th:text="${user.email}"></p>
+                                <a th:href="'/users/' + ${user.id}" class="btn btn-outline-primary">View</a>
                             </div>
                         </div>
+
+                        <!--<h2 th:text="${user.status}"></h2>-->
+                        <!--<p>Username</p><h2 th:text="${user.username}"></h2>-->
+                        <!--<p>Email</p><h2 th:text="${user.email}"></h2>-->
+                        <!--<p>Gender</p><h2 th:text="${user.gender}"></h2>-->
+                        <!--<p>Birthday</p><h2 th:text="${user.birthdate}"></h2>-->
+
+                        <!--<a th:href="'/users/' + ${user.id}" class="btn btn-outline-primary">View</a>-->
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
-
-    <!--<div class="col-sm-12 col-md-6 my-2" th:each="user : ${users}">-->
-    <!--<div th:class="'card ' + ${user.status}" style="width: 100%;">-->
-    <!--<div class="card-body">-->
-    <!--<h3 class="card-title" th:text="${user.username}"></h3>-->
-    <!--<p class="card-text" th:text="${user.status}"></p>-->
-    <!--<p class="card-text" th:text="${user.email}"></p>-->
-    <!--<a th:href="'/users/' + ${user.id}" class="btn btn-outline-primary">View</a>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
 
     <!-- Overlay -->
     <div class="overlay"></div>
