@@ -11,6 +11,10 @@ public class ChatMessage {
         LEAVE
     }
 
+    public ChatMessage(){
+
+    }
+
     public MessageType getType() {
         return type;
     }
