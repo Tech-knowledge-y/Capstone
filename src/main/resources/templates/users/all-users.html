@@ -7,6 +7,75 @@
     <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
 
     <style>
+        .profile {
+            width: 350px;
+            height: 300px;
+            background-color: #fff;
+            border-radius: 5px;
+            color: #000;
+        }
+
+        .profile-left {
+            margin: 0;
+            float: left;
+            width: 75%;
+        }
+
+        .profile-right {
+            margin: 0;
+            float: right;
+            width: 25%;
+            height: 100%;
+        }
+
+        .profile-img {
+            width: 30%;
+            border-radius: 50%;
+            position: relative;
+            left: 50%;
+            top: 50px;
+            transform: translateX(-50%);
+            border: 2px solid black;
+        }
+
+        .profile-title {
+            text-align: center;
+            position: relative;
+            top: 50px;
+        }
+
+        .profile-subtitle {
+            text-align: center;
+            position: relative;
+            top: 40px;
+        }
+
+        .profile-view {
+            position: relative;
+            top: 45px;
+            left: 50%;
+            width: 120px;
+            border-radius: 15px;
+            height: 30px;
+            font-size: 12px;
+            transform: translateX(-50%)
+        }
+
+        .box {
+            height: 50%;
+        }
+
+        .box-top {
+            border-left: 1px solid black;
+            border-bottom: 1px solid black;
+            margin-bottom: 2px;
+        }
+
+        .box-bottom {
+            margin-top: 2px;
+            border-left: 1px solid black;
+            border-top: 1px solid black;
+        }
         .card-title, .card-text {
             color: #000;
         }
@@ -24,6 +93,10 @@
         #mentee-filter, #mentor-filter {
             color: #fff;
             border-left: none;
+        }
+
+        #content {
+            padding: 0;
         }
 
         /*// Medium devices (tablets, 768px and up)*/
@@ -52,29 +125,41 @@
                     <button type="button" class="btn btn-outline-primary" id="mentee-filter">Mentee</button>
                 </div>
                 <div class="row">
-                    <div class="col-sm-12 col-md-6 my-2" th:each="user : ${users}">
-                        <div th:class="'card ' + ${user.status}" style="width: 100%;">
-                            <div class="card-body">
-                                <h3 class="card-title" th:text="${user.username}"></h3>
-                                <p class="card-text" th:text="${user.status}"></p>
-                                <p class="card-text" th:text="${user.email}"></p>
-                                <a th:href="'/users/' + ${user.id}" class="btn btn-outline-primary">View</a>
+                    <div class="col-md-12 col-lg-6 my-2" th:each="user : ${users}">
+                        <div th:class="'mx-auto profile ' + ${user.status}">
+                            <div class="profile-left">
+                                <div class="profile-left-content">
+                                    <img class="profile-img" src="img/male.png" alt="male" />
+                                    <h3 class="profile-title" th:text="${user.username}"></h3>
+                                    <p class="profile-subtitle" th:text="${user.status}"></p>
+                                    <button class="btn btn-outline-primary profile-view">View</button>
+                                </div>
+                            </div>
+                            <div class="profile-right">
+                                <div class="box box-top">
+                                    <p class="text-center">total posts</p>
+                                </div>
+                                <div class="box box-bottom">
+                                    <p class="text-center">total comments</p>
+                                </div>
                             </div>
                         </div>
-
-                        <!--<h2 th:text="${user.status}"></h2>-->
-                        <!--<p>Username</p><h2 th:text="${user.username}"></h2>-->
-                        <!--<p>Email</p><h2 th:text="${user.email}"></h2>-->
-                        <!--<p>Gender</p><h2 th:text="${user.gender}"></h2>-->
-                        <!--<p>Birthday</p><h2 th:text="${user.birthdate}"></h2>-->
-
-                        <!--<a th:href="'/users/' + ${user.id}" class="btn btn-outline-primary">View</a>-->
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
+
+    <!--<div class="col-sm-12 col-md-6 my-2" th:each="user : ${users}">-->
+    <!--<div th:class="'card ' + ${user.status}" style="width: 100%;">-->
+    <!--<div class="card-body">-->
+    <!--<h3 class="card-title" th:text="${user.username}"></h3>-->
+    <!--<p class="card-text" th:text="${user.status}"></p>-->
+    <!--<p class="card-text" th:text="${user.email}"></p>-->
+    <!--<a th:href="'/users/' + ${user.id}" class="btn btn-outline-primary">View</a>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
 
     <!-- Overlay -->
     <div class="overlay"></div>
