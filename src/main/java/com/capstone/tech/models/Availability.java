@@ -1,9 +1,6 @@
 package com.capstone.tech.models;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import java.sql.Time;
 import java.util.*;
 
 @Entity
@@ -15,60 +12,25 @@ public class Availability {
     private long id;
 
     @Column
-    private String dayOfWeek;
-
-//    @Column
-//    @Temporal(TemporalType.TIME)
-//    private java.util.Date timeStart;
-//
-//    @Column
-//    @Temporal(TemporalType.TIME)
-//    private java.util.Date timeEnd;
+    private String day;
 
     @Column
-    @DateTimeFormat(pattern = "HH.mm")
-    private Time timeStart;
+    private String fromTime;
 
     @Column
-    @DateTimeFormat(pattern = "HH.mm")
-    private Time timeEnd;
+    private String toTime;
 
-    @Column
-    private String week;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "availability")
+    private List<UserAvailability> userAvailability;
 
-    @Column
-    private String year;
+    public Availability() {}
 
-
-    // relationships
-
-    @OneToOne
-    private User user;
-
-    // constructors/getters/setters
-
-    public Availability() {
-
-    }
-
-
-    public Availability(String dayOfWeek, Time timeStart, Time timeEnd, String week, String year, User user) {
-        this.dayOfWeek = dayOfWeek;
-        this.timeStart = timeStart;
-        this.timeEnd = timeEnd;
-        this.week = week;
-        this.year = year;
-        this.user = user;
-    }
-
-    public Availability(long id, String dayOfWeek, Time timeStart, Time timeEnd, String week, String year, User user) {
+    public Availability(long id, String day, String fromTime, String toTime, List<UserAvailability> userAvailability) {
         this.id = id;
-        this.dayOfWeek = dayOfWeek;
-        this.timeStart = timeStart;
-        this.timeEnd = timeEnd;
-        this.week = week;
-        this.year = year;
-        this.user = user;
+        this.day = day;
+        this.fromTime = fromTime;
+        this.toTime = toTime;
+        this.userAvailability = userAvailability;
     }
 
     public long getId() {
@@ -79,51 +41,35 @@ public class Availability {
         this.id = id;
     }
 
-    public String getDayOfWeek() {
-        return dayOfWeek;
+    public String getDay() {
+        return day;
     }
 
-    public void setDayOfWeek(String dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
+    public void setDay(String day) {
+        this.day = day;
     }
 
-    public Time getTimeStart() {
-        return timeStart;
+    public String getFromTime() {
+        return fromTime;
     }
 
-    public void setTimeStart(Time timeStart) {
-        this.timeStart = timeStart;
+    public void setFromTime(String fromTime) {
+        this.fromTime = fromTime;
     }
 
-    public Time getTimeEnd() {
-        return timeEnd;
+    public String getToTime() {
+        return toTime;
     }
 
-    public void setTimeEnd(Time timeEnd) {
-        this.timeEnd = timeEnd;
+    public void setToTime(String toTime) {
+        this.toTime = toTime;
     }
 
-    public String getWeek() {
-        return week;
+    public List<UserAvailability> getUserAvailability() {
+        return userAvailability;
     }
 
-    public void setWeek(String week) {
-        this.week = week;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserAvailability(List<UserAvailability> userAvailability) {
+        this.userAvailability = userAvailability;
     }
 }
