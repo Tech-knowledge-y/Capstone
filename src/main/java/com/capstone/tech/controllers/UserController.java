@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.List;
 
 
 @Controller
@@ -100,6 +102,18 @@ public class UserController {
     // Show all users
     @GetMapping("/users")
     private String index(Model viewModel) {
+        List<User> allUsers = userDao.findAll();
+        HashMap<Long, Long> usersTotalPosts = new HashMap<>();
+        HashMap<Long, Long> usersTotalComments = new HashMap<>();
+
+        for (User user : allUsers) {
+            usersTotalPosts.put(user.getId(), userDao.findNumberOfPostsById(user.getId()));
+            usersTotalComments.put(user.getId(), userDao.findNumberOfCommentsById(user.getId()));
+        }
+
+        viewModel.addAttribute("users", userDao.findAll());
+        viewModel.addAttribute("usersPosts", usersTotalPosts);
+        viewModel.addAttribute("usersComments", usersTotalComments);
         viewModel.addAttribute("users", userDao.findAll());
         return "users/all-users";
     }
