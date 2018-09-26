@@ -5,7 +5,10 @@
     <div th:replace="fragments/head :: head('Default')"></div>
     <!-- Add Custom CSS Below-->
     <link rel="stylesheet" href="" />
-    <style></style>
+    <style>
+        .card {
+        }
+    </style>
 </head>
 
 <body>
@@ -27,142 +30,10 @@
 
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-12 col-md-6">
-                        <!-- =================== USER INFO =================== -->
-                        <h1>User Information for: <span th:text="${user.username}"></span></h1>
-                        <h2 th:text="${user.status}"></h2>
-                        <h4 th:text="${'email: ' + user.email}"></h4>
-                        <h4 th:text="${'gender: ' + user.gender}"></h4>
+                    <div class="col-12 my-2">
+                        <div class="card">
 
-                        <!-- =================== USER DETAIL INFO =================== -->
-                        <th:block th:if="${user.userDetail != null}">
-                            <h4 th:text="${user.userDetail.fName}"></h4>
-                            <h4 th:text="${user.userDetail.lName}"></h4>
-                            <h4 th:text="${user.userDetail.birthdate}"></h4>
-                            <h4 th:text="${user.userDetail.city}"></h4>
-                            <h4 th:text="${user.userDetail.state}"></h4>
-                            <h4 th:text="${user.userDetail.zipCode}"></h4>
-                            <h4 th:text="${user.userDetail.bio}"></h4>
-
-                            <a class="btn btn-warning" th:href="'/users/' + ${user.userDetail.id} + '/details/edit'" th:if="${showEditControls}">Edit user details</a>
-
-                            <form th:action="'/users/' + ${user.id} + '/details/delete'" th:method="POST" th:if="${showEditControls}">
-                                <button class="btn btn-danger">Delete Details</button>
-                            </form>
-                        </th:block>
-
-                        <th:block th:if="${user.userDetail == null}">
-                            <h3>No User Details</h3> <!-- Remove this -->
-                            <a th:href="'/users/details/create'" th:if="${showEditControls}">Add user details</a>
-                        </th:block>
-                        <!-- =================== USER AVAILABILITY =================== -->
-                        <th:block th:each="availability : ${user.userAvailability}">
-                            <br/>
-                            <span th:text="${availability.availability.day}"></span>
-                            <span th:text="${availability.availability.fromTime}"></span>
-                            <span th:text="${availability.availability.toTime}"></span>
-                            <br/>
-                        </th:block>
-                        <form th:action="'/users/show-user/availability-add'" th:method="post">
-                            <div class="form-row align-items-center">
-                                <div class="col-auto">
-                                    <div class="form-group">
-                                        <select class="form-control" id="day" th:field="${availability.day}">
-                                            <option value="none" selected="selected">Day</option>
-                                            <option value="sunday">Sunday</option>
-                                            <option value="monday">Monday</option>
-                                            <option value="tuesday">Tuesday</option>
-                                            <option value="wednesday">Wednesday</option>
-                                            <option value="thursday">Thursday</option>
-                                            <option value="friday">Friday</option>
-                                            <option value="saturday">Saturday</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="form-group">
-                                        <select class="form-control" id="from-time" th:field="${availability.fromTime}">
-                                            <option value="none" selected="selected">From</option>
-                                            <option value="09:00am">09:00am</option>
-                                            <option value="09:30am">09:30</option>
-                                            <option value="10:00am">10:00am</option>
-                                            <option value="10:30am">10:30am</option>
-                                            <option value="11:00am">11:00am</option>
-                                            <option value="11:30am">11:30am</option>
-                                            <option value="12:00am">12:00am</option>
-                                            <option value="12:30am">12:30am</option>
-                                            <option value="1:00pm">1:00pm</option>
-                                            <option value="1:30pm">1:30pm</option>
-                                            <option value="2:00pm">2:00pm</option>
-                                            <option value="2:30pm">2:30pm</option>
-                                            <option value="3:00pm">3:00pm</option>
-                                            <option value="3:30pm">3:30pm</option>
-                                            <option value="4:00pm">4:00pm</option>
-                                            <option value="4:30pm">4:30pm</option>
-                                            <option value="5:00pm">5:00pm</option>
-                                            <option value="5:30pm">5:30pm</option>
-                                            <option value="6:00pm">6:00pm</option>
-                                            <option value="6:30pm">6:30pm</option>
-                                            <option value="7:00pm">7:00pm</option>
-                                            <option value="7:30pm">7:30pm</option>
-                                            <option value="8:00pm">8:00pm</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="form-group">
-                                        <select class="form-control" id="to-time" th:field="${availability.toTime}">
-                                            <option value="none" selected="selected">To</option>
-                                            <option value="09:00am">09:00am</option>
-                                            <option value="09:30am">09:30</option>
-                                            <option value="10:00am">10:00am</option>
-                                            <option value="10:30am">10:30am</option>
-                                            <option value="11:00am">11:00am</option>
-                                            <option value="11:30am">11:30am</option>
-                                            <option value="12:00am">12:00am</option>
-                                            <option value="12:30am">12:30am</option>
-                                            <option value="1:00pm">1:00pm</option>
-                                            <option value="1:30pm">1:30pm</option>
-                                            <option value="2:00pm">2:00pm</option>
-                                            <option value="2:30pm">2:30pm</option>
-                                            <option value="3:00pm">3:00pm</option>
-                                            <option value="3:30pm">3:30pm</option>
-                                            <option value="4:00pm">4:00pm</option>
-                                            <option value="4:30pm">4:30pm</option>
-                                            <option value="5:00pm">5:00pm</option>
-                                            <option value="5:30pm">5:30pm</option>
-                                            <option value="6:00pm">6:00pm</option>
-                                            <option value="6:30pm">6:30pm</option>
-                                            <option value="7:00pm">7:00pm</option>
-                                            <option value="7:30pm">7:30pm</option>
-                                            <option value="8:00pm">8:00pm</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <button type="submit" class="btn btn-outline-primary">Save</button>
-                                </div>
-                            </div>
-                        </form>
-                        <!-- =================== ADDING LANGUAGES =================== -->
-
-                        <th:block th:each="language : ${user.userLanguages}">
-                            <p th:text="${language.languages.language}"></p>
-                        </th:block>
-                        <form class="form-inline" th:action="'/users/show-user/add-language'" th:method="post">
-                            <div class="form-group mx-sm-3 mb-2">
-                                <select class="form-control" id="language" th:field="${languages.language}">
-                                    <option value="none" selected="selected">Add a language</option>
-                                    <option value="HTML">HTML</option>
-                                    <option value="CSS">CSS</option>
-                                    <option value="Java">Java</option>
-                                    <option value="Javascript">Javascript</option>
-                                    <option value="Python">Python</option>
-                                    <option value="MySQL">MySQL</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-outline-primary mb-2">Add</button>
-                        </form>
+                        </div>
                     </div>
                     <!-- /#col-12 -->
                 </div>
