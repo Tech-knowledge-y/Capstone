@@ -20,88 +20,154 @@
         .profile {
             width: 350px;
             height: 300px;
-            background-color: #fff;
+            background-color: #F7F7F7;
             border-radius: 5px;
             color: #000;
             font-weight: 100;
             box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
         }
 
-        .profile-left {
-            margin: 0;
-            float: left;
-            width: 65%;
-        }
-
-        .profile-right {
-            margin: 0;
-            float: right;
-            width: 35%;
-            height: 100%;
-        }
-
-        .profile-img {
-            width: 30%;
-            border-radius: 50%;
-            position: relative;
-            left: 50%;
-            top: 50px;
-            transform: translateX(-50%);
-            border: 2px solid black;
-        }
-
-        .profile-title {
-            text-align: center;
-            position: relative;
-            top: 50px;
-            font-weight: 400;
-        }
-
-        .profile-subtitle {
-            text-align: center;
-            position: relative;
-            top: 40px;
-        }
-
-        .profile-view {
-            position: relative;
-            top: 45px;
-            left: 50%;
-            width: 120px;
-            transform: translateX(-50%)
-        }
-
-        .box {
-            height: 49.5%;
-            background: #C4C4CC;
-        }
-
-        .box-top {
+        .profile-top {
+            height: 65%;
+            background-image: linear-gradient(-45deg, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
+            border-top-left-radius: 5px;
             border-top-right-radius: 5px;
-            margin-bottom: 3px;
         }
 
-        .box-bottom {
-            border-bottom-right-radius: 5px;
-        }
-
-        .box-text {
-            font-weight: 400;
-            font-size: 1.5rem;
-            text-align: center;
+        .profile-top-content, .profile-bottom-content {
+            height: 100%;
             position: relative;
-            top: 50%;
-            transform: translateY(-50%);
         }
 
-        .box-text-label {
-            font-weight: 100;
-            font-size: .75rem;
-            top: 30%;
+        .profile-bottom {
+            height: 35%;
         }
+
+        .profile-image {
+            border-radius: 50%;
+            border: 2px solid #F7F7F7;
+            position: absolute;
+            width: 20%;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .profile-name {
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateX(-50%);
+        }
+
+        .profile-status {
+            position: absolute;
+            top: 62%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .profile-view-btn {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            top: -17%;
+            height: 35px;
+            font-size: .9rem;
+            background: #F7F7F7;
+            border: none;
+            color: #272526;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1), 0 5px 12px rgba(0,0,0,0.15);
+        }
+
+        .left, .right {
+            position: absolute;
+            width: 50%;
+            text-align: center;
+            top: 30%;
+            height: auto;
+        }
+
+        .right {
+            border-left: 1px solid #c4c5c7;
+            left: 50%;
+        }
+        /*.profile-left {*/
+            /*margin: 0;*/
+            /*float: left;*/
+            /*width: 65%;*/
+        /*}*/
+
+        /*.profile-right {*/
+            /*margin: 0;*/
+            /*float: right;*/
+            /*width: 35%;*/
+            /*height: 100%;*/
+        /*}*/
+
+        /*.profile-img {*/
+            /*width: 30%;*/
+            /*border-radius: 50%;*/
+            /*position: relative;*/
+            /*left: 50%;*/
+            /*top: 50px;*/
+            /*transform: translateX(-50%);*/
+            /*border: 2px solid black;*/
+        /*}*/
+
+        /*.profile-title {*/
+            /*text-align: center;*/
+            /*position: relative;*/
+            /*top: 50px;*/
+            /*font-weight: 400;*/
+        /*}*/
+
+        /*.profile-subtitle {*/
+            /*text-align: center;*/
+            /*position: relative;*/
+            /*top: 40px;*/
+        /*}*/
+
+        /*.profile-view {*/
+            /*position: relative;*/
+            /*top: 45px;*/
+            /*left: 50%;*/
+            /*width: 120px;*/
+            /*transform: translateX(-50%)*/
+        /*}*/
+
+        /*.box {*/
+            /*height: 49.5%;*/
+            /*background: #C4C4CC;*/
+        /*}*/
+
+        /*.box-top {*/
+            /*border-top-right-radius: 5px;*/
+            /*margin-bottom: 3px;*/
+        /*}*/
+
+        /*.box-bottom {*/
+            /*border-bottom-right-radius: 5px;*/
+        /*}*/
+
+        /*.box-text {*/
+            /*font-weight: 400;*/
+            /*font-size: 1.5rem;*/
+            /*text-align: center;*/
+            /*position: relative;*/
+            /*top: 50%;*/
+            /*transform: translateY(-50%);*/
+        /*}*/
+
+        /*.box-text-label {*/
+            /*font-weight: 100;*/
+            /*font-size: .75rem;*/
+            /*top: 30%;*/
+        /*}*/
 
         #all-filter, #mentor-filter, #mentee-filter {
-            color: #fff;
+            color: #F7F7F7;
         }
 
         #search {
@@ -111,9 +177,9 @@
             border-top: 0;
             border-right: 0;
             border-left: 0;
-            border-bottom: 1px solid #fff;
+            border-bottom: 1px solid #F7F7F7;
             border-radius: 0;
-            color: #fff;
+            color: #F7F7F7;
             font-weight: 100;
             font-size: 2rem;
         }
@@ -124,11 +190,11 @@
             border-top: 0;
             border-left: 0;
             border-right: 0;
-            border-bottom: 1px solid #fff;
+            border-bottom: 1px solid #F7F7F7;
         }
 
         #search::placeholder {
-            color: #fff;
+            color: #F7F7F7;
         }
     </style>
 </head>
@@ -155,11 +221,6 @@
                     <input type="text" class="form-control my-3" id="search" name="search" placeholder="search" />
                 </div>
                 <div class="row mb-3">
-                    <!--<div class="btn-group mt-0 mb-2" role="group" id="button-group">-->
-                        <!--<button type="button" class="btn btn-outline-primary" id="all-filter">All</button>-->
-                        <!--<button type="button" class="btn btn-outline-primary" id="mentor-filter">Mentor</button>-->
-                        <!--<button type="button" class="btn btn-outline-primary" id="mentee-filter">Mentee</button>-->
-                    <!--</div>-->
                     <div class="button-group mx-auto">
                         <button type="button" class="btn btn-outline-primary btn-filter" id="all-filter">All</button>
                         <button type="button" class="btn btn-outline-primary btn-filter" id="mentor-filter">Mentor</button>
@@ -170,24 +231,45 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-6 my-2" th:each="user : ${users}">
                         <div th:class="'mx-auto profile ' + ${user.status}">
-                            <div class="profile-left">
-                                <div class="profile-left-content">
-                                    <img class="profile-img" src="img/male.png" alt="male" />
-                                    <h3 class="profile-title" th:text="${user.username}"></h3>
-                                    <p class="profile-subtitle" th:text="${user.status}"></p>
-                                    <a th:href="'/users/' + ${user.id}" class="btn btn-outline-primary profile-view">View</a>
+                            <div class="profile-top">
+                                <div class="profile-top-content">
+                                    <img class="profile-image" src="img/male.png" alt="male" />
+                                    <h5 class="profile-name" th:text="${user.username}"></h5>
+                                    <p class="profile-status" th:text="${user.status}"></p>
                                 </div>
                             </div>
-                            <div class="profile-right">
-                                <div class="box box-top">
-                                    <p class="box-text" th:text="${usersPosts.get(user.id)}"></p>
-                                    <p class="box-text box-text-label">Posts</p>
-                                </div>
-                                <div class="box box-bottom">
-                                    <p class="box-text" th:text="${usersComments.get(user.id)}"></p>
-                                    <p class="box-text box-text-label">Comments</p>
+                            <div class="profile-bottom">
+                                <div class="profile-bottom-content">
+                                    <a th:href="'/users/' + ${user.id}" class="btn btn-outline-primary profile-view-btn">View</a>
+                                    <div class="left">
+                                        <p class="m-0" th:text="${usersPosts.get(user.id)}"></p>
+                                        <p class="m-0">Posts</p>
+                                    </div>
+                                    <div class="right">
+                                        <p class="m-0" th:text="${usersComments.get(user.id)}"></p>
+                                        <p class="m-0">Comments</p>
+                                    </div>
                                 </div>
                             </div>
+
+                            <!--<div class="profile-left">-->
+                                <!--<div class="profile-left-content">-->
+                                    <!--<img class="profile-img" src="img/male.png" alt="male" />-->
+                                    <!--<h3 class="profile-title" th:text="${user.username}"></h3>-->
+                                    <!--<p class="profile-subtitle" th:text="${user.status}"></p>-->
+                                    <!--<a th:href="'/users/' + ${user.id}" class="btn btn-outline-primary profile-view">View</a>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="profile-right">-->
+                                <!--<div class="box box-top">-->
+                                    <!--<p class="box-text" th:text="${usersPosts.get(user.id)}"></p>-->
+                                    <!--<p class="box-text box-text-label">Posts</p>-->
+                                <!--</div>-->
+                                <!--<div class="box box-bottom">-->
+                                    <!--<p class="box-text" th:text="${usersComments.get(user.id)}"></p>-->
+                                    <!--<p class="box-text box-text-label">Comments</p>-->
+                                <!--</div>-->
+                            <!--</div>-->
                         </div>
                     </div>
                     <!-- /#col-12 -->
