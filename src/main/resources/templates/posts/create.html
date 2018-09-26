@@ -1,25 +1,33 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>Create Post</title>
-    <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
-    <link rel="stylesheet" href="/css/custom.css" />
+    <div th:replace="fragments/head :: head('Default')"></div>
+    <!-- Add Custom CSS Below-->
+    <link rel="stylesheet" href="/css/google-maps.css" />
+    <style></style>
 </head>
 
 <body>
 
-    <div class="wrapper">
-        <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
+<main>
+    <div id="wrapper">
+        <!-- side-navbar -->
+        <div sec:authorize="isAuthenticated()">
+            <nav th:replace="fragments/side-navbar :: side-navbar"></nav>
+        </div>
+        <!-- /#side-navbar-wrapper -->
 
         <!-- Page Content -->
         <div id="content">
-            <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
+            <!--Make sure to keep all page content within the #content div-->
+            <div sec:authorize="isAuthenticated()">
+                <nav th:replace="fragments/side-navbar :: side-navbar-toggler"></nav>
+            </div>
 
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-12">
                         <h1>Create Post</h1>
 
                         <form th:action="@{/posts/create}" th:method="POST" th:object="${post}">
@@ -59,106 +67,23 @@
                             <input type="submit" class="btn btn-outline-primary btn-block" value="Submit" id="submit-btn" />
                         </form>
                     </div>
+                    <!-- /#col-12 -->
                 </div>
+                <!-- /#row -->
             </div>
+            <!-- /#container-fluid -->
         </div>
+        <!-- /#content -->
     </div>
+    <!-- /#wrapper -->
 
-    <!-- Overlay -->
-    <div class="overlay"></div>
+    <!-- Overlay (are we using this?) -->
+    <!--<div class="overlay"></div>-->
 
-    <!--<script th:replace="fragments/footer :: footer"></script>-->
-    <script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
-    <script type="text/javascript">
-        // <![CDATA[
-        // Initialize and add the map
-        document.querySelector("#date").valueAsDate = new Date();
-        var latInput = document.getElementById("latitude").value;
-        var longInput = document.getElementById("longitude").value;
-
-        function initMap() {
-            var map;
-            var bounds = new google.maps.LatLngBounds();
-            var mapOptions = {
-                zoom: 8,
-                disableDefaultUI: true
-            };
-
-            // Display a map on the page
-            map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-            // Multiple Markers
-            var markers = [
-                ['Codeup', 29.4267857, -98.4895764],
-                ['Geekdom', 29.426275, -98.493509],
-                ['Central Public Library', 29.4323442, -98.4927401],
-                ['San Pedro Library', 29.446473, -98.49988]
-            ];
-
-            // Info Window Content
-            var infowindowContent = [
-                ['<div class="info_content">' +
-                "<h6 class='marker-title'>Codeup</h6>\n" +
-                "<p>Codeup is a fullstack software development<br>career accelerator located in San Antonio.</p>" +
-                "<p><strong>Address:</strong> 600 Navarro St #350, San Antonio, TX 78205</p>" + '</div>'],
-
-                ['<div class="info_content">' +
-                "<h6 class='marker-title'>Geekdom</h6>\n" +
-                "<p>Geekdom is a collaborative coworking space in San Antonio, Texas,<br>and the heartbeat of the startup ecosystem.</p>" +
-                "<p><strong>Address:</strong> 110 East Houston Street, 7th Floor, San Antonio, TX 78205</p>" + '</div>'],
-
-                ['<div class="info_content">' +
-                "<h6 class='marker-title'>Central Public Library</h6>\n" +
-                "<p>A branch of the San Antonio Public Library</p>" +
-                "<p><strong>Address:</strong> 600 Soledad St, San Antonio, TX 78205</p>" + '</div>'],
-
-                ['<div class="info_content">' +
-                "<h6 class='marker-title'>San Pedro Library</h6>\n" +
-                "<p>San Pedro has a small collection serving neighborhood adults,<br>young people, and children with materials about San Antonio and local area history.</p>" +
-                "<p><strong>Address:</strong> 1315 San Pedro Ave, San Antonio, TX 78212</p>" + '</div>']
-            ];
-
-            // Display multiple markers on a map
-            var infoWindow = new google.maps.InfoWindow(), marker, i;
-
-            // Loop through our array of markers & place each one on the map
-            for (i = 0; i < markers.length; i++) {
-                var position = new google.maps.LatLng(markers[i][1], markers[i][2], markers [i][3], markers [i][4]);
-                bounds.extend(position);
-                marker = new google.maps.Marker({
-                    position: position,
-                    map: map,
-                    title: markers[i][0],
-                    animation: google.maps.Animation.DROP
-                });
-
-                // Allow each marker to have an info window
-                google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                    return function() {
-                        infoWindow.setContent(infowindowContent[i][0]);
-                        infoWindow.open(map, marker);
-                    }
-                })(marker, i));
-
-                // Add listener for location
-                google.maps.event.addListener(marker, "click", function (event) {
-                    document.getElementById("longitude").value = this.position.lng().toFixed(7);
-                    document.getElementById("latitude").value = this.position.lat().toFixed(7);
-                    document.getElementById("location").innerText = " " + this.title;
-                });
-
-                //Auto center map to fit all markers on screen
-                map.fitBounds(bounds);
-            }
-        }
-
-        // ]]>
-    </script>
-    <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbF5MJZ8-olDNTPyN-vD679LUpDuf9ARk&amp;callback=initMap">
-    </script>
+</main>
+<script th:replace="fragments/scripts :: scripts"></script>
+<script th:replace="fragments/google-map :: google-map"></script>
+<script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbF5MJZ8-olDNTPyN-vD679LUpDuf9ARk&amp;callback=initMap">
+</script>
 </body>
 </html>
-
-
-
-

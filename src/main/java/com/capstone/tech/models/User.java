@@ -28,9 +28,6 @@ public class User {
 
     // Relationships
 
-    @OneToOne(mappedBy = "user")
-    private Availability availability;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
 
@@ -43,36 +40,39 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<UserLanguages> userLanguages;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<UserAvailability> userAvailability;
+
 
     // Constructors / Getters / Setters
 
     public User() { }
 
-    public User(String username, String email, String password, String gender, String birthdate, String status, Availability availability, List<Post> posts, UserDetail userDetail, List<Comments> comments, List<UserLanguages> userLanguages) {
+    public User(String username, String email, String password, String gender, String birthdate, String status, List<Post> posts, UserDetail userDetail, List<Comments> comments, List<UserLanguages> userLanguages, List<UserAvailability> userAvailability) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.gender = gender;
         this.status = status;
-        this.availability = availability;
         this.posts = posts;
         this.userDetail = userDetail;
         this.comments = comments;
         this.userLanguages = userLanguages;
+        this.userAvailability = userAvailability;
     }
 
-    public User(long id, String username, String email, String password, String gender, String status, Availability availability, List<Post> posts, UserDetail userDetail, List<Comments> comments, List<UserLanguages> userLanguages) {
+    public User(long id, String username, String email, String password, String gender, String status, List<Post> posts, UserDetail userDetail, List<Comments> comments, List<UserLanguages> userLanguages, List<UserAvailability> userAvailability) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.gender = gender;
         this.status = status;
-        this.availability = availability;
         this.posts = posts;
         this.userDetail = userDetail;
         this.comments = comments;
         this.userLanguages = userLanguages;
+        this.userAvailability = userAvailability;
     }
 
     public User(User copy) {
@@ -132,14 +132,6 @@ public class User {
         this.status = status;
     }
 
-    public Availability getAvailability() {
-        return availability;
-    }
-
-    public void setAvailability(Availability availability) {
-        this.availability = availability;
-    }
-
     public List<Post> getPosts() {
         return posts;
     }
@@ -170,5 +162,13 @@ public class User {
 
     public void setUserLanguages(List<UserLanguages> userLanguages) {
         this.userLanguages = userLanguages;
+    }
+
+    public List<UserAvailability> getUserAvailability() {
+        return userAvailability;
+    }
+
+    public void setUserAvailability(List<UserAvailability> userAvailability) {
+        this.userAvailability = userAvailability;
     }
 }

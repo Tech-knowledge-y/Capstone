@@ -1,70 +1,86 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-      <!--xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">-->
-      <head>
-          <meta charset="UTF-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-          <title>Edit</title>
-          <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
-      </head>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <div th:replace="fragments/head :: head('Default')"></div>
+    <!-- Add Custom CSS Below-->
+    <link rel="stylesheet" href="" />
+    <style></style>
+</head>
 
 <body>
 
+<main>
     <div id="wrapper">
-        <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
+        <!-- side-navbar -->
+        <div sec:authorize="isAuthenticated()">
+            <nav th:replace="fragments/side-navbar :: side-navbar"></nav>
+        </div>
+        <!-- /#side-navbar-wrapper -->
 
         <!-- Page Content -->
         <div id="content">
-            <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
+            <!--Make sure to keep all page content within the #content div-->
+            <div sec:authorize="isAuthenticated()">
+                <nav th:replace="fragments/side-navbar :: side-navbar-toggler"></nav>
+            </div>
 
             <div class="container-fluid">
                 <div class="row">
                     <h2>This is the edit user details form / After user has logged in.</h2>
-                    <form th:action="'/users/' + ${id} + '/details/edit'" th:method="POST" th:object="${userDetail}">
-                        <input type="hidden" th:field="*{id}" />
-                        <div class="form-group">
-                            <label for="fName" class="text-white">First Name</label>
-                            <input id="fName" name="fName" type="text" class="form-control" th:field="*{fName}" />
-                        </div>
-                        <div class="form-group">
-                            <label for="lName" class="text-white">Last Name</label>
-                            <input id="lName" name="lName" type="text" class="form-control" th:field="*{lName}"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="birthdate" class="text-white">Birthdate</label>
-                            <input id="birthdate" name="birthdate" type="date" class="form-control" placeholder="Enter your Birthday" th:field="*{birthdate}" />
-                        </div>
-                        <div class="form-group">
-                            <label for="city" class="text-white">City</label>
-                            <input id="city" name="city" type="text" class="form-control" th:field="*{city}"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="state" class="text-white">State</label>
-                            <input id="state" name="state" type="text" class="form-control" th:field="*{state}"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="zipCode" class="text-white">Zip Code</label>
-                            <input id="zipCode" name="zipCode" type="text" class="form-control" th:field="*{zipCode}"/>
-                        </div>
-                        <br />
-                        <div class="form-group">
-                            <label for="textAreaBio" class="text-white">Brief "Mentor" bio / or / "Mentee" help-needed bio</label>
+                    <div class="col-12">
+                        <form th:action="'/users/' + ${id} + '/details/edit'" th:method="POST" th:object="${userDetail}">
+                            <input type="hidden" th:field="*{id}" />
+                            <div class="form-group">
+                                <label for="fName" class="text-white">First Name</label>
+                                <input id="fName" name="fName" type="text" class="form-control" th:field="*{fName}" />
+                            </div>
+                            <div class="form-group">
+                                <label for="lName" class="text-white">Last Name</label>
+                                <input id="lName" name="lName" type="text" class="form-control" th:field="*{lName}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="birthdate" class="text-white">Birthdate</label>
+                                <input id="birthdate" name="birthdate" type="date" class="form-control" placeholder="Enter your Birthday" th:field="*{birthdate}" />
+                            </div>
+                            <div class="form-group">
+                                <label for="city" class="text-white">City</label>
+                                <input id="city" name="city" type="text" class="form-control" th:field="*{city}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="state" class="text-white">State</label>
+                                <input id="state" name="state" type="text" class="form-control" th:field="*{state}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="zipCode" class="text-white">Zip Code</label>
+                                <input id="zipCode" name="zipCode" type="text" class="form-control" th:field="*{zipCode}"/>
+                            </div>
                             <br />
-                            <textarea id="textAreaBio" name="textAreaBio" rows="5" cols="40" class="form-control" th:field="*{bio}"></textarea>
-                        </div>
+                            <div class="form-group">
+                                <label for="textAreaBio" class="text-white">Brief "Mentor" bio / or / "Mentee" help-needed bio</label>
+                                <br />
+                                <textarea id="textAreaBio" name="textAreaBio" rows="5" cols="40" class="form-control" th:field="*{bio}"></textarea>
+                            </div>
 
-                        <button class="btn btn-success">Update/Save</button>
-                    </form>
+                            <button class="btn btn-success">Update/Save</button>
+                        </form>
+                    </div>
+                    <!-- /#col-12 -->
                 </div>
+                <!-- /#row -->
             </div>
+            <!-- /#container-fluid -->
         </div>
+        <!-- /#content -->
     </div>
+    <!-- /#wrapper -->
 
-    <!-- Overlay -->
-    <div class="overlay"></div>
+    <!-- Overlay (are we using this?) -->
+    <!--<div class="overlay"></div>-->
 
-    <script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
+</main>
 
+<script th:replace="fragments/scripts :: scripts"></script>
 </body>
 </html>
 

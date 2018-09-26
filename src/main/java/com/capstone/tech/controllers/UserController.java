@@ -6,10 +6,13 @@ import com.capstone.tech.services.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 
 @Controller
@@ -17,7 +20,8 @@ public class UserController {
 
     UserRepo userDao;
     UserDetailRepo userDetailDao;
-    AvailabilityRepo availabilityDao;
+    AvailabilityRepo availabilityRepo;
+    UserAvailabilityRepo userAvailabilityRepo;
     UserRoles userRoles;
     UserService userSvc;
     private PasswordEncoder passwordEncoder;
@@ -25,10 +29,11 @@ public class UserController {
     LanguagesRepo languagesRepo;
 
 
-    public UserController(UserRepo userDao, UserDetailRepo userDetailDao, AvailabilityRepo availabilityDao, UserRoles userRoles, UserService userSvc, PasswordEncoder passwordEncoder, UserLanguagesRepo userLanguagesRepo, LanguagesRepo languagesRepo) {
+    public UserController(UserRepo userDao, UserDetailRepo userDetailDao, AvailabilityRepo availabilityRepo, UserAvailabilityRepo userAvailabilityRepo, UserRoles userRoles, UserService userSvc, PasswordEncoder passwordEncoder, UserLanguagesRepo userLanguagesRepo, LanguagesRepo languagesRepo) {
         this.userDao = userDao;
         this.userDetailDao = userDetailDao;
-        this.availabilityDao = availabilityDao;
+        this.availabilityRepo = availabilityRepo;
+        this.userAvailabilityRepo = userAvailabilityRepo;
         this.userRoles = userRoles;
         this.userSvc = userSvc;
         this.passwordEncoder = passwordEncoder;
@@ -47,11 +52,49 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    private String saveUser(@ModelAttribute User user, Model model){
+    public String saveUser(@Valid User user, Errors validation, Model viewModel){
+
+        String username = user.getUsername();
+        User existingUsername = userDao.findByUsername(username);
+        User existingEmail = userDao.findByEmail(user.getEmail());
+
+        System.out.println(existingEmail);
+        System.out.println(existingUsername);
+
+
+        // Custom validation if the username is taken
+        if(existingUsername != null){
+            validation.rejectValue("username", "user.username", username + " is already registered - please login or choose another username");
+        }
+
+        // Custom validation if the email is taken
+        if(existingEmail != null){
+            validation.rejectValue("email", "user.email", user.getEmail() + " is already registered - please login or choose another email");
+        }
+
+        if (validation.hasErrors()) {
+            viewModel.addAttribute("errors", validation);
+            viewModel.addAttribute("user", user);
+            return "users/register";
+        }
+
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
-        return "redirect:/login";
+
+        User newUser = userDao.save(user);
+
+        UserRole ur = new UserRole();
+        ur.setRole("ROLE_USER");
+        ur.setUserId(newUser.getId());
+        userRoles.save(ur);
+
+        // Programmatic login after registering a user
+        userSvc.authenticate(user);
+
+        viewModel.addAttribute("user", user);
+        return "redirect:/posts";
+
     }
 
     // Show all users
@@ -64,24 +107,13 @@ public class UserController {
     // Show individual user profile
     @GetMapping("/users/{id}")
     private String show(@PathVariable long id, Model viewModel) {
-//        viewModel.addAttribute("user", userDao.findOne(id));
         User user = userDao.findOne(id);
         viewModel.addAttribute("user", user);
         viewModel.addAttribute("showEditControls", userSvc.canEditProfile(user));
         viewModel.addAttribute("languages", new Languages());
+        viewModel.addAttribute("availability", new Availability());
         return "users/show-user";
     }
-
-    // Adding language
-    @PostMapping("/users/show-user/add-language")
-    private String addLanguage( @ModelAttribute UserLanguages userLanguages, @ModelAttribute Languages languages) {
-        languagesRepo.save(languages);
-        userLanguages.setUser(userSvc.loggedInUser());
-        userLanguages.setLanguages(languagesRepo.findOne(languages.getId()));
-        userLanguagesRepo.save(userLanguages);
-        return "redirect:/users/" + userSvc.loggedInUser().getId();
-    }
-
 
 
     /**======= Users and User Details =======**/
@@ -122,40 +154,25 @@ public class UserController {
 
 
     /**======= Users and User Availability =======**/
-
-    @GetMapping("/users/availability/create")
-    private String createUserAvailability(Model viewModel) {
-        viewModel.addAttribute("availability", new Availability());
-        return "users/availability-create";
-    }
-
-    @PostMapping("/users/availability/create")
-    private String insertUserAvailability(@ModelAttribute Availability availability) {
-        availability.setUser(userSvc.loggedInUser());
-        availabilityDao.save(availability);
+    // Adding user coding languages
+    @PostMapping("/users/show-user/add-language")
+    private String addLanguage( @ModelAttribute UserLanguages userLanguages, @ModelAttribute Languages languages) {
+        languagesRepo.save(languages);
+        userLanguages.setUser(userSvc.loggedInUser());
+        userLanguages.setLanguages(languagesRepo.findOne(languages.getId()));
+        userLanguagesRepo.save(userLanguages);
         return "redirect:/users/" + userSvc.loggedInUser().getId();
     }
 
-    @GetMapping("/users/{id}/availability/edit")
-    private String editUserAvailability(@PathVariable long id, Model viewModel) {
-        viewModel.addAttribute("availability", availabilityDao.findOne(id));
-//        viewModel.addAttribute("showEditControls", userSvc.canEditProfile(userSvc.loggedInUser()));
-        return "users/availability-edit";
-    }
-
-    @PostMapping("/users/{id}/availability/edit")
-    private String updateUserAvailability(@ModelAttribute Availability availability) {
-        availability.setUser(userSvc.loggedInUser());
-        availabilityDao.save(availability);
+    // Adding user availability
+    @PostMapping("/users/show-user/availability-add")
+    private String addAvailability(@ModelAttribute UserAvailability userAvailability, @ModelAttribute Availability availability) {
+        availabilityRepo.save(availability);
+        userAvailability.setUser(userSvc.loggedInUser());
+        userAvailability.setAvailability(availabilityRepo.findOne(availability.getId()));
+        userAvailabilityRepo.save(userAvailability);
         return "redirect:/users/" + userSvc.loggedInUser().getId();
     }
-
-    @PostMapping("/users/{id}/availability/delete")
-    private String deleteUserAvailability(@PathVariable long id) {
-        availabilityDao.delete(userDao.findOne(id).getAvailability());
-        return "redirect:/users/" + id;
-    }
-
 }
 
 

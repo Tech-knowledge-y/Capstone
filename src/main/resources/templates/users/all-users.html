@@ -1,12 +1,82 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>All Users</title>
-    <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
+    <div th:replace="fragments/head :: head('Default')"></div>
+    <!-- Add Custom CSS Below-->
+    <link rel="stylesheet" href="" />
 
     <style>
+        .profile {
+            width: 350px;
+            height: 300px;
+            background-color: #fff;
+            border-radius: 5px;
+            color: #000;
+        }
+
+        .profile-left {
+            margin: 0;
+            float: left;
+            width: 75%;
+        }
+
+        .profile-right {
+            margin: 0;
+            float: right;
+            width: 25%;
+            height: 100%;
+        }
+
+        .profile-img {
+            width: 30%;
+            border-radius: 50%;
+            position: relative;
+            left: 50%;
+            top: 50px;
+            transform: translateX(-50%);
+            border: 2px solid black;
+        }
+
+        .profile-title {
+            text-align: center;
+            position: relative;
+            top: 50px;
+        }
+
+        .profile-subtitle {
+            text-align: center;
+            position: relative;
+            top: 40px;
+        }
+
+        .profile-view {
+            position: relative;
+            top: 45px;
+            left: 50%;
+            width: 120px;
+            border-radius: 15px;
+            height: 30px;
+            font-size: 12px;
+            transform: translateX(-50%)
+        }
+
+        .box {
+            height: 50%;
+        }
+
+        .box-top {
+            border-left: 1px solid black;
+            border-bottom: 1px solid black;
+            margin-bottom: 2px;
+        }
+
+        .box-bottom {
+            margin-top: 2px;
+            border-left: 1px solid black;
+            border-top: 1px solid black;
+        }
+
         .card-title, .card-text {
             color: #000;
         }
@@ -26,31 +96,36 @@
             border-left: none;
         }
 
-        /*// Medium devices (tablets, 768px and up)*/
-        @media (min-width: 768px) {
-            #content {
-                width: auto;
-            }
-        }
     </style>
 </head>
 
 <body>
 
+<main>
     <div id="wrapper">
-        <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
+        <!-- side-navbar -->
+        <div sec:authorize="isAuthenticated()">
+            <nav th:replace="fragments/side-navbar :: side-navbar"></nav>
+        </div>
+        <!-- /#side-navbar-wrapper -->
 
         <!-- Page Content -->
         <div id="content">
-            <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
+            <!--Make sure to keep all page content within the #content div-->
+            <div sec:authorize="isAuthenticated()">
+                <nav th:replace="fragments/side-navbar :: side-navbar-toggler"></nav>
+            </div>
 
             <div class="container-fluid">
-                <input type="text" class="form-control my-3" id="search" name="search" placeholder="search" />
-                <div class="btn-group mt-0 mb-2" role="group" id="button-group">
-                    <button type="button" class="btn btn-outline-primary" id="all-filter">All</button>
-                    <button type="button" class="btn btn-outline-primary" id="mentor-filter">Mentor</button>
-                    <button type="button" class="btn btn-outline-primary" id="mentee-filter">Mentee</button>
+                <div class="row">
+                    <input type="text" class="form-control my-3" id="search" name="search" placeholder="search" />
+                    <div class="btn-group mt-0 mb-2" role="group" id="button-group">
+                        <button type="button" class="btn btn-outline-primary" id="all-filter">All</button>
+                        <button type="button" class="btn btn-outline-primary" id="mentor-filter">Mentor</button>
+                        <button type="button" class="btn btn-outline-primary" id="mentee-filter">Mentee</button>
+                    </div>
                 </div>
+                <!-- /#row -->
                 <div class="row">
                     <div class="col-sm-12 col-md-6 my-2" th:each="user : ${users}">
                         <div th:class="'card ' + ${user.status}" style="width: 100%;">
@@ -70,50 +145,55 @@
 
                         <!--<a th:href="'/users/' + ${user.id}" class="btn btn-outline-primary">View</a>-->
                     </div>
+                    <!-- /#col-12 -->
                 </div>
+                <!-- /#row -->
             </div>
-
+            <!-- /#container-fluid -->
         </div>
+        <!-- /#content -->
     </div>
+    <!-- /#wrapper -->
 
-    <!-- Overlay -->
-    <div class="overlay"></div>
+    <!-- Overlay (are we using this?) -->
+    <!--<div class="overlay"></div>-->
 
-    <script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
-    <script>
-        // <![CDATA[
-        $( document ).ready(function() {
+</main>
+<script th:replace="fragments/scripts :: scripts"></script>
+<script>
+    // <![CDATA[
+    $( document ).ready(function() {
 
-            // Search bar
-            $('#search').keyup(function () {
-                var filter = $(this).val();
+        // Search bar
+        $('#search').keyup(function () {
+            var filter = $(this).val();
 
-                $('.card').each(function () {
-                    if ($(this).find('.card-title').text().search(new RegExp(filter, 'i')) < 0 ) {
-                        $(this).parent().hide();
-                    } else {
-                        $(this).parent().show();
-                    }
-                })
-            });
-
-            // Filter boxes
-            $('#all-filter').click(e => {
-                $('.mentee').parent().show();
-                $('.mentor').parent().show();
-            });
-
-            $('#mentor-filter').click(e => {
-                $('.mentee').parent().hide();
-                $('.mentor').parent().show();
-            });
-
-            $('#mentee-filter').click(e => {
-                $('.mentee').parent().show();
-                $('.mentor').parent().hide();
+            $('.card').each(function () {
+                if ($(this).find('.card-title').text().search(new RegExp(filter, 'i')) < 0 ) {
+                    $(this).parent().hide();
+                } else {
+                    $(this).parent().show();
+                }
             })
         });
-        // ]]>
-    </script>
+
+        // Filter boxes
+        $('#all-filter').click(e => {
+            $('.mentee').parent().show();
+        $('.mentor').parent().show();
+    });
+
+        $('#mentor-filter').click(e => {
+            $('.mentee').parent().hide();
+        $('.mentor').parent().show();
+    });
+
+        $('#mentee-filter').click(e => {
+            $('.mentee').parent().show();
+        $('.mentor').parent().hide();
+    })
+    });
+    // ]]>
+</script>
 </body>
 </html>

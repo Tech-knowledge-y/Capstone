@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="side-navbar">
+
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+        <div id="dismiss">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
+        <div class="sidebar-header">
+            <h3>Logo</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <p>Tech{knowledge}y</p>
+            <li>
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Profiles</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li> <!-- Only shown if logged in -->
+                        <a th:href="'/users/' + ${#authentication.principal.id}">My Profile</a>
+                    </li>
+                    <li>
+                        <a href="/users">All Profiles</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Posts</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a href="/posts">View All Posts</a>
+                    </li>
+                    <li>
+                        <a href="/posts/create">Create Post</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="/resources">Resources</a>
+            </li>
+            <li>
+                <a href="/work">Behind the scenes</a>
+            </li>
+            <li>
+                <a href="/developers">Contact</a>
+            </li>
+        </ul>
+
+        <ul class="list-unstyled CTAs">
+            <li>
+                <form th:action="@{/logout}" th:method="post">
+                    <button class="btn btn-primary logout">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<nav th:fragment="side-navbar-toggler">
+    <!-- Toggler -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="sidenav-bar-toggler" sec:authorize="isAuthenticated()">
+        <div class="container-fluid">
+            <button type="button" id="sidebarCollapse" class="btn btn-info">
+                <i class="fas fa-align-left"></i>
+                <span>Menu</span>
+            </button>
+        </div>
+    </nav>
+</nav>
+
+
+</html>

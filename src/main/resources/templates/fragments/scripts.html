@@ -11,101 +11,52 @@
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
-    <!-- Menu Toggle Script -->
     <script>
+        // <!-- Menu Toggle Script -->
         $("#menu-toggle").click(function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });
     </script>
 
-</th:block>
+    <!-- Menu Toggle Script -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
 
+            $('#dismiss, .overlay').on('click', function () {
+                $('#sidebar').removeClass('active');
+                $('.overlay').removeClass('active');
+            });
 
-<th:block th:fragment="availScript">
-    <!-- Availability Form Script -->
-    <script>
-        function showHideTimeFunction() {
-            var checkBoxMon = document.getElementById("dowMonday");
-            var checkBoxTue = document.getElementById("dowTuesday");
-            var checkBoxWed = document.getElementById("dowWednesday");
-            var checkBoxThu = document.getElementById("dowThursday");
-            var checkBoxFri = document.getElementById("dowFriday");
-            var checkBoxSat = document.getElementById("dowSaturday");
-            var checkBoxSun = document.getElementById("dowSunday");
-            var startMonday = document.getElementById("startMonday");
-            var endMonday = document.getElementById("endMonday");
-            var startTuesday = document.getElementById("startTuesday");
-            var endTuesday = document.getElementById("endTuesday");
-            var startWednesday = document.getElementById("startWednesday");
-            var endWednesday = document.getElementById("endWednesday");
-            var startThursday = document.getElementById("startThursday");
-            var endThursday = document.getElementById("endThursday");
-            var startFriday = document.getElementById("startFriday");
-            var endFriday = document.getElementById("endFriday");
-            var startSaturday = document.getElementById("startSaturday");
-            var endSaturday = document.getElementById("endSaturday");
-            var startSunday = document.getElementById("startSunday");
-            var endSunday = document.getElementById("endSunday");
-
-            if(checkBoxMon.checked){
-                startMonday.style.display = "block";
-                endMonday.style.display = "block";
-            } else {
-                startMonday.style.display = "none";
-                endMonday.style.display = "none";
-            }
-
-            if(checkBoxTue.checked){
-                startTuesday.style.display = "block";
-                endTuesday.style.display = "block";
-            } else {
-                startTuesday.style.display = "none";
-                endTuesday.style.display = "none";
-            }
-
-            if(checkBoxWed.checked){
-                startWednesday.style.display = "block";
-                endWednesday.style.display = "block";
-            } else {
-                startWednesday.style.display = "none";
-                endWednesday.style.display = "none";
-            }
-
-            if(checkBoxThu.checked){
-                startThursday.style.display = "block";
-                endThursday.style.display = "block";
-            } else {
-                startThursday.style.display = "none";
-                endThursday.style.display = "none";
-            }
-
-            if(checkBoxFri.checked){
-                startFriday.style.display = "block";
-                endFriday.style.display = "block";
-            } else {
-                startFriday.style.display = "none";
-                endFriday.style.display = "none";
-            }
-
-            if(checkBoxSat.checked){
-                startSaturday.style.display = "block";
-                endSaturday.style.display = "block";
-            } else {
-                startSaturday.style.display = "none";
-                endSaturday.style.display = "none";
-            }
-
-            if(checkBoxSun.checked){
-                startSunday.style.display = "block";
-                endSunday.style.display = "block";
-            } else {
-                startSunday.style.display = "none";
-                endSunday.style.display = "none";
-            }
-        }
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').addClass('active');
+                $('.overlay').addClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
     </script>
 
+    <script>
+        $(document).ready(function () {
+            // Configure MinSize -- default is 5
+            PasswordValidator.minSize = 7;
+            // Configure MaxSize -- default is 15
+            PasswordValidator.maxSize = 16;
+
+            // whether you want to validate on prohibited characters
+            //PasswordValidator.prohibitedConfigured = false;
+
+            PasswordValidator.setup('password1','confirmPassword1');
+        });
+    </script>
 </th:block>
+
+
+
+
 
 </html>

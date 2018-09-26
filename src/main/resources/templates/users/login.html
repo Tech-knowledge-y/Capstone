@@ -1,52 +1,52 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <div th:replace="fragments/head :: head('Login')"></div>
+    <!-- Add Custom CSS Below-->
+    <link rel="stylesheet" href="" />
+    <style></style>
 </head>
 
 <body>
+
 <main>
-    <div id="wrapper">
-        <!-- Page Content -->
-        <!--Make sure to keep all page content within the #page-content-wrapper.-->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-sm-12 col-md-6">
-                        <h1 class="text-center">Login</h1>
-                        <div th:if="${param.error}">
-                            Invalid Username and Password.
-                        </div>
-                        <div th:if="${param.logout}">
-                            You have been logged out.
-                        </div>
-
-
-                        <form th:action="@{/login}" method="POST">
-                            <div class="form-group">
-                                <!--<label for="inputUsername">Username</label>-->
-                                <input type="username" name="username" class="form-control" id="inputUsername" aria-describedby="usernameHelp" placeholder="Enter username" />
-                            </div>
-                            <div class="form-group">
-                                <!--<label for="inputPassword">Password</label>-->
-                                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" />
-                            </div>
-                            <button type="submit" class="btn btn-outline-dark">Submit</button>
-
-                            <small id="loginHelp" class="form-text text-muted text-center"><a href="/register">Not Registered Yet? Click here to get Registered</a></small>
-                        </form>
-                    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-5 mx-auto">
+                <h1 class="text-center">Login</h1>
+                <div th:if="${param.error}">
+                    Invalid Username and Password.
                 </div>
+                <div th:if="${param.logout}">
+                    You have been logged out.
+                </div>
+                <form th:action="@{/login}" method="POST">
+                    <div class="form-group">
+                        <!--<label for="inputUsername">Username</label>-->
+                        <input type="username" name="username" class="form-control" id="inputUsername" aria-describedby="usernameHelp" placeholder="Enter username" />
+                    </div>
+                    <div class="form-group">
+                        <!--<label for="inputPassword">Password</label>-->
+                        <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" />
+                    </div>
+                    <button type="submit" class="btn btn-outline-dark">Submit</button>
+
+                    <small id="loginHelp" class="form-text text-muted text-center"><a href="/register">Not Registered Yet? Click here to get Registered</a></small>
+                </form>
             </div>
+            <!-- /#col-12 -->
         </div>
-        <!-- /#page-content-wrapper -->
+        <!-- /#row -->
     </div>
-    <!-- /#wrapper -->
+    <!-- /#container-fluid -->
+
+
+    <!-- Overlay (are we using this?) -->
+    <!--<div class="overlay"></div>-->
 
 </main>
-<!--<script th:replace="fragments/footer :: footer"></script>-->
+
 <script th:replace="fragments/scripts :: scripts"></script>
 </body>
 </html>
-
-
