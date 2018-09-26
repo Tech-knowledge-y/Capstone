@@ -22,84 +22,84 @@
             width: 85%;
         }
 
-        .post-left {
-            width: 40%;
+        .post-top {
+            height: 50%;
             background-color: var(--dark);
             color: white;
             padding: 3em;
             position: relative;
         }
 
-        .post-left_title {
+        .post-top_title {
             font-size: 2em;
             text-transform: uppercase;
             font-weight: 700;
         }
 
-        .post-left_title_sub {
+        .post-top_title_sub {
             font-size: 2em;
             text-transform: uppercase;
             font-weight: 300;
             margin-top: 0.25em;
         }
 
-        .post-left_border {
+        .post-top_border {
             border: 2px solid var(--red);
-            width: 15%;
+            height: 15%;
             margin-top: 1em;
         }
 
-        .post-left_author {
+        .post-top_author {
             position: absolute;
             bottom: 2em;
             display: flex;
             align-items: center;
         }
-        .post-left_author img {
-            width: 2.5em;
-            margin-right: 1em;
+        .post-top_author img {
+            height: 2.5em;
+            margin-bottom: 1em;
             border: 1px solid var(--white);
             border-radius: 50%;
         }
 
-        .post-right {
-            width: 60%;
+        .post-bottom {
+            height: 50%;
             background-color: var(--white);
             color: var(--dark);
         }
 
-        .post-right_body {
+        .post-bottom_body {
             line-height: 2;
             padding: 2em;
         }
-        .post-right_body p {
+        .post-bottom_body p {
             margin-top: 1em;
         }
-        .post-right_body p span {
+        .post-bottom_body p span {
             font-size: 2em;
         }
 
-        .post-right_footer {
+        .post-bottom_footer {
             display: flex;
             justify-content: space-between;
             box-shadow: 0px -4px 3px -2px rgba(0, 0, 0, 0.1);
             padding: 2em;
         }
 
-        .post-right_footer_date {
+        .post-bottom_footer_date {
             text-transform: uppercase;
         }
-        .post-right_footer_date span {
+        .post-bottom_footer_date span {
             font-weight: 700;
         }
 
-        .post-right_footer_pictos {
+        .post-bottom_footer_pictos {
             font-size: 1.5em;
-            margin-right: 1em;
+            margin-bottom: 1em;
         }
-        .post-right_footer_pictos .fa-heart {
+        .post-bottom_footer_pictos .fa-heart {
             color:var(--red);
-            margin-right: 1em;
+            margin-bottom: 1em;
         }
 
 
@@ -127,15 +127,15 @@
             <div class="row mx-auto">
                 <div class="col">
                     <div class="post">
-                        <div class="post-left">
-                            <div class="post-left_title">Lorem ipsum:</div>
-                            <div class="post-left_title_sub">Dolor sit amet</div>
-                            <div class="post-left_border"></div>
-                            <div class="post-left_author">
+                        <div class="post-top">
+                            <div class="post-top_title">Lorem ipsum:</div>
+                            <div class="post-top_title_sub">Dolor sit amet</div>
+                            <div class="post-top_border"></div>
+                            <div class="post-top_author">
                                 <p>Jillian Wysoki</p>
                             </div>
                         </div>
-                        <div class="post-right">post right</div>
+                        <div class="post-bottom">post bottom</div>
 
                     </div>
 
@@ -184,9 +184,9 @@
                 <!--<div class="col mx-auto">-->
                     <!--<div class="card text-center">-->
                         <!--<div class="card-header">-->
-                            <!--<a class="btn btn-warning float-left" th:href="'/posts/' + ${post.id} + '/edit'" th:if="${isOwner}">Edit Post Details</a>-->
+                            <!--<a class="btn btn-warning float-top" th:href="'/posts/' + ${post.id} + '/edit'" th:if="${isOwner}">Edit Post Details</a>-->
                             <!--&lt;!&ndash; Button trigger modal &ndash;&gt;-->
-                            <!--<button  th:if="${isOwner}" class="btn btn-danger float-right" data-toggle="modal" data-target="#exampleModal">-->
+                            <!--<button  th:if="${isOwner}" class="btn btn-danger float-bottom" data-toggle="modal" data-target="#exampleModal">-->
                                 <!--Delete-->
                             <!--</button>-->
                         <!--</div>-->
