@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en"
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="" lang="en"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <div th:replace="fragments/head :: head('Default')"></div>
     <!-- Add Custom CSS Below-->
     <link rel="stylesheet" href="" />
-    <style></style>
+    <style>
+        .popover-header {
+            color: white !important;
+            background-color: gray !important;
+        }
+    </style>
+    <script src="/js/PasswordValidatorv2.js"></script>
+    <script th:replace="fragments/head :: registerUserSubmitButton"></script>
+
 </head>
 
 <body>
@@ -13,7 +21,7 @@
 <main>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-8 mx-auto">
+            <div class="col-6 mx-auto">
                 <h1 class="text-center">Create an Account</h1>
 
                 <form th:action="@{/register}" th:method="POST" th:object="${user}">
@@ -31,13 +39,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="password" class="text-white">Password</label>
-                        <input id="password" name="password" type="password" class="form-control" onkeyup='check();' placeholder="Enter your password" th:field="*{password}" />
+                        <label for="password1" class="text-white">Password</label>
+                        <input id="password1" name="password1" type="password" class="form-control validate" onkeyup='check();' placeholder="Enter your password" th:field="*{password}" />
+                        <form:errors path="email" cssStyle="color: #ff0000;" />
                     </div>
 
                     <div class="form-group">
-                        <label for="confirmPassword" class="text-white">Confirm Password</label>
-                        <input id="confirmPassword" name="confirmPassword" type="password" class="form-control" onkeyup='check();' placeholder="Confirm Password"  />
+                        <label for="confirmPassword1" class="text-white">Confirm Password</label>
+                        <input id="confirmPassword1" name="confirmPassword" type="password" class="form-control" onkeyup='check();' placeholder="Confirm Password"  />
                         <!--This line needed for strength pswd checker-->
                         <span id="message"></span>
                     </div>
@@ -62,7 +71,7 @@
                     </div>
 
                     <div>
-                        <button id="#btnSubmit" type="submit" onkeyup='check();' class="btn btn-primary">Submit</button>
+                        <button id="btnSubmit" type="submit" onkeyup='check();' class="btn btn-primary">Submit</button>
                     </div>
                     <small id="loginHelp" class="form-text text-muted text-center"><a href="/login">Already have an account? Log in.</a></small>
                 </form>
@@ -79,19 +88,6 @@
 </main>
 
 <script th:replace="fragments/scripts :: scripts"></script>
-<script type="text/javascript">
-    var check = function() {
-        if (document.getElementById('password').value ==
-            document.getElementById('confirmPassword').value) {
-            document.getElementById('message').style.color = 'green';
-            document.getElementById('message').innerHTML = 'Passwords must match';
-            document.getElementById("#btnSubmit").disabled = false;
-        } else {
-            document.getElementById('message').style.color = 'red';
-            document.getElementById('message').innerHTML = 'Password does not match';
-            document.getElementById("#btnSubmit").disabled = true;
-        }
-    }
-</script>
+
 </body>
 </html>

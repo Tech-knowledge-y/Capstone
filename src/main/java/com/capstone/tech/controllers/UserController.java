@@ -64,12 +64,12 @@ public class UserController {
 
         // Custom validation if the username is taken
         if(existingUsername != null){
-            validation.rejectValue("username", "user.username", username + "is already registered - please login or choose another username");
+            validation.rejectValue("username", "user.username", username + " is already registered - please login or choose another username");
         }
 
         // Custom validation if the email is taken
         if(existingEmail != null){
-            validation.rejectValue("email", "user.email", user.getEmail()  + "is already registered - please login or choose another email");
+            validation.rejectValue("email", "user.email", user.getEmail() + " is already registered - please login or choose another email");
         }
 
         if (validation.hasErrors()) {
