@@ -6,7 +6,7 @@
     <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
     <style>
         .work-img{
-            width: 50%;
+            width: 90%;
             margin: 0 auto;
             display: flex;
             justify-content: center;
@@ -16,6 +16,9 @@
 
         #capstone-github {
             margin-bottom: 5%;
+        }
+        #work-header {
+            font-family: "Simplifica";
         }
     </style>
 
@@ -30,14 +33,12 @@
         <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
 
         <!-- Actual Content -->
-
         <div class="container-fluid">
-        <h1 class="text-center">BEHIND THE SCENES</h1>
+        <h1 class="text-center" id="work-header">Tech{knowledge}y @ WORK</h1> <br />
 
 
             <div class="text-center">
                 <img class="work-img" src="img/github-screenshot.png" alt="github"/>
-                <p>Capstone github</p>
             </div>
 
             <div class="text-center" id="capstone-github">
@@ -46,7 +47,6 @@
 
             <div class="text-center">
                 <img class="work-img" src="img/trello-board.png" alt="trello"/>
-                <p>Trello Board To Do List</p>
             </div>
         <div class="text-center" id="trello-board">
                 <a href="https://trello.com/b/J4A0ybqN/techknowledgey" target="_blank" class="btn btn-primary" >TRELLO BOARD</a>
@@ -72,8 +72,6 @@
                 <img class="work-img" src="img/tech-palette.png" alt="palette"/>
                 <p>Color Palette</p>
             </div>
-
-
 
         </div>
     </div>
