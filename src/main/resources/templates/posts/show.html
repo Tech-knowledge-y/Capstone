@@ -122,6 +122,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 mx-auto">
+<<<<<<< HEAD
                         <div class="post">
                             <div class="post-top">
                                 <div class="post-top_title">Lorem ipsum:</div>
@@ -129,6 +130,74 @@
                                 <div class="post-top_border"></div>
                                 <div class="post-top_author">
                                     <p>Jillian Wysoki</p>
+=======
+                        <div class="card text-center">
+                            <div class="card-header">
+                                <a class="btn btn-warning float-left" th:href="'/posts/' + ${post.id} + '/edit'" th:if="${isOwner}">Edit Post Details</a>
+                                <!-- Button trigger modal -->
+                                <button  th:if="${isOwner}" class="btn btn-danger float-right" data-toggle="modal" data-target="#exampleModal">
+                                    Delete
+                                </button>
+                            </div>
+                            <div class="post card-body">
+                                <h2 class="card-title" th:text="${post.title}"></h2>
+                                <h5 class="card-subtitle" th:text="${post.date}"></h5>
+                                <p class="card-text" th:text="${post.body}"></p>
+                                <p class="card-text" th:text="${post.user.username}"></p>
+
+                            </div>
+                            <div class="card-footer" sec:authorize="isAuthenticated()">
+                                <ul class="list-group list-group-flush" th:each="comments : ${allComments}">
+                                    <th:block th:if="${post.id eq comments.post.id}">
+                                        <li class="list-group-item"
+                                            th:text="${comments.user.username + ' : ' + comments.message}">
+                                        </li>
+                                    </th:block>
+                                </ul>
+                                <form th:action="'/posts/' + ${post.id} + '/' + ${comment.id}" th:method="post" th:object="${comment}">
+                                    <div class="form-row align-items-center">
+                                        <div class="col-8">
+                                            <textarea class="form-control mb-2" id="comment" th:field="*{message}" placeholder="Add comment"></textarea>
+                                        </div>
+                                        <div class="col-4">
+                                            <button type="submit" class="btn btn-outline-primary mb-2">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--<h1>Title: <span th:text="${post.title}"></span></h1>-->
+                        <!--<p>date: <span th:text="${post.date}"></span></p>-->
+
+                        <!--<p>body: <span th:text="${post.body}"></span></p>-->
+                        <!--<p>user: <span th:text="${post.user.username}"></span></p>-->
+
+                        <!--<a class="btn btn-warning" th:href="'/posts/' + ${post.id} + '/edit'" th:if="${isOwner}">Edit Post Details</a>-->
+
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"                                   aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 style="color: black;" class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p style="color: black;">Are you sure you want to delete this post?</p>
+                                        <h3 style="color:black"><span th:text="${post.title}"></span></h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+                                        <form th:action="@{/posts/delete}" th:method="POST" th:if="${isOwner}">
+                                            <input type="hidden" th:value="${post.id}" name="id" />
+                                            <button class="btn btn-danger">Confirm Delete</button>
+                                        </form>
+                                    </div>
+>>>>>>> origin/master
                                 </div>
                             </div>
                             <div class="post-bottom">post bottom</div>

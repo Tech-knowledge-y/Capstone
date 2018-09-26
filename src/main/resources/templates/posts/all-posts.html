@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <div th:replace="fragments/head :: head('Default')"></div>
+    <div th:replace="fragments/head :: head('All Posts')"></div>
     <!-- Add Custom CSS Below-->
-    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="css/allPosts.css" />
     <style>
         .card-title, .card-text {
             color: #000;
@@ -50,22 +50,31 @@
 
             <div class="container-fluid">
                 <input type="text" class="form-control my-3" id="search" name="search" placeholder="search" />
-
                 <div class="row">
                     <div class="col-12 my-2" th:each="post : ${posts}">
-                        <div class="card mx-auto" style="width: 75%;">
-                            <div class="card-header">
-                                <th:block th:switch="${post.user.status}">
-                                    <span th:case="'mentor'" class="badge badge-pill badge-primary float-right">mentor</span>
-                                    <span th:case="'mentee'" class="badge badge-pill badge-secondary float-right">mentee</span>
-                                </th:block>
+                        <div class="entire-card">
+                            <div class="innerCard-body">
+                                <div class="left-side-container">
+                                    <h1 class="title" th:text="${post.title}"></h1>
+                                    <div class="chip">
+                                        <img src="img/AmosDavis.jpg" alt="Person" width="96" height="96" />
+                                        Amos Davis
+                                    </div>
+                                    <!--/#aPavatar-->
+                                </div>
+                                <!-- /#left-side-container -->
+
+                                <div class="right-side-container">
+
+                                    <p class="text-description" th:text="${post.body}"></p>
+
+                                    <a th:href="'/posts/' + ${post.id}" class="infoBtn">More Info</a>
+                                </div>
+                                <!-- /#right-side-container -->
                             </div>
-                            <div class="card-body">
-                                <h1 class="card-title" th:text="${post.title}"></h1>
-                                <p class="card-text" th:text="${post.body}"></p>
-                                <a th:href="'/posts/' + ${post.id}" class="btn btn-outline-primary">More Info</a>
-                            </div>
+                            <!-- /#innerCard-body -->
                         </div>
+                        <!-- /#entire-card -->
                     </div>
                     <!-- /#col-12 -->
                 </div>
@@ -77,11 +86,10 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- Overlay (are we using this?) -->
-    <!--<div class="overlay"></div>-->
-
+    <!-- Overlay -->
+    <div class="overlay"></div>
 </main>
-<script th:replace="fragments/scripts :: scripts"></script>
+    <script th:replace="fragments/scripts :: scripts"></script>
 
 </body>
 </html>
