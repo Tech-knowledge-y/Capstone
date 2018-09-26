@@ -51,6 +51,7 @@
                                 <h5 class="card-subtitle" th:text="${post.date}"></h5>
                                 <p class="card-text" th:text="${post.body}"></p>
                                 <p class="card-text" th:text="${post.user.username}"></p>
+
                             </div>
                             <div class="card-footer" sec:authorize="isAuthenticated()">
                                 <ul class="list-group list-group-flush" th:each="comments : ${allComments}">
