@@ -1,9 +1,10 @@
-<!-- Head -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>Tech @ Work</title>
-    <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
+    <div th:replace="fragments/head :: head('Default')"></div>
+    <!-- Add Custom CSS Below-->
+    <link rel="stylesheet" href="" />
     <style>
         .work-img{
             width: 50%;
@@ -18,60 +19,75 @@
             margin-bottom: 5%;
         }
     </style>
-
 </head>
 
-<!-- Body -->
-<div id="wrapper">
-    <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
 
-    <!-- Content -->
-    <div id="content">
-        <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
+<body>
 
-        <!-- Actual Content -->
-
-        <div class="container-fluid">
-        <h1 class="text-center">TECH{knowledge}Y @ Work</h1>
-
-            <div class="text-center" id="capstone-github">
-                <a href="https://github.com/Tech-knowledge-y/Capstone" target="_blank" class="btn btn-danger">View our Code</a>
-            </div>
-
-            <div class="text-center">
-                <img class="work-img" src="img/logo-rough.jpg" alt="database"/>
-                <p>Original logo sketch</p>
-            </div>
-
-            <div class="text-center">
-                <img class="work-img" src="img/db_design_1.jpg" alt="database"/>
-                <p>Whiteboarding at Geekdom</p>
-            </div>
-
-            <div class="text-center">
-                <img class="work-img" src="img/wireframes-triptich.jpg" alt="wireframes"/>
-                <p>Original Wireframes</p>
-            </div>
-
-            <div class="text-center">
-                <img class="work-img" src="img/tech-palette.png" alt="palette"/>
-                <p>Color Palette</p>
-            </div>
-
-            <div class="text-center">
-                <img class="work-img" src="img/trello-board.png" alt="trello"/>
-                <p>Trello Board To Do List</p>
-            </div>
-
-
-
-
-
+<main>
+    <div id="wrapper">
+        <!-- side-navbar -->
+        <div sec:authorize="isAuthenticated()">
+            <nav th:replace="fragments/side-navbar :: side-navbar"></nav>
         </div>
+        <!-- /#side-navbar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="content">
+            <!--Make sure to keep all page content within the #content div-->
+            <div sec:authorize="isAuthenticated()">
+                <nav th:replace="fragments/side-navbar :: side-navbar-toggler"></nav>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="text-center">TECH{knowledge}Y @ Work</h1>
+
+                        <div class="text-center" id="capstone-github">
+                            <a href="https://github.com/Tech-knowledge-y/Capstone" target="_blank" class="btn btn-danger">View our Code</a>
+                        </div>
+
+                        <div class="text-center">
+                            <img class="work-img" src="img/logo-rough.jpg" alt="database"/>
+                            <p>Original logo sketch</p>
+                        </div>
+
+                        <div class="text-center">
+                            <img class="work-img" src="img/db_design_1.jpg" alt="database"/>
+                            <p>Whiteboarding at Geekdom</p>
+                        </div>
+
+                        <div class="text-center">
+                            <img class="work-img" src="img/wireframes-triptich.jpg" alt="wireframes"/>
+                            <p>Original Wireframes</p>
+                        </div>
+
+                        <div class="text-center">
+                            <img class="work-img" src="img/tech-palette.png" alt="palette"/>
+                            <p>Color Palette</p>
+                        </div>
+
+                        <div class="text-center">
+                            <img class="work-img" src="img/trello-board.png" alt="trello"/>
+                            <p>Trello Board To Do List</p>
+                        </div>
+                    </div>
+                    <!-- /#col-12 -->
+                </div>
+                <!-- /#row -->
+            </div>
+            <!-- /#container-fluid -->
+        </div>
+        <!-- /#content -->
     </div>
-</div>
+    <!-- /#wrapper -->
 
-<!-- Overlay -->
-<div class="overlay"></div>
+    <!-- Overlay (are we using this?) -->
+    <!--<div class="overlay"></div>-->
 
-<script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
+</main>
+<script th:replace="fragments/scripts :: scripts"></script>
+
+</body>
+</html>

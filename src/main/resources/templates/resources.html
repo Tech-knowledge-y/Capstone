@@ -1,43 +1,62 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>Resources</title>
-    <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
+    <div th:replace="fragments/head :: head('Default')"></div>
+    <!-- Add Custom CSS Below-->
+    <link rel="stylesheet" href="" />
+    <style></style>
 </head>
 
 <body>
+
+<main>
     <div id="wrapper">
-        <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
+        <!-- side-navbar -->
+        <div sec:authorize="isAuthenticated()">
+            <nav th:replace="fragments/side-navbar :: side-navbar"></nav>
+        </div>
+        <!-- /#side-navbar-wrapper -->
 
         <!-- Page Content -->
         <div id="content">
-            <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
-
-            <div class="container-fluid">
-                <h1>Resources</h1>
-                <ul>
-                    <li> <a target="_blank" href="https://codeup.com/contact/">Codeup Mentorship Form </a> </li>
-                    <li><a target="_blank" href="https://geekdom.com/">Geekdom</a> </li>
-                    <li><a target="_blank" href="https://launchsa.org/">Launch SA</a> </li>
-                    <li><a target="_blank" href="http://www.breakfastlaunch.com/">Breakfast and Launch</a></li>
-                    <li><a target="_blank" href="https://www.1millioncups.com/">1 million cups (meets Wednesdays @ 9 at main library)</a></li>
-                    <li><a target="_blank" href="https://www.venturex.com/">Venture X</a></li>
-                    <li><a target="_blank" href="https://realco.com/">RealCo </a></li>
-                </ul>
-
-                <h3>Coming soon</h3>
-                <p><a target="_blank" href="https://www.wework.com/locations">WeWork</a></p>
+            <!--Make sure to keep all page content within the #content div-->
+            <div sec:authorize="isAuthenticated()">
+                <nav th:replace="fragments/side-navbar :: side-navbar-toggler"></nav>
             </div>
 
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <h1>Resources</h1>
+                        <ul>
+                            <li> <a target="_blank" href="https://codeup.com/contact/">Codeup Mentorship Form </a> </li>
+                            <li><a target="_blank" href="https://geekdom.com/">Geekdom</a> </li>
+                            <li><a target="_blank" href="https://launchsa.org/">Launch SA</a> </li>
+                            <li><a target="_blank" href="http://www.breakfastlaunch.com/">Breakfast and Launch</a></li>
+                            <li><a target="_blank" href="https://www.1millioncups.com/">1 million cups (meets Wednesdays @ 9 at main library)</a></li>
+                            <li><a target="_blank" href="https://www.venturex.com/">Venture X</a></li>
+                            <li><a target="_blank" href="https://realco.com/">RealCo </a></li>
+                        </ul>
+
+                        <h3>Coming soon</h3>
+                        <p><a target="_blank" href="https://www.wework.com/locations">WeWork</a></p>
+                    </div>
+                    <!-- /#col-12 -->
+                </div>
+                <!-- /#row -->
+            </div>
+            <!-- /#container-fluid -->
         </div>
+        <!-- /#content -->
     </div>
+    <!-- /#wrapper -->
 
-    <!-- Overlay -->
-    <div class="overlay"></div>
+    <!-- Overlay (are we using this?) -->
+    <!--<div class="overlay"></div>-->
 
-    <!--<script th:replace="fragments/footer :: footer"></script>-->
-    <script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
+</main>
+<script th:replace="fragments/scripts :: scripts"></script>
+
 </body>
 </html>
