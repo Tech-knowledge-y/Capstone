@@ -2,29 +2,41 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <div th:replace="fragments/head :: head('Default')"></div>
+    <div th:replace="fragments/head :: head('All Profiles')"></div>
     <!-- Add Custom CSS Below-->
     <link rel="stylesheet" href="" />
 
     <style>
+        .btn-outline-primary {
+            border-radius: 15px;
+            height: 30px;
+            font-size: 12px;
+        }
+
+        .btn-filter {
+            width: 100px;
+        }
+
         .profile {
             width: 350px;
             height: 300px;
             background-color: #fff;
             border-radius: 5px;
             color: #000;
+            font-weight: 100;
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
         }
 
         .profile-left {
             margin: 0;
             float: left;
-            width: 75%;
+            width: 65%;
         }
 
         .profile-right {
             margin: 0;
             float: right;
-            width: 25%;
+            width: 35%;
             height: 100%;
         }
 
@@ -42,6 +54,7 @@
             text-align: center;
             position: relative;
             top: 50px;
+            font-weight: 400;
         }
 
         .profile-subtitle {
@@ -55,47 +68,68 @@
             top: 45px;
             left: 50%;
             width: 120px;
-            border-radius: 15px;
-            height: 30px;
-            font-size: 12px;
             transform: translateX(-50%)
         }
 
         .box {
-            height: 50%;
+            height: 49.5%;
+            background: #C4C4CC;
         }
 
         .box-top {
-            border-left: 1px solid black;
-            border-bottom: 1px solid black;
-            margin-bottom: 2px;
+            border-top-right-radius: 5px;
+            margin-bottom: 3px;
         }
 
         .box-bottom {
-            margin-top: 2px;
-            border-left: 1px solid black;
-            border-top: 1px solid black;
+            border-bottom-right-radius: 5px;
         }
 
-        .card-title, .card-text {
-            color: #000;
+        .box-text {
+            font-weight: 400;
+            font-size: 1.5rem;
+            text-align: center;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
-        #button-group {
-            left: 50%;
-            transform: translateX(-50%);
+        .box-text-label {
+            font-weight: 100;
+            font-size: .75rem;
+            top: 30%;
         }
 
-        #all-filter, #mentor-filter {
+        #all-filter, #mentor-filter, #mentee-filter {
             color: #fff;
-            border-right: none;
         }
 
-        #mentee-filter, #mentor-filter {
+        #search {
+            width: 75%;
+            margin: 0 auto;
+            background: #272526;
+            border-top: 0;
+            border-right: 0;
+            border-left: 0;
+            border-bottom: 1px solid #fff;
+            border-radius: 0;
             color: #fff;
-            border-left: none;
+            font-weight: 100;
+            font-size: 2rem;
         }
 
+        #search:focus {
+            outline-style:none;
+            box-shadow:none;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+            border-bottom: 1px solid #fff;
+        }
+
+        #search::placeholder {
+            color: #fff;
+        }
     </style>
 </head>
 
@@ -119,31 +153,42 @@
             <div class="container-fluid">
                 <div class="row">
                     <input type="text" class="form-control my-3" id="search" name="search" placeholder="search" />
-                    <div class="btn-group mt-0 mb-2" role="group" id="button-group">
-                        <button type="button" class="btn btn-outline-primary" id="all-filter">All</button>
-                        <button type="button" class="btn btn-outline-primary" id="mentor-filter">Mentor</button>
-                        <button type="button" class="btn btn-outline-primary" id="mentee-filter">Mentee</button>
+                </div>
+                <div class="row mb-3">
+                    <!--<div class="btn-group mt-0 mb-2" role="group" id="button-group">-->
+                        <!--<button type="button" class="btn btn-outline-primary" id="all-filter">All</button>-->
+                        <!--<button type="button" class="btn btn-outline-primary" id="mentor-filter">Mentor</button>-->
+                        <!--<button type="button" class="btn btn-outline-primary" id="mentee-filter">Mentee</button>-->
+                    <!--</div>-->
+                    <div class="button-group mx-auto">
+                        <button type="button" class="btn btn-outline-primary btn-filter" id="all-filter">All</button>
+                        <button type="button" class="btn btn-outline-primary btn-filter" id="mentor-filter">Mentor</button>
+                        <button type="button" class="btn btn-outline-primary btn-filter" id="mentee-filter">Mentee</button>
                     </div>
                 </div>
                 <!-- /#row -->
                 <div class="row">
-                    <div class="col-sm-12 col-md-6 my-2" th:each="user : ${users}">
-                        <div th:class="'card ' + ${user.status}" style="width: 100%;">
-                            <div class="card-body">
-                                <h3 class="card-title" th:text="${user.username}"></h3>
-                                <p class="card-text" th:text="${user.status}"></p>
-                                <p class="card-text" th:text="${user.email}"></p>
-                                <a th:href="'/users/' + ${user.id}" class="btn btn-outline-primary">View</a>
+                    <div class="col-md-12 col-lg-6 my-2" th:each="user : ${users}">
+                        <div th:class="'mx-auto profile ' + ${user.status}">
+                            <div class="profile-left">
+                                <div class="profile-left-content">
+                                    <img class="profile-img" src="img/male.png" alt="male" />
+                                    <h3 class="profile-title" th:text="${user.username}"></h3>
+                                    <p class="profile-subtitle" th:text="${user.status}"></p>
+                                    <a th:href="'/users/' + ${user.id}" class="btn btn-outline-primary profile-view">View</a>
+                                </div>
+                            </div>
+                            <div class="profile-right">
+                                <div class="box box-top">
+                                    <p class="box-text" th:text="${usersPosts.get(user.id)}"></p>
+                                    <p class="box-text box-text-label">Posts</p>
+                                </div>
+                                <div class="box box-bottom">
+                                    <p class="box-text" th:text="${usersComments.get(user.id)}"></p>
+                                    <p class="box-text box-text-label">Comments</p>
+                                </div>
                             </div>
                         </div>
-
-                        <!--<h2 th:text="${user.status}"></h2>-->
-                        <!--<p>Username</p><h2 th:text="${user.username}"></h2>-->
-                        <!--<p>Email</p><h2 th:text="${user.email}"></h2>-->
-                        <!--<p>Gender</p><h2 th:text="${user.gender}"></h2>-->
-                        <!--<p>Birthday</p><h2 th:text="${user.birthdate}"></h2>-->
-
-                        <!--<a th:href="'/users/' + ${user.id}" class="btn btn-outline-primary">View</a>-->
                     </div>
                     <!-- /#col-12 -->
                 </div>
@@ -166,10 +211,10 @@
 
         // Search bar
         $('#search').keyup(function () {
-            var filter = $(this).val();
+            let filter = $(this).val();
 
-            $('.card').each(function () {
-                if ($(this).find('.card-title').text().search(new RegExp(filter, 'i')) < 0 ) {
+            $('.profile').each(function () {
+                if ($(this).find('.profile-title').text().search(new RegExp(filter, 'i')) < 0 ) {
                     $(this).parent().hide();
                 } else {
                     $(this).parent().show();
@@ -180,18 +225,18 @@
         // Filter boxes
         $('#all-filter').click(e => {
             $('.mentee').parent().show();
-        $('.mentor').parent().show();
-    });
+            $('.mentor').parent().show();
+        });
 
         $('#mentor-filter').click(e => {
             $('.mentee').parent().hide();
-        $('.mentor').parent().show();
-    });
+            $('.mentor').parent().show();
+        });
 
         $('#mentee-filter').click(e => {
             $('.mentee').parent().show();
-        $('.mentor').parent().hide();
-    })
+            $('.mentor').parent().hide();
+        })
     });
     // ]]>
 </script>
