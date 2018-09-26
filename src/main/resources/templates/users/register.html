@@ -11,77 +11,67 @@
 <body>
 
 <main>
-    <div id="wrapper">
-        <!-- side-navbar -->
-        <div sec:authorize="isAuthenticated()">
-            <nav th:replace="fragments/side-navbar :: side-navbar"></nav>
-        </div>
-        <!-- /#side-navbar-wrapper -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-8 mx-auto">
+                <h1 class="text-center">Create an Account</h1>
 
-        <!-- Page Content -->
-        <div id="content">
-            <!--Make sure to keep all page content within the #content div-->
-            <div sec:authorize="isAuthenticated()">
-                <nav th:replace="fragments/side-navbar :: side-navbar-toggler"></nav>
-            </div>
+                <form th:action="@{/register}" th:method="POST" th:object="${user}">
 
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <h1 class="text-center">Create an Account</h1>
-
-                        <form th:action="@{/register}" th:method="POST" th:object="${user}">
-                            <div class="form-group">
-                                <label for="username" class="text-white">Username</label>
-                                <input id="username" name="username" type="text" class="form-control" placeholder="Enter a username" th:field="*{username}" />
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="text-white">Email</label>
-                                <input id="email" name="email" type="text" class="form-control" placeholder="Enter your email address" th:field="*{email}" />
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="text-white">Password</label>
-                                <input id="password" name="password" type="password" class="form-control" onkeyup='check();' placeholder="Enter your password" th:field="*{password}" />
-
-                            </div>
-                            <div class="form-group">
-                                <label for="confirmPassword" class="text-white">Confirm Password</label>
-                                <input id="confirmPassword" name="confirmPassword" type="password" class="form-control" onkeyup='check();' placeholder="Confirm Password"  />
-                                <!--This line needed for strength pswd checker-->
-                                <span id="message"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="genderFormControlSelect" class="text-white">Gender</label>
-                                <select class="form-control" id="genderFormControlSelect" th:field="*{gender}">
-                                    <option value="disabled">Please Select</option>
-                                    <option value="female">Female</option>
-                                    <option value="male">Male</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="statusSelect" class="text-white">Status</label>
-                                <select class="form-control" id="statusSelect" th:field="*{status}">
-                                    <option value="disabled">Please Select</option>
-                                    <option value="mentor">Mentor</option>
-                                    <option value="mentee">Mentee</option>
-                                </select>
-                            </div>
-                            <div>
-                                <button id="#btnSubmit" type="submit" onkeyup='check();' class="btn btn-primary">Submit</button>
-                            </div>
-                            <small id="loginHelp" class="form-text text-muted text-center"><a href="/login">Already have an account? Log in.</a></small>
-                        </form>
+                    <div class="form-group">
+                        <label for="username" class="text-white">Username</label>
+                        <input id="username" name="username" type="text" class="form-control validate" placeholder="Enter a username" th:field="*{username}" />
+                        <p class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
                     </div>
-                    <!-- /#col-12 -->
-                </div>
-                <!-- /#row -->
+
+                    <div class="form-group">
+                        <label for="email" class="text-white">Email</label>
+                        <input id="email" name="email" type="text" class="form-control validate" placeholder="Enter your email address" th:field="*{email}" />
+                        <p class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="text-white">Password</label>
+                        <input id="password" name="password" type="password" class="form-control" onkeyup='check();' placeholder="Enter your password" th:field="*{password}" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword" class="text-white">Confirm Password</label>
+                        <input id="confirmPassword" name="confirmPassword" type="password" class="form-control" onkeyup='check();' placeholder="Confirm Password"  />
+                        <!--This line needed for strength pswd checker-->
+                        <span id="message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="genderFormControlSelect" class="text-white">Gender</label>
+                        <select class="form-control" id="genderFormControlSelect" th:field="*{gender}">
+                            <option value="disabled">Please Select</option>
+                            <option value="female">Female</option>
+                            <option value="male">Male</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="statusSelect" class="text-white">Status</label>
+                        <select class="form-control" id="statusSelect" th:field="*{status}">
+                            <option value="disabled">Please Select</option>
+                            <option value="mentor">Mentor</option>
+                            <option value="mentee">Mentee</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <button id="#btnSubmit" type="submit" onkeyup='check();' class="btn btn-primary">Submit</button>
+                    </div>
+                    <small id="loginHelp" class="form-text text-muted text-center"><a href="/login">Already have an account? Log in.</a></small>
+                </form>
             </div>
-            <!-- /#container-fluid -->
+            <!-- /#col-12 -->
         </div>
-        <!-- /#content -->
+        <!-- /#row -->
     </div>
-    <!-- /#wrapper -->
+    <!-- /#container-fluid -->
 
     <!-- Overlay (are we using this?) -->
     <!--<div class="overlay"></div>-->

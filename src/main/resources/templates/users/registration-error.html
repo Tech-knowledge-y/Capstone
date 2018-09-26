@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Login Page')"></head>
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container">
+    <div class="row">
+        <h4 class="page-title">Register</h4>
+        <div class="col l8 offset-l2">
+            <form class="col s12" th:action="@{/users/create}" th:method="POST" th:object="${user}">
+                <div class="input-field col s12">
+                    <input type="text" class="validate" th:field="*{username}" />
+                    <label for="username">Username</label>
+                    <p class="card-panel  red darken-1" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                </div>
+
+                <div class="input-field col s12">
+                    <label for="email">Email</label>
+                    <input class="validate" type="text" th:field="*{email}" />
+                    <p class="card-panel  red darken-1" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                </div>
+
+                <div class="input-field col s12">
+                    <label for="password">Password</label>
+                    <input type="password" class="validate" th:field="*{password}" />
+                    <p class="card-panel  red darken-1" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                </div>
+
+                <input class="btn" type="submit" />
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
