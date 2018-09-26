@@ -2,35 +2,41 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>All Users</title>
-    <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
-    <style>
-
-    </style>
+    <div th:replace="fragments/head :: head('Default')"></div>
+    <!-- Add Custom CSS Below-->
+    <link rel="stylesheet" href="" />
+    <style></style>
 </head>
 
 <body>
 
-<div id="wrapper">
-    <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
+<main>
+    <div id="wrapper">
+        <!-- side-navbar -->
+        <div sec:authorize="isAuthenticated()">
+            <nav th:replace="fragments/side-navbar :: side-navbar"></nav>
+        </div>
+        <!-- /#side-navbar-wrapper -->
 
-    <!-- Data below will display to users who are logged in -->
-    <!-- Page Content -->
-    <div id="content" sec:authorize="isAuthenticated()">
-        <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
-        <th:block th:replace="fragments/developers :: developerPage"></th:block>
+        <!-- Page Content -->
+        <div id="content">
+            <!--Make sure to keep all page content within the #content div-->
+            <div sec:authorize="isAuthenticated()">
+                <nav th:replace="fragments/side-navbar :: side-navbar-toggler"></nav>
+                <th:block th:replace="fragments/developers :: developerPage"></th:block>
+            </div>
+
+            <!-- Data below will display to users who are **NOT** logged in -->
+            <div class="container-fluid" sec:authorize="isAnonymous()">
+                <th:block th:replace="fragments/developers :: developerPage"></th:block>
+            </div>
+
+        </div>
+        <!-- /#content -->
     </div>
-
-    <!-- Data below will display to users who are **NOT** logged in -->
-    <div class="container-fluid" sec:authorize="isAnonymous()">
-        <th:block th:replace="fragments/developers :: developerPage"></th:block>
-    </div>
-</div>
-<!-- /#wrapper -->
-
-<script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
+    <!-- /#wrapper -->
+</main>
+<script th:replace="fragments/scripts :: scripts"></script>
 
 </body>
 </html>

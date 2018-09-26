@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>Home</title>
-    <th:block th:replace="fragments/styles :: homeStyle"></th:block>
+    <div th:replace="fragments/head :: head('Default')"></div>
+    <!-- Add Custom CSS Below-->
+    <link rel="stylesheet" href="/css/homepage.css" />
+    <style></style>
 </head>
-<!--<nav th:replace="fragments/navbar :: unauthNavbar"></nav>-->
+
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark" id="nav-bar">
-        <a class="navbar-brand" href="/">Tech{knowledge}y</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/developers">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
+<nav class="navbar navbar-expand-lg navbar-dark" id="nav-bar">
+    <a class="navbar-brand" href="/">Tech{knowledge}y</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/developers">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<main>
     <div class="jumbotron jumbotron-fluid w-100 h-100 p-0 m-0">
         <div class="image">
             <div class="center">
@@ -32,8 +32,8 @@
             </div>
         </div>
     </div>
+</main>
 
-</body>
-<!--<footer th:replace="fragments/footer :: footer"></footer>-->
 <script th:replace="fragments/scripts :: scripts"></script>
+</body>
 </html>

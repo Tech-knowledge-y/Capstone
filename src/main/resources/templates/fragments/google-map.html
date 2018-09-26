@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<th:block th:fragment="google-map">
+    <script type="text/javascript">
+        // <![CDATA[
+        // Initialize and add the map
+        document.querySelector("#date").valueAsDate = new Date();
+        var latInput = document.getElementById("latitude").value;
+        var longInput = document.getElementById("longitude").value;
+
+        function initMap() {
+            var map;
+            var bounds = new google.maps.LatLngBounds();
+            var mapOptions = {
+                zoom: 8,
+                disableDefaultUI: true
+            };
+
+            // Display a map on the page
+            map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+            // Multiple Markers
+            var markers = [
+                ['Codeup', 29.4267857, -98.4895764],
+                ['Geekdom', 29.426275, -98.493509],
+                ['Central Public Library', 29.4323442, -98.4927401],
+                ['San Pedro Library', 29.446473, -98.49988]
+            ];
+
+            // Info Window Content
+            var infowindowContent = [
+                ['<div class="info_content">' +
+                "<h6 class='marker-title'>Codeup</h6>\n" +
+                "<p>Codeup is a fullstack software development<br>career accelerator located in San Antonio.</p>" +
+                "<p><strong>Address:</strong> 600 Navarro St #350, San Antonio, TX 78205</p>" + '</div>'],
+
+                ['<div class="info_content">' +
+                "<h6 class='marker-title'>Geekdom</h6>\n" +
+                "<p>Geekdom is a collaborative coworking space in San Antonio, Texas,<br>and the heartbeat of the startup ecosystem.</p>" +
+                "<p><strong>Address:</strong> 110 East Houston Street, 7th Floor, San Antonio, TX 78205</p>" + '</div>'],
+
+                ['<div class="info_content">' +
+                "<h6 class='marker-title'>Central Public Library</h6>\n" +
+                "<p>A branch of the San Antonio Public Library</p>" +
+                "<p><strong>Address:</strong> 600 Soledad St, San Antonio, TX 78205</p>" + '</div>'],
+
+                ['<div class="info_content">' +
+                "<h6 class='marker-title'>San Pedro Library</h6>\n" +
+                "<p>San Pedro has a small collection serving neighborhood adults,<br>young people, and children with materials about San Antonio and local area history.</p>" +
+                "<p><strong>Address:</strong> 1315 San Pedro Ave, San Antonio, TX 78212</p>" + '</div>']
+            ];
+
+            // Display multiple markers on a map
+            var infoWindow = new google.maps.InfoWindow(), marker, i;
+
+            // Loop through our array of markers & place each one on the map
+            for (i = 0; i < markers.length; i++) {
+                var position = new google.maps.LatLng(markers[i][1], markers[i][2], markers [i][3], markers [i][4]);
+                bounds.extend(position);
+                marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    title: markers[i][0],
+                    animation: google.maps.Animation.DROP
+                });
+
+                // Allow each marker to have an info window
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function() {
+                        infoWindow.setContent(infowindowContent[i][0]);
+                        infoWindow.open(map, marker);
+                    }
+                })(marker, i));
+
+                // Add listener for location
+                google.maps.event.addListener(marker, "click", function (event) {
+                    document.getElementById("longitude").value = this.position.lng().toFixed(7);
+                    document.getElementById("latitude").value = this.position.lat().toFixed(7);
+                    document.getElementById("location").innerText = " " + this.title;
+                });
+
+                //Auto center map to fit all markers on screen
+                map.fitBounds(bounds);
+            }
+        }
+
+        // ]]>
+    </script>
+</th:block>
+</html>

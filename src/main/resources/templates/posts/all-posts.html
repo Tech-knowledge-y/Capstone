@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>All Post</title>
-    <th:block th:replace="fragments/sidenav-bar :: sidenav-bar-styles"></th:block>
-
+    <div th:replace="fragments/head :: head('Default')"></div>
+    <!-- Add Custom CSS Below-->
+    <link rel="stylesheet" href="" />
     <style>
         .card-title, .card-text {
             color: #000;
@@ -33,15 +32,25 @@
 </head>
 
 <body>
-    <div class="wrapper">
-        <nav th:replace="fragments/sidenav-bar :: sidenav-bar"></nav>
+
+<main>
+    <div id="wrapper">
+        <!-- side-navbar -->
+        <div sec:authorize="isAuthenticated()">
+            <nav th:replace="fragments/side-navbar :: side-navbar"></nav>
+        </div>
+        <!-- /#side-navbar-wrapper -->
 
         <!-- Page Content -->
         <div id="content">
-            <nav th:replace="fragments/sidenav-bar :: sidenav-bar-toggler"></nav>
+            <!--Make sure to keep all page content within the #content div-->
+            <div sec:authorize="isAuthenticated()">
+                <nav th:replace="fragments/side-navbar :: side-navbar-toggler"></nav>
+            </div>
 
             <div class="container-fluid">
                 <input type="text" class="form-control my-3" id="search" name="search" placeholder="search" />
+
                 <div class="row">
                     <div class="col-12 my-2" th:each="post : ${posts}">
                         <div class="card mx-auto" style="width: 75%;">
@@ -58,34 +67,21 @@
                             </div>
                         </div>
                     </div>
+                    <!-- /#col-12 -->
                 </div>
+                <!-- /#row -->
             </div>
+            <!-- /#container-fluid -->
         </div>
+        <!-- /#content -->
     </div>
+    <!-- /#wrapper -->
 
-    <!-- Overlay -->
-    <div class="overlay"></div>
+    <!-- Overlay (are we using this?) -->
+    <!--<div class="overlay"></div>-->
 
-    <!--<script th:replace="fragments/footer :: footer"></script>-->
-    <script th:replace="fragments/sidenav-bar :: sidebar-nav-scripts"></script>
-    <script>
-        // <![CDATA[
-        $( document ).ready(function() {
-            $('#search').keyup(function () {
-                var filter = $(this).val();
+</main>
+<script th:replace="fragments/scripts :: scripts"></script>
 
-                $('.card').each(function () {
-                    if ($(this).find('.card-title').text().search(new RegExp(filter, 'i')) < 0 ) {
-                        $(this).parent().hide();
-                    } else {
-                        $(this).parent().show();
-                    }
-                })
-            });
-        });
-        // ]]>
-    </script>
 </body>
 </html>
-
-

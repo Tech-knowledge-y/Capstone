@@ -122,4 +122,3 @@ textarea:focus + span, textarea:not(:placeholder-shown) + span {
 
 /*// Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) { }
-
