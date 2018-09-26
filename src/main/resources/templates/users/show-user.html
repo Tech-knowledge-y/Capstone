@@ -2,11 +2,24 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <div th:replace="fragments/head :: head('Default')"></div>
+    <div th:replace="fragments/head :: head('Profile')"></div>
     <!-- Add Custom CSS Below-->
     <link rel="stylesheet" href="" />
     <style>
-        .card {
+        .single-profile {
+            background-color: #F7F7F7;
+            border-radius: 5px;
+            width: 350px;
+            color: #000;
+            position: relative;
+            height: 100%;
+        }
+
+        .single-profile-img {
+            width: 30%;
+            border-radius: 50%;
+            position: relative;
+            left: 15px;
         }
     </style>
 </head>
@@ -30,9 +43,12 @@
 
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12 my-2">
-                        <div class="card">
-
+                    <div class="col-12 mb-3 mt-5">
+                        <div class="single-profile mx-auto">
+                            <div class="single-profile-content">
+                                <img class="single-profile-img" th:src="@{~/img/male.png}" alt="male" />
+                                <h4 th:text="${user.username}"></h4>
+                            </div>
                         </div>
                     </div>
                     <!-- /#col-12 -->
