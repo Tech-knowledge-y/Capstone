@@ -129,8 +129,9 @@
     }
 
     .chip {
-        position: relative;
-        top: 110px;
+        position: absolute;
+        top: 173px;
+        left: 18px;
         color: black;
         display: inline-block;
         padding: 0 25px;
@@ -200,8 +201,9 @@
         text-align: left;
     }
     .chip {
-        position: relative;
-        top: 87px;
+        position: absolute;
+        top: 173px;
+        left: 18px;
         color: black;
         display: inline-block;
         padding: 0 25px;
