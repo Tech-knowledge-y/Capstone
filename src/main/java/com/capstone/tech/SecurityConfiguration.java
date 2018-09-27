@@ -73,14 +73,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/posts/{id}/edit", // only authenticated users can navigate to edit their own posts
                         "posts/edit", // only authenticated users can edit their own posts
                         "/posts/delete", // only authenticated users delete their own posts
-
+//
 //                             ***UserController***
 //                                    --Users--
                         "/users", // only authenticated users can navigate to all users page
                         "users/all-users", // only authenticated users can view all users
                         "/users/{id}", // only authenticated users can navigate to find individual user
                         "users/show-user", // only authenticated users can navigate to individual users page
-
+//
 //                                        --UserDetails--
                         "/users/details/create", // only authenticated users can navigate to details page
                         "users/details-create", // only authenticated users can create details
