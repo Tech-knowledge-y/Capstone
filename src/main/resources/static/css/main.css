@@ -176,7 +176,7 @@ div.box1 {
     left: -250px;
     height: 100vh;
     z-index: 999;
-    background: #007bff;
+    background: #487eb0;
     color: #fff;
     transition: all 0.3s;
     overflow-y: scroll;
@@ -192,7 +192,7 @@ div.box1 {
     height: 35px;
     line-height: 35px;
     text-align: center;
-    background: #007bff;
+    background: #487eb0;
     position: absolute;
     top: 10px;
     right: 10px;
@@ -204,7 +204,7 @@ div.box1 {
 
 #dismiss:hover {
     background: #fff;
-    color: #007bff;
+    color: #487eb0;
 }
 
 .overlay {
@@ -224,12 +224,12 @@ div.box1 {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #007bff;
+    background: #487eb0;
 }
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #007bff;
+    border-bottom: 1px solid #487eb0;
 }
 
 #sidebar ul p {
@@ -244,14 +244,14 @@ div.box1 {
 }
 
 #sidebar ul li a:hover {
-    color: #007bff;
+    color: #487eb0;
     background: #fff;
 }
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
-    background: #007bff;
+    background: #487eb0;
 }
 
 a[data-toggle="collapse"] {
@@ -269,7 +269,7 @@ a[data-toggle="collapse"] {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #007bff;
+    background: #487eb0;
 }
 
 ul.CTAs {
@@ -286,18 +286,18 @@ ul.CTAs a {
 
 a.download {
     background: #fff;
-    color: #007bff;
+    color: #487eb0;
 }
 
 a.article,
 a.article:hover {
-    background: #007bff !important;
+    background: #487eb0 !important;
     color: #fff !important;
 }
 
 .logout,
 .logout:hover {
-    background: #007bff !important;
+    background:#487eb0 !important;
     color: #fff !important;
     width: 100%;
     border: none;
