@@ -6,20 +6,100 @@
     <!-- Add Custom CSS Below-->
     <link rel="stylesheet" href="" />
     <style>
-        .single-profile {
-            background-color: #F7F7F7;
-            border-radius: 5px;
-            width: 350px;
-            color: #000;
-            position: relative;
-            height: 100%;
+        p {
+            font-weight: 100;
         }
 
-        .single-profile-img {
+        input, select {
+            margin-top: 15px;
+            margin-bottom: 1rem;
+        }
+
+        input, textarea, select {
+            border: none!important;
+        }
+
+        .empty-info {
+            margin: 3rem 0;
+        }
+
+        .add-btn {
+            height: 100%;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .card {
+            color: #000;
+        }
+
+        .card-top {
+            padding: 20px;
+        }
+
+        .card-bottom {
+            padding: 20px;
+            background-image: linear-gradient(-45deg, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
+        }
+
+        .s-profile-img {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
             width: 30%;
             border-radius: 50%;
-            position: relative;
-            left: 15px;
+        }
+
+        .user-info {
+            text-align: center;
+        }
+
+        .username, .status {
+            margin: 0;
+        }
+
+        .s-details {
+            margin-bottom: 2rem;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        }
+
+        .user-details-label {
+            margin: 5px
+        }
+
+        .userdetails-text {
+            font-weight: 400;
+            margin-left: 1rem;
+            margin-top: 15px;
+        }
+
+        .form-row {
+            width: 100% !important;
+            margin: 0!important;
+        }
+
+        .col, .col-auto {
+            padding: 0!important;
+        }
+
+        #fName-edit, #btn-save-fname,
+        #lName-edit, #btn-save-lname,
+        #bday-edit, #btn-save-bday,
+        #city-edit, #btn-save-city,
+        #state-edit, #btn-save-state,
+        #zipCode-edit, #btn-save-zipCode,
+        #bio-edit, #btn-save-bio {
+            display: none;
+        }
+
+        /*// Large devices (desktops, 992px and up)*/
+        @media (min-width: 992px) {
+            .card {
+                width: 75%;
+                margin: 0 auto;
+            }
         }
     </style>
 </head>
@@ -45,13 +125,30 @@
                 <div class="row">
                     <div class="col-12 mb-3 mt-5">
                         <div class="card">
+                            <div class="card-top">
+                                <img th:if="${user.gender == 'male'}" class="s-profile-img" th:src="@{~/img/male.png}" alt="male" />
+                                <img th:if="${user.gender == 'female'}" class="s-profile-img" th:src="@{~/img/female.png}" alt="female" />
+                                <!-- User Info -->
+                                <div class="user-info">
+                                    <h4 class="username" th:text="${user.username}"></h4>
+                                    <p class="status" th:text="${user.status}"></p>
+                                    <p class="email" th:text="${user.email}"></p>
+                                </div>
+                            </div>
+                            <div class="card-bottom">
+
+                                <!-- UserDetail Null (Send Create Request) -->
+                                <th:block th:if="${user.userDetail == null}">
+                                <div th:replace="fragments/user-details :: userDetailsNull"></div>
+                                </th:block>
+
+                                <!-- UserDetail Not Null (Send Update Request)  -->
+                                <th:block th:if="${user.userDetail != null}">
+                                <div th:replace="fragments/user-details :: userDetailsNotNull"></div>
+                                </th:block>
+
+                            </div>
                         </div>
-                        <!--<div class="single-profile mx-auto">-->
-                            <!--<div class="single-profile-content">-->
-                                <!--<img class="single-profile-img" th:src="@{~/img/male.png}" alt="male" />-->
-                                <!--<h4 th:text="${user.username}"></h4>-->
-                            <!--</div>-->
-                        <!--</div>-->
                     </div>
                     <!-- /#col-12 -->
                 </div>
@@ -63,11 +160,125 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- Overlay (are we using this?) -->
-    <!--<div class="overlay"></div>-->
+     <!--Overlay (are we using this?) -->
+    <div class="overlay"></div>
 
 </main>
 
 <script th:replace="fragments/scripts :: scripts"></script>
+<script>
+
+    // **** First Name ****
+    $('#btn-edit-fname').click((e) => {
+        $('#firstname-text').hide();
+        $('#btn-edit-fname').hide();
+        $('#fName-edit').show();
+        $('#btn-save-fname').show();
+    });
+
+    $('#btn-save-fname').click((e) => {
+        $('#fName-edit').hide();
+        $('#btn-save-fname').hide();
+        $('#firstname-text').show();
+        $('#btn-edit-fname').show();
+    });
+    // *********************
+
+    // **** Last Name ****
+    $('#btn-edit-lname').click((e) => {
+        $('#lastname-text').hide();
+        $('#btn-edit-lname').hide();
+        $('#lName-edit').show();
+        $('#btn-save-lname').show();
+    });
+
+    $('#btn-save-lname').click((e) => {
+        $('#lName-edit').hide();
+        $('#btn-save-lname').hide();
+        $('#lastname-text').show();
+        $('#btn-edit-lname').show();
+    });
+    // *********************
+
+    // **** Birthdate ****
+    $('#btn-edit-bday').click((e) => {
+        $('#bday-text').hide();
+        $('#btn-edit-bday').hide();
+        $('#bday-edit').show();
+        $('#btn-save-bday').show();
+    });
+
+    $('#btn-save-bday').click((e) => {
+        $('#bday-edit').hide();
+        $('#btn-save-bday').hide();
+        $('#bday-text').show();
+        $('#btn-edit-bday').show();
+    });
+    // *********************
+
+    // **** City ****
+    $('#btn-edit-city').click((e) => {
+        $('#city-text').hide();
+        $('#btn-edit-city').hide();
+        $('#city-edit').show();
+        $('#btn-save-city').show();
+    });
+
+    $('#btn-save-city').click((e) => {
+        $('#city-edit').hide();
+        $('#btn-save-city').hide();
+        $('#city-text').show();
+        $('#btn-edit-city').show();
+    });
+    // *********************
+
+    // **** State ****
+    $('#btn-edit-state').click((e) => {
+        $('#state-text').hide();
+        $('#btn-edit-state').hide();
+        $('#state-edit').show();
+        $('#btn-save-state').show();
+    });
+
+    $('#btn-save-state').click((e) => {
+        $('#state-edit').hide();
+        $('#btn-save-state').hide();
+        $('#state-text').show();
+        $('#btn-edit-state').show();
+    });
+    // *********************
+
+    // **** Zip code ****
+    $('#btn-edit-zipCode').click((e) => {
+        $('#zipCode-text').hide();
+        $('#btn-edit-zipCode').hide();
+        $('#zipCode-edit').show();
+        $('#btn-save-zipCode').show();
+    });
+
+    $('#btn-save-zipCode').click((e) => {
+        $('#zipCode-edit').hide();
+        $('#btn-save-zipCode').hide();
+        $('#zipCode-text').show();
+        $('#btn-edit-zipCode').show();
+    });
+    // *********************
+
+    // **** Zip code ****
+    $('#btn-edit-bio').click((e) => {
+        $('#bio-text').hide();
+        $('#btn-edit-bio').hide();
+        $('#bio-edit').show();
+        $('#btn-save-bio').show();
+    });
+
+    $('#btn-save-bio').click((e) => {
+        $('#bio-edit').hide();
+        $('#btn-save-bio').hide();
+        $('#bio-text').show();
+        $('#btn-edit-bio').show();
+    });
+    // *********************
+</script>
 </body>
 </html>

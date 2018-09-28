@@ -161,7 +161,8 @@
                         <div th:class="'mx-auto profile ' + ${user.status}">
                             <div class="profile-top">
                                 <div class="profile-top-content">
-                                    <img class="profile-image" src="img/male.png" alt="male" />
+                                    <img th:if="${user.gender == 'male'}" class="profile-image" src="img/male.png" alt="male" />
+                                    <img th:if="${user.gender == 'female'}" class="profile-image" src="img/female.png" alt="female" />
                                     <h5 class="profile-name" th:text="${user.username}"></h5>
                                     <p class="profile-status" th:text="${user.status}"></p>
                                 </div>
@@ -179,25 +180,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!--<div class="profile-left">-->
-                                <!--<div class="profile-left-content">-->
-                                    <!--<img class="profile-img" src="img/male.png" alt="male" />-->
-                                    <!--<h3 class="profile-title" th:text="${user.username}"></h3>-->
-                                    <!--<p class="profile-subtitle" th:text="${user.status}"></p>-->
-                                    <!--<a th:href="'/users/' + ${user.id}" class="btn btn-outline-primary profile-view">View</a>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="profile-right">-->
-                                <!--<div class="box box-top">-->
-                                    <!--<p class="box-text" th:text="${usersPosts.get(user.id)}"></p>-->
-                                    <!--<p class="box-text box-text-label">Posts</p>-->
-                                <!--</div>-->
-                                <!--<div class="box box-bottom">-->
-                                    <!--<p class="box-text" th:text="${usersComments.get(user.id)}"></p>-->
-                                    <!--<p class="box-text box-text-label">Comments</p>-->
-                                <!--</div>-->
-                            <!--</div>-->
                         </div>
                     </div>
                     <!-- /#col-12 -->
@@ -210,8 +192,8 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- Overlay (are we using this?) -->
-    <!--<div class="overlay"></div>-->
+     <!--Overlay (are we using this?) -->
+    <div class="overlay"></div>
 
 </main>
 <script th:replace="fragments/scripts :: scripts"></script>
