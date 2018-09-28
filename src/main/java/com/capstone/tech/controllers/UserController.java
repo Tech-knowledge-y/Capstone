@@ -123,6 +123,15 @@ public class UserController {
     private String show(@PathVariable long id, Model viewModel) {
         User user = userDao.findOne(id);
         viewModel.addAttribute("user", user);
+
+        if (user.getUserDetail() == null) {
+            System.out.println("there are no details yet");
+            viewModel.addAttribute("userDetail", new UserDetail());
+        } else {
+            System.out.println("there are details now");
+            viewModel.addAttribute("userDetail", userDetailDao.findOne(id));
+        }
+
         viewModel.addAttribute("showEditControls", userSvc.canEditProfile(user));
         viewModel.addAttribute("languages", new Languages());
         viewModel.addAttribute("availability", new Availability());

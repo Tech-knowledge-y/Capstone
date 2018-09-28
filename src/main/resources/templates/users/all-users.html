@@ -93,78 +93,6 @@
             border-left: 1px solid #c4c5c7;
             left: 50%;
         }
-        /*.profile-left {*/
-            /*margin: 0;*/
-            /*float: left;*/
-            /*width: 65%;*/
-        /*}*/
-
-        /*.profile-right {*/
-            /*margin: 0;*/
-            /*float: right;*/
-            /*width: 35%;*/
-            /*height: 100%;*/
-        /*}*/
-
-        /*.profile-img {*/
-            /*width: 30%;*/
-            /*border-radius: 50%;*/
-            /*position: relative;*/
-            /*left: 50%;*/
-            /*top: 50px;*/
-            /*transform: translateX(-50%);*/
-            /*border: 2px solid black;*/
-        /*}*/
-
-        /*.profile-title {*/
-            /*text-align: center;*/
-            /*position: relative;*/
-            /*top: 50px;*/
-            /*font-weight: 400;*/
-        /*}*/
-
-        /*.profile-subtitle {*/
-            /*text-align: center;*/
-            /*position: relative;*/
-            /*top: 40px;*/
-        /*}*/
-
-        /*.profile-view {*/
-            /*position: relative;*/
-            /*top: 45px;*/
-            /*left: 50%;*/
-            /*width: 120px;*/
-            /*transform: translateX(-50%)*/
-        /*}*/
-
-        /*.box {*/
-            /*height: 49.5%;*/
-            /*background: #C4C4CC;*/
-        /*}*/
-
-        /*.box-top {*/
-            /*border-top-right-radius: 5px;*/
-            /*margin-bottom: 3px;*/
-        /*}*/
-
-        /*.box-bottom {*/
-            /*border-bottom-right-radius: 5px;*/
-        /*}*/
-
-        /*.box-text {*/
-            /*font-weight: 400;*/
-            /*font-size: 1.5rem;*/
-            /*text-align: center;*/
-            /*position: relative;*/
-            /*top: 50%;*/
-            /*transform: translateY(-50%);*/
-        /*}*/
-
-        /*.box-text-label {*/
-            /*font-weight: 100;*/
-            /*font-size: .75rem;*/
-            /*top: 30%;*/
-        /*}*/
 
         #all-filter, #mentor-filter, #mentee-filter {
             color: #F7F7F7;
@@ -233,7 +161,8 @@
                         <div th:class="'mx-auto profile ' + ${user.status}">
                             <div class="profile-top">
                                 <div class="profile-top-content">
-                                    <img class="profile-image" src="img/male.png" alt="male" />
+                                    <img th:if="${user.gender == 'male'}" class="profile-image" src="img/male.png" alt="male" />
+                                    <img th:if="${user.gender == 'female'}" class="profile-image" src="img/female.png" alt="female" />
                                     <h5 class="profile-name" th:text="${user.username}"></h5>
                                     <p class="profile-status" th:text="${user.status}"></p>
                                 </div>
@@ -251,25 +180,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!--<div class="profile-left">-->
-                                <!--<div class="profile-left-content">-->
-                                    <!--<img class="profile-img" src="img/male.png" alt="male" />-->
-                                    <!--<h3 class="profile-title" th:text="${user.username}"></h3>-->
-                                    <!--<p class="profile-subtitle" th:text="${user.status}"></p>-->
-                                    <!--<a th:href="'/users/' + ${user.id}" class="btn btn-outline-primary profile-view">View</a>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="profile-right">-->
-                                <!--<div class="box box-top">-->
-                                    <!--<p class="box-text" th:text="${usersPosts.get(user.id)}"></p>-->
-                                    <!--<p class="box-text box-text-label">Posts</p>-->
-                                <!--</div>-->
-                                <!--<div class="box box-bottom">-->
-                                    <!--<p class="box-text" th:text="${usersComments.get(user.id)}"></p>-->
-                                    <!--<p class="box-text box-text-label">Comments</p>-->
-                                <!--</div>-->
-                            <!--</div>-->
                         </div>
                     </div>
                     <!-- /#col-12 -->
@@ -281,7 +191,6 @@
         <!-- /#content -->
     </div>
     <!-- /#wrapper -->
-
     <div class="overlay"></div>
 
 </main>
