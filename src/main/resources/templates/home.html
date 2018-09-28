@@ -9,32 +9,113 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark" id="nav-bar">
-    <a class="navbar-brand" href="/">Tech{knowledge}y</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/developers">Contact</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-<main>
-    <div class="jumbotron jumbotron-fluid w-100 h-100 p-0 m-0">
-        <div class="image" >
-            <img src="img/logo-home1.png" alt="logo" />
-            <div class="center">
-                <h1 class="text-center" id="hero-text">FIND YOUR MENTOR</h1>
-                <em><h3 class="text-center" id="hero-text-small">Boost Your Coding Skills </h3></em>
-                <a class="btn btn-outline-primary login-button" href="/login" role="button">CONNECT</a>
+
+<header>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark" id="nav-bar">
+        <a class="navbar-brand">Tech{knowledge}y</a>
+    </nav>
+    <!-- Navbar -->
+    <!-- Full Page Intro -->
+    <div class="view bg_image">
+        <!-- Mask & flexbox options-->
+        <div class="d-flex justify-content-center align-items-center">
+            <!-- Content -->
+            <div class="container">
+                <!--Grid row-->
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-12 text-center">
+                        <img src="img/logo-home1.png" alt="logo" id="logo_home"/>
+                    </div>
+                    <div class="col-md-12 mb-4 white-text text-center">
+                        <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5"><strong>Find Your Mentor</strong></h1>
+                        <hr class="hr-light my-4" />
+                        <h5 class="text-uppercase mb-4 white-text"><strong>Boost Your Coding Skills</strong></h5>
+                        <a class="btn btn-outline-primary text-uppercase" href="/login">Connect</a>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
             </div>
+            <!-- Content -->
         </div>
+        <!-- Mask & flexbox options-->
+    </div>
+    <!-- Full Page Intro -->
+</header>
+<!-- Main navigation -->
+<!--Main Layout-->
+<main>
+    <div class="container">
+        <!--Grid row-->
+        <div class="row py-5">
+            <!--Grid column-->
+            <div class="col-md-12 text-center">
+                <!--Projects section v.4-->
+                <section>
+
+                    <!--Section heading-->
+                    <h2 class="h1-responsive font-weight-bold text-center my-5">What is Tech{knowledge}y?</h2>
+                    <!-- Section description -->
+                    <p class="grey-text text-center w-responsive mx-auto mb-5">Tech{knowledge}y is the culmination of an 18-week coding journey. A journey fraught with frustration and "ah-ha" moments. As students our greatest asset is the knowledge that others possess and one of man's greatest gifts is the passing of the torch from one generation to the next. As we stepped into this new world we found ourselves inundated with information and help, but the cohesiveness of the message was lost to us. After struggling to find the sort of tech knowledge we sought, grasping the information we've learned, we've lit our own torch that we're proud to pass onto those after us. We are helping put the knowledge back into tech.</p>
+                    <h1 class="grey-text text-center w-responsive mx-auto mb-5">We are Tech{knowledge}y</h1>
+
+                    <!--Grid row-->
+                    <div class="row mx-1">
+
+                        <!--Grid column-->
+                        <div class="col-sm-12 col-md-6 mb-4">
+                            <div class="card card-image homepage_meet_img">
+                                <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                                    <div>
+                                        <h6 class="pink-text"><i class="fas fa-angle-double-left"></i> <strong>Background</strong> <i class="fas fa-angle-double-right"></i></h6>
+                                        <h3 class="card-title py-3 font-weight-bold"><strong>Meet the Team</strong></h3>
+                                        <p class="pb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+                                            optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
+                                            Odit sed qui, dolorum!</p>
+                                        <a class="btn btn-danger btn-rounded">View project</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-sm-12 col-md-6 mb-4">
+                            <div class="card card-image homepage_connect_img">
+                                <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                                    <div>
+                                        <h6 class="green-text"><i class="fas fa-angle-double-left"></i> <strong>Connect</strong> <i class="fas fa-angle-double-right"></i></h6>
+                                        <h3 class="card-title py-3 font-weight-bold"><strong>Find a Mentor</strong></h3>
+                                        <p class="pb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+                                            optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
+                                            Odit sed qui, dolorum!</p>
+                                        <a class="btn btn-success btn-rounded"><i class="fa fa-clone left"></i> View project</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Grid column-->
+
+                    </div>
+                    <!--Grid row-->
+
+                </section>
+                <!--Projects section v.4-->
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--Grid row-->
     </div>
 </main>
+<!--Main Layout-->
+
+
+
+
 
 <script th:replace="fragments/scripts :: scripts"></script>
+
 </body>
 </html>

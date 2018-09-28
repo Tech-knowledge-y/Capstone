@@ -2,102 +2,136 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <div th:replace="fragments/head :: head('Default')"></div>
+    <div th:replace="fragments/head :: head('Show')"></div>
     <!-- Add Custom CSS Below-->
     <link rel="stylesheet" href="" />
     <style>
-        :root {
-            --white: #FEFEFE;
-            --dark: #484855;
-            --greyLight: #D1CFD2;
-            --greyDark: #9B999E;
-            --grey: #B9B5BE;
-            --red: #ef5350;
+        p {
+            font-weight: 100;
         }
 
-        .post {
-            display: flex;
-            width: 85%;
+        textarea {
+            border: none !important;
         }
 
-        .post-top {
-            height: 50%;
-            background-color: var(--dark);
-            color: white;
-            padding: 3em;
-            position: relative;
+        .card {
+            color: #000;
+            border: none;
+            background-color: transparent;
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
         }
 
-        .post-top_title {
-            font-size: 2em;
-            text-transform: uppercase;
-            font-weight: 700;
+        .top {
+            border-radius: 5px;
+            height: 200px;
         }
 
-        .post-top_title_sub {
-            font-size: 2em;
-            text-transform: uppercase;
-            font-weight: 300;
-            margin-top: 0.25em;
+        .geekdom {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/geekdom.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
         }
 
-        .post-top_border {
-            border: 2px solid var(--red);
-            height: 15%;
-            margin-top: 1em;
+        .codeup {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/codeup.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
         }
 
-        .post-top_author {
-            position: absolute;
-            bottom: 2em;
-            display: flex;
-            align-items: center;
-        }
-        .post-top_author img {
-            height: 2.5em;
-            margin-bottom: 1em;
-            border: 1px solid var(--white);
-            border-radius: 50%;
+        .central-library {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/central_library.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
         }
 
-        .post-bottom {
-            height: 50%;
-            background-color: var(--white);
-            color: var(--dark);
+        .san-pedro {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/sanpedro.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
         }
 
-        .post-bottom_body {
-            line-height: 2;
-            padding: 2em;
-        }
-        .post-bottom_body p {
-            margin-top: 1em;
-        }
-        .post-bottom_body p span {
-            font-size: 2em;
+        .bottom {
+            height: auto;
+            background-color: #fff;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
         }
 
-        .post-bottom_footer {
-            display: flex;
-            justify-content: space-between;
-            box-shadow: 0px -4px 3px -2px rgba(0, 0, 0, 0.1);
-            padding: 2em;
+        .post-title, .post-body, .post-date {
+            text-align: center;
         }
 
-        .post-bottom_footer_date {
-            text-transform: uppercase;
-        }
-        .post-bottom_footer_date span {
-            font-weight: 700;
+        .post-title {
+            margin-top: 15px;
         }
 
-        .post-bottom_footer_pictos {
-            font-size: 1.5em;
-            margin-bottom: 1em;
+        .comments {
+            padding: 20px;
+            background-image: linear-gradient(-45deg, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
         }
-        .post-bottom_footer_pictos .fa-heart {
-            color:var(--red);
-            margin-bottom: 1em;
+
+        .comment-user {
+            text-align: center;
+            margin-bottom: 2px;
+            margin-left: 10px;
+        }
+
+        .comment-box, .add-comment-box {
+            padding: 10px;
+            margin-bottom: 1rem;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        }
+
+        .comment-box {
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .add-comment-box {
+            margin-top: 2rem;
+            padding: 0;
+        }
+
+        .add-comment-btn {
+            height: 100%;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .btn-outline-danger {
+            font-size: 12px;
+            border-radius: 15px;
+            width: 70px;
+            margin-right: 5px;
+        }
+
+        .btn-outline-warning {
+            font-size: 12px;
+            border-radius: 15px;
+            width: 60px;
+        }
+
+        .edit-delete-section {
+            height: 45px;
+            margin: 15px;
+        }
+
+        /*// Medium devices (tablets, 768px and up)*/
+        @media (min-width: 768px) {
+            .card {
+                width: 70%;
+                margin: 0 auto;
+            }
         }
     </style>
 </head>
@@ -121,59 +155,43 @@
 
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12 mx-auto">
-<<<<<<< HEAD
-                        <div class="post">
-                            <div class="post-top">
-                                <div class="post-top_title">Lorem ipsum:</div>
-                                <div class="post-top_title_sub">Dolor sit amet</div>
-                                <div class="post-top_border"></div>
-                                <div class="post-top_author">
-                                    <p>Jillian Wysoki</p>
-=======
-                        <div class="card text-center">
-                            <div class="card-header">
-                                <a class="btn btn-warning float-left" th:href="'/posts/' + ${post.id} + '/edit'" th:if="${isOwner}">Edit Post Details</a>
-                                <!-- Button trigger modal -->
-                                <button  th:if="${isOwner}" class="btn btn-danger float-right" data-toggle="modal" data-target="#exampleModal">
-                                    Delete
-                                </button>
-                            </div>
-                            <div class="post card-body">
-                                <h2 class="card-title" th:text="${post.title}"></h2>
-                                <h5 class="card-subtitle" th:text="${post.date}"></h5>
-                                <p class="card-text" th:text="${post.body}"></p>
-                                <p class="card-text" th:text="${post.user.username}"></p>
-
-                            </div>
-                            <div class="card-footer" sec:authorize="isAuthenticated()">
-                                <ul class="list-group list-group-flush" th:each="comments : ${allComments}">
-                                    <th:block th:if="${post.id eq comments.post.id}">
-                                        <li class="list-group-item"
-                                            th:text="${comments.user.username + ' : ' + comments.message}">
-                                        </li>
+                    <div class="col-12 mx-auto my-4">
+                        <div class="card">
+                            <div th:if="${post.latitude == '29.4267857'}" class="top codeup"></div>
+                            <div th:if="${post.latitude == '29.4262750'}" class="top geekdom"></div>
+                            <div th:if="${post.latitude == '29.4323442'}" class="top central-library"></div>
+                            <div th:if="${post.latitude == '29.4464730'}" class="top san-pedro"></div>
+                            <div class="bottom">
+                                <h3 class="post-title" th:text="${post.title}"></h3>
+                                <p class="post-date" th:text="${post.date}"></p>
+                                <p class="post-body mt-3" th:text="${post.body}"></p>
+                                <div class="edit-delete-section" th:if="${isOwner}">
+                                    <a class="btn btn-outline-warning float-right" th:href="'/posts/' + ${post.id} + '/edit'">Edit</a>
+                                    <button class="btn btn-outline-danger float-right" data-toggle="modal" data-target="#exampleModal">Delete</button>
+                                </div>
+                                <div class="comments">
+                                    <h3 class="text-center">Comments</h3>
+                                    <th:block th:each="comments : ${allComments}">
+                                        <th:block th:if="${post.id eq comments.post.id}">
+                                            <p class="comment-user" th:text="${comments.user.username}"></p>
+                                            <div class="comment-box" th:text="${comments.message}"></div>
+                                        </th:block>
                                     </th:block>
-                                </ul>
-                                <form th:action="'/posts/' + ${post.id} + '/' + ${comment.id}" th:method="post" th:object="${comment}">
-                                    <div class="form-row align-items-center">
-                                        <div class="col-8">
-                                            <textarea class="form-control mb-2" id="comment" th:field="*{message}" placeholder="Add comment"></textarea>
-                                        </div>
-                                        <div class="col-4">
-                                            <button type="submit" class="btn btn-outline-primary mb-2">Submit</button>
-                                        </div>
+                                    <div class="add-comment-box" sec:authorize="isAuthenticated()">
+                                        <form th:action="'/posts/' + ${post.id} + '/' + ${comment.id}" th:method="post" th:object="${comment}">
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <textarea id="comment" th:field="*{message}" class="form-control" placeholder="Add a comment"></textarea>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <button type="submit" class="btn btn-primary add-comment-btn">+</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
-                        <!--<h1>Title: <span th:text="${post.title}"></span></h1>-->
-                        <!--<p>date: <span th:text="${post.date}"></span></p>-->
-
-                        <!--<p>body: <span th:text="${post.body}"></span></p>-->
-                        <!--<p>user: <span th:text="${post.user.username}"></span></p>-->
-
-                        <!--<a class="btn btn-warning" th:href="'/posts/' + ${post.id} + '/edit'" th:if="${isOwner}">Edit Post Details</a>-->
-
 
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"                                   aria-hidden="true">
@@ -214,7 +232,7 @@
     <!-- /#wrapper -->
 
     <!-- Overlay (are we using this?) -->
-    <!--<div class="overlay"></div>-->
+    <div class="overlay"></div>
 
 </main>
 <script th:replace="fragments/scripts :: scripts"></script>
@@ -225,73 +243,3 @@
 </script>
 </body>
 </html>
-
-
-<!--<div class="card text-center">-->
-    <!--<div class="card-header">-->
-        <!--<a class="btn btn-warning float-left" th:href="'/posts/' + ${post.id} + '/edit'" th:if="${isOwner}">Edit Post Details</a>-->
-        <!--&lt;!&ndash; Button trigger modal &ndash;&gt;-->
-        <!--<button  th:if="${isOwner}" class="btn btn-danger float-right" data-toggle="modal" data-target="#exampleModal">-->
-            <!--Delete-->
-        <!--</button>-->
-    <!--</div>-->
-    <!--<div class="post card-body">-->
-        <!--<h2 class="card-title" th:text="${post.title}"></h2>-->
-        <!--<h5 class="card-subtitle" th:text="${post.date}"></h5>-->
-        <!--<p class="card-text" th:text="${post.body}"></p>-->
-        <!--<p class="card-text" th:text="${post.user.username}"></p>-->
-    <!--</div>-->
-    <!--<div class="card-footer" sec:authorize="isAuthenticated()">-->
-        <!--<ul class="list-group list-group-flush" th:each="comments : ${allComments}">-->
-            <!--<th:block th:if="${post.id eq comments.post.id}">-->
-                <!--<li class="list-group-item"-->
-                    <!--th:text="${comments.user.username + ' : ' + comments.message}">-->
-                <!--</li>-->
-            <!--</th:block>-->
-        <!--</ul>-->
-        <!--<form th:action="'/posts/' + ${post.id} + '/' + ${comment.id}" th:method="post" th:object="${comment}">-->
-            <!--<div class="form-row align-items-center">-->
-                <!--<div class="col-8">-->
-                    <!--<textarea class="form-control mb-2" id="comment" th:field="*{message}" placeholder="Add comment"></textarea>-->
-                <!--</div>-->
-                <!--<div class="col-4">-->
-                    <!--<button type="submit" class="btn btn-outline-primary mb-2">Submit</button>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</form>-->
-    <!--</div>-->
-<!--</div>-->
-<!--&lt;!&ndash;<h1>Title: <span th:text="${post.title}"></span></h1>&ndash;&gt;-->
-<!--&lt;!&ndash;<p>date: <span th:text="${post.date}"></span></p>&ndash;&gt;-->
-
-<!--&lt;!&ndash;<p>body: <span th:text="${post.body}"></span></p>&ndash;&gt;-->
-<!--&lt;!&ndash;<p>user: <span th:text="${post.user.username}"></span></p>&ndash;&gt;-->
-
-<!--&lt;!&ndash;<a class="btn btn-warning" th:href="'/posts/' + ${post.id} + '/edit'" th:if="${isOwner}">Edit Post Details</a>&ndash;&gt;-->
-
-
-<!--&lt;!&ndash; Modal &ndash;&gt;-->
-<!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-    <!--<div class="modal-dialog" role="document">-->
-        <!--<div class="modal-content">-->
-            <!--<div class="modal-header">-->
-                <!--<h5 style="color: black;" class="modal-title" id="exampleModalLabel">Confirm Delete</h5>-->
-                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                    <!--<span aria-hidden="true">&times;</span>-->
-                <!--</button>-->
-            <!--</div>-->
-            <!--<div class="modal-body">-->
-                <!--<p style="color: black;">Are you sure you want to delete this post?</p>-->
-                <!--<h3 style="color:black"><span th:text="${post.title}"></span></h3>-->
-            <!--</div>-->
-            <!--<div class="modal-footer">-->
-                <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>-->
-
-                <!--<form th:action="@{/posts/delete}" th:method="POST" th:if="${isOwner}">-->
-                    <!--<input type="hidden" th:value="${post.id}" name="id" />-->
-                    <!--<button class="btn btn-danger">Confirm Delete</button>-->
-                <!--</form>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->

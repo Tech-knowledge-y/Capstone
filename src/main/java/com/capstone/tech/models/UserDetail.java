@@ -11,10 +11,10 @@ public class UserDetail {
     @GeneratedValue
     private long id;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String fName;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String lName;
 
     @Column
