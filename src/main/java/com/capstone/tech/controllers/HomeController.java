@@ -38,4 +38,9 @@ public class HomeController {
     public String lightbox() {
         return "lightbox";
     }
+
+    @GetMapping("/test")
+    public String test() {
+        return "test";
+    }
 }

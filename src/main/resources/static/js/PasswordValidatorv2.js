@@ -1,11 +1,4 @@
-/**
- * Password Validator
- * Author: Brian Nippert, Alok Gupta
- * Date: 29/July/2018
- * Version 1.4
- */
-
-//Count variable ued for progress bar
+//Count variable used for progress bar
 var count = 0;
 
 var PasswordValidator = new function () {
@@ -143,7 +136,7 @@ var PasswordValidator = new function () {
 
     /**
      * Checks to see if any prohibited special characters are present in the password.
-     * @param string passwor dot test
+     * @param string password dot test
      * @returns {string} string to add to the popover
      */
     this.checkProhibitedCharacter = function (string) {
