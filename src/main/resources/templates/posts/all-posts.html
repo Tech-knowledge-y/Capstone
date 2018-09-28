@@ -4,28 +4,107 @@
 <head>
     <div th:replace="fragments/head :: head('All Posts')"></div>
     <!-- Add Custom CSS Below-->
-    <link rel="stylesheet" href="css/allPosts.css" />
+    <link rel="stylesheet" href="" />
     <style>
-        .card-title, .card-text {
+        .card {
             color: #000;
+            border: none;
+            background-color: transparent;
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
         }
 
-        .badge {
-            font-weight: 300;
+        .top {
+            border-radius: 5px;
+            height: 200px;
         }
 
-        .badge-primary {
-            background-color: #2F4858;
+        .geekdom {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/geekdom.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
         }
 
-        .badge-secondary {
-            background-color: #33658A;
+        .codeup {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/codeup.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .central-library {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/central_library.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .san-pedro {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/sanpedro.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .bottom {
+            height: auto;
+            background-color: #fff;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .post-title, .post-body, .username {
+            margin-left: 12%;
+        }
+
+        .username {
+            margin-top: 1rem;
+            margin-bottom: 0;
+        }
+
+        .btn-more-info {
+            float: right;
+            margin: 25px;
+            font-size: 12px;
+            border-radius: 15px;
+            background: #c4c5c7;
+            border: none;
+            color: #000;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1), 0 5px 12px rgba(0,0,0,0.15);
+        }
+
+        #search {
+            width: 75%;
+            margin: 0 auto;
+            background: #272526;
+            border-top: 0;
+            border-right: 0;
+            border-left: 0;
+            border-bottom: 1px solid #F7F7F7;
+            border-radius: 0;
+            color: #F7F7F7;
+            font-weight: 100;
+            font-size: 2rem;
+        }
+
+        #search:focus {
+            outline-style:none;
+            box-shadow:none;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+            border-bottom: 1px solid #F7F7F7;
+        }
+
+        #search::placeholder {
+            color: #F7F7F7;
         }
 
         /*// Medium devices (tablets, 768px and up)*/
         @media (min-width: 768px) {
-            #content {
-                width: auto;
+            .card {
+                width: 70%;
+                margin: 0 auto;
             }
         }
     </style>
@@ -52,29 +131,18 @@
                 <input type="text" class="form-control my-3" id="search" name="search" placeholder="search" />
                 <div class="row">
                     <div class="col-12 my-2" th:each="post : ${posts}">
-                        <div class="entire-card">
-                            <div class="innerCard-body">
-                                <div class="left-side-container">
-                                    <h1 class="title" th:text="${post.title}"></h1>
-                                    <div class="chip">
-                                        <img src="img/AmosDavis.jpg" alt="Person" width="96" height="96" />
-                                        Amos Davis
-                                    </div>
-                                    <!--/#aPavatar-->
-                                </div>
-                                <!-- /#left-side-container -->
-
-                                <div class="right-side-container">
-
-                                    <p class="text-description" th:text="${post.body}"></p>
-
-                                    <a th:href="'/posts/' + ${post.id}" class="infoBtn">More Info</a>
-                                </div>
-                                <!-- /#right-side-container -->
+                        <div class="card">
+                            <div th:if="${post.latitude == '29.4267857'}" class="top codeup"></div>
+                            <div th:if="${post.latitude == '29.4262750'}" class="top geekdom"></div>
+                            <div th:if="${post.latitude == '29.4323442'}" class="top central-library"></div>
+                            <div th:if="${post.latitude == '29.4464730'}" class="top san-pedro"></div>
+                            <div class="bottom">
+                                <p class="username" th:text="${'by ' + post.user.username}"></p>
+                                <h3 class="post-title" th:text="${post.title}"></h3>
+                                <p class="post-body" th:text="${post.body}"></p>
+                                <a th:href="'/posts/' + ${post.id}" class="btn btn-outline-primary btn-more-info">More Info</a>
                             </div>
-                            <!-- /#innerCard-body -->
                         </div>
-                        <!-- /#entire-card -->
                     </div>
                     <!-- /#col-12 -->
                 </div>
@@ -90,6 +158,21 @@
     <div class="overlay"></div>
 </main>
     <script th:replace="fragments/scripts :: scripts"></script>
+    <script>
+        // <![CDATA[
+        // Search bar
+        $('#search').keyup(function () {
+            let filter = $(this).val();
 
+            $('.card').each(function () {
+                if ($(this).find('.post-title').text().search(new RegExp(filter, 'i')) < 0 ) {
+                    $(this).parent().hide();
+                } else {
+                    $(this).parent().show();
+                }
+            })
+        });
+        // ]]>
+    </script>
 </body>
 </html>
