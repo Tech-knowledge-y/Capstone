@@ -5,12 +5,19 @@
     <div th:replace="fragments/head :: head('Default')"></div>
     <!-- Add Custom CSS Below-->
     <link rel="stylesheet" href="" />
-    <style></style>
+    <style>
+        /*.img-resource{*/
+            /*width: 50%;*/
+            /*height:50%;*/
+        /*}*/
+
+    </style>
 </head>
 
+<main>
 <body>
 
-<main>
+
     <div id="wrapper">
         <!-- side-navbar -->
         <div sec:authorize="isAuthenticated()">
@@ -25,24 +32,58 @@
                 <nav th:replace="fragments/side-navbar :: side-navbar-toggler"></nav>
             </div>
 
-            <div class="container-fluid">
+            <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h1>Resources</h1>
-                        <ul>
-                            <li> <a target="_blank" href="https://codeup.com/contact/">Codeup Mentorship Form </a> </li>
-                            <li><a target="_blank" href="https://geekdom.com/">Geekdom</a> </li>
-                            <li><a target="_blank" href="https://launchsa.org/">Launch SA</a> </li>
-                            <li><a target="_blank" href="http://www.breakfastlaunch.com/">Breakfast and Launch</a></li>
-                            <li><a target="_blank" href="https://www.1millioncups.com/">1 million cups (meets Wednesdays @ 9 at main library)</a></li>
-                            <li><a target="_blank" href="https://www.venturex.com/">Venture X</a></li>
-                            <li><a target="_blank" href="https://realco.com/">RealCo </a></li>
-                        </ul>
+                        <h1 class="text-center" id="resources-header">MENTORSHIP RESOURCES</h1> <br />
 
-                        <h3>Coming soon</h3>
-                        <p><a target="_blank" href="https://www.wework.com/locations">WeWork</a></p>
+                        <div class="text-center img-resource">
+                            <a target="_blank" href="https://codeup.com/contact/">
+                                <img src="img/codeup.png" alt="codeup-logo" /></a>
+                        </div>
+                        <br />
+                        <div class="text-center img-resource">
+                            <a target="_blank" href="https://geekdombookingcalendar.acuityscheduling.com/schedule.php">
+                                <img src="img/geekdom.png" alt="geekdom-logo" /></a>
+                        </div>
+                        <br />
+                        <div class="text-center img-resource">
+                            <a target="_blank" href="https://launchsa.org/">
+                                <img src="img/launchsa.png" alt="launchsa-logo" /></a>
+                        </div>
+
+                        <br />
+                        <div class="text-center img-resource">
+                            <a target="_blank" href="https://www.1millioncups.com/"><img src="img/1-Million-Cups.png" alt="1millioncups-logo" /></a>
+                        </div>
+
+                        <div class="text-center img-resource">
+                            <a target="_blank" href="http://www.breakfastlaunch.com/">
+                                <img src="img/Break-Fast-Launch-Logo copy copy.png" alt="breakfast-and-launch-logo" /></a>
+                        </div>
+
+
+                        <div class="text-center img-resource">
+                            <a target="_blank" href="https://realco.com/">
+                            <img src="img/realco.png" alt="realco-logo" /></a>
+                        </div>
+
+                        <br />
+                        <div class="text-center img-resource">
+                            <a target="_blank" href="https://www.venturex.com/">
+                                <img src="img/venture2.png" alt="venturex-logo" /></a>
+                        </div>
+
+                        <br />
+                        <div class="text-center">
+                            <a target="_blank" href="https://www.wework.com/locations">
+                                <img src="img/wework.png" alt="wework-logo" /></a>
+                        </div>
+                        <br />
+
+
                     </div>
-                    <!-- /#col-12 -->
+                     <!--/#col-12-->
                 </div>
                 <!-- /#row -->
             </div>
@@ -53,10 +94,11 @@
     <!-- /#wrapper -->
 
     <!-- Overlay (are we using this?) -->
-    <!--<div class="overlay"></div>-->
+    <div class="overlay"></div>
 
-</main>
+
 <script th:replace="fragments/scripts :: scripts"></script>
 
 </body>
+</main>
 </html>
