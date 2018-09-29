@@ -329,4 +329,10 @@ a.article:hover {
         width: auto;
 
     }
+ .navbar-brand {
+     font-size: 2em;
+
+
+ }
+
 }
