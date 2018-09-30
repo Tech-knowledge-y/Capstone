@@ -31,7 +31,7 @@ public class HomeController {
 
     @GetMapping("/work")
     public String work() {
-        return "work";
+        return "behind-scenes";
     }
 
     @GetMapping("/lightbox")
