@@ -10,11 +10,12 @@
         </div>
 
         <div class="sidebar-header">
-            <img src="img/logo-sidenavbar.png" alt="logo" />
+            <img src="/img/logo-size29.png" alt="logo" />
         </div>
 
+
         <ul class="list-unstyled components">
-           
+
             <li>
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Profiles</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -38,19 +39,20 @@
                 </ul>
             </li>
 
-            <li>
-                <a href="/chat">Chat</a>
-            </li>
+            <!--<li>-->
+                <!--<a th:href="'/chat/' + ${#authentication.principal.id}">Chat</a>-->
+                <!--<a th:href="'/chat/' + ${user.username}">Chat</a>-->
+            <!--</li>-->
 
             <li>
                 <a href="/resources">Resources</a>
             </li>
 
             <li>
-                <a href="/work">Behind the scenes</a>
+                <a href="/work">Behind The Scenes</a>
             </li>
             <li>
-                <a href="/developers">Contact</a>
+                <a href="/developers">Contact Us</a>
             </li>
         </ul>
 
