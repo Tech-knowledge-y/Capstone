@@ -305,6 +305,8 @@ a.article:hover {
 
 #sidebarCollapse {
     width: 100%;
+    background-color: #487eb0;
+
 }
 
 #not-authorized {
@@ -334,5 +336,6 @@ a.article:hover {
 
 
  }
+
 
 }
