@@ -29,8 +29,8 @@ public class HomeController {
     @GetMapping("/resources")
     public String resources() {return "resources"; }
 
-    @GetMapping("/work")
-    public String work() {
+    @GetMapping("/behind-scenes")
+    public String behindscenes() {
         return "behind-scenes";
     }
 
