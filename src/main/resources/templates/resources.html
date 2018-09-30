@@ -2,21 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <div th:replace="fragments/head :: head('Default')"></div>
+    <div th:replace="fragments/head :: head('Mentorship Resources')"></div>
     <!-- Add Custom CSS Below-->
     <link rel="stylesheet" href="" />
     <style>
-        /*.img-resource{*/
-            /*width: 50%;*/
-            /*height:50%;*/
-        /*}*/
+
+        .resources {
+            padding-top: 5%;
+        }
 
     </style>
 </head>
-
 <main>
 <body>
-
 
     <div id="wrapper">
         <!-- side-navbar -->
@@ -32,54 +30,58 @@
                 <nav th:replace="fragments/side-navbar :: side-navbar-toggler"></nav>
             </div>
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h1 class="text-center" id="resources-header">MENTORSHIP RESOURCES</h1> <br />
 
-                        <div class="text-center img-resource">
-                            <a target="_blank" href="https://codeup.com/contact/">
-                                <img src="img/codeup.png" alt="codeup-logo" /></a>
-                        </div>
-                        <br />
-                        <div class="text-center img-resource">
-                            <a target="_blank" href="https://geekdombookingcalendar.acuityscheduling.com/schedule.php">
-                                <img src="img/geekdom.png" alt="geekdom-logo" /></a>
-                        </div>
-                        <br />
-                        <div class="text-center img-resource">
-                            <a target="_blank" href="https://launchsa.org/">
-                                <img src="img/launchsa.png" alt="launchsa-logo" /></a>
-                        </div>
+                    <!--Col 1-->
+             <div class="container-fluid resources">
+                    <div class="row text-center">
+                        <div class="col-lg-6 col-md-12 col-sm-12">
 
-                        <br />
-                        <div class="text-center img-resource">
-                            <a target="_blank" href="https://www.1millioncups.com/"><img src="img/1-Million-Cups.png" alt="1millioncups-logo" /></a>
-                        </div>
-
-                        <div class="text-center img-resource">
-                            <a target="_blank" href="http://www.breakfastlaunch.com/">
-                                <img src="img/Break-Fast.png" alt="breakfast-and-launch-logo" /></a>
-                        </div>
+                            <div class="text-center img-resource">
+                                <a target="_blank" href="https://codeup.com/contact/">
+                                    <img src="img/codeup.png" alt="codeup-logo" /></a>
+                            </div><br/><br/>
 
 
-                        <div class="text-center img-resource">
-                            <a target="_blank" href="https://realco.com/">
-                            <img src="img/realco.png" alt="realco-logo" /></a>
+                            <div class="text-center img-resource">
+                                <a target="_blank" href="https://geekdombookingcalendar.acuityscheduling.com/schedule.php">
+                                    <img src="img/geekdom.png" alt="geekdom-logo" /></a>
+                            </div><br/><br/>
+
+
+                            <div class="text-center img-resource">
+                                <a target="_blank" href="https://launchsa.org/">
+                                    <img src="img/launchsa.png" alt="launchsa-logo" /></a>
+                            </div><br/><br/>
+
+                            <div class="text-center img-resource">
+                                <a target="_blank" href="https://www.1millioncups.com/">
+                                    <img src="img/1-Million-Cups.png" alt="1millioncups-logo" /></a>
+                            </div>
+
                         </div>
 
-                        <br />
-                        <div class="text-center img-resource">
-                            <a target="_blank" href="https://www.venturex.com/">
-                                <img src="img/ventureX.png" alt="venturex-logo" /></a>
+
+                        <!--Col 2-->
+
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+
+                            <div class="text-center img-resource">
+                                <a target="_blank" href="https://www.venturex.com/">
+                                    <img src="img/ventureX.png" alt="venturex-logo" /></a>
+                            </div>
+
+                            <div class="text-center img-resource">
+                                <a target="_blank" href="http://www.breakfastlaunch.com/">
+                                    <img src="img/Break-Fast.png" alt="breakfast-and-launch-logo" /></a>
+                            </div>
+
+
+                            <div class="text-center img-resource">
+                                <a target="_blank" href="https://realco.com/">
+                                    <img src="img/realco.png" alt="realco-logo" /></a>
+                            </div>
                         </div>
-
-                        <br />
-
-
                     </div>
-                     <!--/#col-12-->
-                </div>
                 <!-- /#row -->
             </div>
             <!-- /#container-fluid -->
