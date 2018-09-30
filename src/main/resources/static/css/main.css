@@ -7,7 +7,7 @@ body {
     overflow-x: hidden;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    color: #fff;
+    color: #F7F7F7;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -60,7 +60,7 @@ form {
 
 /*used on Dev Page*/
 div.box1 {
-    background-color: whitesmoke;
+    background-color: #F7F7F7;
     margin: 0;
     position: relative;
     padding: 105px 0 0 0;
