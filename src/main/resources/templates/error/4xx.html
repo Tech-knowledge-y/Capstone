@@ -7,13 +7,20 @@
 <body style="background-color: whitesmoke">
 <th:block th:switch="${error}">
     <div th:case="'Not Found'">
-        <div style="margin: auto; width: 50%;">
-            <img src="/img/404.png" alt="404 error" />
-        </div>
-        <h1 class="text-center text-white">Page not found!</h1>
-        <h5>Sorry, we couldn't find the page you were looking for. <br /> We suggest that you return to the main sections</h5>
-        <a href="/home">Go back to the Main Page</a>
+        <div style="margin: auto; width: 100%;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
 
+            <div class="text-center error-pages">
+                <a target="_blank" href="/home" class="btn btn-primary">
+                    <img src="/img/404.png" alt="404 error" />Return to Tech{knowledge}y</a>
+            </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
     <div th:case="'Forbidden'">
         <div style="margin: auto; width: 50%;">
@@ -22,6 +29,8 @@
         <h1 class="text-center text-white">You don't have permission to view this page.</h1>
 
     </div>
+
+
 </th:block>
 
 </body>
