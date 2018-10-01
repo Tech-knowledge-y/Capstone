@@ -14,6 +14,15 @@
             border: none !important;
         }
 
+        .btn-outline-primary {
+            color: #2a5298;
+            border: none !important;
+        }
+
+        .btn-outline-primary:hover {
+            background: #2a5298;
+        }
+
         .card {
             color: #000;
             border: none;
@@ -184,7 +193,7 @@
                                                     <textarea id="comment" th:field="*{message}" class="form-control" placeholder="Add a comment"></textarea>
                                                 </div>
                                                 <div class="col-auto">
-                                                    <button type="submit" class="btn btn-primary add-comment-btn">+</button>
+                                                    <button type="submit" class="btn btn-outline-primary add-comment-btn">add</button>
                                                 </div>
                                             </div>
                                         </form>
