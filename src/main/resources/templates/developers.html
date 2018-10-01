@@ -5,7 +5,95 @@
     <div th:replace="fragments/head :: head('Contact Us')"></div>
     <!-- Add Custom CSS Below-->
     <link rel="stylesheet" href="" />
-    <style></style>
+    <style>
+        hr {
+            width: 50%;
+            margin-top: 1.5rem;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        .card-desc {
+            margin-top: 5px;
+            margin-bottom: auto;
+            padding: 0 15px;
+            font-weight: 100;
+        }
+
+        .text-muted {
+            margin-bottom: 0;
+            font-weight: 400;
+            font-size: .5rem;
+        }
+
+        .card {
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+            border: 0 !important;
+            width: 300px;
+            height: 425px;
+            margin: 0 auto;
+            color: #000;
+        }
+
+        .dev-img {
+            width: 100px;
+            border-radius: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 3rem;
+            box-shadow: 0 13px 26px rgba(0, 0, 0, .2), 0 3px 6px rgba(0, 0, 0, .2);
+        }
+
+        .name {
+            margin-top: 1rem;
+            margin-bottom: 0;
+        }
+
+        .btn-more {
+            width: 35%;
+            margin: 0 auto;
+            font-size: 12px;
+            border-radius: 15px;
+            border: none;
+            background: linear-gradient(-45deg, #48c6ef, #6f86d6);
+            color: #fff;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1), 0 5px 12px rgba(0,0,0,0.15);
+        }
+
+        .icon-row {
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .icons {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            color: #fff;
+            background: #000;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            line-height: 60px;
+            margin: 1rem auto;
+            box-shadow: 0 8px 19px rgba(0, 0, 0, .2), 0 5px 12px rgba(0, 0, 0, .2);
+            font-size: 25px;
+            background: linear-gradient(-45deg, #434343, #000000);
+            transition: .8s all;
+        }
+
+        .icons:hover {
+            transform: translateY(-3px);
+        }
+
+        /*// Large devices (desktops, 992px and up)*/
+        @media (min-width: 992px) {
+            #content {
+                padding: 0 75px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -18,21 +106,24 @@
         </div>
         <!-- /#side-navbar-wrapper -->
 
-        <!-- Page Content -->
-        <div id="content">
+        <!-- Page Content Authorized -->
+        <div id="content" sec:authorize="isAuthenticated()">
             <!--Make sure to keep all page content within the #content div-->
-            <div sec:authorize="isAuthenticated()">
-                <nav th:replace="fragments/side-navbar :: side-navbar-toggler"></nav>
-                <th:block th:replace="fragments/developers :: developerPage"></th:block>
-            </div>
-
-            <!-- Data below will display to users who are **NOT** logged in -->
-            <div class="container-fluid" sec:authorize="isAnonymous()">
-                <th:block th:replace="fragments/developers :: developerPage"></th:block>
-            </div>
+            <nav th:replace="fragments/side-navbar :: side-navbar-toggler"></nav>
+            <th:block th:replace="fragments/developers :: developerPage"></th:block>
 
         </div>
         <!-- /#content -->
+
+        <!-- Page Content Not Authorized -->
+        <div id="content" style="left: 0;" sec:authorize="isAnonymous()">
+            <!-- Data below will display to users who are **NOT** logged in -->
+            <div class="container-fluid">
+                <th:block th:replace="fragments/developers :: developerPage"></th:block>
+            </div>
+        </div>
+        <!-- /#content -->
+
     </div>
 
 
