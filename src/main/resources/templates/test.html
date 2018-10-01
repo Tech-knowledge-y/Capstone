@@ -9,26 +9,41 @@
     <link rel="stylesheet" href="/css/test.css" />
 </head>
 <body>
-<div class="form-structor">
-    <div class="signup">
-        <h2 class="form-title" id="signup"><span>or</span>Sign up</h2>
-        <div class="form-holder">
-            <input type="text" class="input" placeholder="Name" />
-            <input type="email" class="input" placeholder="Email" />
-            <input type="password" class="input" placeholder="Password" />
+<!-- Wrapper for slides -->
+<div class="carousel-inner">
+    <div class="item active">
+        <img src="https://www.tutorialandexample.com/bootstrap/images/slider1.png
+" alt="slider1" style="width:100%;" />
+        <div class="carousel-caption">
+            <h3>Tutorialandexample</h3>
+            <p>We are learning Bootstrap slider with caption</p>
         </div>
-        <button class="submit-btn">Sign up</button>
     </div>
-    <div class="login slide-up">
-        <div class="center">
-            <h2 class="form-title" id="login"><span>or</span>Log in</h2>
-            <div class="form-holder">
-                <input type="email" class="input" placeholder="Email" />
-                <input type="password" class="input" placeholder="Password" />
-            </div>
-            <button class="submit-btn">Log in</button>
+    <div class="item">
+        <img src="https://www.tutorialandexample.com/bootstrap/images/slider2.png
+" alt="slider2" style="width:100%;" />
+        <div class="carousel-caption">
+            <h3>Slider Example</h3>
+            <p>Easy to create slider with caption</p>
+        </div>
+    </div>
+    <div class="item">
+        <img src="https://www.tutorialandexample.com/bootstrap/images/slider2.png
+" alt="slider3" style="width:100%;" />
+        <div class="carousel-caption">
+            <h3>Bootstrap Slider</h3>
+            <p>We are learning Bootstrap slider with caption</p>
         </div>
     </div>
 </div>
+<!-- Left and right controls -->
+<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+</a>
+<a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+</a>
 </body>
 </html>
