@@ -6,12 +6,41 @@
     <!-- Add Custom CSS Below-->
     <link rel="stylesheet" href="" />
     <style>
-        .container-fluid {
-            height: 100vh;
+        body {
+            padding: 4rem;
         }
 
-        .row {
-            height: 100%;
+        label {
+            display: block;
+        }
+
+        input::placeholder {
+            opacity: 1;
+            color: #fff;
+        }
+
+        .nav-item {
+            margin-right: 5px;
+        }
+
+        .nav-link {
+            border-radius: 15px;
+            font-size: 12px;
+            background-color: #2a5298;
+        }
+
+        .nav-pills .nav-link {
+             border-radius: 15px;
+        }
+
+        .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+            color: #fff;
+            background-color: #2a5298;
+        }
+
+        .container-fluid {
+            height: 100vh;
+            width: 100%;
         }
 
         .form-control {
@@ -28,6 +57,11 @@
             box-shadow: none;
         }
 
+        .form-control::placeholder {
+            opacity: 1;
+            color: #fff;
+        }
+
         .btn-outline-primary {
             position: relative;
             left: 50%;
@@ -42,20 +76,28 @@
             background: #2a5298;
         }
 
-        ::placeholder {
-            color: red;
-            opacity: 1; /* Firefox */
+        .popover-header {
+            color: white !important;
+            background-color: gray !important;
         }
 
+        #pills-tab {
+            justify-content: center;
+        }
 
-        /*// Medium devices (tablets, 768px and up)*/
+        /* Medium devices (tablets, 768px and up)*/
         @media (min-width: 768px) {
-            .form-control, .btn-outline-primary, .errors {
+            .errors {
+                margin: 0 auto;
+            }
+
+            p, label, .form-control, .btn-outline-primary, .errors {
                 width: 75%;
             }
 
-            .errors {
-                margin: 0 auto;
+            p, label {
+                margin-left: auto;
+                margin-right: auto;
             }
         }
     </style>
@@ -63,43 +105,230 @@
 
 <body>
 
-<main>
+    <!-- NavTabs -->
+    <th:block th:if="${errors == null}">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" id="login">
+                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="true">Login</a>
+            </li>
+            <li class="nav-item" id="register">
+                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-register" role="tab" aria-controls="pills-register" aria-selected="false">Register</a>
+            </li>
+        </ul>
+    </th:block>
+
+    <th:block th:if="${errors}">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" id="login">
+                <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="true">Login</a>
+            </li>
+            <li class="nav-item" id="register">
+                <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-register" role="tab" aria-controls="pills-register" aria-selected="false">Register</a>
+            </li>
+        </ul>
+    </th:block>
+
+    <!-- Content -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col mt-5">
-                <h1 class="text-center">Login</h1>
-                <div class="errors" th:if="${param.error}">
-                    Invalid Username and Password.
-                </div>
-                <div class="errors" th:if="${param.logout}">
-                    You have been logged out.
-                </div>
-                <form th:action="@{/login}" method="POST">
-                    <div class="form-group">
-                        <!--<label for="inputUsername">Username</label>-->
-                        <input type="username" name="username" class="form-control" id="inputUsername" aria-describedby="usernameHelp" placeholder="Enter username" />
-                    </div>
-                    <div class="form-group">
-                        <!--<label for="inputPassword">Password</label>-->
-                        <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" />
-                    </div>
-                    <button type="submit" class="btn btn-outline-primary">Submit</button>
+            <div class="tab-content w-100" id="pills-tabContent">
 
-                    <small id="loginHelp" class="form-text text-center"><a href="/register">Not Registered Yet? Click here to get Registered</a></small>
-                </form>
+            <th:block th:if="${errors == null}">
+                <!-- Login -->
+                <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
+                    <h1 class="text-center">Login</h1>
+                    <div class="errors" th:if="${param.error}">
+                        Invalid Username and Password.
+                    </div>
+                    <div class="errors" th:if="${param.logout}">
+                        You have been logged out.
+                    </div>
+                    <form th:action="@{/login}" method="POST">
+                        <div class="form-group">
+                            <!--<label for="inputUsername">Username</label>-->
+                            <input type="username" name="username" class="form-control" id="inputUsername" aria-describedby="usernameHelp" placeholder="Enter username" />
+                        </div>
+                        <div class="form-group">
+                            <!--<label for="inputPassword">Password</label>-->
+                            <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" />
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary">Submit</button>
+                        <!--<small id="loginHelp" class="form-text text-center"><a href="#pills-register">Not Registered Yet? Click here to get Registered</a></small>-->
+                    </form>
+                </div>
+
+                <!-- Register -->
+                <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="pills-register-tab">
+                    <h1 class="text-center">Create an Account</h1>
+                    <form th:action="@{/register}" th:method="POST" th:object="${user}">
+                        <div class="form-group">
+                            <label for="username" class="text-white">Username</label>
+                            <input id="username" name="username" type="text" class="form-control validate" placeholder="Enter a username" th:field="*{username}" />
+                            <p class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="text-white">Email</label>
+                            <input id="email" name="email" type="text" class="form-control validate" placeholder="Enter your email address" th:field="*{email}" />
+                            <p class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password1" class="text-white">Password</label>
+                            <input id="password1" name="password1" type="password" class="form-control validate" onkeyup='check();' placeholder="Enter your password" th:field="*{password}" />
+                            <form:errors path="email" cssStyle="color: #ff0000;" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword1" class="text-white">Confirm Password</label>
+                            <input id="confirmPassword1" name="confirmPassword" type="password" class="form-control" onkeyup='check();' placeholder="Confirm Password"  />
+                            <!--This line needed for strength pswd checker-->
+                            <span id="message"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="genderFormControlSelect" class="text-white">Gender</label>
+                            <select class="form-control" id="genderFormControlSelect" th:field="*{gender}">
+                                <option value="disabled">Please Select</option>
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="statusSelect" class="text-white">Status</label>
+                            <select class="form-control" id="statusSelect" th:field="*{status}">
+                                <option value="disabled">Please Select</option>
+                                <option value="mentor">Mentor</option>
+                                <option value="mentee">Mentee</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <button id="btnSubmit" type="submit" onkeyup='check();' class="btn btn-outline-primary">Submit</button>
+                        </div>
+                        <!--<small id="loginHelp" class="form-text text-center"><a href="#pills-login">Already have an account? Log in</a></small>-->
+                    </form>
+                </div>
+            </th:block>
+
+
+            <th:block th:if="${errors}">
+                <!-- Login -->
+                <div class="tab-pane fade" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
+                    <h1 class="text-center">Login</h1>
+                    <div class="errors" th:if="${param.error}">
+                        Invalid Username and Password.
+                    </div>
+                    <div class="errors" th:if="${param.logout}">
+                        You have been logged out.
+                    </div>
+                    <form th:action="@{/login}" method="POST">
+                        <div class="form-group">
+                            <!--<label for="inputUsername">Username</label>-->
+                            <input type="username" name="username" class="form-control" id="inputUsername" aria-describedby="usernameHelp" placeholder="Enter username" />
+                        </div>
+                        <div class="form-group">
+                            <!--<label for="inputPassword">Password</label>-->
+                            <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" />
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary">Submit</button>
+                        <!--<small id="loginHelp" class="form-text text-center"><a href="#pills-register">Not Registered Yet? Click here to get Registered</a></small>-->
+                    </form>
+                </div>
+
+                <!-- Register -->
+                <div class="tab-pane fade show active" id="pills-register" role="tabpanel" aria-labelledby="pills-register-tab">
+                    <h1 class="text-center">Create an Account</h1>
+                    <form th:action="@{/register}" th:method="POST" th:object="${user}">
+                        <div class="form-group">
+                            <label for="username" class="text-white">Username</label>
+                            <input id="username" name="username" type="text" class="form-control validate" placeholder="Enter a username" th:field="*{username}" />
+                            <p class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="text-white">Email</label>
+                            <input id="email" name="email" type="text" class="form-control validate" placeholder="Enter your email address" th:field="*{email}" />
+                            <p class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password1" class="text-white">Password</label>
+                            <input id="password1" name="password1" type="password" class="form-control validate" onkeyup='check();' placeholder="Enter your password" th:field="*{password}" />
+                            <form:errors path="email" cssStyle="color: #ff0000;" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword1" class="text-white">Confirm Password</label>
+                            <input id="confirmPassword1" name="confirmPassword" type="password" class="form-control" onkeyup='check();' placeholder="Confirm Password"  />
+                            <!--This line needed for strength pswd checker-->
+                            <span id="message"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="genderFormControlSelect" class="text-white">Gender</label>
+                            <select class="form-control" id="genderFormControlSelect" th:field="*{gender}">
+                                <option value="disabled">Please Select</option>
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="statusSelect" class="text-white">Status</label>
+                            <select class="form-control" id="statusSelect" th:field="*{status}">
+                                <option value="disabled">Please Select</option>
+                                <option value="mentor">Mentor</option>
+                                <option value="mentee">Mentee</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <button id="btnSubmit" type="submit" onkeyup='check();' class="btn btn-outline-primary">Submit</button>
+                        </div>
+                        <!--<small id="loginHelp" class="form-text text-center"><a href="#pills-login">Already have an account? Log in</a></small>-->
+                    </form>
+                </div>
+            </th:block>
             </div>
-            <!-- /#col-12 -->
         </div>
-        <!-- /#row -->
     </div>
-    <!-- /#container-fluid -->
+    <!--<div class="container-fluid">-->
+        <!--<div class="row">-->
+            <!--<div class="col mt-5">-->
+                <!--<h1 class="text-center">Login</h1>-->
+                <!--<div class="errors" th:if="${param.error}">-->
+                    <!--Invalid Username and Password.-->
+                <!--</div>-->
+                <!--<div class="errors" th:if="${param.logout}">-->
+                    <!--You have been logged out.-->
+                <!--</div>-->
+                <!--<form th:action="@{/login}" method="POST">-->
+                    <!--<div class="form-group">-->
+                        <!--&lt;!&ndash;<label for="inputUsername">Username</label>&ndash;&gt;-->
+                        <!--<input type="username" name="username" class="form-control" id="inputUsername" aria-describedby="usernameHelp" placeholder="Enter username" />-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--&lt;!&ndash;<label for="inputPassword">Password</label>&ndash;&gt;-->
+                        <!--<input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" />-->
+                    <!--</div>-->
+                    <!--<button type="submit" class="btn btn-outline-primary">Submit</button>-->
+
+                    <!--<small id="loginHelp" class="form-text text-center"><a href="/register">Not Registered Yet? Click here to get Registered</a></small>-->
+                <!--</form>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; /#col-12 &ndash;&gt;-->
+        <!--</div>-->
+        <!--&lt;!&ndash; /#row &ndash;&gt;-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /#container-fluid &ndash;&gt;-->
 
 
     <!-- Overlay (are we using this?) -->
     <!--<div class="overlay"></div>-->
 
-</main>
-
-<script th:replace="fragments/scripts :: scripts"></script>
+    <script th:replace="fragments/scripts :: scripts"></script>
+    <script th:replace="fragments/scripts :: password_validator"></script>
 </body>
 </html>
