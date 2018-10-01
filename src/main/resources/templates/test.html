@@ -1,112 +1,94 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <div th:replace="fragments/head :: head('Default')"></div>
+    <!-- Add Custom CSS Below-->
+    <link rel="stylesheet" href="" />
     <style>
-        body{
-            /*margin: 0;*/
-            /*padding: 0;*/
-            background: black;
+        body {
+            /*background: linear-gradient(to right, #29323c, #485563);*/
         }
-        .middle {
-            position: relative;
-            /*top: 50%;*/
-            /*left: 50%;*/
-            /*transform: translate(-50%,-50%);*/
+        * {
+            box-sizing: border-box;
         }
 
-        .input{
-            width: 60px;
-            height: 60px;
-            background: none;
-            border-radius: 50%;
-            border: 4px solid #fff;
-            box-sizing: border-box;
-            outline: none;
-            transition: width 0.4s ease-in-out,
-            border-radius 0.8s ease-in-out,
-            padding 0.2s;
-            transition-delay: 0.4s;
-            color: white;
-            font-size: 20px;
+        .container {
+            text-align: center;
         }
-        .inclicked{
-            width: 360px;
-            border-radius: 0;
-            padding: 0 15px;
-            padding-right: 40px;
+
+        .container img{
+            width: 100%;
+            height: 100%;
         }
-        .btn_search{
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            top:0;
-            right: 0;
-            box-sizing: border-box;
-            background: none;
-            border: none;
-            outline: none;
-            cursor: pointer;
+
+        .viewer {
+            width: 52em;
+            height: 52em;
+            padding: 4em 0em;
+            margin: auto;
         }
-        .btn_search::before{
-            content: "";
-            width: 4px;
-            height: 25px;
-            background: white;
-            position: absolute;
-            transform: rotate(-45deg);
-            bottom: -16px;
-            right: -6px;
-            transition: 0.3s;
+
+        .viewer img {
+            border: 4px solid white;
+            box-shadow: 8px 2px 30px white;
         }
-        .close::before,.close::after{
-            content: "";
-            width: 4px;
-            height: 34px;
-            background: white;
-            position: absolute;
-            bottom: 12px;
-            right: 28px;
+
+        .slider {
+            height: 5em;
+            margin: 0em 3em;
         }
-        .close::before{
-            transform: rotate(-45deg);
-        }
-        .close::after{
-            transform: rotate(45deg);
+
+        [class*="image"] {
+            width: 10em;
+            height: 6em;
+            display: inline-flex;
         }
 
     </style>
 </head>
+
 <body>
-<div class="container">
-    <div class="row">
-        <div class="middle">
-            <!--<form class="search-box" action="index.html" method="post">-->
-                <input type="text" class="input" name="" value="" />
-                <button type="button" class="btn_search" name="button"></button>
-            <!--</form>-->
+
+<main>
+    <div id="wrapper">
+        <!-- side-navbar -->
+        <div sec:authorize="isAuthenticated()">
+            <nav th:replace="fragments/side-navbar :: side-navbar"></nav>
         </div>
+        <!-- /#side-navbar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="content">
+            <!--Make sure to keep all page content within the #content div-->
+            <div sec:authorize="isAuthenticated()">
+                <nav th:replace="fragments/side-navbar :: side-navbar-toggler"></nav>
+            </div>
+
+
+            <div class="container">
+                <div class="viewer">
+                    <img src="/img/db1.jpg" alt=""/>
+                </div>
+                <div class="slider">
+                    <div class="storage">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /#content -->
     </div>
-</div>
+    <!-- /#wrapper -->
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <div class="overlay"></div>
 
-<script type="text/javascript">
-    $(".btn_search").on("click",function() {
-        $(".input").toggleClass("inclicked");
-        $(".btn_search").toggleClass("close");
-    });
+</main>
+
+<script th:replace="fragments/scripts :: scripts"></script>
+<srcipt src="/js/test.js"></srcipt>
+<script>
 </script>
 </body>
 </html>
