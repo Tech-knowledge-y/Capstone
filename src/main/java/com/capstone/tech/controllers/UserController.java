@@ -77,7 +77,7 @@ public class UserController {
         if (validation.hasErrors()) {
             viewModel.addAttribute("errors", validation);
             viewModel.addAttribute("user", user);
-            return "users/register";
+            return "users/login";
         }
 
         String hash = passwordEncoder.encode(user.getPassword());
