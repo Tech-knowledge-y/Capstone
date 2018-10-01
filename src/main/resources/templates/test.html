@@ -1,49 +1,94 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/test.css" />
+    <div th:replace="fragments/head :: head('Default')"></div>
+    <!-- Add Custom CSS Below-->
+    <link rel="stylesheet" href="" />
+    <style>
+        body {
+            /*background: linear-gradient(to right, #29323c, #485563);*/
+        }
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .container img{
+            width: 100%;
+            height: 100%;
+        }
+
+        .viewer {
+            width: 52em;
+            height: 52em;
+            padding: 4em 0em;
+            margin: auto;
+        }
+
+        .viewer img {
+            border: 4px solid white;
+            box-shadow: 8px 2px 30px white;
+        }
+
+        .slider {
+            height: 5em;
+            margin: 0em 3em;
+        }
+
+        [class*="image"] {
+            width: 10em;
+            height: 6em;
+            display: inline-flex;
+        }
+
+    </style>
 </head>
+
 <body>
-<!-- Wrapper for slides -->
-<div class="carousel-inner">
-    <div class="item active">
-        <img src="https://www.tutorialandexample.com/bootstrap/images/slider1.png
-" alt="slider1" style="width:100%;" />
-        <div class="carousel-caption">
-            <h3>Tutorialandexample</h3>
-            <p>We are learning Bootstrap slider with caption</p>
+
+<main>
+    <div id="wrapper">
+        <!-- side-navbar -->
+        <div sec:authorize="isAuthenticated()">
+            <nav th:replace="fragments/side-navbar :: side-navbar"></nav>
         </div>
-    </div>
-    <div class="item">
-        <img src="https://www.tutorialandexample.com/bootstrap/images/slider2.png
-" alt="slider2" style="width:100%;" />
-        <div class="carousel-caption">
-            <h3>Slider Example</h3>
-            <p>Easy to create slider with caption</p>
+        <!-- /#side-navbar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="content">
+            <!--Make sure to keep all page content within the #content div-->
+            <div sec:authorize="isAuthenticated()">
+                <nav th:replace="fragments/side-navbar :: side-navbar-toggler"></nav>
+            </div>
+
+
+            <div class="container">
+                <div class="viewer">
+                    <img src="/img/db1.jpg" alt=""/>
+                </div>
+                <div class="slider">
+                    <div class="storage">
+
+                    </div>
+                </div>
+            </div>
+
         </div>
+        <!-- /#content -->
     </div>
-    <div class="item">
-        <img src="https://www.tutorialandexample.com/bootstrap/images/slider2.png
-" alt="slider3" style="width:100%;" />
-        <div class="carousel-caption">
-            <h3>Bootstrap Slider</h3>
-            <p>We are learning Bootstrap slider with caption</p>
-        </div>
-    </div>
-</div>
-<!-- Left and right controls -->
-<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-</a>
-<a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-</a>
+    <!-- /#wrapper -->
+
+    <div class="overlay"></div>
+
+</main>
+
+<script th:replace="fragments/scripts :: scripts"></script>
+<srcipt src="/js/test.js"></srcipt>
+<script>
+</script>
 </body>
 </html>
