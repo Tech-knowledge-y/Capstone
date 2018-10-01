@@ -176,7 +176,8 @@ div.box1 {
     left: -250px;
     height: 100vh;
     z-index: 999;
-    background: #487eb0;
+    /*background: #487eb0;*/
+    background: linear-gradient(-45deg, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
     color: #fff;
     transition: all 0.3s;
     overflow-y: scroll;
@@ -192,7 +193,8 @@ div.box1 {
     height: 35px;
     line-height: 35px;
     text-align: center;
-    background: #487eb0;
+    /*background: #487eb0;*/
+    background: #2a5298;
     position: absolute;
     top: 10px;
     right: 10px;
@@ -204,7 +206,8 @@ div.box1 {
 
 #dismiss:hover {
     background: #fff;
-    color: #487eb0;
+    /*color: #487eb0;*/
+    color: #2a5298;
 }
 
 .overlay {
@@ -224,12 +227,14 @@ div.box1 {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #487eb0;
+    /*background: #487eb0;*/
+    /*background: linear-gradient(-45deg, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);*/
 }
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #487eb0;
+    /*border-bottom: 1px solid #487eb0;*/
+    border-bottom: 1px solid #2a5298;
 }
 
 #sidebar ul p {
@@ -244,14 +249,17 @@ div.box1 {
 }
 
 #sidebar ul li a:hover {
-    color: #487eb0;
+    /*color: #487eb0;*/
+    color: #2a5298;
     background: #fff;
 }
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
-    background: #487eb0;
+    /*background: #487eb0;*/
+    /*background: linear-gradient(-45deg, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);*/
+    background: #2a5298;
 }
 
 a[data-toggle="collapse"] {
@@ -269,7 +277,9 @@ a[data-toggle="collapse"] {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #487eb0;
+    /*background: #487eb0;*/
+    /*background: linear-gradient(-45deg, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);*/
+    background: #2a5298;
 }
 
 ul.CTAs {
@@ -297,9 +307,24 @@ a.article:hover {
 
 .logout,
 .logout:hover {
-    background:#487eb0 !important;
+    /*background:#487eb0 !important;*/
+    background: #2a5298 !important;
     color: #fff !important;
     width: 100%;
+    border: none;
+}
+
+.bg-light {
+    background: transparent !important;
+}
+
+.btn-info {
+    background: linear-gradient(-45deg, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+    border: none;
+}
+
+.btn-info:not(:disabled):not(.disabled).active, .btn-info:not(:disabled):not(.disabled):active, .show>.btn-info.dropdown-toggle {
+    background: linear-gradient(-45deg, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
     border: none;
 }
 
@@ -329,10 +354,8 @@ a.article:hover {
         width: auto;
 
     }
- .navbar-brand {
-     font-size: 2em;
 
-
- }
-
+    .navbar-brand {
+        font-size: 2em;
+    }
 }

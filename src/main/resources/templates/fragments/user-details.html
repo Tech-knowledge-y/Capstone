@@ -19,7 +19,7 @@
                     <input th:if="${showEditControls}" type="text" class="form-control" id="fName" placeholder="Enter first name" th:field="*{fName}" />
                 </div>
                 <div class="col-auto" th:if="${showEditControls}">
-                    <button type="submit" class="btn btn-primary add-btn">+</button>
+                    <button type="submit" class="btn btn-outline-primary add-btn">+</button>
                 </div>
             </div>
         </form>
@@ -42,7 +42,7 @@
                     <input th:if="${showEditControls}" type="text" class="form-control" id="lName" placeholder="Enter last name" th:field="*{lName}" />
                 </div>
                 <div class="col-auto" th:if="${showEditControls}">
-                    <button type="submit" class="btn btn-primary add-btn">+</button>
+                    <button type="submit" class="btn btn-outline-primary add-btn">+</button>
                 </div>
             </div>
         </form>
@@ -65,7 +65,7 @@
                     <input th:if="${showEditControls}" id="birthdate" name="birthdate" type="date" class="form-control" placeholder="Enter your birthday" th:field="*{birthdate}" />
                 </div>
                 <div class="col-auto" th:if="${showEditControls}">
-                    <button type="submit" class="btn btn-primary add-btn">+</button>
+                    <button type="submit" class="btn btn-outline-primary add-btn">+</button>
                 </div>
             </div>
         </form>
@@ -88,7 +88,7 @@
                     <input th:if="${showEditControls}" id="city" name="city" type="text" class="form-control" th:field="*{city}" placeholder="Enter a city" />
                 </div>
                 <div class="col-auto" th:if="${showEditControls}">
-                    <button type="submit" class="btn btn-primary add-btn">+</button>
+                    <button type="submit" class="btn btn-outline-primary add-btn">+</button>
                 </div>
             </div>
         </form>
@@ -113,7 +113,7 @@
                     </select>
                 </div>
                 <div class="col-auto" th:if="${showEditControls}">
-                    <button type="submit" class="btn btn-primary add-btn">+</button>
+                    <button type="submit" class="btn btn-outline-primary add-btn">+</button>
                 </div>
             </div>
         </form>
@@ -136,7 +136,7 @@
                     <input th:if="${showEditControls}" id="zipCode" name="zipCode" type="text" class="form-control" th:field="*{zipCode}" placeholder="Enter your zip code" />
                 </div>
                 <div class="col-auto" th:if="${showEditControls}">
-                    <button type="submit" class="btn btn-primary add-btn">+</button>
+                    <button type="submit" class="btn btn-outline-primary add-btn">+</button>
                 </div>
             </div>
         </form>
@@ -159,7 +159,7 @@
                     <textarea th:if="${showEditControls}" id="bio" name="bio" rows="5" cols="40" class="form-control" th:field="*{bio}" placeholder="Enter your bio"></textarea>
                 </div>
                 <div class="col-auto" th:if="${showEditControls}">
-                    <button type="submit" class="btn btn-primary add-btn">+</button>
+                    <button type="submit" class="btn btn-outline-primary add-btn">+</button>
                 </div>
             </div>
         </form>
@@ -185,7 +185,7 @@
                         <input th:if="${showEditControls}" type="text" class="form-control" id="fName" placeholder="Enter first name" th:field="*{fName}" />
                     </div>
                     <div class="col-auto" th:if="${showEditControls}">
-                        <button type="submit" class="btn btn-primary add-btn">+</button>
+                        <button type="submit" class="btn btn-outline-primary add-btn">+</button>
                     </div>
                 </div>
             </form>
@@ -205,8 +205,8 @@
                         <p class="userdetails-text" th:text="${user.userDetail.fName}" id="firstname-text"></p>
                     </div>
                     <div class="col-auto" th:if="${showEditControls}">
-                        <button type="button" class="btn btn-primary add-btn" id="btn-edit-fname">edit</button>
-                        <button type="submit" class="btn btn-primary add-btn" id="btn-save-fname">save</button>
+                        <button type="button" class="btn btn-outline-primary add-btn" id="btn-edit-fname">edit</button>
+                        <button type="submit" class="btn btn-outline-primary add-btn" id="btn-save-fname">save</button>
                     </div>
                 </div>
             </form>
@@ -231,7 +231,7 @@
                         <input th:if="${showEditControls}" type="text" class="form-control" id="lName" placeholder="Enter last name" th:field="*{lName}" />
                     </div>
                     <div class="col-auto" th:if="${showEditControls}">
-                        <button type="submit" class="btn btn-primary add-btn">+</button>
+                        <button type="submit" class="btn btn-outline-primary add-btn">+</button>
                     </div>
                 </div>
             </form>
@@ -251,8 +251,8 @@
                         <p class="userdetails-text" th:text="${user.userDetail.lName}" id="lastname-text"></p>
                     </div>
                     <div class="col-auto" th:if="${showEditControls}">
-                        <button type="button" class="btn btn-primary add-btn" id="btn-edit-lname">edit</button>
-                        <button type="submit" class="btn btn-primary add-btn" id="btn-save-lname">save</button>
+                        <button type="button" class="btn btn-outline-primary add-btn" id="btn-edit-lname">edit</button>
+                        <button type="submit" class="btn btn-outline-primary add-btn" id="btn-save-lname">save</button>
                     </div>
                 </div>
             </form>
@@ -277,7 +277,7 @@
                         <input th:if="${showEditControls}" id="birthdate" name="birthdate" type="date" class="form-control" th:field="*{birthdate}" />
                     </div>
                     <div class="col-auto" th:if="${showEditControls}">
-                        <button type="submit" class="btn btn-primary add-btn">+</button>
+                        <button type="submit" class="btn btn-outline-primary add-btn">+</button>
                     </div>
                 </div>
             </form>
@@ -297,8 +297,8 @@
                         <p class="userdetails-text" th:text="${user.userDetail.birthdate}" id="bday-text"></p>
                     </div>
                     <div class="col-auto" th:if="${showEditControls}">
-                        <button type="button" class="btn btn-primary add-btn" id="btn-edit-bday">edit</button>
-                        <button type="submit" class="btn btn-primary add-btn" id="btn-save-bday">save</button>
+                        <button type="button" class="btn btn-outline-primary add-btn" id="btn-edit-bday">edit</button>
+                        <button type="submit" class="btn btn-outline-primary add-btn" id="btn-save-bday">save</button>
                     </div>
                 </div>
             </form>
@@ -323,7 +323,7 @@
                         <input th:if="${showEditControls}" id="city" name="city" type="text" class="form-control" th:field="*{city}" placeholder="Enter your city" />
                     </div>
                     <div class="col-auto" th:if="${showEditControls}">
-                        <button type="submit" class="btn btn-primary add-btn">+</button>
+                        <button type="submit" class="btn btn-outline-primary add-btn">+</button>
                     </div>
                 </div>
             </form>
@@ -343,8 +343,8 @@
                         <p class="userdetails-text" th:text="${user.userDetail.city}" id="city-text"></p>
                     </div>
                     <div class="col-auto" th:if="${showEditControls}">
-                        <button type="button" class="btn btn-primary add-btn" id="btn-edit-city">edit</button>
-                        <button type="submit" class="btn btn-primary add-btn" id="btn-save-city">save</button>
+                        <button type="button" class="btn btn-outline-primary add-btn" id="btn-edit-city">edit</button>
+                        <button type="submit" class="btn btn-outline-primary add-btn" id="btn-save-city">save</button>
                     </div>
                 </div>
             </form>
@@ -371,7 +371,7 @@
                         </select>
                     </div>
                     <div class="col-auto" th:if="${showEditControls}">
-                        <button type="submit" class="btn btn-primary add-btn">+</button>
+                        <button type="submit" class="btn btn-outline-primary add-btn">+</button>
                     </div>
                 </div>
             </form>
@@ -393,8 +393,8 @@
                         <p class="userdetails-text" th:text="${user.userDetail.state}" id="state-text"></p>
                     </div>
                     <div class="col-auto" th:if="${showEditControls}">
-                        <button type="button" class="btn btn-primary add-btn" id="btn-edit-state">edit</button>
-                        <button type="submit" class="btn btn-primary add-btn" id="btn-save-state">save</button>
+                        <button type="button" class="btn btn-outline-primary add-btn" id="btn-edit-state">edit</button>
+                        <button type="submit" class="btn btn-outline-primary add-btn" id="btn-save-state">save</button>
                     </div>
                 </div>
             </form>
@@ -419,7 +419,7 @@
                         <input th:if="${showEditControls}" id="zipCode" name="zipCode" type="text" class="form-control" th:field="*{zipCode}" placeholder="Enter your zip code" />
                     </div>
                     <div class="col-auto" th:if="${showEditControls}">
-                        <button type="submit" class="btn btn-primary add-btn">+</button>
+                        <button type="submit" class="btn btn-outline-primary add-btn">+</button>
                     </div>
                 </div>
             </form>
@@ -439,8 +439,8 @@
                         <p class="userdetails-text" th:text="${user.userDetail.zipCode}" id="zipCode-text"></p>
                     </div>
                     <div class="col-auto" th:if="${showEditControls}">
-                        <button type="button" class="btn btn-primary add-btn" id="btn-edit-zipCode">edit</button>
-                        <button type="submit" class="btn btn-primary add-btn" id="btn-save-zipCode">save</button>
+                        <button type="button" class="btn btn-outline-primary add-btn" id="btn-edit-zipCode">edit</button>
+                        <button type="submit" class="btn btn-outline-primary add-btn" id="btn-save-zipCode">save</button>
                     </div>
                 </div>
             </form>
@@ -465,7 +465,7 @@
                         <textarea th:if="${showEditControls}" id="textAreaBio" name="textAreaBio" rows="5" cols="40" class="form-control" th:field="*{bio}" placeholder="Enter your bio"></textarea>
                     </div>
                     <div class="col-auto" th:if="${showEditControls}">
-                        <button type="submit" class="btn btn-primary add-btn">+</button>
+                        <button type="submit" class="btn btn-outline-primary add-btn">+</button>
                     </div>
                 </div>
             </form>
@@ -485,8 +485,8 @@
                         <p class="userdetails-text" th:text="${user.userDetail.bio}" id="bio-text"></p>
                     </div>
                     <div class="col-auto" th:if="${showEditControls}">
-                        <button type="button" class="btn btn-primary add-btn" id="btn-edit-bio">edit</button>
-                        <button type="submit" class="btn btn-primary add-btn" id="btn-save-bio">save</button>
+                        <button type="button" class="btn btn-outline-primary add-btn" id="btn-edit-bio">edit</button>
+                        <button type="submit" class="btn btn-outline-primary add-btn" id="btn-save-bio">save</button>
                     </div>
                 </div>
             </form>
