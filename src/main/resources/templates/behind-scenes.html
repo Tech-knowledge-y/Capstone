@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <div th:replace="fragments/head :: head('Default')"></div>
+    <div th:replace="fragments/head :: head('Behind The Scenes')"></div>
     <!-- Add Custom CSS Below-->
     <link rel="stylesheet" href="" />
     <style>
@@ -13,11 +13,34 @@
             justify-content: center;
             margin-bottom: 20px;
             text-align: center;
+
+            border-radius: 1%;
+
         }
 
         #capstone-github {
             margin-bottom: 5%;
         }
+
+        .work-h1 {
+            /*font-family: 'Raleway', sans-serif;*/
+            color: black;
+            font-size: 4em;
+            font-weight: lighter;
+            font-kerning: auto;
+        }
+        .work-h3{
+            font-family: 'Raleway', sans-serif;
+            font-weight: lighter;
+
+        }
+        /*.work-p{*/
+            /*border: white 2px solid;*/
+            /*width: 25%;*/
+            /*margin: 0 auto 2%;*/
+            /*border-radius: 5%;*/
+
+        /*}*/
 
     </style>
 </head>
@@ -40,15 +63,18 @@
                 <nav th:replace="fragments/side-navbar :: side-navbar-toggler"></nav>
             </div>
 
-            <div class="container-fluid">
+
+            <h1 class="text-center work-h1 jumbotron">TECH {knowledge} Y &nbsp;@&nbsp; WORK</h1>
+            <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <br />
+
 
 
                         <div class="text-center">
+
                             <img class="work-img" src="img/github-screenshot.png" alt="github"/>
-                            <p>CAPSTONE GITHUB</p>
+                            <h3 class="work-h3">CAPSTONE &nbsp;&nbsp;GITHUB</h3>
                         </div>
                         <div class="text-center" id="capstone-github">
                             <a href="https://github.com/Tech-knowledge-y/Capstone" target="_blank" class="btn btn-primary">See our code</a>
@@ -56,44 +82,61 @@
                         <br/>
 
                         <div class="text-center">
-                            <img class="work-img" src="img/trello-board.png" alt="trello"/>
-                            <p>TRELLO BOARD TO DO LIST</p>
+                            <img class="work-img" src="img/trello1.png" alt="trello"/>
+                            <h3 class="work-h3">TRELLO&nbsp; BOARD&nbsp; TO-DO&nbsp; LIST</h3>
                         </div>
                         <div class="text-center" id="trello-board">
                             <a href="https://trello.com/b/J4A0ybqN/techknowledgey" target="_blank" class="btn btn-primary" >See our work</a>
                         </div>
                         <br/>
                         <br/>
+                        <br/>
+
 
                         <div class="text-center">
-                            <img class="work-img" src="img/logo-rough.jpg" alt="database"/>
-                            <p>ORIGINAL LOGO SKETCH</p>
+                            <img class="work-img" src="img/geekdom-mentorship.png" alt="geekdom"/>
+                            <h3 class="work-h3" >TWO BIRDS &nbsp;&nbsp;&nbsp;&nbsp;| | &nbsp;&nbsp;&nbsp;&nbsp; ONE APP</h3>
                         </div>
-<br/>
+                        <br/>
+                        <br/><br/><br/><br/>
+
+                        <div class="text-center">
+
+                            <img class="work-img" src="img/logo-rough.jpg" alt="logo-rough"/>
+                            <h3 class="work-h3">ORIGINAL&nbsp;&nbsp; LOGO &nbsp;&nbsp;SKETCH</h3>
+
+                        </div>
+                        <br/>
+                        <br/><br/><br/><br/>
 
                         <div class="text-center">
                             <img class="work-img" src="img/wireframes.jpg" alt="wireframes"/>
-                            <p>ORIGINAL WIREFRAMES</p>
+                            <h3 class="work-h3">ORIGINAL &nbsp;&nbsp;WIREFRAMES</h3>
                         </div>
-                    <br/>
+                        <br/>
+                        <br/><br/><br/><br/>
 
 
                         <div class="text-center">
                             <img class="work-img" src="img/tech-palette.png" alt="palette"/>
-                            <p>COLOR PALETTE</p>
+                            <h3 class="work-h3">COLOR &nbsp;&nbsp;PALETTE</h3>
                         </div>
                         <br/>
+                        <br/><br/><br/><br/>
 
                         <div class="text-center">
                             <img class="work-img" src="img/db1.jpg" alt="database"/>
-                            <p>WHITEBOARDING AT GEEKDOM</p>
+                            <h3 class="work-h3">WHITEBOARDING &nbsp;&nbsp;@ &nbsp;&nbsp;GEEKDOM</h3>
                         </div>
                         <br />
+                        <br/><br/><br/><br/>
 
                         <div class="text-center">
                             <img class="work-img" src="img/G-and-X.jpg" alt="graham-xavier"/>
-                            <p>TECH{KNOWLEDGE}Y AT WORK</p>
+                            <h3 class="work-h3">TECH {KNOWLEDGE} Y &nbsp;&nbsp;@ &nbsp;&nbsp;WORK</h3>
                         </div>
+                        <br/>
+                        <br/>
 
     <!-- Overlay (are we using this?) -->
     <div class="overlay"></div>

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <div th:replace="fragments/head :: head('Default')"></div>
+    <div th:replace="fragments/head :: head('Home')"></div>
     <!-- Add Custom CSS Below-->
     <link rel="stylesheet" href="/css/homepage.css" />
     <style></style>
@@ -26,7 +26,7 @@
                 <div class="row">
                     <!--Grid column-->
                     <div class="col-12 text-center">
-                        <img src="img/logo-home1.png" alt="logo" id="logo_home"/>
+                        <img src="img/logo-home.png" alt="logo" id="logo_home"/>
                     </div>
                     <div class="col-md-12 mb-4 white-text text-center">
                         <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5"><strong>Find Your Mentor</strong></h1>
@@ -58,7 +58,7 @@
                     <!--Section heading-->
                     <h2 class="h1-responsive font-weight-bold text-center my-5">What is Tech{knowledge}y?</h2>
                     <!-- Section description -->
-                    <p class="grey-text text-center w-responsive mx-auto mb-5">Tech{knowledge}y is the culmination of an 18-week coding journey. A journey fraught with frustration and "ah-ha" moments. As students our greatest asset is the knowledge that others possess and one of man's greatest gifts is the passing of the torch from one generation to the next. As we stepped into this new world we found ourselves inundated with information and help, but the cohesiveness of the message was lost to us. After struggling to find the sort of tech knowledge we sought, grasping the information we've learned, we've lit our own torch that we're proud to pass onto those after us. We are helping put the knowledge back into tech.</p>
+                    <p class="grey-text text-center w-responsive mx-auto mb-5">Tech{knowledge}y is the culmination of an 18-week transformation into professional programmers. As students, one of our greatest assets is the knowledge that others possess and one of man's greatest gifts is the passing of the torch from one generation to the next. As we stepped into this new world, we found ourselves inundated with information, but frustrated by our fragmented access to help. After struggling to find the sort of tech knowledge we sought, we decided to used what we've learned to light our own torch that we're proud to pass on to those after us. We are helping put the knowledge back into tech.</p>
                     <h1 class="grey-text text-center w-responsive mx-auto mb-5">We are Tech{knowledge}y</h1>
 
                     <!--Grid row-->
@@ -70,11 +70,14 @@
                                 <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                                     <div>
                                         <h6 class="pink-text"><i class="fas fa-angle-double-left"></i> <strong>Background</strong> <i class="fas fa-angle-double-right"></i></h6>
-                                        <h3 class="card-title py-3 font-weight-bold"><strong>Meet the Team</strong></h3>
-                                        <p class="pb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
-                                            optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
-                                            Odit sed qui, dolorum!</p>
-                                        <a class="btn btn-danger btn-rounded">View project</a>
+                                        <h3 class="card-title py-3 font-weight-bold"><strong>ORIGIN STORY</strong></h3>
+                                        <p class="pb-3">
+                                           Classmates used words like "helpful" and "knowledgeable" to describe Graham. A natural-born teacher, due to his extraordinary communication and people skills, he spent many hours<br/>teaching others.
+                                            <br/>
+
+                                            <br/>Xavier introduced himself through code. Instead of solo pursuits, he used his talent and time to create applications that made his classmates' lives easier. His consistent willingness to help others had a profound impact on our cohort. <br/> <br/> Their generosity and altruism inspired tech{knowledge}y.
+                                            <br/>  JW </p>
+                                        <!--<a class="btn btn-danger btn-rounded">Contact Us</a>-->
                                     </div>
                                 </div>
                             </div>
@@ -86,12 +89,19 @@
                             <div class="card card-image homepage_connect_img">
                                 <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                                     <div>
-                                        <h6 class="green-text"><i class="fas fa-angle-double-left"></i> <strong>Connect</strong> <i class="fas fa-angle-double-right"></i></h6>
-                                        <h3 class="card-title py-3 font-weight-bold"><strong>Find a Mentor</strong></h3>
-                                        <p class="pb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
-                                            optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
-                                            Odit sed qui, dolorum!</p>
-                                        <a class="btn btn-success btn-rounded"><i class="fa fa-clone left"></i> View project</a>
+                                        <h6 class="green-text"><i class="fas fa-angle-double-left"></i> <strong>Meaning</strong> <i class="fas fa-angle-double-right"></i></h6>
+                                        <h3 class="card-title py-3 font-weight-bold"><strong>OUR LOGO </strong></h3>
+
+                                        <p class="pb-3">
+
+                                           The infinity symbol embodies the synergistic dynamic between student and mentor. It represents equality, the cyclical nature of learning, and the timelessness of knowledge. Students don't just learn from their mentors, they also teach and go on to become mentors themselves. The relationship between student and mentor is reciprocal.
+                                            <br/>Mentorship is a two-way street.</p>
+
+
+                                        <img src="/img/infinity.png" alt="logo" /> <br/>
+
+
+                                        <!--<a class="btn btn-success btn-rounded"><i class="fa fa-clone left"></i> Our Logo</a>-->
                                     </div>
                                 </div>
                             </div>

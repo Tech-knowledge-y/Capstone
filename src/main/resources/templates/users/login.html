@@ -5,7 +5,54 @@
     <div th:replace="fragments/head :: head('Login')"></div>
     <!-- Add Custom CSS Below-->
     <link rel="stylesheet" href="" />
-    <style></style>
+    <style>
+        .container-fluid {
+            height: 100vh;
+        }
+
+        .row {
+            height: 100%;
+        }
+
+        .form-control {
+            border-radius: 35px;
+            width: 100%;
+            margin: 0 auto;
+            color: #fff;
+            background: transparent;
+        }
+
+        .form-control:focus {
+            color: #fff;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .btn-outline-primary {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            border-radius: 25px;
+            color: #fff;
+            border-color: #2a5298;
+        }
+
+        .btn-outline-primary:hover {
+            background: #2a5298;
+        }
+
+        /*// Medium devices (tablets, 768px and up)*/
+        @media (min-width: 768px) {
+            .form-control, .btn-outline-primary, .errors {
+                width: 75%;
+            }
+
+            .errors {
+                margin: 0 auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -13,12 +60,12 @@
 <main>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-5 mx-auto">
+            <div class="col mt-5">
                 <h1 class="text-center">Login</h1>
-                <div th:if="${param.error}">
+                <div class="errors" th:if="${param.error}">
                     Invalid Username and Password.
                 </div>
-                <div th:if="${param.logout}">
+                <div class="errors" th:if="${param.logout}">
                     You have been logged out.
                 </div>
                 <form th:action="@{/login}" method="POST">
@@ -30,9 +77,9 @@
                         <!--<label for="inputPassword">Password</label>-->
                         <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" />
                     </div>
-                    <button type="submit" class="btn btn-outline-dark">Submit</button>
+                    <button type="submit" class="btn btn-outline-primary">Submit</button>
 
-                    <small id="loginHelp" class="form-text text-muted text-center"><a href="/register">Not Registered Yet? Click here to get Registered</a></small>
+                    <small id="loginHelp" class="form-text text-center"><a href="/register">Not Registered Yet? Click here to get Registered</a></small>
                 </form>
             </div>
             <!-- /#col-12 -->
