@@ -170,7 +170,7 @@
     <div class="s-details">
         <div class="col" style="padding: 15px !important;">
             <th:block th:each="language : ${user.userLanguages}">
-                <button type="button" class="btn btn-outline-primary languages" th:text="${language.languages.language}"></button>
+                <a class="btn btn-outline-primary languages" th:text="${language.languages.language}"></a>
             </th:block>
         </div>
         <form class="" th:action="'/users/show-user/add-language'" th:method="post" th:if="${showEditControls}">
@@ -180,10 +180,31 @@
                         <option value="none" selected="selected">Add a language</option>
                         <option value="HTML">HTML</option>
                         <option value="CSS">CSS</option>
-                        <option value="Java">Java</option>
                         <option value="Javascript">Javascript</option>
+                        <option value="TypeScript">TypeScript</option>
+                        <option value="CoffeScript">CoffeeScript</option>
                         <option value="Python">Python</option>
+                        <option value="PHP">PHP</option>
+                        <option value="Perl">Perl</option>
+                        <option value="Ruby">Ruby</option>
+                        <option value="Rust">Rust</option>
+                        <option value="Go">Go</option>
+                        <option value="Java">Java</option>
+                        <option value="Groovy">Groovy</option>
+                        <option value="Scala">Scala</option>
+                        <option value="Kotlin">Kotlin</option>
+                        <option value="C++">C++</option>
+                        <option value="C">C</option>
+                        <option value="C#">C#</option>
+                        <option value="Objective-C">Objective-C</option>
+                        <option value="Swift">Swift</option>
                         <option value="MySQL">MySQL</option>
+                        <option value="NoSQL">NoSQL</option>
+                        <option value="PostgreSQL">PostgreSQL</option>
+                        <option value="MongoDB">MongoDB</option>
+                        <option value="R">R</option>
+                        <option value="Lua">Lua</option>
+                        <option value="Shell">Bash</option>
                     </select>
                 </div>
                 <div class="col-auto" id="lang-add">
@@ -618,7 +639,7 @@
     <div class="s-details">
         <div class="col" style="padding: 15px !important;">
             <th:block th:each="language : ${user.userLanguages}">
-                <button type="button" class="btn btn-outline-primary languages" th:text="${language.languages.language}"></button>
+                <a class="btn btn-outline-primary languages" th:text="${language.languages.language}"></a>
             </th:block>
         </div>
         <form class="" th:action="'/users/show-user/add-language'" th:method="post" th:if="${showEditControls}">
@@ -628,10 +649,31 @@
                         <option value="none" selected="selected">Add a language</option>
                         <option value="HTML">HTML</option>
                         <option value="CSS">CSS</option>
-                        <option value="Java">Java</option>
                         <option value="Javascript">Javascript</option>
+                        <option value="TypeScript">TypeScript</option>
+                        <option value="CoffeScript">CoffeeScript</option>
                         <option value="Python">Python</option>
+                        <option value="PHP">PHP</option>
+                        <option value="Perl">Perl</option>
+                        <option value="Ruby">Ruby</option>
+                        <option value="Rust">Rust</option>
+                        <option value="Go">Go</option>
+                        <option value="Java">Java</option>
+                        <option value="Groovy">Groovy</option>
+                        <option value="Scala">Scala</option>
+                        <option value="Kotlin">Kotlin</option>
+                        <option value="C++">C++</option>
+                        <option value="C">C</option>
+                        <option value="C#">C#</option>
+                        <option value="Objective-C">Objective-C</option>
+                        <option value="Swift">Swift</option>
                         <option value="MySQL">MySQL</option>
+                        <option value="NoSQL">NoSQL</option>
+                        <option value="PostgreSQL">PostgreSQL</option>
+                        <option value="MongoDB">MongoDB</option>
+                        <option value="R">R</option>
+                        <option value="Lua">Lua</option>
+                        <option value="Shell">Bash</option>
                     </select>
                 </div>
                 <div class="col-auto" id="lang-add">

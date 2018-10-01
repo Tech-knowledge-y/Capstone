@@ -209,7 +209,7 @@
             let filter = $(this).val();
 
             $('.profile').each(function () {
-                if ($(this).find('.profile-title').text().search(new RegExp(filter, 'i')) < 0 ) {
+                if ($(this).find('.profile-name').text().search(new RegExp(filter, 'i')) < 0 ) {
                     $(this).parent().hide();
                 } else {
                     $(this).parent().show();
