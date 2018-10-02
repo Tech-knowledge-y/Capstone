@@ -1,20 +1,16 @@
 $(function(){
 
     var imagesrc = [
-        "/img/lightbox/geekdom-mentorship.png",
-        "/img/lightbox/github-screenshot.png",
+        "/img/lightbox/G-and-X.jpg",
+        "/img/lightbox/the-boys.jpg",
         "/img/lightbox/logo-rough.jpg",
         "/img/lightbox/wireframes.jpg",
-        "/img/lightbox/trello1.png",
-        "/img/lightbox/db1.jpg",
-        "/img/lightbox/db2.jpg",
-        "/img/lightbox/db3.jpg",
-        "/img/lightbox/db4.jpg",
-        "/img/lightbox/db5.jpg",
-        "/img/lightbox/db6.jpg",
-        "/img/lightbox/whiteboard1.jpg",
         "/img/lightbox/tech-palette.png",
-        "/img/lightbox/G-and-X.jpg"
+        "/img/lightbox/db1.jpg",
+        "/img/lightbox/db3.jpg",
+        "/img/lightbox/db5.jpg",
+        "/img/lightbox/trello1.png",
+        "/img/lightbox/github-screenshot.png"
     ];
 
     $storage = $('.storage');
@@ -25,7 +21,7 @@ $(function(){
 
 
     for(var i = 0; i < imagesrc.length; i++){
-        $storage.append("<div class=" + "image" + i + "></div>");
+        $storage.append("<div class=" + "image" + i + " col-3" + "></div>");
         $('.image'+i).append("<img src ="+imagesrc[i]+" />")
         $viewer.append("<img class='myslides' src=" + imagesrc[i] + " />");
     }
@@ -60,5 +56,11 @@ $(function(){
             $index--;
         }
         return $index;
+    }
+
+    document.getElementById("next").addEventListener("onclick", myFunction);
+
+    function myFunction($index) {
+        $index++;
     }
 });
