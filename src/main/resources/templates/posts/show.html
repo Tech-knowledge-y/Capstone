@@ -14,6 +14,15 @@
             border: none !important;
         }
 
+        .btn-outline-primary {
+            color: #2a5298;
+            border: none !important;
+        }
+
+        .btn-outline-primary:hover {
+            background: #2a5298;
+        }
+
         .card {
             color: #000;
             border: none;
@@ -27,14 +36,14 @@
         }
 
         .geekdom {
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/geekdom.jpg');
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/geekdom_post.jpg');
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
         }
 
         .codeup {
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/codeup.jpg');
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/codeup_post.jpg');
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
@@ -184,7 +193,7 @@
                                                     <textarea id="comment" th:field="*{message}" class="form-control" placeholder="Add a comment"></textarea>
                                                 </div>
                                                 <div class="col-auto">
-                                                    <button type="submit" class="btn btn-primary add-comment-btn">+</button>
+                                                    <button type="submit" class="btn btn-outline-primary add-comment-btn">add</button>
                                                 </div>
                                             </div>
                                         </form>

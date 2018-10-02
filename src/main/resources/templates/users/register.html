@@ -2,13 +2,75 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:form="" lang="en"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <div th:replace="fragments/head :: head('Default')"></div>
+    <div th:replace="fragments/head :: head('Register')"></div>
     <!-- Add Custom CSS Below-->
     <link rel="stylesheet" href="" />
     <style>
+        label {
+            display: block;
+        }
+
+        input::placeholder {
+            opacity: 1;
+            color: #fff;
+        }
+
+        .container-fluid {
+            height: 100vh;
+        }
+
+        .row {
+            height: 100%;
+        }
+
+        .form-control {
+            border-radius: 35px;
+            width: 100%;
+            margin: 0 auto;
+            color: #fff;
+            background: transparent;
+        }
+
+        .form-control:focus {
+            color: #fff;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .form-control::placeholder {
+            opacity: 1;
+            color: #fff;
+        }
+
+        .btn-outline-primary {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            border-radius: 25px;
+            color: #fff;
+            border-color: #2a5298;
+        }
+
+        .btn-outline-primary:hover {
+            background: #2a5298;
+        }
+
         .popover-header {
             color: white !important;
             background-color: gray !important;
+        }
+
+        /*// Medium devices (tablets, 768px and up)*/
+        @media (min-width: 768px) {
+            p, label, .form-control, .btn-outline-primary {
+                width: 75%;
+            }
+
+            p, label {
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
     </style>
     <script src="/js/PasswordValidatorv2.js"></script>
@@ -21,7 +83,7 @@
 <main>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-6 mx-auto">
+            <div class="col mt-4">
                 <h1 class="text-center">Create an Account</h1>
 
                 <form th:action="@{/register}" th:method="POST" th:object="${user}">
@@ -70,9 +132,9 @@
                     </div>
 
                     <div>
-                        <button id="btnSubmit" type="submit" onkeyup='check();' class="btn btn-primary">Submit</button>
+                        <button id="btnSubmit" type="submit" onkeyup='check();' class="btn btn-outline-primary">Submit</button>
                     </div>
-                    <small id="loginHelp" class="form-text text-muted text-center"><a href="/login">Already have an account? Log in.</a></small>
+                    <small id="loginHelp" class="form-text text-center"><a href="/login">Already have an account? Log in</a></small>
                 </form>
             </div>
             <!-- /#col-12 -->

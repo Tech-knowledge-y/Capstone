@@ -5,12 +5,60 @@
     <div th:replace="fragments/head :: head('Default')"></div>
     <!-- Add Custom CSS Below-->
     <link rel="stylesheet" href="" />
-    <style></style>
+    <style>
+        #lightbox {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            background: rgba(0, 0, 0, 0.3);
+            display: none;
+        }
+
+        #lightbox.open {
+            display: block;
+        }
+
+        #lightbox_content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            /*background: rgba(0, 0, 0, 0.1);*/
+            border-radius: 3px;
+            padding: 50px;
+            top: 50%;
+        }
+
+        #close {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            text-align: center;
+            color: #ffffff;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
 
 <main>
+
+    <div id="lightbox">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-dark text-center">
+                    <div id="lightbox_content">
+                        <div id="close"><i class="fas fa-times fa-3x" style="color:white"></i></div>
+                        <img src="https://www.gettyimages.in/gi-resources/images/Homepage/Hero/US/SEP2016/prestige-476863311.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div id="wrapper">
         <!-- side-navbar -->
         <div sec:authorize="isAuthenticated()">
@@ -25,76 +73,45 @@
                 <nav th:replace="fragments/side-navbar :: side-navbar-toggler"></nav>
             </div>
 
-            <div class="container-fluid">
+            <!--<div class="container">-->
                 <div class="row">
-                    <div class="col-12">
-                        <h2 style="text-align:center">Lightbox</h2>
-
-                        <!-- Images used to open the lightbox -->
-                        <div class="row">
-                            <div class="column"><img src="img/logo-rough.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" /></div>
-                            <div class="column"><img src="img/wireframes.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor" /></div>
-                            <div class="column"><img src="img/db1.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor"  /></div>
-                            <div class="column"><img src="img/db2.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor" /></div>
-                            <div class="column"><img src="img/db3.jpg" style="width:100%" onclick="openModal();currentSlide(5)" class="hover-shadow cursor" /></div>
-                            <div class="column"><img src="img/db4.jpg" style="width:100%" onclick="openModal();currentSlide(6)" class="hover-shadow cursor" /></div>
-                            <div class="column"><img src="img/db5.jpg" style="width:100%" onclick="openModal();currentSlide(7)" class="hover-shadow cursor" /></div>
-                            <div class="column"><img src="img/db6.jpg" style="width:100%" onclick="openModal();currentSlide(8)" class="hover-shadow cursor" /></div>
-                            <div class="column"><img src="img/tech-palette.png" style="width:100%" onclick="openModal();currentSlide(9)" class="hover-shadow cursor" /></div>
-                        </div>
-
-                        <!-- The Modal/Lightbox -->
-                        <div id="myModal" class="modal">
-                            <span class="close cursor" onclick="closeModal()">&times;</span>
-                            <div class="modal-content">
-                                <div class="mySlides"><div class="numbertext">1 / 9</div><img src="img/logo-rough.jpg" style="width:100%" /></div>
-                                <div class="mySlides"><div class="numbertext">2 / 9</div><img src="img/wireframes.jpg" style="width:100%" /></div>
-                                <div class="mySlides"><div class="numbertext">3 / 9</div><img src="img/db1.jpg" style="width:100%" /></div>
-                                <div class="mySlides"><div class="numbertext">4 / 9</div><img src="img/db2.jpg" style="width:100%" /></div>
-                                <div class="mySlides"><div class="numbertext">5 / 9</div><img src="img/db3.jpg" style="width:100%" /></div>
-                                <div class="mySlides"><div class="numbertext">6 / 9</div><img src="img/db4.jpg" style="width:100%" /></div>
-                                <div class="mySlides"><div class="numbertext">7 / 9</div><img src="img/db5.jpg" style="width:100%" /></div>
-                                <div class="mySlides"><div class="numbertext">8 / 9</div><img src="img/db6.jpg" style="width:100%" /></div>
-                                <div class="mySlides"><div class="numbertext">9 / 9</div><img src="img/tech-palette.png" style="width:100%" /></div>
-
-                                <!-- Next/previous controls -->
-                                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-                                <!-- Caption text -->
-                                <div class="caption-container"><p id="caption"></p></div>
-
-
-                                <!-- Thumbnail image controls -->
-                                <div class="column"><img class="demo" src="img/logo-rough.jpg" style="width:100%" onclick="currentSlide(1)" alt="logo" /></div>
-                                <div class="column"><img class="demo" src="img/wireframes.jpg" style="width:100%" onclick="currentSlide(2)" alt="wireframes" /></div>
-                                <div class="column"><img class="demo" src="img/db1.jpg" style="width:100%" onclick="currentSlide(3)" alt="db1" /></div>
-                                <div class="column"><img class="demo" src="img/db2.jpg" style="width:100%" onclick="currentSlide(4)" alt="db2" /></div>
-                                <div class="column"><img class="demo" src="img/db3.jpg" style="width:100%" onclick="currentSlide(5)" alt="db3" /></div>
-                                <div class="column"><img class="demo" src="img/db4.jpg" style="width:100%" onclick="currentSlide(6)" alt="db4" /></div>
-                                <div class="column"><img class="demo" src="img/db5.jpg" style="width:100%" onclick="currentSlide(7)" alt="db5" /></div>
-                                <div class="column"><img class="demo" src="img/db6.jpg" style="width:100%" onclick="currentSlide(8)" alt="db6" /></div>
-                                <div class="column"><img class="demo" src="img/tech-palette.png" style="width:100%" onclick="currentSlide(9)" alt="palette" /></div>
-
-                            </div>
-                        </div>
+                    <div class="col-4">
+                        <button id="clickme">Open Lightbox</button>
                     </div>
+                    <div class="col-4">
+                        <button id="clickme">Open Lightbox</button>
+                    </div>
+                    <div class="col-4">
+                        <button id="clickme">Open Lightbox</button>
+                    </div>
+
+                    <!--</div>-->
                     <!-- /#col-12 -->
                 </div>
                 <!-- /#row -->
-            </div>
+            <!--</div>-->
             <!-- /#container-fluid -->
         </div>
         <!-- /#content -->
     </div>
     <!-- /#wrapper -->
 
-    <!-- Overlay (are we using this?) -->
-    <!--<div class="overlay"></div>-->
+    <div class="overlay"></div>
 
 </main>
 
+
 <script th:replace="fragments/scripts :: scripts"></script>
-<script src="js/lightbox.js"></script>
+<script>
+    document.getElementById("clickme").addEventListener("click", function() {
+        document.getElementById("lightbox").className = "open";
+        document.getElementById("wrapper").style.display = "none";
+    });
+
+    document.getElementById("close").addEventListener("click", function() {
+        document.getElementById("lightbox").className = "wrapper";
+        document.getElementById("wrapper").style.display = "block";
+    });
+</script>
 </body>
 </html>

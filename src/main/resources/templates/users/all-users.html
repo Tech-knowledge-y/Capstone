@@ -13,6 +13,10 @@
             font-size: 12px;
         }
 
+        .btn-outline-primary:hover {
+            background: #2a5298;
+        }
+
         .btn-filter {
             width: 100px;
         }
@@ -96,6 +100,7 @@
 
         #all-filter, #mentor-filter, #mentee-filter {
             color: #F7F7F7;
+            border-color: #2a5298;
         }
 
         #search {
@@ -204,7 +209,7 @@
             let filter = $(this).val();
 
             $('.profile').each(function () {
-                if ($(this).find('.profile-title').text().search(new RegExp(filter, 'i')) < 0 ) {
+                if ($(this).find('.profile-name').text().search(new RegExp(filter, 'i')) < 0 ) {
                     $(this).parent().hide();
                 } else {
                     $(this).parent().show();

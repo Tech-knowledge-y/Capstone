@@ -6,7 +6,59 @@
     <!-- Add Custom CSS Below-->
     <link rel="stylesheet" href="/css/google-maps.css" />
     <link rel="stylesheet" href="" />
-    <style></style>
+    <style>
+        .input::placeholder {
+            opacity: 1;
+            color: #fff;
+        }
+
+        .form-control {
+            border-radius: 35px;
+            margin: 0 auto;
+            color: #fff;
+            background: transparent;
+        }
+
+        .form-control:focus {
+            color: #fff;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .form-control::placeholder {
+            opacity: 1;
+            color: #fff;
+        }
+
+        .btn-outline-primary {
+            border-color: #2a5298;
+            border-radius: 25px;
+            color: #fff;
+        }
+
+        .btn-outline-primary:hover {
+            background: #2a5298;
+        }
+
+        .gm-style .gm-style-iw {
+            font-size: 8px;
+        }
+
+        #body {
+            border-radius: 10px;
+        }
+
+        #post-details {
+            padding-top: 1.25rem;
+        }
+
+        /*// Medium devices (tablets, 768px and up)*/
+        @media (min-width: 768px) {
+            .gm-style .gm-style-iw {
+                font-size: 10px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -28,7 +80,7 @@
 
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 p-3">
                         <h1>Create Post</h1>
 
                         <form th:action="@{/posts/{id}/edit(id = ${post.id})}" th:method="POST" th:object="${post}">
@@ -36,7 +88,7 @@
                             <input type="hidden" th:field="*{id}" />
                             <input type="hidden" th:field="*{user}" />
                             <div class="row">
-                                <div class="col-sm-12 col-lg-6">
+                                <div class="col-sm-12 col-lg-6" id="post-details">
                                     <!-- Title -->
                                     <div class="form-group">
                                         <!--<label for="title">Title</label>-->
@@ -55,11 +107,11 @@
                                         <input class="form-control" id="date" type="date" th:field="*{date}" placeholder="Enter date" />
                                     </div>
 
-                                    <!-- Meetup Location -->
-                                    <h5>Meetup Location: <span id="location"></span></h5>
                                 </div>
 
                                 <div class="col-sm-12 col-lg-6 pb-3">
+                                    <!-- Meetup Location -->
+                                    <h5>Meetup Location: <span id="location"></span></h5>
                                     <!-- Google Map -->
                                     <div class="form-group">
                                         <input id="latitude" type="hidden" th:field="*{latitude}" value=""/>
