@@ -81,7 +81,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 p-3">
-                        <h1>Create Post</h1>
+                        <h1>Edit Post</h1>
 
                         <form th:action="@{/posts/{id}/edit(id = ${post.id})}" th:method="POST" th:object="${post}">
 
@@ -121,7 +121,7 @@
 
                                 </div>
                                 <div class="col-12">
-                                    <input type="submit" class="btn btn-outline-primary btn-block" value="Submit" id="submit-btn" />
+                                    <input type="submit" class="btn btn-outline-primary btn-block" value="Save" id="submit-btn" />
                                 </div>
                             </div>
                         </form>
