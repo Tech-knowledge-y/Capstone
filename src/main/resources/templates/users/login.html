@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="" />
     <style>
         body {
-            padding: 4rem;
+            padding: 4rem 1rem;
         }
 
         label {
@@ -19,14 +19,11 @@
             color: #fff;
         }
 
-        .nav-item {
-            margin-right: 5px;
-        }
-
         .nav-link {
             border-radius: 15px;
             font-size: 12px;
-            background-color: #2a5298;
+            background: transparent;
+            border: 1px solid #2a5298 !important;
         }
 
         .nav-pills .nav-link {
@@ -36,6 +33,22 @@
         .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
             color: #fff;
             background-color: #2a5298;
+        }
+
+        .left {
+            border-right: none !important;
+            border-top-right-radius: 0 !important;
+            border-bottom-right-radius: 0 !important;
+            width: 75px !important;
+            text-align: left !important;
+        }
+
+        .right {
+            border-left: none !important;
+            border-top-left-radius: 0 !important;
+            border-bottom-left-radius: 0 !important;
+            width: 75px !important;
+            text-align: right !important;
         }
 
         .container-fluid {
@@ -109,10 +122,10 @@
     <th:block th:if="${errors == null}">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" id="login">
-                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="true">Login</a>
+                <a class="nav-link active left" id="pills-login-tab" data-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="true">Login</a>
             </li>
             <li class="nav-item" id="register">
-                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-register" role="tab" aria-controls="pills-register" aria-selected="false">Register</a>
+                <a class="nav-link right" id="pills-register-tab" data-toggle="pill" href="#pills-register" role="tab" aria-controls="pills-register" aria-selected="false">Register</a>
             </li>
         </ul>
     </th:block>
@@ -120,10 +133,10 @@
     <th:block th:if="${errors}">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" id="login">
-                <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="true">Login</a>
+                <a class="nav-link left" id="pills-login-tab" data-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="true">Login</a>
             </li>
             <li class="nav-item" id="register">
-                <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-register" role="tab" aria-controls="pills-register" aria-selected="false">Register</a>
+                <a class="nav-link active right" id="pills-register-tab" data-toggle="pill" href="#pills-register" role="tab" aria-controls="pills-register" aria-selected="false">Register</a>
             </li>
         </ul>
     </th:block>
@@ -136,7 +149,7 @@
             <th:block th:if="${errors == null}">
                 <!-- Login -->
                 <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
-                    <h1 class="text-center">Login</h1>
+                    <h1 class="text-center">Welcome Back!</h1>
                     <div class="errors" th:if="${param.error}">
                         Invalid Username and Password.
                     </div>
@@ -216,7 +229,7 @@
             <th:block th:if="${errors}">
                 <!-- Login -->
                 <div class="tab-pane fade" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
-                    <h1 class="text-center">Login</h1>
+                    <h1 class="text-center">Welcome Back!</h1>
                     <div class="errors" th:if="${param.error}">
                         Invalid Username and Password.
                     </div>
@@ -294,41 +307,12 @@
             </div>
         </div>
     </div>
-    <!--<div class="container-fluid">-->
-        <!--<div class="row">-->
-            <!--<div class="col mt-5">-->
-                <!--<h1 class="text-center">Login</h1>-->
-                <!--<div class="errors" th:if="${param.error}">-->
-                    <!--Invalid Username and Password.-->
-                <!--</div>-->
-                <!--<div class="errors" th:if="${param.logout}">-->
-                    <!--You have been logged out.-->
-                <!--</div>-->
-                <!--<form th:action="@{/login}" method="POST">-->
-                    <!--<div class="form-group">-->
-                        <!--&lt;!&ndash;<label for="inputUsername">Username</label>&ndash;&gt;-->
-                        <!--<input type="username" name="username" class="form-control" id="inputUsername" aria-describedby="usernameHelp" placeholder="Enter username" />-->
-                    <!--</div>-->
-                    <!--<div class="form-group">-->
-                        <!--&lt;!&ndash;<label for="inputPassword">Password</label>&ndash;&gt;-->
-                        <!--<input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" />-->
-                    <!--</div>-->
-                    <!--<button type="submit" class="btn btn-outline-primary">Submit</button>-->
-
-                    <!--<small id="loginHelp" class="form-text text-center"><a href="/register">Not Registered Yet? Click here to get Registered</a></small>-->
-                <!--</form>-->
-            <!--</div>-->
-            <!--&lt;!&ndash; /#col-12 &ndash;&gt;-->
-        <!--</div>-->
-        <!--&lt;!&ndash; /#row &ndash;&gt;-->
-    <!--</div>-->
-    <!--&lt;!&ndash; /#container-fluid &ndash;&gt;-->
-
 
     <!-- Overlay (are we using this?) -->
     <!--<div class="overlay"></div>-->
 
     <script th:replace="fragments/scripts :: scripts"></script>
     <script th:replace="fragments/scripts :: password_validator"></script>
+    <script src="/js/PasswordValidatorv2.js"></script>
 </body>
 </html>

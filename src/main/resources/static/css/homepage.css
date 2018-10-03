@@ -1,99 +1,106 @@
 body {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    font-weight: 300 !important;
 }
 
-a {
-    color: #fff!important;
+.bg {
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/example1.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
+.jumbotron {
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.hero-row, .content-row {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.hero-text {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hero-main {
+    font-weight: 700;
+    letter-spacing: 8px;
+}
+
+.hero-subtext {
+    letter-spacing: 3px;
+    margin-bottom: 15px !important;
+}
+
+.hero-hr {
+    width: 30%;
+    background: #fff;
+    height: 3px;
+}
+
+.hero-btn {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    border-radius: 15px;
+    width: 150px;
+    color: #fff;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    height: 100%;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.card-background {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20%2873%29.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card-meaning {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://mdbootstrap.com/img/Photos/Horizontal/City/6-col/img%20%2847%29.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.logo {
+    width: 25%;
+    margin: 0 auto;
 }
 
 #nav-bar {
     position: absolute;
     width: 100%;
-    z-index: 1000;
-}
-
-
-.login-button {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    padding-left: 2rem;
-    padding-right: 2rem;
-}
-
-.dropdown-menu {
-    background: #191919;
-    opacity: .5;
-    color: #fff;
-}
-
-.dropdown-item {
-    opacity: 1;
-}
-
-.dropdown-item:hover {
-    color: black!important;
-}
-
-.navbar-toggler {
-    border: none;
-}
-
-html,
-body,
-header,
-.view {
-    height: 100%;
-}
-
-.bg_image {
-    /*width: 100%;*/
-    /*height: 100vh;*/
-    /*background: url('../img/example1.jpeg');*/
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/example1.jpeg');
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.homepage_meet_img {
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20%2873%29.jpg');
-}
-
-.homepage_connect_img{
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://mdbootstrap.com/img/Photos/Horizontal/City/6-col/img%20%2847%29.jpg');
-}
-
-.top-nav-collapse {
-    background-color: #78909c !important;
-}
-
-.navbar:not(.top-nav-collapse) {
     background: transparent !important;
 }
 
-@media (max-width: 991px) {
-    .navbar:not(.top-nav-collapse) {
-        background: #78909c !important;
+#logo_home {
+    position: absolute;
+    width: 200px;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+}
+
+/*// Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+    .hero-text {
+        top: 65%;
     }
 }
-
-h1 {
-    letter-spacing: 8px;
-}
-
-h5 {
-    letter-spacing: 3px;
-}
-
-.hr-light {
-    border-top: 3px solid #fff;
-    width: 80px;
-}
-
-#logo_home {
-    margin-top: 15%;
-}
-
