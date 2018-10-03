@@ -59,10 +59,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/ads/create", // only authenticated users can create ads
                         "/ads/{id}/edit", // only authenticated users can edit ads
                         "/resources", // only authenticated users can navigate to resources
-                        "resources", // only authenticated users can view resources page
                         "/availability", // only authenticated users can navigate to availability page
                         "users/availability", // only authenticated users can view availability page
                         "/behind-scenes", // only authenticated users can view behind-scenes page
+                        "behind-scenes",
 
 
 //                           ***PostController***
@@ -89,6 +89,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/users/{id}/details/edit", // only authenticated users can navigate to edit details page
                         "users/details-edit", // only authenticated users can edit details
                         "/users/{id}/details/delete" // only authenticated users can delete their own details
+
                 )
                 .authenticated()
         ;
