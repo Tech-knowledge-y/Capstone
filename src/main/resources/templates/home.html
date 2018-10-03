@@ -5,125 +5,68 @@
     <div th:replace="fragments/head :: head('Tech{knowledge}y')"></div>
     <!-- Add Custom CSS Below-->
     <link rel="stylesheet" href="/css/homepage.css" />
-    <style></style>
 </head>
 
 <body>
 
-<header>
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark" id="nav-bar">
-        <a class="navbar-brand">Tech{knowledge}y</a>
-    </nav>
-    <!-- Navbar -->
-    <!-- Full Page Intro -->
-    <div class="view bg_image">
-        <!-- Mask & flexbox options-->
-        <div class="d-flex justify-content-center align-items-center">
-            <!-- Content -->
-            <div class="container">
-                <!--Grid row-->
-                <div class="row">
-                    <!--Grid column-->
-                    <div class="col-12 text-center">
-                        <img src="img/logo-home.png" alt="logo" id="logo_home"/>
+    <!-- Jumbotron -->
+    <div class="jumbotron jumbotron-fluid">
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark" id="nav-bar">
+            <a class="navbar-brand">Tech{knowledge}y</a>
+        </nav>
+        <!-- Navbar -->
+
+        <div class="bg">
+            <div class="row hero-row">
+                <div class="col">
+                    <img src="img/logo-home.png" alt="logo" id="logo_home"/>
+                    <div class="hero-text">
+                        <h1 class="text-center text-uppercase hero-main m-0">Find Your Mentor</h1>
+                        <hr class="hero-hr" />
+                        <p class="text-center text-uppercase hero-subtext m-0">Boost your coding skills</p>
+                        <a class="btn btn-outline-primary text-uppercase hero-btn" href="/login">Connect</a>
                     </div>
-                    <div class="col-md-12 mb-4 white-text text-center">
-                        <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5"><strong>Find Your Mentor</strong></h1>
-                        <hr class="hr-light my-4" />
-                        <h5 class="text-uppercase mb-4 white-text"><strong>Boost Your Coding Skills</strong></h5>
-                        <a class="btn btn-outline-primary text-uppercase" href="/login">Connect</a>
-                    </div>
-                    <!--Grid column-->
                 </div>
-                <!--Grid row-->
             </div>
-            <!-- Content -->
         </div>
-        <!-- Mask & flexbox options-->
-    </div>
-    <!-- Full Page Intro -->
-</header>
-<!-- Main navigation -->
-<!--Main Layout-->
-<main>
-    <div class="container">
-        <!--Grid row-->
-        <div class="row py-5">
-            <!--Grid column-->
-            <div class="col-md-12 text-center">
-                <!--Projects section v.4-->
-                <section>
-
-                    <!--Section heading-->
-                    <h2 class="h1-responsive font-weight-bold text-center my-5">What is Tech{knowledge}y?</h2>
-                    <!-- Section description -->
-                    <p class="grey-text text-center w-responsive mx-auto mb-5">Tech{knowledge}y is the culmination of an 18-week transformation into professional programmers. As students, one of our greatest assets is the knowledge that others possess and one of man's greatest gifts is the passing of the torch from one generation to the next. As we stepped into this new world, we found ourselves inundated with information, but frustrated by our fragmented access to help. After struggling to find the sort of tech knowledge we sought, we decided to used what we've learned to light our own torch that we're proud to pass on to those after us. We are helping put the knowledge back into tech.</p>
-                    <h1 class="grey-text text-center w-responsive mx-auto mb-5">We are Tech{knowledge}y</h1>
-
-                    <!--Grid row-->
-                    <div class="row mx-1">
-
-                        <!--Grid column-->
-                        <div class="col-sm-12 col-md-6 mb-4">
-                            <div class="card card-image homepage_meet_img">
-                                <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
-                                    <div>
-                                        <h6 class="pink-text"><i class="fas fa-angle-double-left"></i> <strong>Background</strong> <i class="fas fa-angle-double-right"></i></h6>
-                                        <h3 class="card-title py-3 font-weight-bold"><strong>OUR STORY</strong></h3>
-                                        <p class="pb-3">
-                                           Classmates use words like "helpful" and "knowledgeable" when describing Graham. A natural-born teacher, due to his extraordinary communication and people skills, he spent many hours<br/>teaching others.
-
-
-                                            <br/>Xavier introduced himself through code. Instead of solo pursuits, he used his talent and time to create applications that made his classmates' lives easier. His consistent willingness to help others had a profound impact on our cohort. <br/> <br/> Their generosity and altruism inspired tech{knowledge}y.
-                                            <br/>  </p>
-                                        <!--<a class="btn btn-danger btn-rounded">Contact Us</a>-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Grid column-->
-
-                        <!--Grid column-->
-                        <div class="col-sm-12 col-md-6 mb-4">
-                            <div class="card card-image homepage_connect_img">
-                                <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
-                                    <div>
-                                        <h6 class="green-text"><i class="fas fa-angle-double-left"></i> <strong>Meaning</strong> <i class="fas fa-angle-double-right"></i></h6>
-                                        <h3 class="card-title py-3 font-weight-bold"><strong>OUR LOGO </strong></h3>
-
-                                        <p class="pb-3">
-
-                                           The infinity symbol embodies the synergistic dynamic between student and mentor. It represents equality, the cyclical nature of learning, and the timelessness of knowledge. Students don't just learn from their mentors, they also teach and go on to become mentors themselves. The relationship between student and mentor is reciprocal.
-                                            <br/>Mentorship is a two-way street.</p>
-
-
-                                        <img src="/img/infinity.png" alt="logo" /> <br/>
-
-
-                                        <!--<a class="btn btn-success btn-rounded"><i class="fa fa-clone left"></i> Our Logo</a>-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Grid column-->
-
+        <div class="container">
+            <div class="row content-row">
+                <div class="col-12">
+                    <h2 class="text-center mt-5">What is Tech{knowledge}y?</h2>
+                    <p class="text-center">Tech{knowledge}y is the culmination of an 18-week transformation into professional programmers. As students, one of our greatest assets is the knowledge that others possess and one of man's greatest gifts is the passing of the torch from one generation to the next. As we stepped into this new world, we found ourselves inundated with information, but frustrated by our fragmented access to help. After struggling to find the sort of tech knowledge we sought, we decided to used what we've learned to light our own torch that we're proud to pass on to those after us. We are helping put the knowledge back into tech</p>
+                </div>
+                <div class="col-12 col-md-6 mb-3">
+                    <div class="card card-background">
+                        <h6 class="text-center pt-3"><i class="fas fa-angle-double-left"></i> Background <i class="fas fa-angle-double-right"></i></h6>
+                        <h3 class="text-center text-uppercase">Our Story</h3>
+                        <p class="text-center pl-5 pt-3 pr-5 pb-1">
+                            Classmates use words like "helpful" and "knowledgeable" when describing Graham. A natural-born teacher, due to his extraordinary communication and people skills, he spent many hours teaching others.
+                        </p>
+                        <p class="text-center pl-5 pt-0 pr-5 pb-3">
+                            Xavier introduced himself through code. Instead of solo pursuits, he used his talent and time to create applications that made his classmates' lives easier. His consistent willingness to help others had a profound impact on our cohort.
+                        </p>
+                        <p class="text-center pl-5 pt-1 pr-5 pb-3">
+                            Their generosity and altruism inspired Tech{knowledge}y.
+                        </p>
                     </div>
-                    <!--Grid row-->
-
-                </section>
-                <!--Projects section v.4-->
+                </div>
+                <div class="col-12 col-md-6 mb-3">
+                    <div class="card card-meaning">
+                        <h6 class="text-center pt-3"><i class="fas fa-angle-double-left"></i> Meaning <i class="fas fa-angle-double-right"></i></h6>
+                        <h3 class="text-center text-uppercase">Our Logo</h3>
+                        <p class="text-center pl-5 pt-3 pr-5 pb-1">
+                            The infinity symbol embodies the synergistic dynamic between student and mentor. It represents equality, the cyclical nature of learning, and the timelessness of knowledge. Students don't just learn from their mentors, they also teach and go on to become mentors themselves. The relationship between student and mentor is reciprocal.
+                        </p>
+                        <p class="text-center pl-5 pt-0 pr-5 pb-3">
+                            Mentorship is a two-way street.
+                        </p>
+                        <img class="logo" src="/img/infinity.png" alt="logo" />
+                    </div>
+                </div>
             </div>
-            <!--Grid column-->
         </div>
-        <!--Grid row-->
     </div>
-</main>
-<!--Main Layout-->
-
-
-
-
 
 <script th:replace="fragments/scripts :: scripts"></script>
 
