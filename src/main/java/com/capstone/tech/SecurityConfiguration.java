@@ -62,6 +62,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "resources", // only authenticated users can view resources page
                         "/availability", // only authenticated users can navigate to availability page
                         "users/availability", // only authenticated users can view availability page
+                        "/behind-scenes", // only authenticated users can view behind-scenes page
+
 
 //                           ***PostController***
                         "/posts", // only authenticated users can view all posts

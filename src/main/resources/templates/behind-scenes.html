@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <div th:replace="fragments/head :: head('Default')"></div>
+    <div th:replace="fragments/head :: head('Behind The Scenes')"></div>
     <!-- Add Custom CSS Below-->
     <link rel="stylesheet" href="" />
     <style>
@@ -14,15 +14,17 @@
             text-align: center;
         }
 
-        .container-box img{
+        .container img{
             width: 100%;
             height: 100%;
         }
 
         .viewer {
-            width: 52em;
-            height: 52em;
-            padding: 4em 0em;
+            /*width: 52em;*/
+            /*height: 52em;*/
+            width: 95%;
+            height: 95%;
+            padding: 3em 0em;
             margin: auto;
             overflow: hidden;
         }
@@ -34,7 +36,7 @@
 
         .slider {
             height: 5em;
-            margin: 0em 3em;
+            /*margin: 0em 3em;*/
         }
 
         [class*="image"] {
@@ -67,7 +69,12 @@
 
 <body>
 
+
+
 <main>
+
+
+
     <div id="wrapper">
         <!-- side-navbar -->
         <div sec:authorize="isAuthenticated()">
@@ -81,17 +88,30 @@
             <div sec:authorize="isAuthenticated()">
                 <nav th:replace="fragments/side-navbar :: side-navbar-toggler"></nav>
             </div>
-            <div class="container-box">
-                <div class="viewer">
 
-                </div>
-                <div class="slider">
-                    <div class="storage">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="viewer">
+                        </div>
+                    </div>
+                    <button id="next">Next</button>
+                    <div class="col-12 text-center">
+                        <div class="mb-5">
+                            <button type="button" class="btn btn-primary btn-lg text-uppercase">View Our Github</button>
+                            <button type="button" class="btn btn-success btn-lg text-uppercase">View our Trello Board</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="slider">
+                            <div class="storage text-center">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /#content -->
+    <!-- /#content -->
     </div>
     <!-- /#wrapper -->
 
