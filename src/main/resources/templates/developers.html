@@ -120,7 +120,7 @@
         <!-- Page Content Not Authorized -->
         <div id="content" style="left: 0;" sec:authorize="isAnonymous()">
             <!-- Data below will display to users who are **NOT** logged in -->
-            <div class="container-fluid">
+            <div class="container-fluid" style="padding-left: 8rem; padding-right: 8rem;">
                 <th:block th:replace="fragments/developers :: developerPage"></th:block>
             </div>
         </div>

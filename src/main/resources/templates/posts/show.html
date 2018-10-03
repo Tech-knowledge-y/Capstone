@@ -78,6 +78,15 @@
             margin-top: 15px;
         }
 
+        .buttons {
+            font-size: 12px;
+            border-radius: 15px;
+            background: #fff;
+            border: none;
+            color: #000;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1), 0 5px 12px rgba(0,0,0,0.15);
+        }
+
         .comments {
             padding: 20px;
             background-image: linear-gradient(-45deg, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
@@ -175,8 +184,8 @@
                                 <p class="post-date" th:text="${post.date}"></p>
                                 <p class="post-body mt-3" th:text="${post.body}"></p>
                                 <div class="edit-delete-section" th:if="${isOwner}">
-                                    <a class="btn btn-outline-warning float-right" th:href="'/posts/' + ${post.id} + '/edit'">Edit</a>
-                                    <button class="btn btn-outline-danger float-right" data-toggle="modal" data-target="#exampleModal">Delete</button>
+                                    <a class="btn btn-outline-warning float-right buttons" th:href="'/posts/' + ${post.id} + '/edit'">Edit</a>
+                                    <button class="btn btn-outline-danger float-right buttons" data-toggle="modal" data-target="#exampleModal">Delete</button>
                                 </div>
                                 <div class="comments">
                                     <h3 class="text-center">Comments</h3>

@@ -5,6 +5,10 @@ body {
     font-weight: 300 !important;
 }
 
+h6, p {
+    font-weight: 100;
+}
+
 .bg {
     height: 100%;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/example1.jpeg');
@@ -25,6 +29,10 @@ body {
 
 .question {
     margin-top: 5rem;
+}
+
+.desc {
+    padding: 1rem 3rem 1rem 3rem;
 }
 
 .hero-row, .content-row {
@@ -90,6 +98,21 @@ body {
 .logo {
     width: 25%;
     margin: 0 auto;
+}
+
+.contact-us {
+    width: 50%;
+    margin: 0 auto 15px auto;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 15px;
+    border-color: #2a5298
+}
+
+.contact-us:hover {
+    color: #fff;
+    background: #2a5298;
+    border-color: #2a5298;
 }
 
 #nav-bar {
