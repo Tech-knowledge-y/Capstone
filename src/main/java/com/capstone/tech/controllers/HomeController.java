@@ -16,10 +16,10 @@ public class HomeController {
             return "home";
     }
 
-    @GetMapping("/c")
-    public String defaultTemp() {
-        return "default";
-    }
+//    @GetMapping("/c")
+//    public String defaultTemp() {
+//        return "default";
+//    }
 
     @GetMapping("/developers")
     public String developers() {
@@ -34,13 +34,13 @@ public class HomeController {
         return "behind-scenes";
     }
 
-    @GetMapping("/lightbox")
-    public String lightbox() {
-        return "lightbox";
-    }
-
-    @GetMapping("/test")
-    public String test() {
-        return "test";
-    }
+//    @GetMapping("/lightbox")
+//    public String lightbox() {
+//        return "lightbox";
+//    }
+//
+//    @GetMapping("/test")
+//    public String test() {
+//        return "test";
+//    }
 }

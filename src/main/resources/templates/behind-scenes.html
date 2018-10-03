@@ -2,79 +2,24 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <div th:replace="fragments/head :: head('Behind The Scenes')"></div>
+    <div th:replace="fragments/head :: head('Behind the Scenes')"></div>
     <!-- Add Custom CSS Below-->
-    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.1/dist/jquery.fancybox.min.css" />
     <style>
-        body {
-            /*background: linear-gradient(to right, #29323c, #485563);*/
+        .gitIcon {
+            position: relative;
+            top: 2px;
+            margin: 11px 13px;
         }
-
-        .container-box {
-            text-align: center;
-        }
-
-        .container img{
-            width: 100%;
-            height: 100%;
-        }
-
-        .viewer {
-            /*width: 52em;*/
-            /*height: 52em;*/
-            width: 95%;
-            height: 95%;
-            padding: 3em 0em;
-            margin: auto;
-            overflow: hidden;
-        }
-
-        .viewer img {
-            border: 4px solid white;
-            box-shadow: 8px 2px 30px white;
-        }
-
-        .slider {
-            height: 5em;
-            /*margin: 0em 3em;*/
-        }
-
-        [class*="image"] {
-            width: 10em;
-            height: 6em;
-            display: inline-flex;
-        }
-
-        .myslides {
-            display: none;
-            animation: fade 1.9s ease;
-        }
-
-        .active {
-            transform: scale(1.2);
-            box-shadow: 1px 3px 30px white;
-            border: 1px solid white;
-        }
-
-        @keyframes fade {
-            0%{
-                opacity:0.1;
-            }
-            100%{
-                opacity:1;
-            }
+        .btnText {
+            font-size: 1.5rem;
         }
     </style>
 </head>
 
 <body>
 
-
-
 <main>
-
-
-
     <div id="wrapper">
         <!-- side-navbar -->
         <div sec:authorize="isAuthenticated()">
@@ -90,28 +35,64 @@
             </div>
 
             <div class="container">
-                <div class="row">
+                <div class="row text-center">
                     <div class="col-12">
-                        <div class="viewer">
-                        </div>
+                        <h1 class="display-3 font-weight-bold mx-auto mt-4 mb-3">Behind the Scenes</h1>
                     </div>
-                    <button id="next">Next</button>
-                    <div class="col-12 text-center">
-                        <div class="mb-5">
-                            <button type="button" class="btn btn-primary btn-lg text-uppercase">View Our Github</button>
-                            <button type="button" class="btn btn-success btn-lg text-uppercase">View our Trello Board</button>
-                        </div>
+                    <div class="col-12">
+                        <button type="button" class="btn btn-outline-light m-3"><i class="fab fa-github-alt fa-2x gitIcon"></i>
+                            <a href="https://github.com/Tech-knowledge-y/Capstone" target="_blank"><span class="btnText text-uppercase">Check out our Work on Github</span></a><i class="fab fa-github-alt fa-2x gitIcon"></i></button>
                     </div>
-                    <div class="row">
-                        <div class="slider">
-                            <div class="storage text-center">
-                            </div>
+                    <p class="imglist m-3" style="max-width: 95%;">
+                        <div class="col-12">
+                            <a href="/img/lightbox/team.jpg" data-fancybox="images" data-caption="Hard at work">
+                                <img src="/img/lightbox/team.jpg" height="180x" class="m-2" />
+                            </a>
+
+                            <a href="/img/lightbox/the-boys.jpg" data-fancybox="images" data-caption="Collaborative thinking">
+                                <img src="/img/lightbox/the-boys.jpg" height="180x" class="m-2" />
+                            </a>
+
+                            <a href="/img/lightbox/logo-rough.png" data-fancybox="images" data-caption="Logo concept rough draft">
+                                <img src="/img/lightbox/logo-rough.png" height="180x" class="m-2" />
+                            </a>
+
+                            <a href="/img/lightbox/wireframes.jpg" data-fancybox="images" data-caption="Wireframe concepts">
+                                <img src="/img/lightbox/wireframes.jpg" height="180x" class="m-2" />
+                            </a>
+
+                            <a href="/img/lightbox/tech-palette.png" data-fancybox="images" data-caption="Color Palette">
+                                <img src="/img/lightbox/tech-palette.png" height="180x" class="m-2" />
+                            </a>
+
+                            <a href="/img/lightbox/db1.jpg" data-fancybox="images" data-caption="Database Design">
+                                <img src="/img/lightbox/db1.jpg" height="180x" class="m-2" />
+                            </a>
+
+                            <a href="/img/lightbox/db3.jpg" data-fancybox="images" data-caption="UI/UX Design">
+                                <img src="/img/lightbox/db3.jpg" height="180x" class="m-2" />
+                            </a>
+
+                            <a href="/img/lightbox/db5.jpg" data-fancybox="images" data-caption="UI/UX Details">
+                                <img src="/img/lightbox/db5.jpg" height="180px" class="m-2" />
+                            </a>
+
+                            <a href="/img/lightbox/trello1.png" data-fancybox="images" data-caption="Trello Project Management">
+                                <img src="/img/lightbox/trello1.png" height="180x" class="m-2" />
+
+                            </a>
+
+                            <a href="/img/lightbox/github-screenshot.png" data-fancybox="images" data-caption="Version Control System - Github">
+                                <img src="/img/lightbox/github-screenshot.png" height="180x" class="m-2" />
+                            </a>
                         </div>
-                    </div>
+                    </p>
                 </div>
+                <!-- /#row -->
             </div>
+            <!-- /#container -->
         </div>
-    <!-- /#content -->
+        <!-- /#content -->
     </div>
     <!-- /#wrapper -->
 
@@ -120,6 +101,5 @@
 </main>
 
 <script th:replace="fragments/scripts :: scripts"></script>
-<script src="/js/lightbox.js"></script>
-</body>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.1/dist/jquery.fancybox.min.js"></script></body>
 </html>
